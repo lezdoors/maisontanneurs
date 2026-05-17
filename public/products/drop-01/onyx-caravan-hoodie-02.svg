@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" preserveAspectRatio="xMidYMid slice">
+  <rect width="1200" height="1500" fill="#2a1e16"/>
+  <text x="600" y="720" text-anchor="middle" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="56" font-weight="300" fill="#f5f4f1" letter-spacing="-0.5">Onyx Caravan Hoodie</text>
+  <text x="600" y="780" text-anchor="middle" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="500" fill="#8a857c" letter-spacing="3">DETAIL · PLACEHOLDER</text>
+  <line x1="540" y1="820" x2="660" y2="820" stroke="#b8923c" stroke-width="1"/>
+</svg>

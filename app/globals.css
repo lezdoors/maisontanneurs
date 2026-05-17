@@ -1,0 +1,375 @@
+@import "tailwindcss";
+
+@theme {
+  /* ============================================================
+     ROCHE-BOBOIS-INSPIRED PALETTE (Nitra brand layer)
+     White, photography-driven, with brass as restrained accent.
+     ============================================================ */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f5f4f1;     /* warm off-white for alt sections */
+  --color-bg-tinted: #ecebe6;  /* tertiary; rare use */
+  --rb-card-bg: #ffffff;        /* product cutouts ship on pure white; matched card BG so the seam disappears */
+  --rb-card-bg-alt: #f4f3ef;    /* legacy pale-gray; kept for lifestyle/category tiles where the image covers edge-to-edge */
+  --rb-promo: #3aa8e8;         /* RB "Irresistible Days" blue */
+  --color-ink: #1a1a1a;        /* primary text & headlines */
+  --color-ink-soft: #3a3a3a;   /* body copy */
+  --color-muted: #6b6b6b;      /* secondary text, captions */
+  --color-mineral: #8a857c;    /* tertiary text, dates */
+  --color-rule: #e8e6e0;       /* hairline borders */
+  --color-rule-soft: #f0eee9;  /* internal grid dividers */
+  --color-brass: #b8923c;      /* restrained accent for "More" links */
+  --color-brass-hi: #8a6c2d;   /* accent hover */
+  --color-stamp: #d65a3a;      /* terracotta "promotional stamp" pop */
+
+  /* Legacy palette retained for admin/cart/older components */
+  --color-bone: #f1ebe0;
+  --color-bone-2: #e8dfd0;
+  --color-sand: #d9c7ac;
+  --color-linen: #c8b28f;
+  --color-clay: #a86a3d;
+  --color-cedar: #7a4826;
+  --color-bronze: #7c5a2c;
+  --color-umber: #3a2418;
+  --color-charcoal: #2a1e16;
+  --color-line: rgba(26,26,26,.14);
+  --color-line-soft: rgba(26,26,26,.06);
+  --color-line-bone: rgba(241,235,224,.18);
+  --color-chalk: #ffffff;
+  --color-pearl: #f7f5f0;
+  --color-stone: #e8e6e0;
+  --color-graphite: #3a3a3a;
+  --color-warm-white: #fdfcf9;
+  --color-accent: #b8923c;
+  --color-accent-light: #d9c7ac;
+  --color-shadow: rgba(26,26,26,0.04);
+
+  /* Fonts (Inter Tight drives nearly everything — RB-style sans) */
+  --font-display: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --ease: cubic-bezier(.16,1,.3,1);
+  --ease-in-out: cubic-bezier(.65,.05,.36,1);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+
+/* ============================================================
+   TYPOGRAPHY (RB-aligned: clean sans hierarchy)
+   ============================================================ */
+
+/* Editorial display — for hero, section heads */
+.rb-display {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  letter-spacing: -0.012em;
+  line-height: 1.04;
+  color: var(--color-ink);
+}
+
+/* Section heading — sub-display */
+.rb-h2 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(22px, 2.2vw, 30px);
+  letter-spacing: -0.008em;
+  line-height: 1.18;
+  color: var(--color-ink);
+}
+
+/* Card / product title */
+.rb-card-title {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0;
+  color: var(--color-ink);
+}
+
+/* Designer attribution under product */
+.rb-attribution {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+/* Body */
+.rb-body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+  font-weight: 400;
+}
+
+/* Eyebrow / category label */
+.rb-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-mineral);
+  font-weight: 500;
+}
+
+/* Date / meta */
+.rb-meta {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-mineral);
+  font-weight: 400;
+}
+
+/* Price */
+.rb-price {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-ink);
+  letter-spacing: 0.01em;
+}
+
+.rb-price-strike {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-muted);
+  text-decoration: line-through;
+  margin-right: 8px;
+}
+
+/* ============================================================
+   LINKS & BUTTONS (RB pattern: "more" inline link + promo stamp)
+   ============================================================ */
+.rb-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--color-ink);
+  transition: color .2s ease, border-color .2s ease;
+}
+.rb-more:hover { color: var(--color-brass-hi); border-color: var(--color-brass-hi); }
+
+.rb-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  background: var(--color-ink);
+  color: #ffffff;
+  border: 1px solid var(--color-ink);
+  transition: background .2s ease, color .2s ease;
+}
+.rb-cta:hover { background: #ffffff; color: var(--color-ink); }
+
+.rb-cta-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-ink);
+  transition: background .2s ease, color .2s ease;
+}
+.rb-cta-outline:hover { background: var(--color-ink); color: #ffffff; }
+
+/* Promotional stamp (RB's circular "Irresistible Days" mark) */
+.rb-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--color-stamp);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.15;
+  padding: 8px;
+}
+
+/* ============================================================
+   LEGACY UTILITY CLASSES (preserved for non-rebuilt components)
+   ============================================================ */
+.eyebrow { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-mineral); font-weight: 500; }
+.display { font-family: var(--font-sans); font-weight: 300; letter-spacing: -0.012em; line-height: 1.04; }
+.disp { font-family: var(--font-sans); font-weight: 300; letter-spacing: -0.012em; line-height: 1.05; }
+.lede { font-family: var(--font-sans); font-weight: 400; font-size: clamp(15px, 1.2vw, 17px); line-height: 1.6; color: var(--color-ink-soft); }
+.body-text, .body-copy { font-family: var(--font-sans); font-size: 14px; line-height: 1.6; color: var(--color-ink-soft); font-weight: 400; }
+.serif-body { font-family: var(--font-serif); font-weight: 400; font-style: italic; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.5; color: var(--color-ink-soft); }
+.meta { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-mineral); font-weight: 400; }
+.eye { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-mineral); font-weight: 500; }
+
+.link-underline {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-ink);
+  padding-bottom: 3px;
+  color: var(--color-ink);
+  transition: border-color .2s ease, color .2s ease;
+}
+.link-underline:hover { border-color: var(--color-brass-hi); color: var(--color-brass-hi); }
+
+.btn-solid {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  background: var(--color-ink);
+  color: #ffffff;
+  border: 1px solid var(--color-ink);
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+.btn-solid:hover { background: #ffffff; color: var(--color-ink); }
+
+.btn-outline {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-ink);
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+.btn-outline:hover { background: var(--color-ink); color: #ffffff; }
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+@keyframes kenburns { 0% { transform: scale(1.02) translate(0, 0); } 100% { transform: scale(1.08) translate(-0.5%, -0.8%); } }
+.kenburns { animation: kenburns 24s var(--ease-in-out) infinite alternate; }
+
+/* ============================================================
+   SECTION SPACING (RB rhythm — tighter than RH; not extreme)
+   ============================================================ */
+.rb-section { padding: clamp(64px, 7vw, 110px) clamp(20px, 4vw, 60px); }
+.rb-section-tight { padding: clamp(40px, 5vw, 70px) clamp(20px, 4vw, 60px); }
+.section-pad { padding: clamp(64px, 7vw, 110px) clamp(20px, 4vw, 60px); }
+.section-pad-sm { padding: clamp(40px, 5vw, 70px) clamp(20px, 4vw, 60px); }
+
+/* ============================================================
+   CARD HOVER (RB pattern: image lift + caption stays)
+   ============================================================ */
+.rb-card { background: var(--color-bg); }
+.rb-card-img-wrap { overflow: hidden; position: relative; }
+.rb-card-img { transition: transform .9s var(--ease); }
+.rb-card:hover .rb-card-img { transform: scale(1.04); }
+
+/* ============================================================
+   CART DRAWER (unchanged)
+   ============================================================ */
+.cart-scrim { position: fixed; inset: 0; background: rgba(26,26,26,0.3); z-index: 90; opacity: 0; pointer-events: none; transition: opacity .4s ease; }
+.cart-scrim.open { opacity: 1; pointer-events: all; }
+.cart-drawer { position: fixed; top: 0; right: 0; width: min(420px, 90vw); height: 100dvh; background: var(--color-bg); z-index: 91; transform: translateX(100%); transition: transform .45s cubic-bezier(0.23, 1, 0.32, 1); display: flex; flex-direction: column; }
+.cart-drawer.open { transform: translateX(0); }
+
+/* ============================================================
+   CAROUSEL SCROLLBAR HIDING
+   ============================================================ */
+.rb-scroll-x { scrollbar-width: none; -ms-overflow-style: none; }
+.rb-scroll-x::-webkit-scrollbar { display: none; }
+
+/* ============================================================
+   RB PRODUCT CARD + PROMO WORDMARK
+   ============================================================ */
+.rb-product-card {
+  background: var(--rb-card-bg);
+}
+
+/* RB-style "Irresistible Days" wordmark — flat blue stencil-feel sans-serif */
+.rb-promo-wordmark {
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.4vw, 19px);
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--rb-promo);
+  text-transform: uppercase;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* ============================================================
+   MEGA-MENU
+   ============================================================ */
+.rb-mega {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-top: 1px solid var(--color-rule);
+  box-shadow: 0 12px 30px rgba(26,26,26,0.04);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity .2s ease, transform .2s ease;
+}
+.rb-mega.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
