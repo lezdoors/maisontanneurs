@@ -59,7 +59,7 @@ export default function ShippingPage() {
 
       <h2>Damage in transit</h2>
       <p>
-        Every piece is insured to its full value during transit. If anything arrives damaged, send us photographs of the damage and the packaging within 72 hours of delivery (atelier@nitra.com). We will file the insurance claim with the carrier and replace, repair, or refund — your choice.
+        Every piece is insured to its full value during transit. If anything arrives damaged, send us photographs of the damage and the packaging within 72 hours of delivery (hello@nitra.com). We will file the insurance claim with the carrier and replace, repair, or refund — your choice.
       </p>
 
       <h2>Where we do not ship</h2>
@@ -69,7 +69,7 @@ export default function ShippingPage() {
 
       <h2>Questions</h2>
       <p>
-        Write to <a href="mailto:atelier@nitra.com">atelier@nitra.com</a>. We answer within one working day.
+        Write to <a href="mailto:hello@nitra.com">hello@nitra.com</a>. We answer within one working day.
       </p>
     </>
   );

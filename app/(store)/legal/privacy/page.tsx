@@ -21,7 +21,7 @@ export default function PrivacyPage() {
       <ul>
         <li><strong>Order information:</strong> name, shipping and billing address, email, phone number, items ordered, payment confirmation (we do not store card numbers).</li>
         <li><strong>Account information:</strong> if you create an account, your email and any preferences you save.</li>
-        <li><strong>Correspondence:</strong> messages you send to atelier@nitra.com or via our contact forms.</li>
+        <li><strong>Correspondence:</strong> messages you send to hello@nitra.com or via our contact forms.</li>
         <li><strong>Usage data:</strong> standard web analytics — pages viewed, device type, anonymised IP, referrer. We use this to improve the site, never to identify individuals.</li>
       </ul>
 
@@ -56,7 +56,7 @@ export default function PrivacyPage() {
         <li>Export it in a portable format.</li>
         <li>Withdraw any consent you previously gave.</li>
       </ul>
-      <p>Write to <a href="mailto:atelier@nitra.com">atelier@nitra.com</a> and we will respond within thirty days.</p>
+      <p>Write to <a href="mailto:hello@nitra.com">hello@nitra.com</a> and we will respond within thirty days.</p>
 
       <h2>6. Cookies</h2>
       <p>We use a minimal set of cookies: a session cookie for your shopping cart, and anonymised analytics cookies to understand site traffic. We do not use advertising or tracking cookies. Your browser settings can refuse cookies at any time; the site will still function.</p>
@@ -71,7 +71,7 @@ export default function PrivacyPage() {
       <p>
         Questions about this policy or how we handle your information:
         <br />
-        <a href="mailto:atelier@nitra.com">atelier@nitra.com</a>
+        <a href="mailto:hello@nitra.com">hello@nitra.com</a>
       </p>
     </>
   );

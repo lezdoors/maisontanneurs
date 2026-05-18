@@ -40,10 +40,10 @@ export default function NotFound() {
         <p className="text-[12px] text-[var(--color-mineral)] mt-12 leading-[1.7]">
           Looking for something specific? Write to{" "}
           <a
-            href="mailto:atelier@nitra.com"
+            href="mailto:hello@nitra.com"
             className="underline underline-offset-2 text-[var(--color-graphite)] hover:text-[var(--color-ink)]"
           >
-            atelier@nitra.com
+            hello@nitra.com
           </a>
         </p>
       </div>

@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
       //    Replies land at atelier@ — the inbox a human actually monitors.
       await resend.emails.send({
         from: "Nitra <newsletter@nitra.com>",
-        replyTo: "atelier@nitra.com",
+        replyTo: "hello@nitra.com",
         to: email,
         subject: "Welcome to the Nitra newsletter",
         html: `

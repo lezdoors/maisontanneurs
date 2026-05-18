@@ -303,27 +303,27 @@ export default function Navbar() {
             <nav className="px-6 py-8 flex flex-col gap-5">
               <div className="rb-eyebrow text-[var(--color-mineral)]">Browse</div>
               <Link href="/products" onClick={() => setDrawer(false)} className="text-[14px] tracking-[0.04em] font-medium text-[var(--color-ink)] uppercase">
-                All Products
+                All Drops
               </Link>
-              <Link href="/products?category=Pendants" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Lighting</Link>
-              <Link href="/products?category=Poufs" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Poufs</Link>
-              <Link href="/products?category=Tables" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Tables</Link>
-              <Link href="/products?category=Furniture" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Furniture</Link>
-              <Link href="/products?category=Vessels" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Vessels</Link>
-              <Link href="/products?category=Wall%20Plates" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Wall Plates</Link>
+              <Link href="/products?category=Tees" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Tees</Link>
+              <Link href="/products?category=Hoodies" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Hoodies</Link>
+              <Link href="/products?category=Sweats" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Sweats</Link>
+              <Link href="/products?category=Caps" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Caps</Link>
+              <Link href="/products?category=Scarves" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Scarves</Link>
+              <Link href="/products?category=Outerwear" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Outerwear</Link>
 
               <div className="h-px bg-[var(--color-rule)] my-2" />
               <div className="rb-eyebrow text-[var(--color-mineral)]">The House</div>
-              <Link href="/atelier" onClick={() => setDrawer(false)} className="text-[14px] tracking-[0.04em] font-medium text-[var(--color-ink)] uppercase">The Atelier</Link>
-              <Link href="/about" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">About</Link>
+              <Link href="/about" onClick={() => setDrawer(false)} className="text-[14px] tracking-[0.04em] font-medium text-[var(--color-ink)] uppercase">About Nitra</Link>
+              <Link href="/products" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Drop 01</Link>
 
               <div className="h-px bg-[var(--color-rule)] my-2" />
               <div className="rb-eyebrow text-[var(--color-mineral)]">Help</div>
               <Link href="/legal/shipping" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Shipping</Link>
               <Link href="/legal/returns" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Returns</Link>
-              <Link href="/legal/care" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Care</Link>
+              <Link href="/legal/care" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Size & Care</Link>
               <Link href="/legal/faq" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">FAQ</Link>
-              <a href="mailto:atelier@nitra.com" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Contact</a>
+              <a href="mailto:hello@nitra.com" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Contact</a>
             </nav>
           </aside>
         </>

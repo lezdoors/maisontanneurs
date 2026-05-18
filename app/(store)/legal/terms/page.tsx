@@ -13,7 +13,7 @@ export default function TermsPage() {
       <p className="updated">Last updated: 12 May 2026</p>
 
       <p>
-        These terms apply to every order placed on www.nitra.com. By completing your purchase, you confirm you have read and agreed to them. If anything here is unclear, write to <a href="mailto:atelier@nitra.com">atelier@nitra.com</a> before you order.
+        These terms apply to every order placed on www.nitra.com. By completing your purchase, you confirm you have read and agreed to them. If anything here is unclear, write to <a href="mailto:hello@nitra.com">hello@nitra.com</a> before you order.
       </p>
 
       <h2>1. About us</h2>
@@ -82,7 +82,7 @@ export default function TermsPage() {
 
       <h2>12. Contact</h2>
       <p>
-        For any question about your order, write to <a href="mailto:atelier@nitra.com">atelier@nitra.com</a>. We answer within one working day.
+        For any question about your order, write to <a href="mailto:hello@nitra.com">hello@nitra.com</a>. We answer within one working day.
       </p>
     </>
   );

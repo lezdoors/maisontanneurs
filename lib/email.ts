@@ -12,7 +12,7 @@ function getResend(): Resend {
 }
 
 const FROM_EMAIL = "Nitra <orders@nitra.com>";
-const REPLY_TO = "atelier@nitra.com";
+const REPLY_TO = "hello@nitra.com";
 const ADMIN_EMAIL = "nitra@outlook.com";
 
 interface OrderEmailData {

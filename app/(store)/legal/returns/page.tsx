@@ -21,7 +21,7 @@ export default function ReturnsPage() {
         Poufs, cushions, smaller lighting (sconces, table lamps), vessels, wall plates, and beldi glassware are returnable for any reason within 30 days of delivery, in their original condition.
       </p>
       <ul>
-        <li>Write to <a href="mailto:atelier@nitra.com">atelier@nitra.com</a> within 30 days of delivery to start the return.</li>
+        <li>Write to <a href="mailto:hello@nitra.com">hello@nitra.com</a> within 30 days of delivery to start the return.</li>
         <li>We provide a prepaid return label (US, EU, UK).</li>
         <li>Refund issued to your original payment method within 7 business days of our receiving the piece back.</li>
         <li>Return shipping is deducted from the refund (~$25–$85 depending on origin and weight).</li>
@@ -64,7 +64,7 @@ export default function ReturnsPage() {
 
       <h2>Questions</h2>
       <p>
-        Write to <a href="mailto:atelier@nitra.com">atelier@nitra.com</a>. We answer within one working day.
+        Write to <a href="mailto:hello@nitra.com">hello@nitra.com</a>. We answer within one working day.
       </p>
     </>
   );

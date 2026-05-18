@@ -23,9 +23,9 @@ function resolveCategoryFilter(raw: string): { in?: string[]; eq?: string } {
 }
 
 export const metadata: Metadata = {
-  title: "Works",
+  title: "Drops",
   description:
-    "Handcrafted furniture and objects from the workshops of Marrakech. Brass, bone, cedar, leather — made by hand, one at a time.",
+    "Hand-painted figurative graphics on heavyweight cotton. Each drop is a small run, made in the order it sells.",
 };
 
 async function getProducts(category?: string, q?: string): Promise<Product[]> {
@@ -126,12 +126,12 @@ export default async function ProductsPage({
       <section className="pt-[180px] px-[clamp(24px,4vw,72px)] pb-0">
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-16 items-end pb-10 border-b border-stone">
           <h1 className="disp text-[clamp(56px,8vw,112px)] max-w-[14ch]">
-            Works
+            Drops
           </h1>
           <p className="font-serif italic text-[18px] leading-[1.55] text-graphite max-w-[44ch]">
-            Each piece is a dialogue between centuries of tradition and the
-            demands of contemporary living — handmade, one at a time, in the
-            workshops of Marrakech.
+            Hand-painted figurative graphics on heavyweight cotton. Each drop
+            is a small run — released, sold, restocked only if the work
+            deserves it.
           </p>
         </div>
       </section>
