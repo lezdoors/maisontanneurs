@@ -39,16 +39,23 @@ The brand-promise atmosphere is **transparent, accessible, heritage-credible**. 
 - DTC pastel (Allbirds, Cuts, Vuori — wrong lane)
 - Outdoor-adventure heritage (Aigle's hiking/parka/boot subjects don't translate — borrow the lighting, not the activity)
 
-## Higgsfield model recommendations
+## Generation workflow (locked)
 
-| Use case | Model | Notes |
+Use the `higgsfield-product-photoshoot` skill via CLI. The skill's backend assembles photography vocabulary + structural templates and submits to `gpt_image_2`. **Consistency across runs is the reason we picked the skill route over freehand prompts.**
+
+| Asset type | Skill mode | Notes |
 |---|---|---|
-| Hero campaign still (one image, max quality) | `nano_banana_2` (Pro, 2 credits) | Best skin/fabric detail. Toggle Unlimited. |
-| Product-on-model lookbook variations | `nano_banana` (1 credit) | Same prompts, cheaper iterations |
-| Editorial-mood scene stills (no product focus) | `FLUX.2 Pro` | Strong on atmosphere + natural light |
-| Painterly art-graphic generation (the print artwork itself) | `Seedream` or `nano_banana_2` | When generating the actual Tuareg/Gnawa/caravan oils that get printed |
+| Homepage hero | `hero_banner` | 16:9 wide-format campaign image |
+| Product-on-model PDP | `virtual_model_tryout` | Heritage menswear product shot, soft daylight |
+| Tight detail / close-up | `closeup_product_with_person` or `product_shot` | 1:1 or 4:5 detail crops |
+| Pinterest pin | `moodboard_pin` | Native 2:3 vertical, Pinterest aesthetic |
+| Social carousel | `social_carousel` | 3–10 connected slides |
+| Ad pack | `ad_creative_pack` | Meta/TikTok/Pinterest variants in one batch |
+| Painterly art-graphic generation | (separate — use `higgsfield-generate` Seedream) | For the actual Tuareg/Gnawa/caravan oils that get printed onto garments |
 
-**Reminder**: every model meters despite "Unlimited" badges. Preflight cost via `get_cost`. Never default to Pro tier when 1-credit nano_banana works for iteration.
+**Cost**: skill is hardcoded to `gpt_image_2` (paid against ultra plan credits). Ryan's nano_banana_2 free-credit window does not apply to skill invocations. The consistency trade-off was accepted explicitly on 2026-05-17.
+
+For one-off freehand experiments outside the skill (e.g., using free nano_banana_2 credits in the Higgsfield UI directly), adapt the staged intent prompts from `HF-PROMPTS-DROP-01.md` and add the explicit photography vocabulary by hand.
 
 ## Aspect ratios
 
