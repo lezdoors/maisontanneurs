@@ -29,7 +29,7 @@ export default function FeaturedDrop() {
           )}
         </div>
 
-        <div className="max-w-[440px]">
+        <div className="max-w-[440px] reveal">
           <div className="ed-eyebrow mb-6">The Featured Drop</div>
           <h2 className="ed-h2 max-w-[14ch]">
             Designed between heritage and movement.

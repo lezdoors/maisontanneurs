@@ -28,7 +28,7 @@ export default function BrandStoryEditorial() {
           )}
         </div>
 
-        <div className="max-w-[460px]">
+        <div className="max-w-[460px] reveal">
           <div className="ed-eyebrow mb-6">Between Worlds</div>
           <h2 className="ed-h2 max-w-[16ch]">
             From Morocco, recut for today.

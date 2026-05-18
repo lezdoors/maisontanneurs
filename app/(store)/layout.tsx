@@ -2,6 +2,7 @@ import { CartProvider } from "@/components/store/CartProvider";
 import Navbar from "@/components/store/Navbar";
 import CartDrawer from "@/components/store/CartDrawer";
 import Footer from "@/components/store/Footer";
+import ScrollRevealProvider from "@/components/store/ScrollRevealProvider";
 
 export default function StoreLayout({
   children,
@@ -10,6 +11,7 @@ export default function StoreLayout({
 }) {
   return (
     <CartProvider>
+      <ScrollRevealProvider />
       <Navbar />
       <CartDrawer />
       {children}

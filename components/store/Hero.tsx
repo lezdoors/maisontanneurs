@@ -26,7 +26,7 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover -z-10"
+          className="object-cover -z-10 kenburns"
         />
       )}
 

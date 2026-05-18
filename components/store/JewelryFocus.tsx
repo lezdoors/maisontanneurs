@@ -7,7 +7,7 @@ export default function JewelryFocus() {
   return (
     <section className="ed-section bg-[var(--color-bg-dark)] text-white">
       <div className="max-w-[1480px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        <div className="order-2 lg:order-1 max-w-[460px]">
+        <div className="order-2 lg:order-1 max-w-[460px] reveal">
           <div className="ed-eyebrow text-white/55 mb-6">Jewelry</div>
           <h2 className="ed-h2 text-white max-w-[14ch]">
             Modern pieces from Moroccan form.

@@ -27,7 +27,7 @@ export default function Fulfillment() {
   return (
     <section className="ed-section-tight bg-[var(--color-bg)]">
       <div className="max-w-[1280px] mx-auto">
-        <div className="text-center mb-14 md:mb-20">
+        <div className="text-center mb-14 md:mb-20 reveal">
           <div className="ed-eyebrow mb-5">How we work</div>
           <h2 className="ed-h2 max-w-[24ch] mx-auto">
             Made-to-order. Built to last beyond the season.

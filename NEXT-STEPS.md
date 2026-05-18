@@ -5,7 +5,22 @@ _Written overnight by Turbo · 2026-05-17 22:30_
 
 The homepage is **fully populated with imagery** for the first time. Refresh `localhost:3000` and you should see a coherent editorial-luxury site from top to bottom — Hero with the mint arcade, Featured Drop, 4 Category Tiles, Jewelry Focus with the Amazigh elder portrait, Editorial Strip, Brand Story with the cream-shroud portrait, and Drop Grid. The Atlas Pendant PDP is the only remaining SVG placeholder.
 
+**Plus I shipped UI Priority 1–4** (see below for details): nav goes transparent over the hero, slow Ken Burns on the hero image, trust ribbon under hero, scroll-reveal fade-ins on key copy blocks.
+
 You can review by scrolling through the site. Everything below is **what I'd do next**.
+
+---
+
+## Already shipped overnight (Priority 1–4 of the UI improvements)
+
+| # | Improvement | Where |
+|---|---|---|
+| 1 ✅ | **Sticky transparent nav** — bone-transparent over the hero, fades to solid bone + hairline once you scroll past 320px. Link colors flip ink↔white accordingly | `components/store/Navbar.tsx` |
+| 2 ✅ | **Trust ribbon** — thin horizontal band under hero: "Print-to-order · Ships in 3–5 days · Free EU returns · Heavyweight cotton · Sterling silver". Mineral text on bone-alt background, hairline borders | new `components/store/TrustRibbon.tsx`, wired into `page.tsx` |
+| 3 ✅ | **Hero Ken Burns** — slow 24s scale + drift animation on the hero image (`.kenburns` class on the `<Image>`). Subtle cinematic motion | `components/store/Hero.tsx` |
+| 4 ✅ | **Scroll-reveal fade-ups** — `useScrollReveal` IntersectionObserver hook wired via `ScrollRevealProvider` in the store layout. Applied `.reveal` class to: FeaturedDrop copy column, JewelryFocus copy, BrandStory copy, Fulfillment heading. Fade-up 20px over 1.1s on entry | `components/store/{FeaturedDrop,JewelryFocus,BrandStoryEditorial,Fulfillment}.tsx`, `ScrollRevealProvider.tsx`, `lib/useScrollReveal.ts` |
+
+Priorities 5–7 are still pending and listed below.
 
 ---
 

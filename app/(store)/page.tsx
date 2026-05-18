@@ -1,4 +1,5 @@
 import Hero from "@/components/store/Hero";
+import TrustRibbon from "@/components/store/TrustRibbon";
 import FeaturedDrop from "@/components/store/FeaturedDrop";
 import CategoryTiles from "@/components/store/CategoryTiles";
 import JewelryFocus from "@/components/store/JewelryFocus";
@@ -11,6 +12,7 @@ export default async function Home() {
   return (
     <main className="bg-[var(--color-bg)]">
       <Hero />
+      <TrustRibbon />
       <FeaturedDrop />
       <CategoryTiles />
       <JewelryFocus />

@@ -32,16 +32,23 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    // Trigger past the hero fold so nav stays transparent over the hero image
+    const onScroll = () => setScrolled(window.scrollY > 320);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Transparent over hero, solid bone after 200px scroll (past hero fold)
+  const inkClass = scrolled ? "text-[var(--color-ink)]" : "text-white";
+  const hoverClass = scrolled ? "hover:text-[var(--color-bronze-hi)]" : "hover:opacity-65";
+
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 bg-[var(--color-bg)]/95 backdrop-blur-md transition-shadow duration-300 ${
-        scrolled ? "shadow-[0_1px_0_var(--color-rule)]" : ""
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-[var(--color-bg)]/95 backdrop-blur-md shadow-[0_1px_0_var(--color-rule)]"
+          : "bg-transparent"
       }`}
     >
       <div className="relative h-[72px] md:h-[84px] flex items-center px-5 md:px-10">
@@ -51,7 +58,7 @@ export default function Navbar() {
             onClick={() => setDrawer((v) => !v)}
             aria-label="Menu"
             aria-expanded={drawer}
-            className="md:hidden inline-flex items-center text-[var(--color-ink)] hover:opacity-65 transition-opacity"
+            className={`md:hidden inline-flex items-center transition-colors ${inkClass} ${hoverClass}`}
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M3 6h18M3 12h18M3 18h18" />
@@ -63,7 +70,7 @@ export default function Navbar() {
               <Link
                 key={l.label}
                 href={l.href}
-                className="text-[11px] tracking-[0.18em] uppercase font-medium text-[var(--color-ink)] hover:text-[var(--color-bronze-hi)] transition-colors"
+                className={`text-[11px] tracking-[0.18em] uppercase font-medium transition-colors ${inkClass} ${hoverClass}`}
               >
                 {l.label}
               </Link>
@@ -77,7 +84,7 @@ export default function Navbar() {
           aria-label="Nitra"
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none leading-none"
         >
-          <span className="font-sans font-extrabold text-[24px] md:text-[30px] tracking-[-0.02em] lowercase text-[var(--color-ink)]">
+          <span className={`font-sans font-extrabold text-[24px] md:text-[30px] tracking-[-0.02em] lowercase transition-colors ${inkClass}`}>
             nitra
           </span>
         </Link>
@@ -89,18 +96,18 @@ export default function Navbar() {
               <Link
                 key={l.label}
                 href={l.href}
-                className="text-[11px] tracking-[0.18em] uppercase font-medium text-[var(--color-ink)] hover:text-[var(--color-bronze-hi)] transition-colors"
+                className={`text-[11px] tracking-[0.18em] uppercase font-medium transition-colors ${inkClass} ${hoverClass}`}
               >
                 {l.label}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-4 md:gap-5 md:ml-2 md:pl-5 md:border-l md:border-[var(--color-rule)]">
+          <div className={`flex items-center gap-4 md:gap-5 md:ml-2 md:pl-5 md:border-l transition-colors ${scrolled ? "md:border-[var(--color-rule)]" : "md:border-white/30"}`}>
             <button
               onClick={() => setSearchOpen((v) => !v)}
               aria-label="Search"
-              className="hidden md:inline-flex text-[var(--color-ink)] hover:text-[var(--color-bronze-hi)] transition-colors"
+              className={`hidden md:inline-flex transition-colors ${inkClass} ${hoverClass}`}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <circle cx="11" cy="11" r="7" />
@@ -110,7 +117,7 @@ export default function Navbar() {
             <Link
               href="/account"
               aria-label="Account"
-              className="hidden md:inline-flex text-[var(--color-ink)] hover:text-[var(--color-bronze-hi)] transition-colors"
+              className={`hidden md:inline-flex transition-colors ${inkClass} ${hoverClass}`}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <circle cx="12" cy="8" r="4" />
@@ -120,7 +127,7 @@ export default function Navbar() {
             <button
               onClick={openCart}
               aria-label="Cart"
-              className="relative text-[var(--color-ink)] hover:text-[var(--color-bronze-hi)] transition-colors"
+              className={`relative transition-colors ${inkClass} ${hoverClass}`}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M4 8h16l-1 11a2 2 0 0 1-2 1.75H7a2 2 0 0 1-2-1.75L4 8z" />
