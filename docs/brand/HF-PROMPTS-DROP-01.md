@@ -1,157 +1,285 @@
-# Higgsfield Prompts · Drop 01
+# Higgsfield Prompts · Nitra Drop 01 + Homepage Imagery
 
-_Updated 2026-05-17 to skill-CLI format. The `higgsfield-product-photoshoot` skill assembles editorial photography vocabulary on its backend — give it mode + brief directional intent, never freehand the full prompt._
+_Updated 2026-05-17 to the locked brief: Lemaire restraint × Jacquemus Mediterranean warmth × Fear of God scale × Aigle daylight clarity. Modern luxury fashion house · Moroccan identity, but subtle. NOT tourist, NOT souvenir, NOT bazaar._
 
-**Model**: gpt_image_2 (skill default — paid, ~consistent style across runs)
-**Account**: ultra plan · check `higgsfield account status` for credits
-**Reference register**: see `PHOTOGRAPHY-REFERENCE.md` — Aigle bright daylight × Maison Izem painterly figurative × urban Moroccan-cultural subjects
+**Models to use** (in order of preference, pick whichever is still unlimited in your UI window):
+1. `seedream_v5_lite` or `seedream_v5_pro` (Seedream) — strong on atmosphere + natural light
+2. `nano_banana_2` (Nano Banana Pro) — costs 2 credits when unlimited window closes; best skin/fabric detail
+3. `flux_2_pro` (FLUX.2 Pro) — sharp textile rendering
+
+**Visual direction (from `Drive/art examples/` folder):**
+- Take BACKGROUNDS from: `blue-mediterranean-arch-canvas`, `mosque-arcade-pool-reflection`, `kasbah-mud-fortress`, `beige-nested-arches-potted-trees`, `blush-carved-arches-corridor`, `tableau-decoratif-la-porte-bleue-marocaine`
+- Take PALETTE / MOOD from: `chefchaouen-elder-yellow-djellaba` (the Chefchaouen blue-and-ochre Mediterranean register)
+- Do NOT borrow the figurative subjects (camels, Tuareg, Gnawa, fantasia horsemen) — those are wall-art language, wrong for apparel photography per brief
+- AVOID: souk overload, lantern overload, generic desert, camels, tourist clichés
+
+**Universal style anchors to repeat in every prompt:**
+- Bright natural daylight (Aigle register) — golden hour OK, but NEVER moody-dark editorial
+- Moroccan architecture as backdrop, not as theme
+- Earth-tone palette only: bone / sand / limestone / washed-black / bronze / terracotta sparingly / Moroccan-blue + mineral-green as occasional accents
+- North African or Mediterranean young model, mid-twenties, restrained styling
+- Heavyweight cotton / mid-weight fleece textile feel — visible weave
+- Medium-format film, 80mm lens equivalent, slight natural grain, photorealistic
+- NO typography in the image, NO logos, NO brand names
 
 ---
 
-## How to fire (skill workflow)
-
-The `higgsfield-product-photoshoot` skill is installed at `~/.claude/skills/higgsfield-product-photoshoot`. Trigger it by intent in any Claude Code session, or run the CLI directly. Each invocation generates `--count N` variations; pick the strongest, save as WebP to `public/products/drop-01/`.
+## How to fire
 
 ```bash
-higgsfield product-photoshoot create --mode <mode> --count 4 "<brief directional prompt>"
+higgsfield product-photoshoot create --mode <mode> --count 4 "<brief intent>"
 ```
 
-Skill UX rule: be concise. Mode + intent + brand context — the backend handles photography vocabulary, lighting, composition, palette discipline.
+Skill assembles photography vocabulary on its backend. Toggle Unlimited in your UI window if firing direct via the Higgsfield app instead of the CLI.
 
 ---
 
-## 1 · Homepage hero · "Drop 01 announcement"
+## SECTION 1 · Homepage hero (16:9, full-bleed)
 
-**Mode**: `hero_banner` · **Aspect**: 16:9 landscape · **Count**: 4
-**Output target**: `public/products/drop-01/hero-drop-01.webp`
+**Use**: `components/store/Hero.tsx` — set `HERO_IMAGE = "/products/drop-01/hero-drop-01.webp"`
+**Mode**: `hero_banner` · **Aspect**: 16:9 · **Count**: 4
 
 ```
-Young man, mid-twenties, North African features, wearing an oversized cream
-cotton tee with a large hand-painted Tuareg-and-camel figurative graphic on
-the chest (cobalt indigo, tan, ultramarine — oil-on-canvas register). Standing
-on a Brooklyn brownstone stoop. Bright midday natural daylight. Negative space
-left of frame. Editorial heritage menswear restraint — Aigle daylight clarity,
-no editorial darkness. Palette: cream, indigo, terracotta, warm stone gray.
+A young man, mid-twenties, North African features, calm direct presence,
+photographed on a Casablanca rooftop at golden hour. Behind him: bone-cream
+limestone walls, a pale-blue Mediterranean arched window in shallow focus,
+warm sky catching the upper edge of the frame. He wears a heavyweight cream
+cotton tee, oversized boxy cut, dropped shoulder, with a small bronze foil
+'nitra' wordmark across the chest in a refined modern sans serif. Plain
+washed-black wide-leg trousers. Lighting: low warm sun from camera-right,
+honey-coloured key, soft natural shadow across the chest. Generous negative
+space, three-quarter framing, the figure occupies the right half. Editorial
+heritage menswear restraint — Aigle daylight clarity, Lemaire quietness.
+NO text, no logos, no Moroccan tourist clichés.
 ```
 
 ---
 
-## 2 · Atlas Caravan Tee · PDP main
+## SECTION 2 · Featured Drop campaign (4:5 portrait split-layout)
 
-**Mode**: `virtual_model_tryout` · **Aspect**: 4:5 portrait · **Count**: 4
-**Output target**: `atlas-caravan-tee-01.webp`
+**Use**: `FeaturedDrop.tsx` — set `FEATURED_IMAGE`
+**Mode**: `hero_banner` or `lifestyle_scene` · **Aspect**: 4:5 · **Count**: 4
 
 ```
-Same young man wearing the same oversized cream cotton tee with painterly
-cobalt Tuareg-and-camel chest graphic. Clean warm-cream seamless studio
-backdrop, soft daylight key from upper-right, three-quarter framing waist-up.
-Heritage menswear product register. Palette: cream, indigo, terracotta, black.
+Editorial fashion still, 4:5 vertical. A young woman, mid-twenties,
+Mediterranean features, photographed against a sun-washed beige carved arch
+corridor — nested arches in soft focus, gentle bronze and bone tones. She
+wears a charcoal mid-weight cotton fleece hoodie, dropped shoulder, oversized,
+with a small embroidered bronze atlas-line patch at the chest. Plain washed
+black trousers. Lighting: bright midday natural daylight bouncing off the
+limestone walls, warm cream-honey overall tone, soft shadow on the camera-left
+side of her body. Three-quarter framing. Restrained, editorial, Jacquemus
+Mediterranean warmth meets Lemaire calm. Bone, sand, charcoal, bronze palette.
+NO text, no logos.
 ```
 
-**Variation 02 (PDP detail)**:
+---
+
+## SECTION 3 · Category tiles (4 tiles, 5:6 portrait each)
+
+**Use**: `CategoryTiles.tsx` — set each tile's `image`
+**Mode**: `lifestyle_scene` (tiles 1, 3) · `closeup_product_with_person` (tile 2) · `lifestyle_scene` (tile 4)
+**Aspect**: 5:6 · **Count**: 3 per tile
+
+### 3A · Streetwear tile
+```
+A young man, mid-twenties, North African features, photographed three-quarter
+turn against a warm cream limestone wall in bright Mediterranean midday light.
+He wears an oversized cream heavyweight cotton tee with a small bronze foil
+chest wordmark. Plain black wide-leg trousers. Editorial menswear restraint,
+generous architectural negative space. Bone + bronze + black palette. 5:6
+vertical. NO text, no logos.
+```
+
+### 3B · Jewelry tile
+```
+Close-up portrait, 5:6 vertical, of a young woman's collarbone and hand — soft
+natural daylight from the side. She wears a sterling silver pendant on a long
+chain, an abstract line silhouette of the Atlas Mountains. Cream linen shirt
+just visible at the edge. Warm cream-grey limestone wall in soft-focus
+background. Hand-finished metal catches a single warm highlight. Mineral palette:
+silver, cream, soft shadow. NO text.
+```
+
+### 3C · Limited Drops tile
+```
+A young man, mid-twenties, Mediterranean features, sitting on a low stone
+ledge in front of a pale-blue Mediterranean arched window. Bright midday light
+falls across his charcoal cotton fleece. He looks past the camera, calm.
+Limestone steps in soft focus below. The image is grounded, editorial,
+heritage. Cream + Moroccan-blue + charcoal palette. 5:6 vertical. NO text.
+```
+
+### 3D · The Atelier tile
+```
+Editorial still of a workspace detail — a clean linen-covered table with a
+folded heavyweight cream cotton tee, a sterling silver pendant resting on a
+square of indigo linen, a brass tailor's measure, soft midday window light
+from the left. No human in frame. Generous negative space, restrained
+composition. Bone, indigo, bronze palette. 5:6 vertical. Lemaire still-life
+discipline. NO text.
+```
+
+---
+
+## SECTION 4 · Jewelry focus (4:5, darker, dramatic)
+
+**Use**: `JewelryFocus.tsx` — set `JEWELRY_HERO`
+**Mode**: `closeup_product_with_person` · **Aspect**: 4:5 · **Count**: 4
+
+```
+4:5 vertical close-up. A young woman's neck and chest, photographed at a quiet
+angle, lit by a single warm window-light from camera-right against a deep
+washed-black backdrop. Around her neck: a sterling silver pendant, an abstract
+line silhouette of the Atlas Mountains, hanging long against a cream silk
+shirt. Hand-finished silver catches the warm key light, deep shadow falls to
+the camera-left. Skin tone soft and warm. The composition is reverent,
+luxury-watch-photography register — quiet, deliberate, no spectacle. Onyx +
+bone + brass-warm-light palette. NO text, no logos.
+```
+
+---
+
+## SECTION 5 · Editorial strip (3 cards, 4:5 each)
+
+**Use**: `EditorialStrip.tsx` — set `image` on each item
+**Mode**: `lifestyle_scene` · **Aspect**: 4:5 · **Count**: 3 per card
+
+### 5A · "The Campaign — Drop 01"
+```
+Editorial fashion campaign still, 4:5. A young man in cream heavyweight tee
+walking past a sun-bleached Casablanca-style limestone wall, partial shadow
+of an arched window cast across his shoulder, late afternoon honey light.
+Motion-blurred slightly, mid-stride. Bone + bronze + warm shadow. NO text.
+```
+
+### 5B · "The Material — On heavyweight cotton and bronze foil"
+```
+Studio still life, 4:5. A folded heavyweight cream cotton tee on a textured
+limestone slab, a small bronze foil swatch beside it, soft daylight from a
+window above. Restrained Jacquemus still-life composition. Bone + bronze
++ stone palette. NO text.
+```
+
+### 5C · "The Atelier — Print-to-order"
+```
+Documentary still, 4:5. A pair of hands smoothing a printed garment on a clean
+work surface, soft natural workshop daylight, the garment's bronze chest
+wordmark visible in soft focus. Hands and process only, no face. Bone + skin
++ warm wood tones. Restrained, honest. NO text other than the bronze wordmark
+on the garment (single word, sans-serif lowercase).
+```
+
+---
+
+## SECTION 6 · Brand Story · "Between Worlds" (5:6 portrait)
+
+**Use**: `BrandStoryEditorial.tsx` — set `STORY_IMAGE`
+**Mode**: `lifestyle_scene` · **Aspect**: 5:6 · **Count**: 4
+
+```
+Editorial portrait, 5:6 vertical. A young man, mid-twenties, North African
+features, photographed in three-quarter profile against a deep Moroccan-blue
+painted wall (matte chalky finish, like a Chefchaouen surface) at the
+transition between bright daylight and shadow. He wears a cream heavyweight
+cotton tee and a sterling silver pendant on a long chain. Calm, contemplative
+gaze just past the camera. Lighting: warm midday daylight from camera-left
+catching one side of his face, deep Moroccan-blue shadow on the right. The
+composition reads 'between worlds' — Mediterranean light meets Maghreb pigment.
+Bone + Moroccan-blue + silver palette. NO text, no logos.
+```
+
+---
+
+## SECTION 7 · Product PDP mains (3 SKUs)
+
+**Mode for all**: `virtual_model_tryout` · **Aspect**: 4:5 · **Count**: 4 each
+
+### 7A · Wordmark Cotton Tee
+```
+Editorial product-on-model, 4:5 vertical. Young man, mid-twenties, North
+African features, wearing an oversized cream heavyweight cotton boxy tee with
+a single small bronze foil 'nitra' wordmark in modern lowercase sans across
+the chest. Plain black wide-leg trousers. Warm-cream seamless studio backdrop,
+soft Mediterranean daylight key from upper-right, three-quarter framing
+waist-up. Restrained Aigle product register. Bone + bronze + black palette.
+NO text other than the chest wordmark.
+```
+
+### 7B · Heritage Hoodie
+```
+Editorial product-on-model, 4:5 vertical. Same young man wearing an oversized
+charcoal mid-weight cotton fleece hoodie, dropped shoulder, with a small
+embroidered bronze atlas-mountain-line patch at the chest. Hood lying flat
+across the upper back. Plain black wide-leg trousers. Warm-cream seamless
+studio backdrop, bright soft daylight key from upper-right. Three-quarter
+framing waist-up. Restrained Aigle product register. Charcoal + bronze + bone
+palette. NO text.
+```
+
+### 7C · Atlas Line Pendant
+```
+Editorial product-on-model close-up, 4:5 vertical. Young woman's neck and
+collarbone, three-quarter angle, wearing a sterling silver pendant — an
+abstract Atlas-Mountains line silhouette — on a long delicate chain against a
+plain cream silk shirt. Warm soft natural daylight from camera-right. Plain
+limestone-cream seamless backdrop in soft focus. Hand-finished silver, single
+warm highlight catching the pendant. Quiet luxury jewelry register. Cream +
+silver + soft shadow palette. NO text.
+```
+
+---
+
+## Variation prompts (PDP detail crops — 1:1)
+
+For each SKU, generate a 1:1 detail crop AFTER the main shot lands:
 
 ```bash
 higgsfield product-photoshoot create --mode product_shot --count 3 \
-  "1:1 square. Tight close-up on the cobalt Tuareg-and-camel painterly tee
-  graphic — chest-to-collarbone visible, hand-painted texture sharp, soft
-  daylight. Cream + cobalt + tan palette."
+  "1:1 square close-up of [the chest wordmark detail / the embroidered atlas patch / the silver pendant], textile or metal texture filling the frame, soft natural daylight, slight grain, restrained editorial register, bone or charcoal background."
 ```
 
-Save: `atlas-caravan-tee-02.webp`
+Adjust subject per SKU.
 
 ---
 
-## 3 · Onyx Caravan Hoodie · PDP main
+## Naming + wire-up
 
-**Mode**: `virtual_model_tryout` · **Aspect**: 4:5 portrait · **Count**: 4
-**Output target**: `onyx-caravan-hoodie-01.webp`
+Save outputs into `public/products/drop-01/` (PDPs) and `public/hero/` (homepage sections):
 
 ```
-Young man shown from behind in oversized black cotton fleece hoodie, back
-panel carrying a large painterly graphic of three Tuareg riders on camels
-crossing a single dune with a low full moon (deep indigo sky, amber dune,
-oil-on-canvas register). Clean cream-gray architectural urban wall background,
-bright midday daylight. Heritage menswear product register. Palette: onyx,
-indigo, amber, cream-gray.
+public/hero/hero-drop-01.webp                 → Hero.tsx HERO_IMAGE
+public/hero/featured-drop.webp                → FeaturedDrop.tsx FEATURED_IMAGE
+public/hero/category-streetwear.webp          → CategoryTiles.tsx tile[0].image
+public/hero/category-jewelry.webp             → tile[1].image
+public/hero/category-limited.webp             → tile[2].image
+public/hero/category-atelier.webp             → tile[3].image
+public/hero/jewelry-focus.webp                → JewelryFocus.tsx JEWELRY_HERO
+public/hero/editorial-campaign.webp           → EditorialStrip.tsx items[0].image
+public/hero/editorial-material.webp           → items[1].image
+public/hero/editorial-atelier.webp            → items[2].image
+public/hero/brand-story.webp                  → BrandStoryEditorial.tsx STORY_IMAGE
+public/products/drop-01/wordmark-tee-01.webp  → lib/products.ts (swap .svg → .webp)
+public/products/drop-01/heritage-hoodie-01.webp
+public/products/drop-01/atlas-pendant-01.webp
 ```
 
-**Variation 02 (back-panel detail)**:
-
-```bash
-higgsfield product-photoshoot create --mode product_shot --count 3 \
-  "1:1 square. Close-up on the Tuareg-caravan-under-full-moon painterly back-panel
-  graphic — textured cotton fleece surface filling the frame. Deep indigo sky,
-  amber dune, three rider silhouettes, oil-on-canvas register."
-```
-
-Save: `onyx-caravan-hoodie-02.webp`
+Once images land, swap each placeholder constant from `null` to the path. All gradient placeholders disappear automatically.
 
 ---
 
-## 4 · Atlas Lion Cap · PDP main
+## Order of operations (for your unlimited window)
 
-**Mode**: `closeup_product_with_person` · **Aspect**: 4:5 portrait · **Count**: 4
-**Output target**: `atlas-lion-cap-01.webp`
+If you have a few hours, prioritise in this order — the highest-impact assets first:
 
-```
-Young man chest-up portrait, North African features, head tilted three-quarters
-away so the side profile of a low-profile black five-panel cap is visible.
-Small embroidered Atlas Lion silhouette on the front panel in matte brass-gold
-thread. Plain cream knit underneath. Bright cream architectural backdrop, soft
-daylight from camera-right. Heritage menswear restraint, contemplative.
-Palette: cream, ink-black, brass.
-```
+1. **Homepage hero** (Section 1) — single most visible image
+2. **Brand Story "Between Worlds"** (Section 6) — defines the brand emotionally
+3. **Jewelry Focus** (Section 4) — proves the jewelry category is real, not afterthought
+4. **PDP main shots** (Section 7A, 7B, 7C) — replaces SVG placeholders, makes catalogue feel real
+5. **Featured Drop campaign** (Section 2) — second editorial moment
+6. **Category tiles** (Section 3) — 4 images, lower priority since each is small
+7. **Editorial strip** (Section 5) — defer until other sections land
 
----
+Total ~17 images. At 4 variations per prompt (free in unlimited window) = ~68 generations. Pick the strongest from each set.
 
-## Phase 2 modes (defer until WC tailwind)
-
-When Drop 01 is live and Morocco's WC matches start producing organic content:
-
-### Pinterest pin asset
-```bash
-higgsfield product-photoshoot create --mode moodboard_pin --count 6 \
-  "Drop 01 Atlas Caravan Tee in a Moroccan-cultural urban editorial moodboard
-  composition. Cream + cobalt palette. Pinterest-native vertical 2:3."
-```
-
-### Social carousel (3–10 slides)
-```bash
-higgsfield product-photoshoot create --mode social_carousel --count 1 \
-  "Drop 01 launch carousel: 6 slides connecting hero portrait → tee close-up
-  → hoodie back panel → cap detail → palette swatch → Drop 02 teaser. Heritage
-  menswear cadence, bright daylight, Aigle register."
-```
-
-### Ad creative pack (Meta + TikTok variants)
-```bash
-higgsfield product-photoshoot create --mode ad_creative_pack --count 1 \
-  "Drop 01 Atlas Caravan Tee ad pack — 1:1, 4:5, 9:16 variants. North African
-  young man on Brooklyn brownstone stoop. Bright midday daylight. Heritage
-  menswear, Aigle register. Variants for Meta feed + Stories + TikTok feed."
-```
-
----
-
-## File naming + repo wire-up
-
-Save outputs into `public/products/drop-01/` with these exact names:
-
-```
-hero-drop-01.webp                ← Hero.tsx HERO_IMAGE constant
-atlas-caravan-tee-01.webp        ← lib/products.ts (replaces .svg)
-atlas-caravan-tee-02.webp
-onyx-caravan-hoodie-01.webp
-onyx-caravan-hoodie-02.webp
-atlas-lion-cap-01.webp
-```
-
-Then in `lib/products.ts`, swap each `.svg` → `.webp`. The Hero.tsx swap is a single line: set `HERO_IMAGE = "/products/drop-01/hero-drop-01.webp"` and the gradient placeholder disappears.
-
----
-
-## Cost note
-
-The skill submits to `gpt_image_2`, which meters against your account regardless of the nano_banana free-credit window. Each `--count 4` run is roughly 4 generations. For Drop 01 hero + 3 SKUs × ~2 variations each = ~24 generations.
-
-If you want to preserve nano_banana_2 free credits, fire from the Higgsfield UI directly using freehand prompts adapted from these — the skill consistency is the trade-off you accepted.
+When the unlimited window closes, anything left switches to 2 credits/image on nano_banana_2.
