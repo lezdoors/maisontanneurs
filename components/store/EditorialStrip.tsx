@@ -77,7 +77,7 @@ export default function EditorialStrip() {
                 <div className="ed-meta text-[var(--color-mineral)] mb-2">
                   {item.eyebrow}
                 </div>
-                <h3 className="font-serif italic font-light text-[clamp(22px,2.2vw,30px)] leading-[1.15] text-[var(--color-ink)] max-w-[22ch]">
+                <h3 className="ed-card-headline max-w-[22ch]">
                   {item.title}
                 </h3>
               </div>

@@ -40,7 +40,7 @@ export default function Fulfillment() {
               <div className="ed-meta text-[var(--color-bronze)] mb-5">
                 {p.eyebrow}
               </div>
-              <div className="font-serif italic font-light text-[clamp(22px,2.2vw,28px)] leading-[1.15] text-[var(--color-ink)] mb-4 max-w-[18ch]">
+              <div className="ed-card-headline mb-4 max-w-[18ch]">
                 {p.title}
               </div>
               <p className="ed-body max-w-[28ch]">{p.body}</p>

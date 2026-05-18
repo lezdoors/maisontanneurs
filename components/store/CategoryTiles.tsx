@@ -78,9 +78,7 @@ export default function CategoryTiles() {
                 <div className="ed-eyebrow text-white/75 mb-3">
                   {tile.caption}
                 </div>
-                <div className="font-serif italic font-light leading-[0.98] text-[clamp(40px,5vw,72px)]">
-                  {tile.label}
-                </div>
+                <div className="ed-tile-label text-white">{tile.label}</div>
               </div>
             </Link>
           ))}

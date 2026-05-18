@@ -10,7 +10,10 @@ export default function Hero() {
   const hasImage = HERO_IMAGE !== null;
 
   return (
-    <section className="relative h-[100vh] min-h-[640px] flex items-end overflow-hidden bg-[var(--color-bg)]">
+    <section
+      className="relative min-h-screen flex items-end overflow-hidden bg-[var(--color-bg)]"
+      style={{ minHeight: "100svh" }}
+    >
       {hasImage ? (
         <Image
           src={HERO_IMAGE as string}
@@ -22,7 +25,6 @@ export default function Hero() {
         />
       ) : (
         // Editorial bone-warm gradient placeholder.
-        // References the Aigle daylight register × Jacquemus warmth.
         <div
           aria-hidden
           className="absolute inset-0 -z-10"
@@ -43,7 +45,15 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative w-full px-[clamp(20px,5vw,80px)] pb-[clamp(60px,8vw,120px)] pt-[clamp(120px,15vw,200px)]">
+      <div
+        className="relative w-full"
+        style={{
+          paddingLeft: "clamp(20px, 5vw, 80px)",
+          paddingRight: "clamp(20px, 5vw, 80px)",
+          paddingTop: "clamp(120px, 15vw, 200px)",
+          paddingBottom: "clamp(60px, 8vw, 120px)",
+        }}
+      >
         <div className="max-w-[1600px] mx-auto">
           <div
             className={`ed-eyebrow mb-6 ${
@@ -54,18 +64,18 @@ export default function Hero() {
           </div>
 
           <h1
-            className={`ed-display text-[clamp(64px,11vw,160px)] max-w-[12ch] ${
-              hasImage ? "text-white" : "text-[var(--color-ink)]"
+            className={`ed-display max-w-[12ch] ${
+              hasImage ? "!text-white" : ""
             }`}
           >
             nitra.
           </h1>
 
           <p
-            className={`mt-8 max-w-[36ch] font-sans font-light text-[clamp(15px,1.2vw,18px)] tracking-[0.04em] uppercase ${
+            className={`mt-8 max-w-[36ch] font-sans font-light uppercase ${
               hasImage ? "text-white/80" : "text-[var(--color-ink-soft)]"
             }`}
-            style={{ letterSpacing: "0.06em" }}
+            style={{ fontSize: "clamp(13px, 1.1vw, 16px)", letterSpacing: "0.18em" }}
           >
             Modern Moroccan Identity
           </p>

@@ -68,7 +68,7 @@ export default function Footer() {
         <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-16 md:py-24 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-10 md:gap-16 items-end">
           <div>
             <div className="ed-eyebrow text-white/55 mb-5">The List</div>
-            <h3 className="font-serif italic font-light text-[clamp(32px,4vw,52px)] leading-[1.04] text-white max-w-[18ch]">
+            <h3 className="ed-footer-headline text-white max-w-[18ch]">
               Quiet correspondence. Drops, dispatches, nothing else.
             </h3>
           </div>
