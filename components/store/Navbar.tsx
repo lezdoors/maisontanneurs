@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/components/store/CartProvider";
@@ -78,15 +79,20 @@ export default function Navbar() {
           </nav>
         </div>
 
-        {/* Centered wordmark */}
+        {/* Centered brand mark */}
         <Link
           href="/"
           aria-label="Kechken"
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none leading-none"
         >
-          <span className={`font-sans font-extrabold text-[24px] md:text-[30px] tracking-[-0.02em] lowercase transition-colors ${inkClass}`}>
-            kechken
-          </span>
+          <Image
+            src="/brand/kechken-mark-center.png"
+            alt="Kechken"
+            width={600}
+            height={700}
+            priority
+            className="h-[56px] md:h-[64px] w-auto"
+          />
         </Link>
 
         {/* Right: desktop nav (2) + icons */}
