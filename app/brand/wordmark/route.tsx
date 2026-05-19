@@ -1,8 +1,8 @@
-// Server-side PNG renderer for the Nitra wordmark.
+// Server-side PNG renderer for the Kechken wordmark.
 // Uses Next.js 16's built-in ImageResponse (zero new deps, loads Google Fonts
 // at request time).
 //
-// Why this exists: the site renders "nitra MAGHREB" via CSS every page
+// Why this exists: the site renders "kechken MAGHREB" via CSS every page
 // load. To get the wordmark as a PNG (for FB Page profile, email signature,
 // favicon, packaging, etc.) we don't need AI generation or Canva — we just
 // render the same React/CSS to PNG server-side, pixel-perfect, at any size.
@@ -19,7 +19,7 @@ import { NextRequest } from "next/server";
 export const runtime = "edge";
 
 // Subset of characters we actually render — keeps fetched font file tiny.
-const FONT_TEXT = "nitraMAGHREBb"; // covers both wordmark + subtitle
+const FONT_TEXT = "kechkenMAGHREBb"; // covers both wordmark + subtitle
 
 async function loadInterTight(weight: 400 | 600 | 800): Promise<ArrayBuffer> {
   // Vercel's documented pattern: fetch with no User-Agent so Google's CSS
@@ -63,7 +63,7 @@ export async function GET(request: NextRequest) {
     loadInterTight(800),
   ]);
 
-  // Wordmark "nitra" at Inter Tight 800/400 is ~5.5x wider than its
+  // Wordmark "kechken" at Inter Tight 800/400 is ~5.5x wider than its
   // font-size. Cap by both width and height so it never bleeds the canvas,
   // leaving ~10% margin on each side.
   const wordmarkSize = markOnly
@@ -114,7 +114,7 @@ export async function GET(request: NextRequest) {
                 lineHeight: 1,
               }}
             >
-              <span style={{ fontWeight: 800 }}>nitra</span>
+              <span style={{ fontWeight: 800 }}>kechken</span>
             </div>
             {showSubtitle && (
               <div

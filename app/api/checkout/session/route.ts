@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
   }
 
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.nitra.com";
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.kechken.com";
 
   try {
     const session = await stripe.checkout.sessions.create({

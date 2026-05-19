@@ -93,10 +93,10 @@ export async function POST(request: NextRequest) {
       //    orders@ so deliverability metrics for promo vs receipt don't mix.
       //    Replies land at atelier@ — the inbox a human actually monitors.
       await resend.emails.send({
-        from: "Nitra <newsletter@nitra.com>",
-        replyTo: "hello@nitra.com",
+        from: "Kechken <newsletter@kechken.com>",
+        replyTo: "hello@kechken.com",
         to: email,
-        subject: "Welcome to the Nitra newsletter",
+        subject: "Welcome to the Kechken newsletter",
         html: `
           <div style="font-family:Georgia,serif;padding:32px;max-width:560px;color:#1f1b16;line-height:1.7;">
             <h2 style="font-weight:normal;font-size:28px;letter-spacing:-0.01em;margin:0 0 24px;">Welcome.</h2>

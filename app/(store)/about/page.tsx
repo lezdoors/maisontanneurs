@@ -44,7 +44,7 @@ export default function AboutPage() {
             Medina. Eight benches. Eight craftspeople. No machines. No catalogue.
           </p>
           <p className="text-[15px] font-sans font-light leading-[1.7] text-[var(--color-charcoal)] mb-6">
-            Nitra began as a family workshop on Rue Dar el Bacha,
+            Kechken began as a family workshop on Rue Dar el Bacha,
             Marrakech, founded in 1974. The name came later — the work came
             first. Brass, bone, cedar, leather: materials sourced within a day&apos;s
             drive of the workshop, shaped by hands that learned from hands before

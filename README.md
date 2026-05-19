@@ -1,8 +1,8 @@
-# Nitra Store
+# Kechken Store
 
 Year-round clothing brand with a Moroccan visual register, US-anchored launch. Drop 01 ships against the WC2026 opener.
 
-Working name: **Nitra**. Final brand name TBD — config-driven so it's swappable.
+Working name: **Kechken**. Final brand name TBD — config-driven so it's swappable.
 
 Built on the Maison Izem Next.js commerce stack (Next 16 / React 19 / Tailwind 4 / Stripe Payment Element / Supabase / Resend).
 

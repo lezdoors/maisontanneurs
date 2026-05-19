@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Care",
-  description: "How to care for handcrafted brass, copper, cedar, leather, and silk pieces from Nitra.",
+  description: "How to care for handcrafted brass, copper, cedar, leather, and silk pieces from Kechken.",
 };
 
 export default function CarePage() {
@@ -76,7 +76,7 @@ export default function CarePage() {
 
       <h2>When in doubt</h2>
       <p>
-        Write to <a href="mailto:hello@nitra.com">hello@nitra.com</a> with a photograph and we will tell you what to do. Most things can be repaired; almost nothing is ruined by patient handwork. We send replacement parts (pierce-work panels, leather seats, MOP tesserae) at cost.
+        Write to <a href="mailto:hello@kechken.com">hello@kechken.com</a> with a photograph and we will tell you what to do. Most things can be repaired; almost nothing is ruined by patient handwork. We send replacement parts (pierce-work panels, leather seats, MOP tesserae) at cost.
       </p>
     </>
   );

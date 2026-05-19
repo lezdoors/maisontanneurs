@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
-  description: "Common questions about ordering, shipping, and caring for Nitra objects.",
+  description: "Common questions about ordering, shipping, and caring for Kechken objects.",
 };
 
 const FAQ = [
@@ -28,11 +28,11 @@ const FAQ = [
   },
   {
     q: "Can I commission a custom piece?",
-    a: "Yes. We work with interior designers and direct clients on custom dimensions, alternative materials, and finish modifications. Write to hello@nitra.com with what you have in mind and we will respond with a feasibility note, lead time, and quote. Most custom commissions take 12–20 weeks.",
+    a: "Yes. We work with interior designers and direct clients on custom dimensions, alternative materials, and finish modifications. Write to hello@kechken.com with what you have in mind and we will respond with a feasibility note, lead time, and quote. Most custom commissions take 12–20 weeks.",
   },
   {
     q: "Do you sell to the trade?",
-    a: "Yes. Designers, architects, and hospitality buyers receive a trade discount and dedicated lead-time support. Write to hello@nitra.com from your firm's email to open a trade account.",
+    a: "Yes. Designers, architects, and hospitality buyers receive a trade discount and dedicated lead-time support. Write to hello@kechken.com from your firm's email to open a trade account.",
   },
   {
     q: "What if something arrives damaged?",
@@ -60,7 +60,7 @@ const FAQ = [
   },
   {
     q: "How do I contact you?",
-    a: "hello@nitra.com — we answer within one working day, usually faster. For trade inquiries, write from your firm's email.",
+    a: "hello@kechken.com — we answer within one working day, usually faster. For trade inquiries, write from your firm's email.",
   },
 ];
 

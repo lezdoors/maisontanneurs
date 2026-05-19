@@ -11,9 +11,9 @@ function getResend(): Resend {
   return new Resend(key);
 }
 
-const FROM_EMAIL = "Nitra <orders@nitra.com>";
-const REPLY_TO = "hello@nitra.com";
-const ADMIN_EMAIL = "nitra@outlook.com";
+const FROM_EMAIL = "Kechken <orders@kechken.com>";
+const REPLY_TO = "hello@kechken.com";
+const ADMIN_EMAIL = "kechken@outlook.com";
 
 interface OrderEmailData {
   to: string;
@@ -60,7 +60,7 @@ export async function sendOrderConfirmation(data: OrderEmailData) {
           <p style="font-family:Georgia,serif;font-style:italic;font-size:14px;color:#3a332a;margin:0;line-height:1.6;">Your pieces are handcrafted to order in Marrakech. Please allow 2-4 weeks for crafting and international shipping. You will receive a tracking number once your order ships.</p>
         </div>
         <div style="text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid #d9cfbb;">
-          <div style="font-family:monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#7a6f5c;">Nitra · Marrakech</div>
+          <div style="font-family:monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#7a6f5c;">Kechken · Marrakech</div>
         </div>
       </div>
     `,
@@ -101,7 +101,7 @@ export async function sendAdminNotification(data: AdminNotificationData) {
   await getResend().emails.send({
     from: FROM_EMAIL,
     to: ADMIN_EMAIL,
-    subject: `New Nitra Order · ${data.orderNumber} · ${formatPrice(data.total)}`,
+    subject: `New Kechken Order · ${data.orderNumber} · ${formatPrice(data.total)}`,
     html: `
       <div style="font-family:monospace;font-size:13px;line-height:1.8;color:#1f1b16;max-width:600px;">
         <h2 style="font-family:Georgia,serif;font-size:24px;font-weight:normal;">New Order: ${data.orderNumber}</h2>
@@ -130,7 +130,7 @@ export async function sendShippingNotification(data: ShippingNotificationData) {
     from: FROM_EMAIL,
     replyTo: REPLY_TO,
     to: data.to,
-    subject: `Your Nitra Order Has Shipped · ${data.orderNumber}`,
+    subject: `Your Kechken Order Has Shipped · ${data.orderNumber}`,
     html: `
       <div style="max-width:600px;margin:0 auto;background:#f5efe3;padding:48px 32px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;color:#1f1b16;">
         <div style="text-align:center;margin-bottom:40px;">
@@ -144,7 +144,7 @@ export async function sendShippingNotification(data: ShippingNotificationData) {
           ${data.carrier ? `<p style="font-family:monospace;font-size:12px;color:#7a6f5c;margin:4px 0 0;">via ${data.carrier}</p>` : ""}
         </div>
         <div style="text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid #d9cfbb;">
-          <div style="font-family:monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#7a6f5c;">Nitra · Marrakech</div>
+          <div style="font-family:monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#7a6f5c;">Kechken · Marrakech</div>
         </div>
       </div>
     `,

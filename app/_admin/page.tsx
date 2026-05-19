@@ -46,7 +46,7 @@ export default async function AdminLoginPage() {
               required
               autoComplete="email"
               className="w-full px-4 py-3 bg-transparent border border-rule text-ink font-sans text-[15px] focus:outline-none focus:border-ink transition-colors"
-              placeholder="admin@nitra.com"
+              placeholder="admin@kechken.com"
             />
           </div>
 

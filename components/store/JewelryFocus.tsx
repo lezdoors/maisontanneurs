@@ -31,7 +31,7 @@ export default function JewelryFocus() {
           {JEWELRY_HERO ? (
             <Image
               src={JEWELRY_HERO}
-              alt="Nitra jewelry"
+              alt="Kechken jewelry"
               fill
               sizes="(min-width: 1024px) 44vw, 100vw"
               className="object-cover"

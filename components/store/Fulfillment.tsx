@@ -4,7 +4,7 @@ const PILLARS: Pillar[] = [
   {
     eyebrow: "01",
     title: "Designed in-house",
-    body: "Every Nitra piece is conceived and patterned in our studio. No off-the-shelf graphics, no white-label catalogue.",
+    body: "Every Kechken piece is conceived and patterned in our studio. No off-the-shelf graphics, no white-label catalogue.",
   },
   {
     eyebrow: "02",

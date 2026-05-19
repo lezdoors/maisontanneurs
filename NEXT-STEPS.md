@@ -1,4 +1,4 @@
-# Nitra · Morning Briefing
+# Kechken · Morning Briefing
 _Written overnight by Turbo · 2026-05-17 22:30_
 
 ## TL;DR
@@ -71,7 +71,7 @@ If you fire ANY of these via Higgsfield UI tomorrow, save the strongest into the
 
 ### 2 · UI improvements I'd make next (concrete, prioritized)
 
-Researched against Lemaire / Aigle / Roche-Bobois. Specific changes that bring Nitra closer to the locked reference register:
+Researched against Lemaire / Aigle / Roche-Bobois. Specific changes that bring Kechken closer to the locked reference register:
 
 #### Priority 1 — Sticky transparent nav with scroll fade
 **What**: Navbar is currently solid bone background from page load. Lemaire / RB / Jacquemus all start TRANSPARENT over the hero image, then fade to solid bone with a bottom hairline as you scroll past hero.
@@ -122,7 +122,7 @@ Light bone-alt background, no shouting.
 **Where**: `components/store/ProductPreview.tsx` and the catalog `ProductCard`. Currently no variants in data model. Phase 2.
 
 #### Priority 7 — Currency / language picker in nav
-**What**: Aigle / Lemaire put EN/FR / USD/EUR in the top nav. Nitra is global from day one — should have this.
+**What**: Aigle / Lemaire put EN/FR / USD/EUR in the top nav. Kechken is global from day one — should have this.
 
 **Where**: `components/store/Navbar.tsx` top-right area, before the icon cluster. Phase 2.
 
@@ -130,7 +130,7 @@ Light bone-alt background, no shouting.
 
 These currently have Izem-specific text (Marrakech atelier, maâlems, etc.) — they'll 404-on-content if visitors click through:
 
-- `app/(store)/about/page.tsx` — full rewrite as "About Nitra · Between Worlds"
+- `app/(store)/about/page.tsx` — full rewrite as "About Kechken · Between Worlds"
 - `app/(store)/legal/privacy/page.tsx`
 - `app/(store)/legal/terms/page.tsx`
 - `app/(store)/legal/faq/page.tsx`
@@ -153,18 +153,18 @@ You said you'll write copy in your own voice. I held back from drafting these �
 ### 4 · Other technical gaps
 
 - **Stripe Payment Element not wired** — currently uses Maison Izem's Stripe account env vars (which were purged). Need to swap in Akal Ltd's Stripe keys when Akal is formed.
-- **Printful POD integration not wired** — webhook handler exists at `app/api/webhooks/stripe/route.ts` but calls Maison Izem's Supabase. Needs Nitra-specific POD wiring (Phase 1 of `~/morocco-brand/GAME-PLAN.md`).
+- **Printful POD integration not wired** — webhook handler exists at `app/api/webhooks/stripe/route.ts` but calls Maison Izem's Supabase. Needs Kechken-specific POD wiring (Phase 1 of `~/morocco-brand/GAME-PLAN.md`).
 - **Supabase not configured** — site gracefully falls back to STATIC_PRODUCTS, but no real inventory, no orders persisted. Phase 1 wire.
-- **Domain not bought** — nitra.com (Nitra Inc. fintech), kenitra.com (TLS error, may be available). Decide name + domain tomorrow.
+- **Domain not bought** — kechken.com (Kechken Inc. fintech), kekechken.com (TLS error, may be available). Decide name + domain tomorrow.
 - **GitHub repo not created** — fresh git locally, no remote yet. Push when ready.
 - **Vercel project not linked** — `vercel link` + `vercel deploy --prod` when ready to share publicly.
 
 ### 5 · Decision queue (your call when you wake up)
 
-1. **Name lock** — KENITRA vs continue NITRA. KENITRA domain check pending; NITRA has IG/com conflicts with the fintech.
-2. **Entity** — Akal Ltd UK or new LLC for Nitra.
+1. **Name lock** — KEKECHKEN vs continue KECHKEN. KEKECHKEN domain check pending; KECHKEN has IG/com conflicts with the fintech.
+2. **Entity** — Akal Ltd UK or new LLC for Kechken.
 3. **Drop 01 scope** — 3-piece (June 10 ship) vs 5-piece (July 20 ship).
-4. **Approval to commit the Amazigh-portrait approach to Jewelry Focus + Brand Story**. They're the strongest assets in HF but it's a brand-voice decision — the elder portrait carries weight, the young woman portrait reads as identity-forward. Want them, or do you want me to swap when you fire new Nitra-specific portraits?
+4. **Approval to commit the Amazigh-portrait approach to Jewelry Focus + Brand Story**. They're the strongest assets in HF but it's a brand-voice decision — the elder portrait carries weight, the young woman portrait reads as identity-forward. Want them, or do you want me to swap when you fire new Kechken-specific portraits?
 5. **OK to re-fire the 3 remaining placeholders**: jewelry tile / editorial campaign / atlas pendant PDP. Prompts already in `docs/brand/HF-PROMPTS-DROP-01.md`.
 
 ---
@@ -182,7 +182,7 @@ You said you'll write copy in your own voice. I held back from drafting these �
 ## How to pick up tomorrow
 
 ```bash
-cd ~/nitra-store
+cd ~/kechken-store
 git log --oneline | head -8           # see what happened overnight
 pnpm dev                                # if not still running on :3000
 open http://localhost:3000              # scroll through, decide what to tune

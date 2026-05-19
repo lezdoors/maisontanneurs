@@ -13,7 +13,7 @@ export default function BrandStatement() {
           </div>
           <div className="md:col-span-5">
             <p className="text-[14px] leading-[1.7] text-white/75 font-light max-w-[44ch]">
-              Nitra is a workshop of nine craftsmen off a narrow street in the
+              Kechken is a workshop of nine craftsmen off a narrow street in the
               old medina of Marrakech. We carve cedar, hammer brass, lay
               mother-of-pearl, and weave linen. Each piece carries the
               signature of its maker.

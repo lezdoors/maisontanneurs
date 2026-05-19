@@ -10,7 +10,7 @@ const NAV_LINKS: { label: string; href: string }[] = [
   { label: "Streetwear", href: "/products?category=Streetwear" },
   { label: "Jewelry", href: "/products?category=Jewelry" },
   { label: "Story", href: "/story" },
-  { label: "Contact", href: "mailto:hello@nitra.com" },
+  { label: "Contact", href: "mailto:hello@kechken.com" },
 ];
 
 export default function Navbar() {
@@ -81,11 +81,11 @@ export default function Navbar() {
         {/* Centered wordmark */}
         <Link
           href="/"
-          aria-label="Nitra"
+          aria-label="Kechken"
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none leading-none"
         >
           <span className={`font-sans font-extrabold text-[24px] md:text-[30px] tracking-[-0.02em] lowercase transition-colors ${inkClass}`}>
-            nitra
+            kechken
           </span>
         </Link>
 

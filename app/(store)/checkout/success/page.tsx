@@ -200,11 +200,11 @@ export default async function CheckoutSuccessPage({
         <p className="text-[12px] text-mineral text-center mt-12 leading-relaxed">
           Questions? Email{" "}
           <a
-            href="mailto:hello@nitra.com"
+            href="mailto:hello@kechken.com"
             className="underline underline-offset-4"
             style={{ color: "var(--color-ink)" }}
           >
-            hello@nitra.com
+            hello@kechken.com
           </a>
           {orderNumber && <> with order number <strong style={{ color: "var(--color-ink)" }}>{orderNumber}</strong></>}.
         </p>

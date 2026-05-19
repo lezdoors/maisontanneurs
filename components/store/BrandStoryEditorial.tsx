@@ -34,7 +34,7 @@ export default function BrandStoryEditorial() {
             From Morocco, recut for today.
           </h2>
           <p className="ed-body-lg mt-7 max-w-[44ch]">
-            Nitra is built around modern Moroccan identity — streetwear,
+            Kechken is built around modern Moroccan identity — streetwear,
             jewelry, and limited drops shaped by Maghreb form, metalwork,
             colour, and line. Every piece is designed in-house, printed and
             finished when you place the order, and shipped to you within

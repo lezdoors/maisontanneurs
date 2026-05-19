@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms of Sale",
-  description: "The terms under which Nitra sells handcrafted objects from Marrakech.",
+  description: "The terms under which Kechken sells handcrafted objects from Marrakech.",
 };
 
 export default function TermsPage() {
@@ -13,12 +13,12 @@ export default function TermsPage() {
       <p className="updated">Last updated: 12 May 2026</p>
 
       <p>
-        These terms apply to every order placed on www.nitra.com. By completing your purchase, you confirm you have read and agreed to them. If anything here is unclear, write to <a href="mailto:hello@nitra.com">hello@nitra.com</a> before you order.
+        These terms apply to every order placed on www.kechken.com. By completing your purchase, you confirm you have read and agreed to them. If anything here is unclear, write to <a href="mailto:hello@kechken.com">hello@kechken.com</a> before you order.
       </p>
 
       <h2>1. About us</h2>
       <p>
-        Nitra is a small atelier of makers based in Marrakech, Morocco. We design and handcraft furniture, lighting, vessels, and textile objects on Derb el Ferran. We sell direct to clients worldwide.
+        Kechken is a small atelier of makers based in Marrakech, Morocco. We design and handcraft furniture, lighting, vessels, and textile objects on Derb el Ferran. We sell direct to clients worldwide.
       </p>
 
       <h2>2. About the work</h2>
@@ -82,7 +82,7 @@ export default function TermsPage() {
 
       <h2>12. Contact</h2>
       <p>
-        For any question about your order, write to <a href="mailto:hello@nitra.com">hello@nitra.com</a>. We answer within one working day.
+        For any question about your order, write to <a href="mailto:hello@kechken.com">hello@kechken.com</a>. We answer within one working day.
       </p>
     </>
   );

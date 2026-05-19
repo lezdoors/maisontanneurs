@@ -1,8 +1,8 @@
-# Nitra · Fulfillment Architecture
+# Kechken · Fulfillment Architecture
 
 ## Model: Print-to-Order
 
-Every Nitra piece is printed **when** the order arrives. No advance inventory. No overstock destroyed. The dropshipper (Printful, locked) holds:
+Every Kechken piece is printed **when** the order arrives. No advance inventory. No overstock destroyed. The dropshipper (Printful, locked) holds:
 
 - The blank garments (Bella+Canvas 3001 heavyweight tee, Lane Seven LS14001 hoodie, AS Colour 1124 cap)
 - Our brand assets (wordmark for packing slip + care label)
@@ -10,7 +10,7 @@ Every Nitra piece is printed **when** the order arrives. No advance inventory. N
 - Our product descriptions, care instructions, returns address
 - Our packing slip template + thank-you card
 
-When a customer places an order on nitra.com:
+When a customer places an order on kechken.com:
 1. Stripe captures payment via the on-domain Payment Element
 2. The Stripe webhook fires `payment_intent.succeeded`
 3. Webhook handler calls Printful API to create the order with the customer's shipping address + SKU + variant
@@ -42,7 +42,7 @@ When a customer places an order on nitra.com:
 
 - [ ] Account created under Akal Ltd entity (or whichever entity locks)
 - [ ] Brand logo uploaded — render from `/brand/wordmark?w=600&h=200&subtitle=true` or upload PNG
-- [ ] Custom packing slip template configured with Nitra wordmark + thank-you message
+- [ ] Custom packing slip template configured with Kechken wordmark + thank-you message
 - [ ] Returns address registered (current placeholder: needs decision in Phase 0)
 - [ ] Drop 01 artwork files uploaded as print-ready 300 DPI PNGs:
   - `atlas-caravan-tee` graphic (chest, full-front)
@@ -63,4 +63,4 @@ When a customer places an order on nitra.com:
 
 ## What this means for the storefront copy
 
-**No more atelier theater.** Nitra is not a Marrakech workshop with maâlems. Nitra is a US-anchored brand whose visual register is rooted in Morocco, printed on-demand by Printful's US/EU warehouses. The legal pages, About page, and PDPs need rewrites to reflect this reality — drafted in Phase 1 by Ryan.
+**No more atelier theater.** Kechken is not a Marrakech workshop with maâlems. Kechken is a US-anchored brand whose visual register is rooted in Morocco, printed on-demand by Printful's US/EU warehouses. The legal pages, About page, and PDPs need rewrites to reflect this reality — drafted in Phase 1 by Ryan.

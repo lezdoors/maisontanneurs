@@ -247,7 +247,7 @@ async function persistOrder(args: PersistArgs) {
         quantity: i.quantity,
         price: i.price / 100,
       })),
-      eventSourceUrl: `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.nitra.com"}${eventSourcePath}`,
+      eventSourceUrl: `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.kechken.com"}${eventSourcePath}`,
     });
   } catch (capiErr) {
     console.error("Failed to send CAPI Purchase event:", capiErr);

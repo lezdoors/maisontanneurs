@@ -1,9 +1,9 @@
 import CheckoutShell from "@/components/checkout/CheckoutShell";
 
 export const metadata = {
-  title: "Checkout — Nitra",
+  title: "Checkout — Kechken",
   description:
-    "Complete your order from the Nitra atelier in Marrakech.",
+    "Complete your order from the Kechken atelier in Marrakech.",
 };
 
 export default function CheckoutPayPage() {

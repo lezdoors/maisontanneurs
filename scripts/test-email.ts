@@ -1,5 +1,5 @@
 // One-shot test that fires a real Resend send through the production config.
-// Verifies: RESEND_API_KEY env is set, FROM domain is verified, message reaches nitra@outlook.com.
+// Verifies: RESEND_API_KEY env is set, FROM domain is verified, message reaches kechken@outlook.com.
 // Run: pnpm tsx scripts/test-email.ts
 
 import { Resend } from "resend";
@@ -17,18 +17,18 @@ const resend = new Resend(key);
 
 async function main() {
   const { data, error } = await resend.emails.send({
-    from: "Nitra <orders@nitra.com>",
-    to: "nitra@outlook.com",
+    from: "Kechken <orders@kechken.com>",
+    to: "kechken@outlook.com",
     subject: "Resend sanity test — production config live",
     html: `
       <div style="font-family:Georgia,serif;padding:24px;max-width:560px;color:#1f1b16;">
         <h2 style="font-weight:normal;">Resend setup complete</h2>
-        <p>If you're reading this in <code>nitra@outlook.com</code>, the production email pipeline is verified:</p>
+        <p>If you're reading this in <code>kechken@outlook.com</code>, the production email pipeline is verified:</p>
         <ul style="line-height:1.8;">
-          <li>Domain <code>nitra.com</code> verified on Resend (DKIM + SPF)</li>
-          <li>FROM <code>orders@nitra.com</code> resolving</li>
+          <li>Domain <code>kechken.com</code> verified on Resend (DKIM + SPF)</li>
+          <li>FROM <code>orders@kechken.com</code> resolving</li>
           <li>API key <code>RESEND_API_KEY</code> active</li>
-          <li>Inbound to <code>nitra@outlook.com</code> reaching your read inbox</li>
+          <li>Inbound to <code>kechken@outlook.com</code> reaching your read inbox</li>
         </ul>
         <p style="font-size:11px;color:#7a6f5c;margin-top:24px;">Fired from <code>scripts/test-email.ts</code> · ${new Date().toISOString()}</p>
       </div>

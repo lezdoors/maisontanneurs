@@ -34,25 +34,25 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Nitra — Clothing rooted in the Maghreb",
-    template: "%s | Nitra",
+    default: "Kechken — Clothing rooted in the Maghreb",
+    template: "%s | Kechken",
   },
   description:
     "Hand-painted figurative graphics on heavyweight cotton. A clothing label born of Moroccan visual tradition, made for now.",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.nitra.com",
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.kechken.com",
   ),
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Nitra",
-    title: "Nitra — Clothing rooted in the Maghreb",
+    siteName: "Kechken",
+    title: "Kechken — Clothing rooted in the Maghreb",
     description:
       "Hand-painted figurative graphics on heavyweight cotton. A clothing label born of Moroccan visual tradition, made for now.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nitra",
+    title: "Kechken",
     description:
       "Hand-painted figurative graphics on heavyweight cotton. A clothing label born of Moroccan visual tradition, made for now.",
   },
@@ -64,12 +64,12 @@ export const metadata: Metadata = {
 const ORGANIZATION_LD = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Nitra",
-  url: "https://www.nitra.com",
-  logo: "https://www.nitra.com/icon.svg",
+  name: "Kechken",
+  url: "https://www.kechken.com",
+  logo: "https://www.kechken.com/icon.svg",
   description:
     "A clothing label rooted in Moroccan visual tradition. Hand-painted figurative graphics on heavyweight cotton.",
-  email: "hello@nitra.com",
+  email: "hello@kechken.com",
 };
 
 const CLARITY_PROJECT_ID =

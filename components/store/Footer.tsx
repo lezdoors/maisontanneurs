@@ -13,19 +13,19 @@ const SHOP_LINKS = [
 const HOUSE_LINKS = [
   { label: "The Story", href: "/story" },
   { label: "The Atelier", href: "/story" },
-  { label: "Press", href: "mailto:hello@nitra.com?subject=Press" },
+  { label: "Press", href: "mailto:hello@kechken.com?subject=Press" },
 ];
 
 const HELP_LINKS = [
   { label: "Shipping", href: "/legal/shipping" },
   { label: "Returns", href: "/legal/returns" },
   { label: "Size & Care", href: "/legal/care" },
-  { label: "Contact", href: "mailto:hello@nitra.com" },
+  { label: "Contact", href: "mailto:hello@kechken.com" },
 ];
 
 const SOCIAL = [
-  { label: "Instagram", href: "https://www.instagram.com/nitra" },
-  { label: "TikTok", href: "https://www.tiktok.com/@nitra" },
+  { label: "Instagram", href: "https://www.instagram.com/kechken" },
+  { label: "TikTok", href: "https://www.tiktok.com/@kechken" },
 ];
 
 type NewsletterStatus = "idle" | "submitting" | "ok" | "error";
@@ -164,12 +164,12 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-[11px] text-white/55">
           <div className="font-serif italic text-[14px] text-white/75">
-            nitra · modern moroccan identity
+            kechken · modern moroccan identity
           </div>
           <div className="flex items-center gap-5 ed-meta">
             <Link href="/legal/privacy" className="hover:text-white transition-colors">Privacy</Link>
             <Link href="/legal/terms" className="hover:text-white transition-colors">Terms</Link>
-            <span>© {new Date().getFullYear()} Nitra</span>
+            <span>© {new Date().getFullYear()} Kechken</span>
           </div>
         </div>
       </div>

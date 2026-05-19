@@ -16,7 +16,7 @@ export const STATIC_PRODUCTS: Product[] = [
     materials: ["Heavyweight cotton", "240 gsm", "Made-to-order print"],
     dimensions: { fit: "Oversized boxy" },
     description:
-      "Heavyweight cotton tee with a single Nitra wordmark in bronze foil at the chest. Cut oversized, dropped shoulder, bone-colored heavyweight jersey.",
+      "Heavyweight cotton tee with a single Kechken wordmark in bronze foil at the chest. Cut oversized, dropped shoulder, bone-colored heavyweight jersey.",
     available_quantity: 100,
     weight_lbs: 1,
     craftsman_id: null,

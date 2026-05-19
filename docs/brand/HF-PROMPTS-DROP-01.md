@@ -1,4 +1,4 @@
-# Higgsfield Prompts · Nitra Drop 01 + Homepage Imagery
+# Higgsfield Prompts · Kechken Drop 01 + Homepage Imagery
 
 _Updated 2026-05-17 to the locked brief: Lemaire restraint × Jacquemus Mediterranean warmth × Fear of God scale × Aigle daylight clarity. Modern luxury fashion house · Moroccan identity, but subtle. NOT tourist, NOT souvenir, NOT bazaar._
 
@@ -45,7 +45,7 @@ photographed on a Casablanca rooftop at golden hour. Behind him: bone-cream
 limestone walls, a pale-blue Mediterranean arched window in shallow focus,
 warm sky catching the upper edge of the frame. He wears a heavyweight cream
 cotton tee, oversized boxy cut, dropped shoulder, with a small bronze foil
-'nitra' wordmark across the chest in a refined modern sans serif. Plain
+'kechken' wordmark across the chest in a refined modern sans serif. Plain
 washed-black wide-leg trousers. Lighting: low warm sun from camera-right,
 honey-coloured key, soft natural shadow across the chest. Generous negative
 space, three-quarter framing, the figure occupies the right half. Editorial
@@ -199,7 +199,7 @@ Bone + Moroccan-blue + silver palette. NO text, no logos.
 ```
 Editorial product-on-model, 4:5 vertical. Young man, mid-twenties, North
 African features, wearing an oversized cream heavyweight cotton boxy tee with
-a single small bronze foil 'nitra' wordmark in modern lowercase sans across
+a single small bronze foil 'kechken' wordmark in modern lowercase sans across
 the chest. Plain black wide-leg trousers. Warm-cream seamless studio backdrop,
 soft Mediterranean daylight key from upper-right, three-quarter framing
 waist-up. Restrained Aigle product register. Bone + bronze + black palette.

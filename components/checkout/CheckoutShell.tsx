@@ -85,11 +85,11 @@ export default function CheckoutShell() {
           Our payment provider is being configured. Please try again shortly,
           or email{" "}
           <a
-            href="mailto:hello@nitra.com"
+            href="mailto:hello@kechken.com"
             className="underline underline-offset-4"
             style={{ color: "var(--color-ink)" }}
           >
-            hello@nitra.com
+            hello@kechken.com
           </a>
           {" "}to place your order directly.
         </p>
@@ -114,11 +114,11 @@ export default function CheckoutShell() {
         <p className="font-serif italic text-graphite text-[16px] leading-relaxed mb-10">
           Please refresh the page, or email{" "}
           <a
-            href="mailto:hello@nitra.com"
+            href="mailto:hello@kechken.com"
             className="underline underline-offset-4"
             style={{ color: "var(--color-ink)" }}
           >
-            hello@nitra.com
+            hello@kechken.com
           </a>
           {" "}if the problem persists.
         </p>

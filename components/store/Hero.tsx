@@ -22,7 +22,7 @@ export default function Hero() {
       {hasImage && (
         <Image
           src={HERO_IMAGE as string}
-          alt="Nitra Drop 01"
+          alt="Kechken Drop 01"
           fill
           priority
           sizes="100vw"
@@ -55,7 +55,7 @@ export default function Hero() {
           </div>
 
           <h1 className="ed-display max-w-[12ch] text-[var(--color-ink)]">
-            nitra.
+            kechken.
           </h1>
 
           <p
