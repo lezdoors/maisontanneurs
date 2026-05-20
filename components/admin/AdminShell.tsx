@@ -35,7 +35,7 @@ export default async function AdminShell({
                 href="/admin/dashboard"
                 className="font-display text-lg text-ink tracking-tight"
               >
-                Kechken Admin
+                Maison Tanneurs Admin
               </Link>
               <nav className="hidden sm:flex items-center gap-1">
                 {NAV_ITEMS.map((item) => (

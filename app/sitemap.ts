@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { createServerSupabase } from "@/lib/supabase/server";
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.kechken.com";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.maisontanneurs.com";
 
 export const revalidate = 86400;
 

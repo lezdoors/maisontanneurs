@@ -1,9 +1,9 @@
 import CheckoutShell from "@/components/checkout/CheckoutShell";
 
 export const metadata = {
-  title: "Checkout — Kechken",
+  title: "Checkout — Maison Tanneurs",
   description:
-    "Complete your Kechken order. Made to order and shipped within three to five business days.",
+    "Complete your Maison Tanneurs order. Hand-stitched in Marrakech and shipped within three to five business days.",
 };
 
 export default function CheckoutPayPage() {

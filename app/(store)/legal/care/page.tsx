@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Care — Kechken",
+  title: "Care — Maison Tanneurs",
   description:
-    "How to care for your Kechken full-grain leather bag so it patinas well and lasts a decade.",
+    "How to care for your Maison Tanneurs full-grain leather bag so it patinas well and lasts a decade.",
 };
 
 export default function CarePage() {
@@ -15,7 +15,7 @@ export default function CarePage() {
       <p className="updated">Last updated · 19 May 2026</p>
 
       <p>
-        Every Kechken piece is full-grain leather, built to age well.
+        Every Maison Tanneurs piece is full-grain leather, built to age well.
         Following the right care ritual is the difference between a bag
         that patinas beautifully over a decade and one that dries out in
         a season.

@@ -11,7 +11,7 @@ function getResend(): Resend {
   return new Resend(key);
 }
 
-const FROM_EMAIL = "Kechken <orders@kechken.com>";
+const FROM_EMAIL = "Maison Tanneurs <orders@kechken.com>";
 const REPLY_TO = "hello@kechken.com";
 const ADMIN_EMAIL = "kechken@outlook.com";
 
@@ -40,7 +40,7 @@ export async function sendOrderConfirmation(data: OrderEmailData) {
       <div style="max-width:600px;margin:0 auto;background:#f5efe3;padding:48px 32px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;color:#1f1b16;">
         <div style="text-align:center;margin-bottom:40px;">
           <div style="font-family:monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#7a6f5c;margin-bottom:8px;">Order Confirmed</div>
-          <div style="font-family:Georgia,serif;font-size:36px;letter-spacing:-0.01em;line-height:1.1;">MAISON IZEM</div>
+          <div style="font-family:Georgia,serif;font-size:36px;letter-spacing:-0.01em;line-height:1.1;">MAISON TANNEURS</div>
         </div>
         <p style="font-family:Georgia,serif;font-style:italic;font-size:18px;line-height:1.5;color:#3a332a;">Dear ${data.customerName},</p>
         <p style="font-family:Georgia,serif;font-style:italic;font-size:16px;line-height:1.6;color:#3a332a;">Thank you for your order. Each piece is handcrafted by our master artisans in Marrakech and will be carefully prepared for shipping.</p>
@@ -60,7 +60,7 @@ export async function sendOrderConfirmation(data: OrderEmailData) {
           <p style="font-family:Georgia,serif;font-style:italic;font-size:14px;color:#3a332a;margin:0;line-height:1.6;">Your pieces are handcrafted to order in Marrakech. Please allow 2-4 weeks for crafting and international shipping. You will receive a tracking number once your order ships.</p>
         </div>
         <div style="text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid #d9cfbb;">
-          <div style="font-family:monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#7a6f5c;">Kechken · Marrakech</div>
+          <div style="font-family:monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#7a6f5c;">Maison Tanneurs · Marrakech</div>
         </div>
       </div>
     `,
@@ -101,7 +101,7 @@ export async function sendAdminNotification(data: AdminNotificationData) {
   await getResend().emails.send({
     from: FROM_EMAIL,
     to: ADMIN_EMAIL,
-    subject: `New Kechken Order · ${data.orderNumber} · ${formatPrice(data.total)}`,
+    subject: `New Maison Tanneurs Order · ${data.orderNumber} · ${formatPrice(data.total)}`,
     html: `
       <div style="font-family:monospace;font-size:13px;line-height:1.8;color:#1f1b16;max-width:600px;">
         <h2 style="font-family:Georgia,serif;font-size:24px;font-weight:normal;">New Order: ${data.orderNumber}</h2>
@@ -130,11 +130,11 @@ export async function sendShippingNotification(data: ShippingNotificationData) {
     from: FROM_EMAIL,
     replyTo: REPLY_TO,
     to: data.to,
-    subject: `Your Kechken Order Has Shipped · ${data.orderNumber}`,
+    subject: `Your Maison Tanneurs Order Has Shipped · ${data.orderNumber}`,
     html: `
       <div style="max-width:600px;margin:0 auto;background:#f5efe3;padding:48px 32px;font-family:'Inter Tight',Helvetica,Arial,sans-serif;color:#1f1b16;">
         <div style="text-align:center;margin-bottom:40px;">
-          <div style="font-family:Georgia,serif;font-size:36px;letter-spacing:-0.01em;">MAISON IZEM</div>
+          <div style="font-family:Georgia,serif;font-size:36px;letter-spacing:-0.01em;">MAISON TANNEURS</div>
         </div>
         <p style="font-family:Georgia,serif;font-style:italic;font-size:18px;color:#3a332a;">Dear ${data.customerName},</p>
         <p style="font-size:15px;line-height:1.7;color:#3a332a;">Your order ${data.orderNumber} has been shipped from Marrakech.</p>
@@ -144,7 +144,7 @@ export async function sendShippingNotification(data: ShippingNotificationData) {
           ${data.carrier ? `<p style="font-family:monospace;font-size:12px;color:#7a6f5c;margin:4px 0 0;">via ${data.carrier}</p>` : ""}
         </div>
         <div style="text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid #d9cfbb;">
-          <div style="font-family:monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#7a6f5c;">Kechken · Marrakech</div>
+          <div style="font-family:monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#7a6f5c;">Maison Tanneurs · Marrakech</div>
         </div>
       </div>
     `,

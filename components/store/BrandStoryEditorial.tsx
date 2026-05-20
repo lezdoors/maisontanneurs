@@ -34,7 +34,7 @@ export default function BrandStoryEditorial() {
             From the Marrakech atelier.
           </h2>
           <p className="ed-body-lg mt-7 max-w-[44ch]">
-            Kechken is a small leather house working out of a Marrakech
+            Maison Tanneurs is a small leather house working out of a Marrakech
             atelier. Each bag is cut, stitched, and finished by hand —
             full-grain leather, solid brass hardware, contrast saddle-stitch.
             Shipped direct to you within three to five days via DHL or FedEx.

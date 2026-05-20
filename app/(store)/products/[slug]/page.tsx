@@ -109,11 +109,11 @@ export default async function ProductPage({
       product.description || `${product.title}. Handcrafted in Marrakech.`,
     image: product.images?.slice(0, 5) ?? [],
     sku: product.slug,
-    brand: { "@type": "Brand", name: "Kechken" },
+    brand: { "@type": "Brand", name: "Maison Tanneurs" },
     category: product.category,
     offers: {
       "@type": "Offer",
-      url: `https://www.kechken.com/products/${product.slug}`,
+      url: `https://www.maisontanneurs.com/products/${product.slug}`,
       priceCurrency: "USD",
       price: (product.price / 100).toFixed(2),
       availability:

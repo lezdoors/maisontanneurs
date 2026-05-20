@@ -162,12 +162,12 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-[11px] text-white/55">
           <div className="font-serif italic text-[14px] text-white/75">
-            kechken · hand-stitched in marrakech
+            maison tanneurs · hand-stitched in marrakech
           </div>
           <div className="flex items-center gap-5 ed-meta">
             <Link href="/legal/privacy" className="hover:text-white transition-colors">Privacy</Link>
             <Link href="/legal/terms" className="hover:text-white transition-colors">Terms</Link>
-            <span>© {new Date().getFullYear()} Kechken</span>
+            <span>© {new Date().getFullYear()} Maison Tanneurs</span>
           </div>
         </div>
       </div>

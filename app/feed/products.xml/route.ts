@@ -1,7 +1,7 @@
 // Meta Catalog product feed (RSS 2.0 with g: namespace).
 // Used by Meta Advantage+ shopping + Dynamic Ads + Google Merchant Center.
 //
-// URL: https://www.kechken.com/feed/products.xml
+// URL: https://www.maisontanneurs.com/feed/products.xml
 //
 // Pulls live data from Supabase products table. Filters to status=active.
 // Caches at the edge for 1 hour — Meta polls hourly anyway.
@@ -12,7 +12,7 @@ import { createClient } from "@supabase/supabase-js";
 export const revalidate = 3600; // 1 hour
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.kechken.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.maisontanneurs.com";
 
 // Defer client creation until request time so build-time env-var absence
 // doesn't fail the build.
@@ -95,7 +95,7 @@ ${additionalImages}
       <g:availability>${availability}</g:availability>
       <g:condition>new</g:condition>
       <g:price>${priceStr} USD</g:price>
-      <g:brand>Kechken</g:brand>
+      <g:brand>Maison Tanneurs</g:brand>
       <g:product_type>${xmlEscape(p.category || "Leather Goods")}</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
       <g:shipping_weight>${(p.weight_lbs ?? 5).toFixed(2)} lb</g:shipping_weight>
@@ -107,7 +107,7 @@ ${additionalImages}
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:g="http://base.google.com/ns/1.0" version="2.0">
   <channel>
-    <title>Kechken — Product Catalog</title>
+    <title>Maison Tanneurs — Product Catalog</title>
     <link>${SITE_URL}</link>
     <description>Hand-stitched full-grain leather goods, made in Marrakech.</description>
 ${items}

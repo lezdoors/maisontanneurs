@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Shipping — Kechken",
+  title: "Shipping — Maison Tanneurs",
   description:
-    "How Kechken ships leather goods worldwide. Three to five day delivery direct from Marrakech via DHL or FedEx.",
+    "How Maison Tanneurs ships leather goods worldwide. Three to five day delivery direct from Marrakech via DHL or FedEx.",
 };
 
 export default function ShippingPage() {
@@ -15,7 +15,7 @@ export default function ShippingPage() {
       <p className="updated">Last updated · 19 May 2026</p>
 
       <p>
-        Every Kechken bag is finished by hand in our Marrakech atelier.
+        Every Maison Tanneurs bag is finished by hand in our Marrakech atelier.
         When you place an order, the artisan checks the piece, packs it,
         and hands it to DHL or FedEx — typically within 24 hours.
       </p>

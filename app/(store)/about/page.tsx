@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Kechken",
+  title: "About Maison Tanneurs",
   description:
     "A small leather house working out of a Marrakech atelier. Full-grain leather, hand-stitched, solid brass hardware. Shipped direct in three to five days.",
 };
@@ -15,7 +15,7 @@ export default function AboutPage() {
       <section className="relative h-[70vh] w-full overflow-hidden bg-[#0e0d0c]">
         <Image
           src="/hero/hero-kechken-atelier.webp"
-          alt="Kechken atelier — bags hanging from wooden beams in golden light"
+          alt="Maison Tanneurs atelier — bags hanging from wooden beams in golden light"
           fill
           className="object-cover"
           priority
@@ -38,7 +38,7 @@ export default function AboutPage() {
                 color: "rgba(245,244,241,0.82)",
               }}
             >
-              About · Kechken
+              About · Maison Tanneurs
             </div>
             <h1
               className="font-serif leading-[1.0] text-[#f5f4f1]"
@@ -66,7 +66,7 @@ export default function AboutPage() {
             bag they carry.
           </p>
           <p className="text-[15px] font-sans font-light leading-[1.75] text-[var(--color-ink-soft)] mb-5">
-            Kechken is a small leather house working out of a Marrakech
+            Maison Tanneurs is a small leather house working out of a Marrakech
             atelier. We make bags — full-grain leather, solid brass
             hardware, contrast saddle-stitch — cut and finished by hand,
             one piece at a time, by artisans who have been working leather

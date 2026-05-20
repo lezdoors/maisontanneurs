@@ -4,22 +4,22 @@ const PILLARS: Pillar[] = [
   {
     eyebrow: "01",
     title: "Designed in-house",
-    body: "Every Kechken piece is conceived and patterned in our studio. No off-the-shelf graphics, no white-label catalogue.",
+    body: "Every Maison Tanneurs bag is patterned in our studio. No off-the-shelf shapes, no white-label catalogue.",
   },
   {
     eyebrow: "02",
-    title: "Printed when you order",
-    body: "We hold no deadstock. Your piece enters production the moment you place the order, finished by a vetted partner.",
+    title: "Hand-stitched in Marrakech",
+    body: "Each bag is cut, stitched, and finished by one artisan from start to end — full-grain leather, brass hardware, signed inside.",
   },
   {
     eyebrow: "03",
     title: "Ships in 3 — 5 days",
-    body: "From production to your door in under a week. Tracked, insured, with a tracking link in your inbox at every step.",
+    body: "Direct from Marrakech via DHL or FedEx. Tracked, insured, with a tracking link in your inbox at every step.",
   },
   {
     eyebrow: "04",
-    title: "Limited seasonal drops",
-    body: "Four drops a year, numbered and dated. When a drop closes, it doesn't come back the same way.",
+    title: "Limited editions",
+    body: "Tight runs, numbered and dated. When a piece sells out, it doesn't come back the same way.",
   },
 ];
 

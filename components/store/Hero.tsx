@@ -11,7 +11,7 @@ export default function Hero() {
     >
       <Image
         src={HERO_IMAGE}
-        alt="Kechken Drop 01"
+        alt="Maison Tanneurs Drop 01"
         fill
         priority
         sizes="100vw"

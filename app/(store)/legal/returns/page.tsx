@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Returns — Kechken",
+  title: "Returns — Maison Tanneurs",
   description:
-    "Kechken returns and exchanges. Thirty days, unused and undamaged, with original packaging.",
+    "Returns and exchanges at Maison Tanneurs. Thirty days, unused and undamaged, with original packaging.",
 };
 
 export default function ReturnsPage() {

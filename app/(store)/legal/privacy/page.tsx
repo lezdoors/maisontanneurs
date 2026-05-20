@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy — Kechken",
+  title: "Privacy — Maison Tanneurs",
   description:
-    "How Kechken collects, uses, and protects the personal information of customers.",
+    "How Maison Tanneurs collects, uses, and protects the personal information of customers.",
 };
 
 export default function PrivacyPage() {
@@ -15,7 +15,7 @@ export default function PrivacyPage() {
       <p className="updated">Last updated · 19 May 2026</p>
 
       <p>
-        Kechken (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) respects your privacy. This policy
+        Maison Tanneurs (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) respects your privacy. This policy
         explains what personal information we collect when you visit
         www.kechken.com, place an order, or write to us, and how we use,
         store, share, and protect that information.

@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "FAQ — Kechken",
+  title: "FAQ — Maison Tanneurs",
   description:
-    "Common questions about ordering, shipping, and caring for Kechken leather goods.",
+    "Common questions about ordering, shipping, and caring for Maison Tanneurs leather goods.",
 };
 
 const FAQ = [
   {
-    q: "What is Kechken?",
-    a: "Kechken is a small leather house working out of a Marrakech atelier. We make bags and small leather goods — full-grain leather, solid brass hardware, contrast saddle-stitch — cut and finished by hand, then shipped direct from Morocco.",
+    q: "What is Maison Tanneurs?",
+    a: "Maison Tanneurs is a small leather house working out of a Marrakech atelier. We make bags and small leather goods — full-grain leather, solid brass hardware, contrast saddle-stitch — cut and finished by hand, then shipped direct from Morocco.",
   },
   {
     q: "How is each piece produced?",

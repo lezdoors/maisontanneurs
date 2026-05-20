@@ -81,7 +81,7 @@ export default function Navbar() {
         {/* Centered brand monogram */}
         <Link
           href="/"
-          aria-label="Kechken"
+          aria-label="Maison Tanneurs"
           className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none flex items-center gap-3 transition-colors ${inkClass}`}
         >
           <Image
@@ -98,7 +98,7 @@ export default function Navbar() {
             className="hidden sm:inline font-serif tracking-[0.18em] text-[14px] md:text-[15px]"
             style={{ fontFamily: "var(--font-serif, 'Cormorant Garamond', 'Times New Roman', serif)" }}
           >
-            KECHKEN
+MAISON TANNEURS
           </span>
         </Link>
 

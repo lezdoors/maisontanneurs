@@ -34,25 +34,25 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Kechken — Hand-stitched leather from Marrakech",
-    template: "%s | Kechken",
+    default: "Maison Tanneurs — Hand-stitched leather from Marrakech",
+    template: "%s | Maison Tanneurs",
   },
   description:
     "Hand-stitched leather wearables, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes, shipped worldwide in 3–5 days.",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.kechken.com",
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.maisontanneurs.com",
   ),
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Kechken",
-    title: "Kechken — Hand-stitched leather from Marrakech",
+    siteName: "Maison Tanneurs",
+    title: "Maison Tanneurs — Hand-stitched leather from Marrakech",
     description:
       "Hand-stitched leather wearables, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes, shipped worldwide in 3–5 days.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kechken",
+    title: "Maison Tanneurs",
     description:
       "Hand-stitched leather wearables, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes, shipped worldwide in 3–5 days.",
   },
@@ -64,9 +64,9 @@ export const metadata: Metadata = {
 const ORGANIZATION_LD = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Kechken",
-  url: "https://www.kechken.com",
-  logo: "https://www.kechken.com/icon.svg",
+  name: "Maison Tanneurs",
+  url: "https://www.maisontanneurs.com",
+  logo: "https://www.maisontanneurs.com/icon.svg",
   description:
     "Hand-stitched leather wearables sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes.",
   email: "hello@kechken.com",

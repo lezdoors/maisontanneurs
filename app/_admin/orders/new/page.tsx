@@ -99,7 +99,7 @@ export default function NewEtsyOrderPage() {
               href="/admin/dashboard"
               className="font-display text-lg text-ink tracking-tight"
             >
-              Kechken Admin
+              Maison Tanneurs Admin
             </a>
             <a
               href="/admin/orders"

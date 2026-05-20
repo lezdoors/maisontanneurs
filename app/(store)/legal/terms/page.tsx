@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Terms of Sale — Kechken",
+  title: "Terms of Sale — Maison Tanneurs",
   description:
-    "The terms under which Kechken sells hand-stitched leather goods, shipped direct from a Marrakech atelier.",
+    "The terms under which Maison Tanneurs sells hand-stitched leather goods, shipped direct from a Marrakech atelier.",
 };
 
 export default function TermsPage() {
@@ -21,9 +21,9 @@ export default function TermsPage() {
         you order.
       </p>
 
-      <h2>About Kechken</h2>
+      <h2>About Maison Tanneurs</h2>
       <p>
-        Kechken is a small leather house working out of a Marrakech
+        Maison Tanneurs is a small leather house working out of a Marrakech
         atelier. We design and make bags and small leather goods by hand —
         full-grain leather, solid brass hardware, contrast saddle-stitch —
         and ship direct to customers worldwide via this website.
@@ -69,7 +69,7 @@ export default function TermsPage() {
       <h2>Intellectual property</h2>
       <p>
         All designs, prints, photographs, and copy on this site are the
-        property of Kechken. You may not reproduce them for commercial use.
+        property of Maison Tanneurs. You may not reproduce them for commercial use.
         Personal use (sharing a photo of you wearing the piece) is welcomed
         and encouraged.
       </p>
@@ -84,7 +84,7 @@ export default function TermsPage() {
       <h2>Governing law</h2>
       <p>
         These terms are governed by the laws of the jurisdiction in which
-        Kechken is registered (the United Kingdom). Any dispute that cannot
+        Maison Tanneurs is registered (the United Kingdom). Any dispute that cannot
         be resolved by friendly discussion will be referred to the courts
         of that jurisdiction.
       </p>
