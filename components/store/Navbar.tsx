@@ -128,16 +128,6 @@ export default function Navbar() {
                 <path d="m20 20-3.5-3.5" />
               </svg>
             </button>
-            <Link
-              href="/account"
-              aria-label="Account"
-              className={`hidden md:inline-flex transition-colors ${inkClass} ${hoverClass}`}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <circle cx="12" cy="8" r="4" />
-                <path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" />
-              </svg>
-            </Link>
             <button
               onClick={openCart}
               aria-label="Cart"
@@ -204,7 +194,7 @@ export default function Navbar() {
               <div className="ed-eyebrow text-[var(--color-mineral)]">Help</div>
               <Link href="/legal/shipping" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Shipping</Link>
               <Link href="/legal/returns" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Returns</Link>
-              <Link href="/account" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Account</Link>
+              <Link href="/legal/faq" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">FAQ</Link>
             </nav>
           </aside>
         </>
