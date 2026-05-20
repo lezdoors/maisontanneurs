@@ -20,14 +20,14 @@ const ITEMS: EditorialItem[] = [
   {
     eyebrow: "The Lookbook",
     title: "Wearing the house, easy and slow",
-    href: "/story",
+    href: "/about",
     image: "/hero/hero-couple-v2.webp",
     gradient: "linear-gradient(140deg, #ece4d2 0%, #c8b89a 100%)",
   },
   {
     eyebrow: "The Atelier",
     title: "Print-to-order, made when you order",
-    href: "/story",
+    href: "/about",
     image: "/hero/editorial-atelier.webp",
     gradient: "linear-gradient(140deg, #1e4a6b 0%, #2a2622 100%)",
   },
@@ -44,7 +44,7 @@ export default function EditorialStrip() {
               Stories from inside the house.
             </h2>
           </div>
-          <Link href="/story" className="ed-more hidden md:inline-flex">
+          <Link href="/about" className="ed-more hidden md:inline-flex">
             All stories
           </Link>
         </div>

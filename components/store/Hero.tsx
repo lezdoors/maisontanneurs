@@ -101,7 +101,7 @@ export default function Hero() {
               Shop the Drop
             </Link>
             <Link
-              href="/story"
+              href="/about"
               className="inline-flex items-center text-[#f5f4f1] border border-[rgba(245,244,241,0.55)] px-9 py-[18px] uppercase font-medium hover:bg-[rgba(245,244,241,0.12)] transition-colors"
               style={{ fontSize: "11px", letterSpacing: "0.22em" }}
             >

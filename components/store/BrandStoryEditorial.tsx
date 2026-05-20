@@ -45,7 +45,7 @@ export default function BrandStoryEditorial() {
             culture into the room.
           </p>
           <div className="mt-10">
-            <Link href="/story" className="ed-cta-outline">
+            <Link href="/about" className="ed-cta-outline">
               Read the story
             </Link>
           </div>

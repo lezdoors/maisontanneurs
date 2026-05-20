@@ -3,7 +3,7 @@ import CheckoutShell from "@/components/checkout/CheckoutShell";
 export const metadata = {
   title: "Checkout — Kechken",
   description:
-    "Complete your order from the Kechken atelier in Marrakech.",
+    "Complete your Kechken order. Made to order and shipped within three to five business days.",
 };
 
 export default function CheckoutPayPage() {
@@ -17,8 +17,8 @@ export default function CheckoutPayPage() {
             Complete your order.
           </h1>
           <p className="font-serif italic text-graphite text-[clamp(15px,1.3vw,18px)] leading-relaxed mt-4 max-w-[640px]">
-            Each piece is crafted to order in the Marrakech atelier and shipped
-            with white-glove care.
+            Made to order and shipped within three to five business days.
+            Tracking included. Returns within thirty days.
           </p>
         </div>
 

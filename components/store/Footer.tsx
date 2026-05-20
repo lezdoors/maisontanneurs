@@ -11,8 +11,8 @@ const SHOP_LINKS = [
 ];
 
 const HOUSE_LINKS = [
-  { label: "The Story", href: "/story" },
-  { label: "The Atelier", href: "/story" },
+  { label: "The Story", href: "/about" },
+  { label: "The Atelier", href: "/about" },
   { label: "Press", href: "mailto:hello@kechken.com?subject=Press" },
 ];
 

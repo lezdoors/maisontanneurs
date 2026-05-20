@@ -10,7 +10,7 @@ const NAV_LINKS: { label: string; href: string }[] = [
   { label: "New Drop", href: "/products" },
   { label: "Streetwear", href: "/products?category=Streetwear" },
   { label: "Jewelry", href: "/products?category=Jewelry" },
-  { label: "Story", href: "/story" },
+  { label: "Story", href: "/about" },
   { label: "Contact", href: "mailto:hello@kechken.com" },
 ];
 

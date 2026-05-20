@@ -5,33 +5,33 @@ export default function BrandStatement() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
           <div className="md:col-span-7">
             <div className="text-[11px] tracking-[0.18em] uppercase text-white/55 font-medium mb-5">
-              The Maison
+              The Brand
             </div>
             <h2 className="font-sans font-light tracking-[-0.012em] text-[clamp(28px,3.4vw,46px)] leading-[1.1] text-white max-w-[20ch]">
-              Celebrating Moroccan craft around the world.
+              Modern Moroccan identity, made wearable.
             </h2>
           </div>
           <div className="md:col-span-5">
             <p className="text-[14px] leading-[1.7] text-white/75 font-light max-w-[44ch]">
-              Kechken is a workshop of nine craftsmen off a narrow street in the
-              old medina of Marrakech. We carve cedar, hammer brass, lay
-              mother-of-pearl, and weave linen. Each piece carries the
-              signature of its maker.
+              Kechken is a contemporary label rooted in the visual register
+              of the Maghreb. Streetwear, jewelry, and leather goods designed
+              in-house, printed and finished when you order, shipped within
+              three to five days. No deadstock. No overproduction.
             </p>
             <div className="mt-7 flex items-center gap-8">
               <div>
-                <div className="text-[28px] font-light tracking-tight">1974</div>
-                <div className="rb-meta text-white/55 mt-1">Workshop founded</div>
+                <div className="text-[28px] font-light tracking-tight">2026</div>
+                <div className="rb-meta text-white/55 mt-1">Drop 01</div>
               </div>
               <div className="w-px h-9 bg-white/15" />
               <div>
-                <div className="text-[28px] font-light tracking-tight">09</div>
-                <div className="rb-meta text-white/55 mt-1">Disciplines</div>
+                <div className="text-[28px] font-light tracking-tight">03</div>
+                <div className="rb-meta text-white/55 mt-1">Categories</div>
               </div>
               <div className="w-px h-9 bg-white/15" />
               <div>
-                <div className="text-[28px] font-light tracking-tight">52</div>
-                <div className="rb-meta text-white/55 mt-1">Countries shipped</div>
+                <div className="text-[28px] font-light tracking-tight">3–5d</div>
+                <div className="rb-meta text-white/55 mt-1">Made to order</div>
               </div>
             </div>
           </div>

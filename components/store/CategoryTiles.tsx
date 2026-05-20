@@ -35,7 +35,7 @@ const TILES: Tile[] = [
   },
   {
     label: "The Atelier",
-    href: "/story",
+    href: "/about",
     caption: "How we work · The brand",
     image: "/hero/category-atelier-v2.webp",
     gradient: "linear-gradient(180deg, #ddd1b9 0%, #6b6258 100%)",
