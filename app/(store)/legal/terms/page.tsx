@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Terms of Sale — Kechken",
   description:
-    "The terms under which Kechken sells modern Moroccan apparel, jewelry, and leather goods.",
+    "The terms under which Kechken sells hand-stitched leather goods, shipped direct from a Marrakech atelier.",
 };
 
 export default function TermsPage() {
@@ -23,10 +23,10 @@ export default function TermsPage() {
 
       <h2>About Kechken</h2>
       <p>
-        Kechken is a contemporary apparel label. We design streetwear,
-        jewelry, and leather goods in-house and produce each piece to order
-        through a vetted print-on-demand fulfillment partner. We sell direct
-        to customers worldwide via this website.
+        Kechken is a small leather house working out of a Marrakech
+        atelier. We design and make bags and small leather goods by hand —
+        full-grain leather, solid brass hardware, contrast saddle-stitch —
+        and ship direct to customers worldwide via this website.
       </p>
 
       <h2>Placing an order</h2>
@@ -53,8 +53,8 @@ export default function TermsPage() {
 
       <h2>Production and shipping</h2>
       <p>
-        Each piece is produced to order at our fulfillment partner&apos;s
-        warehouse, then shipped directly to you. See the{" "}
+        Each piece is hand-stitched in our Marrakech atelier and shipped
+        direct to you via DHL or FedEx. See the{" "}
         <Link href="/legal/shipping">Shipping page</Link> for delivery
         times and costs.
       </p>

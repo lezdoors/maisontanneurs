@@ -13,20 +13,6 @@ type Tile = {
 
 const TILES: Tile[] = [
   {
-    label: "Streetwear",
-    href: "/products?category=Streetwear",
-    caption: "Tees, hoodies, sweats",
-    image: "/hero/category-streetwear.webp",
-    gradient: "linear-gradient(180deg, #f0e6d2 0%, #c8b89a 100%)",
-  },
-  {
-    label: "Jewelry",
-    href: "/products?category=Jewelry",
-    caption: "Sterling silver, hand-finished",
-    image: "/hero/category-jewelry.webp",
-    gradient: "linear-gradient(180deg, #2a2622 0%, #5c4530 100%)",
-  },
-  {
     label: "Leather Goods",
     href: "/products?category=Leather%20Goods",
     caption: "Hand-stitched in Marrakech",
@@ -50,7 +36,7 @@ export default function CategoryTiles() {
           <div>
             <div className="ed-eyebrow mb-4">Explore</div>
             <h2 className="ed-h2 max-w-[18ch]">
-              Four ways into the house.
+              Inside the house.
             </h2>
           </div>
         </div>

@@ -96,7 +96,7 @@ ${additionalImages}
       <g:condition>new</g:condition>
       <g:price>${priceStr} USD</g:price>
       <g:brand>Kechken</g:brand>
-      <g:product_type>${xmlEscape(p.category || "Furniture")}</g:product_type>
+      <g:product_type>${xmlEscape(p.category || "Leather Goods")}</g:product_type>
       <g:identifier_exists>no</g:identifier_exists>
       <g:shipping_weight>${(p.weight_lbs ?? 5).toFixed(2)} lb</g:shipping_weight>
     </item>`;
@@ -109,7 +109,7 @@ ${additionalImages}
   <channel>
     <title>Kechken — Product Catalog</title>
     <link>${SITE_URL}</link>
-    <description>Handcrafted Moroccan furniture and lighting from Marrakech.</description>
+    <description>Hand-stitched full-grain leather goods, made in Marrakech.</description>
 ${items}
   </channel>
 </rss>`;

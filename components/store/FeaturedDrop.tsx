@@ -32,16 +32,16 @@ export default function FeaturedDrop() {
         <div className="max-w-[440px] reveal">
           <div className="ed-eyebrow mb-6">The Featured Drop</div>
           <h2 className="ed-h2 max-w-[14ch]">
-            Designed between heritage and movement.
+            Full-grain leather, hand-finished.
           </h2>
           <p className="ed-body-lg mt-7 max-w-[40ch]">
-            Streetwear, jewelry, and objects shaped by Moroccan identity —
-            recut for a global wardrobe. Each piece is printed and produced
-            when you order it, never before.
+            Bags and small leather goods, hand-stitched in a small
+            Marrakech atelier. Solid brass hardware, contrast
+            saddle-stitch, patinas with wear.
           </p>
           <div className="mt-10">
             <Link href="/products" className="ed-cta">
-              Shop New Drop
+              Shop the leather
             </Link>
           </div>
         </div>

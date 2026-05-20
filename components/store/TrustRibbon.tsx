@@ -1,8 +1,8 @@
 const PILLARS = [
-  "Print-to-order",
+  "Hand-stitched in Marrakech",
   "Ships in 3–5 days",
   "Free EU returns",
-  "Heavyweight cotton · Sterling silver",
+  "Full-grain leather · solid brass",
 ];
 
 export default function TrustRibbon() {

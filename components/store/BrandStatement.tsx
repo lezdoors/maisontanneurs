@@ -8,15 +8,15 @@ export default function BrandStatement() {
               The Brand
             </div>
             <h2 className="font-sans font-light tracking-[-0.012em] text-[clamp(28px,3.4vw,46px)] leading-[1.1] text-white max-w-[20ch]">
-              Modern Moroccan identity, made wearable.
+              Marrakech leather, made by hand.
             </h2>
           </div>
           <div className="md:col-span-5">
             <p className="text-[14px] leading-[1.7] text-white/75 font-light max-w-[44ch]">
-              Kechken is a contemporary label rooted in the visual register
-              of the Maghreb. Streetwear, jewelry, and leather goods designed
-              in-house, printed and finished when you order, shipped within
-              three to five days. No deadstock. No overproduction.
+              Full-grain leather, solid brass, contrast saddle-stitch.
+              Every piece is finished in a small Marrakech atelier and
+              shipped direct — DHL or FedEx, three to five days. No
+              middlemen, no markups, no inventory we didn&apos;t make.
             </p>
             <div className="mt-7 flex items-center gap-8">
               <div>
@@ -25,13 +25,13 @@ export default function BrandStatement() {
               </div>
               <div className="w-px h-9 bg-white/15" />
               <div>
-                <div className="text-[28px] font-light tracking-tight">03</div>
-                <div className="rb-meta text-white/55 mt-1">Categories</div>
+                <div className="text-[28px] font-light tracking-tight">100%</div>
+                <div className="rb-meta text-white/55 mt-1">Full-grain leather</div>
               </div>
               <div className="w-px h-9 bg-white/15" />
               <div>
                 <div className="text-[28px] font-light tracking-tight">3–5d</div>
-                <div className="rb-meta text-white/55 mt-1">Made to order</div>
+                <div className="rb-meta text-white/55 mt-1">Ships from Marrakech</div>
               </div>
             </div>
           </div>

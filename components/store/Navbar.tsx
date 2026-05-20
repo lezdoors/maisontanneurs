@@ -7,9 +7,8 @@ import { useRouter } from "next/navigation";
 import { useCart } from "@/components/store/CartProvider";
 
 const NAV_LINKS: { label: string; href: string }[] = [
-  { label: "New Drop", href: "/products" },
-  { label: "Streetwear", href: "/products?category=Streetwear" },
-  { label: "Jewelry", href: "/products?category=Jewelry" },
+  { label: "Shop", href: "/products" },
+  { label: "Care", href: "/legal/care" },
   { label: "Story", href: "/about" },
   { label: "Contact", href: "mailto:hello@kechken.com" },
 ];
@@ -67,7 +66,7 @@ export default function Navbar() {
           </button>
 
           <nav className="hidden md:flex items-center gap-8 lg:gap-10">
-            {NAV_LINKS.slice(0, 3).map((l) => (
+            {NAV_LINKS.slice(0, 2).map((l) => (
               <Link
                 key={l.label}
                 href={l.href}
@@ -106,7 +105,7 @@ export default function Navbar() {
         {/* Right: desktop nav (2) + icons */}
         <div className="ml-auto flex items-center gap-5 md:gap-7 z-10">
           <nav className="hidden md:flex items-center gap-8 lg:gap-10">
-            {NAV_LINKS.slice(3).map((l) => (
+            {NAV_LINKS.slice(2).map((l) => (
               <Link
                 key={l.label}
                 href={l.href}

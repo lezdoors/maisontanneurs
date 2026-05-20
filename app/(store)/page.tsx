@@ -2,7 +2,7 @@ import Hero from "@/components/store/Hero";
 import TrustRibbon from "@/components/store/TrustRibbon";
 import FeaturedDrop from "@/components/store/FeaturedDrop";
 import CategoryTiles from "@/components/store/CategoryTiles";
-import JewelryFocus from "@/components/store/JewelryFocus";
+import AtelierFocus from "@/components/store/AtelierFocus";
 import EditorialStrip from "@/components/store/EditorialStrip";
 import ProductPreview from "@/components/store/ProductPreview";
 import BrandStoryEditorial from "@/components/store/BrandStoryEditorial";
@@ -15,7 +15,7 @@ export default async function Home() {
       <TrustRibbon />
       <FeaturedDrop />
       <CategoryTiles />
-      <JewelryFocus />
+      <AtelierFocus />
       <EditorialStrip />
       <ProductPreview />
       <BrandStoryEditorial />

@@ -5,9 +5,7 @@ import { useState } from "react";
 
 const SHOP_LINKS = [
   { label: "New Drop", href: "/products" },
-  { label: "Streetwear", href: "/products?category=Streetwear" },
-  { label: "Jewelry", href: "/products?category=Jewelry" },
-  { label: "Limited Drops", href: "/products?category=Limited%20Drops" },
+  { label: "Bags", href: "/products?category=Leather%20Goods" },
 ];
 
 const HOUSE_LINKS = [
@@ -19,7 +17,7 @@ const HOUSE_LINKS = [
 const HELP_LINKS = [
   { label: "Shipping", href: "/legal/shipping" },
   { label: "Returns", href: "/legal/returns" },
-  { label: "Size & Care", href: "/legal/care" },
+  { label: "Care", href: "/legal/care" },
   { label: "Contact", href: "mailto:hello@kechken.com" },
 ];
 
@@ -164,7 +162,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-[11px] text-white/55">
           <div className="font-serif italic text-[14px] text-white/75">
-            kechken · modern moroccan identity
+            kechken · hand-stitched in marrakech
           </div>
           <div className="flex items-center gap-5 ed-meta">
             <Link href="/legal/privacy" className="hover:text-white transition-colors">Privacy</Link>

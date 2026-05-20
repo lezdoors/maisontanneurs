@@ -25,7 +25,7 @@ function resolveCategoryFilter(raw: string): { in?: string[]; eq?: string } {
 export const metadata: Metadata = {
   title: "Drops",
   description:
-    "Hand-painted figurative graphics on heavyweight cotton. Print-to-order, shipped in 3–5 days. No overstock, no waste.",
+    "Hand-stitched leather wearables sourced direct from a Marrakech atelier. Shipped worldwide in 3–5 days via DHL/FedEx.",
 };
 
 async function getProducts(category?: string, q?: string): Promise<Product[]> {
@@ -129,9 +129,9 @@ export default async function ProductsPage({
             Drops
           </h1>
           <p className="font-serif italic text-[18px] leading-[1.55] text-graphite max-w-[44ch]">
-            Hand-painted figurative graphics on heavyweight cotton. Each drop
-            is a small run — released, sold, restocked only if the work
-            deserves it.
+            Hand-stitched leather from a small Marrakech atelier. Each drop
+            is a tight edition — released, sold, restocked only when the
+            leather is right.
           </p>
         </div>
       </section>

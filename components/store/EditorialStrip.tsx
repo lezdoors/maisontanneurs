@@ -26,7 +26,7 @@ const ITEMS: EditorialItem[] = [
   },
   {
     eyebrow: "The Atelier",
-    title: "Print-to-order, made when you order",
+    title: "Hand-stitched, one bag at a time",
     href: "/about",
     image: "/hero/editorial-atelier.webp",
     gradient: "linear-gradient(140deg, #1e4a6b 0%, #2a2622 100%)",

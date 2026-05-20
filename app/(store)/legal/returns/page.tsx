@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Returns — Kechken",
   description:
-    "Kechken returns and exchanges. Thirty days, unworn and unwashed, with original tags. Standard apparel returns policy.",
+    "Kechken returns and exchanges. Thirty days, unused and undamaged, with original packaging.",
 };
 
 export default function ReturnsPage() {
@@ -15,38 +15,37 @@ export default function ReturnsPage() {
       <p className="updated">Last updated · 19 May 2026</p>
 
       <p>
-        We want you to wear what you order. If something does not fit or
-        does not feel right, you have thirty days from delivery to send
-        it back for a full refund or an exchange.
+        We want you to keep what you carry. If a bag does not feel right,
+        you have thirty days from delivery to send it back for a full
+        refund or an exchange.
       </p>
 
       <h2>What we accept</h2>
       <ul>
-        <li>Apparel returned unworn, unwashed, with original tags attached.</li>
-        <li>Jewelry returned in original packaging, undamaged.</li>
-        <li>Leather goods returned unused, undamaged, with the dust bag.</li>
+        <li>Bags returned unused, undamaged, with the dust bag and original packaging.</li>
+        <li>Small leather goods returned unused, undamaged, with original packaging.</li>
       </ul>
 
       <h2>What we cannot accept</h2>
       <ul>
         <li>Items returned more than 30 days after delivery.</li>
-        <li>Items that have been worn, washed, altered, or damaged by the customer.</li>
+        <li>Items that have been used, conditioned, altered, or damaged by the customer.</li>
         <li>Final-sale items (clearly marked on the product page at purchase).</li>
       </ul>
 
       <h2>How to return</h2>
       <ol style={{paddingLeft: "20px", marginBottom: "20px"}}>
         <li style={{marginBottom: "8px"}}>Write to <Link href="mailto:hello@kechken.com">hello@kechken.com</Link> within 30 days of delivery with your order number and the reason for the return.</li>
-        <li style={{marginBottom: "8px"}}>We will email you a return label (US and EU orders) and the warehouse address.</li>
-        <li style={{marginBottom: "8px"}}>Ship the item back within 14 days of receiving the label.</li>
+        <li style={{marginBottom: "8px"}}>We will arrange a return shipping label via DHL or FedEx (EU and US orders) and email it to you within one working day.</li>
+        <li style={{marginBottom: "8px"}}>Ship the bag back within 14 days of receiving the label.</li>
         <li style={{marginBottom: "8px"}}>Once we receive and inspect the return, we will refund the original payment method within 5 business days, or dispatch the exchange.</li>
       </ol>
 
       <h2>Return shipping cost</h2>
       <p>
-        US and EU returns are free — we cover the return label. International
-        return shipping is the responsibility of the customer; we recommend
-        a tracked service, as we cannot refund items that do not reach us.
+        EU and US returns are free — we arrange and pay for the DHL/FedEx
+        return label. For other destinations, return shipping is shared
+        case by case; write to us first and we will quote it.
       </p>
 
       <h2>Refunds</h2>

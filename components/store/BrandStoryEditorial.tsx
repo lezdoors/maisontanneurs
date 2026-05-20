@@ -31,18 +31,17 @@ export default function BrandStoryEditorial() {
         <div className="max-w-[460px] reveal">
           <div className="ed-eyebrow mb-6">Between Worlds</div>
           <h2 className="ed-h2 max-w-[16ch]">
-            From Morocco, recut for today.
+            From the Marrakech atelier.
           </h2>
           <p className="ed-body-lg mt-7 max-w-[44ch]">
-            Kechken is built around modern Moroccan identity — streetwear,
-            jewelry, and limited drops shaped by Maghreb form, metalwork,
-            colour, and line. Every piece is designed in-house, printed and
-            finished when you place the order, and shipped to you within
-            three to five days from a vetted fulfillment partner.
+            Kechken is a small leather house working out of a Marrakech
+            atelier. Each bag is cut, stitched, and finished by hand —
+            full-grain leather, solid brass hardware, contrast saddle-stitch.
+            Shipped direct to you within three to five days via DHL or FedEx.
           </p>
           <p className="ed-body-lg mt-4 max-w-[44ch]">
-            No deadstock. No overproduction. A label for people who carry
-            culture into the room.
+            No middlemen. No inventory we didn&apos;t make. A leather house
+            for people who want the maker&apos;s mark on the bag they carry.
           </p>
           <div className="mt-10">
             <Link href="/about" className="ed-cta-outline">

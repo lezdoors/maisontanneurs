@@ -88,7 +88,7 @@ export default function Hero() {
               color: "rgba(245,244,241,0.85)",
             }}
           >
-            Leather, jewelry, and heavyweight cotton — made by hand,
+            Full-grain leather, hand-stitched and
             shipped from Marrakech.
           </p>
 

@@ -34,11 +34,11 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Kechken — Clothing rooted in the Maghreb",
+    default: "Kechken — Hand-stitched leather from Marrakech",
     template: "%s | Kechken",
   },
   description:
-    "Hand-painted figurative graphics on heavyweight cotton. A clothing label born of Moroccan visual tradition, made for now.",
+    "Hand-stitched leather wearables, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes, shipped worldwide in 3–5 days.",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://www.kechken.com",
   ),
@@ -46,15 +46,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Kechken",
-    title: "Kechken — Clothing rooted in the Maghreb",
+    title: "Kechken — Hand-stitched leather from Marrakech",
     description:
-      "Hand-painted figurative graphics on heavyweight cotton. A clothing label born of Moroccan visual tradition, made for now.",
+      "Hand-stitched leather wearables, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes, shipped worldwide in 3–5 days.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Kechken",
     description:
-      "Hand-painted figurative graphics on heavyweight cotton. A clothing label born of Moroccan visual tradition, made for now.",
+      "Hand-stitched leather wearables, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes, shipped worldwide in 3–5 days.",
   },
   alternates: {
     canonical: "/",
@@ -68,7 +68,7 @@ const ORGANIZATION_LD = {
   url: "https://www.kechken.com",
   logo: "https://www.kechken.com/icon.svg",
   description:
-    "A clothing label rooted in Moroccan visual tradition. Hand-painted figurative graphics on heavyweight cotton.",
+    "Hand-stitched leather wearables sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes.",
   email: "hello@kechken.com",
 };
 

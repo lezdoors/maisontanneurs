@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Kechken",
   description:
-    "A modern Moroccan apparel label — streetwear, jewelry, and leather goods designed in-house and made to order, shipped within three to five days.",
+    "A small leather house working out of a Marrakech atelier. Full-grain leather, hand-stitched, solid brass hardware. Shipped direct in three to five days.",
 };
 
 export default function AboutPage() {
@@ -50,7 +50,7 @@ export default function AboutPage() {
                 fontWeight: 500,
               }}
             >
-              Modern Moroccan, made wearable.
+              Hand-stitched in Marrakech.
             </h1>
           </div>
         </div>
@@ -62,25 +62,25 @@ export default function AboutPage() {
           <div className="ed-eyebrow mb-6">The Brand</div>
           <p className="text-[19px] md:text-[21px] font-serif italic font-light leading-[1.45] text-[var(--color-ink)] mb-8"
              style={{ fontFamily: "var(--font-serif, 'Cormorant Garamond', serif)" }}>
-            A wardrobe for people who carry culture into the room.
+            A leather house for people who want the maker&apos;s mark on the
+            bag they carry.
           </p>
           <p className="text-[15px] font-sans font-light leading-[1.75] text-[var(--color-ink-soft)] mb-5">
-            Kechken is a contemporary apparel label rooted in the visual
-            register of the Maghreb — Atlas mountain silhouettes, zellige
-            geometry, Berber typography, the colour of Marrakech limestone
-            at golden hour. We design tees, hoodies, leather goods, and
-            silver jewelry that read as modern first, Moroccan second.
+            Kechken is a small leather house working out of a Marrakech
+            atelier. We make bags — full-grain leather, solid brass
+            hardware, contrast saddle-stitch — cut and finished by hand,
+            one piece at a time, by artisans who have been working leather
+            in the medina for generations.
           </p>
           <p className="text-[15px] font-sans font-light leading-[1.75] text-[var(--color-ink-soft)] mb-5">
-            Every piece is designed in-house and produced when you order it.
-            No deadstock. No overproduction. No advance inventory destroyed
-            at season&apos;s end. Pieces are printed, cut, and finished by a
-            vetted production partner and shipped within three to five days
-            from the warehouse closest to you.
+            Every bag ships direct from the atelier via DHL or FedEx,
+            three to five days to your door. No middlemen, no warehouses,
+            no inventory we didn&apos;t make. What you carry was finished by
+            the person who signed the lining.
           </p>
           <p className="text-[15px] font-sans font-light leading-[1.75] text-[var(--color-ink-soft)]">
-            We launch in collections — small, intentional drops, each tied
-            to a single visual idea. Drop 01 lands June 2026.
+            Drop 01 lands June 2026 — a tight edition of bags and small
+            leather goods, restocked only when the leather is right.
           </p>
         </div>
       </section>
@@ -89,8 +89,8 @@ export default function AboutPage() {
       <section className="px-6 md:px-10 pb-8 bg-[var(--color-bg)]">
         <div className="relative aspect-[21/9] overflow-hidden bg-[var(--color-bg-alt)] max-w-[1400px] mx-auto">
           <Image
-            src="/products/drop-01/wordmark-tee-01.webp"
-            alt="Bone-coloured hoodie on limestone in a Moroccan courtyard"
+            src="/products/drop-01/heritage-rucksack-01-v2.webp"
+            alt="Heritage Rucksack in cognac full-grain leather"
             fill
             className="object-cover"
             sizes="(min-width: 1024px) 1400px, 100vw"
@@ -104,15 +104,15 @@ export default function AboutPage() {
           {[
             {
               label: "Design",
-              text: "Every print, pattern, and silhouette is drawn in-house. The Moroccan reference is in the form, the colour, and the line — not in literal motif. Modern silhouettes first.",
+              text: "Silhouettes drawn for daily carry, not season-driven trend. Form, leather grain, and brass hardware do the talking. The Moroccan reference is in the contrast saddle-stitch and the patina, not in literal motif.",
             },
             {
-              label: "Production",
-              text: "Made to order via a vetted print-on-demand partner with warehouses in the US and EU. Heavyweight cotton, full-grain leather, sterling silver. Each piece is finished only when you place the order.",
+              label: "Atelier",
+              text: "Each bag is cut, stitched, and finished by hand in a small Marrakech atelier. Full-grain Moroccan leather, solid brass hardware, vegetable-tanned linings. One artisan finishes a bag from start to end — signed inside.",
             },
             {
               label: "Shipping",
-              text: "Three to five business days from the warehouse nearest to you. Tracking included. Returns within 30 days, no questions asked.",
+              text: "Three to five business days direct from Marrakech via DHL or FedEx. Tracking included on every order. Returns within 30 days, no questions asked.",
             },
           ].map((item) => (
             <div key={item.label}>
@@ -134,8 +134,8 @@ export default function AboutPage() {
             See the first drop.
           </h2>
           <p className="text-[15px] font-sans font-light leading-[1.7] text-[var(--color-ink-soft)] mb-10 max-w-[44ch] mx-auto">
-            Five pieces. Each tied to the Atlas line motif. Shipping
-            June 2026.
+            A tight edition of bags and small leather goods,
+            hand-stitched in Marrakech. Shipping June 2026.
           </p>
           <Link
             href="/products"
