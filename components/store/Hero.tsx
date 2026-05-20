@@ -20,10 +20,28 @@ export default function Hero() {
 
       <div
         aria-hidden
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-x-0 top-0 h-[180px] pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, rgba(14,13,12,0.55) 0%, rgba(14,13,12,0.15) 30%, rgba(14,13,12,0.05) 55%, rgba(14,13,12,0.65) 100%)",
+            "linear-gradient(180deg, rgba(8,7,6,0.78) 0%, rgba(8,7,6,0.55) 45%, rgba(8,7,6,0) 100%)",
+        }}
+      />
+
+      <div
+        aria-hidden
+        className="absolute inset-y-0 left-0 w-[58%] pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(8,7,6,0.72) 0%, rgba(8,7,6,0.45) 45%, rgba(8,7,6,0) 100%)",
+        }}
+      />
+
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-[360px] pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(8,7,6,0) 0%, rgba(8,7,6,0.4) 45%, rgba(8,7,6,0.85) 100%)",
         }}
       />
 
@@ -42,7 +60,7 @@ export default function Hero() {
             style={{
               fontSize: "clamp(10px, 0.85vw, 12px)",
               letterSpacing: "0.32em",
-              color: "rgba(245,244,241,0.78)",
+              color: "rgba(245,244,241,0.82)",
             }}
           >
             Drop 01 · June 2026
@@ -56,6 +74,7 @@ export default function Hero() {
               fontSize: "clamp(60px, 10vw, 168px)",
               letterSpacing: "-0.015em",
               fontWeight: 500,
+              textShadow: "0 2px 24px rgba(0,0,0,0.4)",
             }}
           >
             Hand-shaped in Morocco.
@@ -66,7 +85,7 @@ export default function Hero() {
             style={{
               fontSize: "clamp(12px, 1vw, 14px)",
               letterSpacing: "0.22em",
-              color: "rgba(245,244,241,0.7)",
+              color: "rgba(245,244,241,0.85)",
             }}
           >
             Leather, jewelry, and heavyweight cotton — made by hand,
@@ -76,14 +95,14 @@ export default function Hero() {
           <div className="mt-12 flex flex-col sm:flex-row items-start gap-4">
             <Link
               href="#drop"
-              className="inline-flex items-center bg-[#f5f4f1] text-[#0e0d0c] px-8 py-4 uppercase font-medium hover:bg-white transition-colors"
+              className="inline-flex items-center bg-[#f5f4f1] text-[#0e0d0c] hover:bg-white transition-colors px-9 py-[18px] uppercase font-medium shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
               style={{ fontSize: "11px", letterSpacing: "0.22em" }}
             >
               Shop the Drop
             </Link>
             <Link
               href="/story"
-              className="inline-flex items-center text-[#f5f4f1] border border-[rgba(245,244,241,0.35)] px-8 py-4 uppercase font-medium hover:bg-[rgba(245,244,241,0.08)] transition-colors"
+              className="inline-flex items-center text-[#f5f4f1] border border-[rgba(245,244,241,0.55)] px-9 py-[18px] uppercase font-medium hover:bg-[rgba(245,244,241,0.12)] transition-colors"
               style={{ fontSize: "11px", letterSpacing: "0.22em" }}
             >
               The Atelier
