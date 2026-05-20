@@ -1,11 +1,11 @@
-// One-shot: render app/icon.svg → app/favicon.ico (16/32/48) + app/apple-icon.png (180).
+// One-shot: render app/icon.png → app/favicon.ico (16/32/48) + app/apple-icon.png (180).
 // Run: pnpm tsx scripts/gen-favicon.ts
 import sharp from "sharp";
 import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const ROOT = process.cwd();
-const SVG_PATH = join(ROOT, "app/icon.svg");
+const SOURCE_PATH = join(ROOT, "app/icon.png");
 const ICO_PATH = join(ROOT, "app/favicon.ico");
 const APPLE_PATH = join(ROOT, "app/apple-icon.png");
 
@@ -42,17 +42,17 @@ function pngToIco(pngBuffers: Buffer[], sizes: number[]): Buffer {
 }
 
 async function main() {
-  const svg = await readFile(SVG_PATH);
+  const source = await readFile(SOURCE_PATH);
 
   const icoSizes = [16, 32, 48];
   const icoPngs = await Promise.all(
-    icoSizes.map((s) => sharp(svg, { density: 512 }).resize(s, s).png().toBuffer()),
+    icoSizes.map((s) => sharp(source).resize(s, s).png().toBuffer()),
   );
   const ico = pngToIco(icoPngs, icoSizes);
   await writeFile(ICO_PATH, ico);
   console.log(`Wrote ${ICO_PATH} (${ico.length} bytes, ${icoSizes.join("x, ")}x)`);
 
-  const applePng = await sharp(svg, { density: 1024 }).resize(180, 180).png().toBuffer();
+  const applePng = await sharp(source).resize(180, 180).png().toBuffer();
   await writeFile(APPLE_PATH, applePng);
   console.log(`Wrote ${APPLE_PATH} (${applePng.length} bytes, 180x180)`);
 }

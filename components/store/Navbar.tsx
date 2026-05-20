@@ -85,10 +85,10 @@ export default function Navbar() {
           className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none flex items-center gap-3 transition-colors ${inkClass}`}
         >
           <Image
-            src="/brand/kechken-monogram.png"
+            src="/brand/maison-tanneurs.png"
             alt=""
-            width={254}
-            height={310}
+            width={2048}
+            height={2048}
             priority
             className={`h-[44px] md:h-[48px] w-auto transition-[filter] duration-500 ${
               scrolled ? "" : "invert"
