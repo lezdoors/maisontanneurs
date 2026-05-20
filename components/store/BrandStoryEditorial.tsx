@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const STORY_IMAGE: string | null = "/hero/brand-story-v2.webp";
+const STORY_IMAGE: string | null = null;
 
 export default function BrandStoryEditorial() {
   return (

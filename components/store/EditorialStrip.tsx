@@ -14,7 +14,7 @@ const ITEMS: EditorialItem[] = [
     eyebrow: "The Material",
     title: "Full-grain leather, hand-cured in Marrakech",
     href: "/about",
-    image: "/hero/editorial-material-v2.webp",
+    image: null,
     gradient: "linear-gradient(140deg, #d8a47a 0%, #8c6b3a 60%, #4a3625 100%)",
   },
   {

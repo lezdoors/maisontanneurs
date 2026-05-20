@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Swap point: when the featured-drop campaign WebP lands, set this path.
-const FEATURED_IMAGE: string | null = "/hero/editorial-material-v2.webp";
+const FEATURED_IMAGE: string | null = "/hero/material-leather-macro.webp";
 
 export default function FeaturedDrop() {
   return (

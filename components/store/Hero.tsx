@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const HERO_IMAGE = "/hero/hero-kechken-atelier.webp";
+const HERO_IMAGE = "/hero/hero-leather-campaign.webp";
 
 export default function Hero() {
   return (

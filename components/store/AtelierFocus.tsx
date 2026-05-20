@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const ATELIER_HERO: string | null = "/hero/jewelry-focus.webp";
+const ATELIER_HERO: string | null = "/hero/atelier-arch-rucksack.webp";
 
 export default function AtelierFocus() {
   return (
