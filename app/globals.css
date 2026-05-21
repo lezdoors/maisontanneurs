@@ -2,15 +2,16 @@
 
 @theme {
   /* ============================================================
-     KECHKEN · Modern Moroccan luxury fashion register
-     Lemaire restraint × Fear of God scale × Jacquemus warmth × Aigle clarity
+     MAISON TANNEURS · Hand-stitched leather from Marrakech
+     White-base luxury register: Le Tanneur / Loewe / Aether / Meqnes
+     Brown brand accents (bronze, terracotta) sing against pure white.
      ============================================================ */
 
-  /* Surfaces — warmer than pure RB cream, leaning bone/ivory */
-  --color-bg: #f7f2e8;              /* bone, primary surface */
-  --color-bg-alt: #ece4d2;          /* sand, alt sections */
-  --color-bg-tinted: #ddd1b9;       /* limestone, tertiary */
-  --color-bg-dark: #1c1a18;         /* washed-black, jewelry section + footer accent */
+  /* Surfaces — pure white base, leather accents on top */
+  --color-bg: #FFFFFF;              /* white, primary surface */
+  --color-bg-alt: #FAFAFA;          /* near-white, alt sections */
+  --color-bg-tinted: #F0EFEC;       /* warm gray, tertiary tile bg */
+  --color-bg-dark: #1c1a18;         /* washed-black, dark sections + footer */
   --color-bg-dark-soft: #2a2622;    /* charcoal-warm, dark cards */
 
   /* Ink hierarchy */
@@ -20,8 +21,8 @@
   --color-mineral: #8a8275;         /* tertiary text, eyebrows, dates */
 
   /* Lines + dividers */
-  --color-rule: #d8cdb8;            /* hairline borders */
-  --color-rule-soft: #e6dcc7;       /* internal grid dividers */
+  --color-rule: #E8E6E0;            /* hairline borders, neutral warm gray */
+  --color-rule-soft: #F0EEE8;       /* internal grid dividers */
 
   /* Brand accents — used sparingly */
   --color-bronze: #8c6b3a;          /* burnished bronze — primary accent */
@@ -38,7 +39,7 @@
   --color-brass-hi: var(--color-bronze-hi);
   --color-line: rgba(28,26,24,.14);
   --color-line-soft: rgba(28,26,24,.06);
-  --color-warm-white: #fbf7ee;
+  --color-warm-white: #FFFFFF;
   --color-pearl: var(--color-bg-alt);
   --color-stone: var(--color-rule);
   --color-graphite: var(--color-ink-soft);

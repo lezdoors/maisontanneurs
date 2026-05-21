@@ -9,6 +9,7 @@ import "./globals.css";
 import CookieBanner from "@/components/store/CookieBanner";
 import ConsentedClarity from "@/components/store/ConsentedClarity";
 import MetaPixel from "@/components/store/MetaPixel";
+import GA4 from "@/components/store/GA4";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -107,6 +108,7 @@ export default function RootLayout({
             unconditional Clarity script. */}
         <ConsentedClarity />
         <MetaPixel />
+        <GA4 />
         {children}
         <CookieBanner />
       </body>

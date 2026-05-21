@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const STORY_IMAGE: string | null = null;
+const STORY_IMAGE: string | null = "/hero/atelier-messenger-portrait.webp";
 
 export default function BrandStoryEditorial() {
   return (

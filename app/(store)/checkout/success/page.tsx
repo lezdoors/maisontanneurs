@@ -2,6 +2,7 @@ import Link from "next/link";
 import { stripe } from "@/lib/stripe";
 import { formatPrice } from "@/lib/utils";
 import { ClearCart } from "@/components/store/ClearCart";
+import PurchaseTracking from "@/components/store/PurchaseTracking";
 import { createClient } from "@supabase/supabase-js";
 
 function getSupabase() {
@@ -91,6 +92,16 @@ export default async function CheckoutSuccessPage({
   return (
     <main className="min-h-screen px-6 py-16 md:py-24">
       <ClearCart />
+      <PurchaseTracking
+        orderId={orderNumber || lookupId || "unknown"}
+        total={total}
+        items={items.map((i) => ({
+          slug: undefined,
+          title: i.title,
+          price: i.price,
+          quantity: i.quantity,
+        }))}
+      />
       <div className="max-w-[640px] w-full mx-auto">
         {/* Eyebrow + title */}
         <p className="eye text-center mb-4">Order Confirmed</p>

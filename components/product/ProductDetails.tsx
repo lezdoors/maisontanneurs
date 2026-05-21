@@ -1,9 +1,12 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { formatPrice } from "@/lib/utils";
 import { useCart } from "@/components/store/CartProvider";
 import { productToCartItem } from "@/lib/cart";
+import { trackGA4Event } from "@/components/store/GA4";
+import { trackPixelEvent } from "@/components/store/MetaPixel";
 import type { Product } from "@/lib/supabase/types";
 
 interface ProductDetailsProps {
@@ -13,11 +16,59 @@ interface ProductDetailsProps {
 export default function ProductDetails({ product }: ProductDetailsProps) {
   const { addItem } = useCart();
 
+  // GA4 + Pixel: view_item / ViewContent on PDP mount
+  useEffect(() => {
+    const price = product.price / 100;
+    trackGA4Event("view_item", {
+      currency: "USD",
+      value: price,
+      items: [
+        {
+          item_id: product.slug,
+          item_name: product.title,
+          item_category: product.category,
+          price,
+          quantity: 1,
+        },
+      ],
+    });
+    trackPixelEvent("ViewContent", {
+      content_ids: [product.slug],
+      content_name: product.title,
+      content_type: "product",
+      content_category: product.category,
+      currency: "USD",
+      value: price,
+    });
+  }, [product.slug, product.title, product.price, product.category]);
+
   function handleAddToCart() {
     addItem(productToCartItem(product));
+    const price = product.price / 100;
+    trackGA4Event("add_to_cart", {
+      currency: "USD",
+      value: price,
+      items: [
+        {
+          item_id: product.slug,
+          item_name: product.title,
+          item_category: product.category,
+          price,
+          quantity: 1,
+        },
+      ],
+    });
+    trackPixelEvent("AddToCart", {
+      content_ids: [product.slug],
+      content_name: product.title,
+      content_type: "product",
+      content_category: product.category,
+      currency: "USD",
+      value: price,
+    });
   }
 
-  const sku = `AKL-${product.id.slice(0, 6).toUpperCase().padStart(6, "0")}`;
+  const sku = `MT-${product.id.slice(0, 6).toUpperCase().padStart(6, "0")}`;
 
   return (
     <div className="sticky top-0 self-start max-h-screen overflow-y-auto">
@@ -111,10 +162,35 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             Add to Cart
           </button>
 
-          {/* Shipping note */}
+          {/* Shipping + care note */}
           <p className="font-serif italic text-[14px] text-mineral leading-[1.6]">
-            Handcrafted in Marrakech. Allow 2–4 weeks for delivery.
+            Hand-stitched in Marrakech. Ships in 3–5 days via DHL or FedEx.
           </p>
+
+          {/* Care + sizing links */}
+          <div className="border-t border-stone/40 pt-6 flex flex-col gap-2.5">
+            <Link
+              href="/legal/care"
+              className="font-mono text-[10px] tracking-[0.18em] uppercase text-graphite hover:text-ink transition-colors flex items-center justify-between"
+            >
+              <span>How it&apos;s cared for</span>
+              <span className="text-mineral">→</span>
+            </Link>
+            <Link
+              href="/legal/shipping"
+              className="font-mono text-[10px] tracking-[0.18em] uppercase text-graphite hover:text-ink transition-colors flex items-center justify-between"
+            >
+              <span>Shipping &amp; delivery</span>
+              <span className="text-mineral">→</span>
+            </Link>
+            <Link
+              href="/legal/returns"
+              className="font-mono text-[10px] tracking-[0.18em] uppercase text-graphite hover:text-ink transition-colors flex items-center justify-between"
+            >
+              <span>30-day returns</span>
+              <span className="text-mineral">→</span>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

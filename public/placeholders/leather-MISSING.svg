@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500" role="img" aria-label="Missing leather asset — generate in HF">
+  <rect width="1200" height="1500" fill="#F0EFEC"/>
+  <rect x="40" y="40" width="1120" height="1420" fill="none" stroke="#8c6b3a" stroke-width="2" stroke-dasharray="14 10"/>
+  <g transform="translate(600 720)" fill="#8c6b3a" font-family="ui-monospace, 'JetBrains Mono', monospace" text-anchor="middle">
+    <text y="-40" font-size="32" letter-spacing="6">MISSING</text>
+    <text y="20" font-size="22" letter-spacing="4" fill="#6a4f29">GENERATE IN HF</text>
+    <text y="120" font-size="14" letter-spacing="2" fill="#8a8275">/placeholders/leather-MISSING.svg</text>
+  </g>
+</svg>

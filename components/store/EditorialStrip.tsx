@@ -11,10 +11,10 @@ type EditorialItem = {
 
 const ITEMS: EditorialItem[] = [
   {
-    eyebrow: "The Material",
-    title: "Full-grain leather, hand-cured in Marrakech",
+    eyebrow: "The Lookbook",
+    title: "Worn the way it was made — slowly.",
     href: "/about",
-    image: null,
+    image: "/hero/lookbook-brunette-seated.webp",
     gradient: "linear-gradient(140deg, #d8a47a 0%, #8c6b3a 60%, #4a3625 100%)",
   },
   {
