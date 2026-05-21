@@ -3,6 +3,13 @@ import { Product } from "@/lib/supabase/types";
 // Fallback catalogue when Supabase is unreachable. Mirror of the live
 // products table — keep in sync with supabase/migrations/*.sql seeds.
 // Hidden SKUs (featured=false) stay accessible by slug but never list.
+//
+// File-naming canon (enforced by scripts/audit-catalogue.ts):
+//   <slug>-scale.webp       ← lifestyle hero (position [0] if present)
+//   <slug>-pdp-white.webp   ← cyclorama hero (position [0] fallback)
+//   <slug>-archive-N.webp   ← supplier raws, gallery, alts (position [2+])
+
+const STORAGE = "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01";
 
 export const STATIC_PRODUCTS: Product[] = [
   {
@@ -11,9 +18,9 @@ export const STATIC_PRODUCTS: Product[] = [
     slug: "heritage-rucksack",
     price: 32500,
     images: [
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/heritage-rucksack-01-v2.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/heritage-rucksack-02-v2.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/heritage-rucksack-03.webp",
+      `${STORAGE}/heritage-rucksack-scale.webp`,
+      `${STORAGE}/heritage-rucksack-archive-1.webp`,
+      `${STORAGE}/heritage-rucksack-archive-2.webp`,
     ],
     category: "Leather Goods",
     status: "available",
@@ -33,14 +40,14 @@ export const STATIC_PRODUCTS: Product[] = [
     title: "Roll-Top Daypack",
     slug: "rolltop-daypack",
     price: 24500,
-    images: [
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/rolltop-daypack-01.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/rolltop-daypack-02.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/rolltop-daypack-03.webp",
-    ],
+    // Original heroes (supplier-pile + souk-worn raws) failed the catalogue
+    // audit. Demoted to draft until clean white-bg PDP + scale shots land
+    // via HF. Re-publish by flipping status back to "available" + featured
+    // back to true once images[] has -pdp-white.webp at [0].
+    images: [],
     category: "Leather Goods",
-    status: "available",
-    featured: true,
+    status: "draft",
+    featured: false,
     materials: ["Full-grain Moroccan leather", "Solid brass hardware", "Hand-stitched in Marrakech"],
     dimensions: { size: "42cm × 30cm × 14cm · single-pocket" },
     description:
@@ -57,11 +64,11 @@ export const STATIC_PRODUCTS: Product[] = [
     slug: "black-stitched-backpack",
     price: 24500,
     images: [
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/black-stitched-backpack-01.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/black-stitched-backpack-02.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/black-stitched-backpack-03.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/black-stitched-backpack-04.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/black-stitched-backpack-05.webp",
+      `${STORAGE}/black-stitched-backpack-pdp-white.webp`,
+      `${STORAGE}/black-stitched-backpack-archive-1.webp`,
+      `${STORAGE}/black-stitched-backpack-archive-2.webp`,
+      `${STORAGE}/black-stitched-backpack-archive-3.webp`,
+      `${STORAGE}/black-stitched-backpack-archive-4.webp`,
     ],
     category: "Leather Goods",
     status: "available",
@@ -82,9 +89,9 @@ export const STATIC_PRODUCTS: Product[] = [
     slug: "cognac-brogue-backpack",
     price: 26500,
     images: [
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/cognac-brogue-backpack-01.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/cognac-brogue-backpack-02.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/cognac-brogue-backpack-03.webp",
+      `${STORAGE}/cognac-brogue-backpack-pdp-white.webp`,
+      `${STORAGE}/cognac-brogue-backpack-archive-1.webp`,
+      `${STORAGE}/cognac-brogue-backpack-archive-2.webp`,
     ],
     category: "Leather Goods",
     status: "available",
@@ -105,10 +112,10 @@ export const STATIC_PRODUCTS: Product[] = [
     slug: "classic-cognac-satchel",
     price: 28500,
     images: [
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/classic-cognac-satchel-01.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/classic-cognac-satchel-02.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/classic-cognac-satchel-03.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/classic-cognac-satchel-04.webp",
+      `${STORAGE}/classic-cognac-satchel-pdp-white.webp`,
+      `${STORAGE}/classic-cognac-satchel-archive-1.webp`,
+      `${STORAGE}/classic-cognac-satchel-archive-2.webp`,
+      `${STORAGE}/classic-cognac-satchel-archive-3.webp`,
     ],
     category: "Leather Goods",
     status: "available",
@@ -129,8 +136,8 @@ export const STATIC_PRODUCTS: Product[] = [
     slug: "woven-leather-backpack",
     price: 29500,
     images: [
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/woven-leather-backpack-01.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/woven-leather-backpack-02.webp",
+      `${STORAGE}/woven-leather-backpack-pdp-white.webp`,
+      `${STORAGE}/woven-leather-backpack-archive-1.webp`,
     ],
     category: "Leather Goods",
     status: "available",
@@ -151,8 +158,8 @@ export const STATIC_PRODUCTS: Product[] = [
     slug: "vintage-buckle-backpack",
     price: 22500,
     images: [
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/vintage-buckle-backpack-01.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/vintage-buckle-backpack-02.webp",
+      `${STORAGE}/vintage-buckle-backpack-pdp-white.webp`,
+      `${STORAGE}/vintage-buckle-backpack-archive-1.webp`,
     ],
     category: "Leather Goods",
     status: "available",

@@ -44,3 +44,4 @@ next-env.d.ts
 # image swap-chain backups (kept locally only)
 *.bak.webp
 .vercel/
+.env*.local

@@ -11,7 +11,7 @@ export interface Product {
   materials: string[];
   craftsman_id: string | null;
   available_quantity: number;
-  status: "available" | "sold" | "reserved";
+  status: "available" | "sold" | "reserved" | "draft";
   featured: boolean;
   created_at: string;
   updated_at: string;
