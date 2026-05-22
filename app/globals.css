@@ -3,60 +3,71 @@
 @theme {
   /* ============================================================
      MAISON TANNEURS · French editorial luxury × Moroccan craft
-     Deep ink + chiaroscuro register. Roche-Bobois / Aether
-     reference. NO cream defaults — dark page, ivory accents.
-     Moroccan signal comes from the leather + brass, not the wash.
+     Paper-white retail page (Lemaire / Loewe / Roche-Bobois) with
+     dark editorial photography for hero + brand-story pulls. No
+     cream wash, no full-dark site.
      ============================================================ */
 
   /* Core palette */
-  --color-near-black: #0a0a0a;        /* default page bg, Aether-leaning */
-  --color-warm-black: #141210;        /* alt section, cognac undertone */
-  --color-warm-black-soft: #1c1a17;   /* card / tile bg on dark */
-  --color-ivory: #f5efe6;             /* warm ivory — text + light surface */
-  --color-ivory-soft: #ebe2d3;        /* alt ivory for tile bg around white-plate product photos */
-  --color-cognac: #7a4a2b;            /* leather accent (darker, RB-tier) */
-  --color-cognac-hi: #9a5a2b;         /* lighter cognac for hovers */
-  --color-bronze: #a8997e;            /* metal/dust accent, eyebrows */
-  --color-brass-gold: #b08a3e;        /* brass hardware accent */
-  --color-oxblood: #5e1f24;           /* sparing accent */
-  --color-whiskey-brown: #6e3a1e;     /* deep leather, body hovers */
+  --color-paper: #fbfaf7;          /* default page bg — paper white, hint of warmth */
+  --color-paper-alt: #f3f2ee;      /* alt section bg */
+  --color-paper-soft: #ebe9e3;     /* subtle bands, tile bg */
+  --color-near-black: #0a0a0a;     /* deep ink — type + dark editorial sections */
+  --color-warm-black: #141210;     /* RB-warm dark for hero zones + footer */
+  --color-warm-black-soft: #1c1a17;
+  --color-ivory: #f5efe6;          /* type on dark sections only */
+  --color-ivory-soft: #ebe2d3;
 
-  /* Semantic — every UI surface reads from here */
-  --color-bg: var(--color-near-black);
-  --color-bg-alt: var(--color-warm-black);
-  --color-bg-tile: var(--color-warm-black-soft);
-  --color-bg-light: var(--color-ivory);
-  --color-bg-light-soft: var(--color-ivory-soft);
+  --color-cognac: #7a4a2b;
+  --color-cognac-hi: #9a5a2b;
+  --color-bronze: #8c7a5a;          /* eyebrow accent on light surfaces */
+  --color-bronze-on-dark: #a8997e;  /* eyebrow on dark surfaces */
+  --color-brass-gold: #b08a3e;
+  --color-oxblood: #5e1f24;
+  --color-whiskey-brown: #6e3a1e;
 
-  --color-ink: var(--color-ivory);              /* default text — ivory on dark */
-  --color-ink-soft: rgba(245, 239, 230, 0.78);  /* secondary text on dark */
-  --color-ink-on-light: var(--color-warm-black);
-  --color-ink-on-light-soft: #3a342e;
-  --color-muted: rgba(245, 239, 230, 0.52);
-  --color-muted-on-light: #6b6258;
+  /* Semantic — primary surface is paper-white */
+  --color-bg: var(--color-paper);
+  --color-bg-alt: var(--color-paper-alt);
+  --color-bg-soft: var(--color-paper-soft);
+  --color-bg-tile: var(--color-paper-alt);
+  --color-bg-dark: var(--color-near-black);
+  --color-bg-dark-soft: var(--color-warm-black);
+  --color-bg-light: var(--color-paper);
+  --color-bg-light-soft: var(--color-paper-alt);
+
+  --color-ink: var(--color-near-black);           /* default type — deep charcoal on paper */
+  --color-ink-soft: #3a3a38;                       /* secondary text */
+  --color-ink-muted: #6b6a66;                      /* tertiary text */
+  --color-ink-on-dark: var(--color-ivory);         /* inverse — for dark sections */
+  --color-ink-on-dark-soft: rgba(245, 239, 230, 0.78);
+  --color-muted: var(--color-ink-muted);
   --color-mineral: var(--color-bronze);
 
-  --color-rule: rgba(245, 239, 230, 0.10);          /* hairline on dark */
-  --color-rule-soft: rgba(245, 239, 230, 0.06);
-  --color-rule-on-light: rgba(20, 18, 16, 0.14);
-  --color-rule-on-light-soft: rgba(20, 18, 16, 0.06);
+  --color-rule: rgba(20, 20, 18, 0.10);
+  --color-rule-soft: rgba(20, 20, 18, 0.06);
+  --color-rule-on-dark: rgba(245, 239, 230, 0.12);
+  --color-rule-on-dark-soft: rgba(245, 239, 230, 0.06);
 
   /* Charcoal kept for old refs — equals near-black now */
   --color-charcoal: var(--color-near-black);
-  --color-bg-dark: var(--color-near-black);
-  --color-bg-dark-soft: var(--color-warm-black);
 
   /* Legacy "cream" aliases — anything still using --color-cream
-     renders ivory (a slightly warmer, deeper #f5efe6 — not a wash). */
-  --color-cream: var(--color-ivory);
-  --color-cream-soft: var(--color-ivory-soft);
-  --color-warm-white: var(--color-ivory);
-  --color-pearl: var(--color-ivory-soft);
+     renders paper-white now. Slightly cooler than before so the
+     overall page reads white, not yellow. */
+  --color-cream: var(--color-paper);
+  --color-cream-soft: var(--color-paper-alt);
+  --color-warm-white: var(--color-paper);
+  --color-pearl: var(--color-paper-alt);
   --color-stone: var(--color-rule);
   --color-graphite: var(--color-ink-soft);
-  --color-bg-tinted: var(--color-warm-black);
-  --color-shadow: rgba(0, 0, 0, 0.5);
+  --color-bg-tinted: var(--color-paper-alt);
+  --color-shadow: rgba(0, 0, 0, 0.06);
   --color-dove-grey: #b6ada1;
+  --color-bone: var(--color-paper);
+  --color-sand: var(--color-bronze);
+  --color-cedar: var(--color-cognac);
+  --color-umber: var(--color-warm-black);
 
   /* Bronze / brass aliases */
   --color-bronze-hi: var(--color-whiskey-brown);
@@ -68,19 +79,13 @@
   --color-mineral-green: var(--color-whiskey-brown);
 
   /* Legacy card aliases */
-  --rb-card-bg: var(--color-bg-alt);
-  --rb-card-bg-alt: var(--color-bg-tile);
-  --color-line: rgba(245, 239, 230, 0.14);
-  --color-line-soft: rgba(245, 239, 230, 0.06);
-  --color-line-bone: rgba(245, 239, 230, 0.18);
-  --color-bone: var(--color-ivory);
-  --color-sand: var(--color-bronze);
-  --color-cedar: var(--color-cognac);
-  --color-umber: var(--color-warm-black);
+  --rb-card-bg: var(--color-paper);
+  --rb-card-bg-alt: var(--color-paper-alt);
+  --color-line: rgba(20, 20, 18, 0.14);
+  --color-line-soft: rgba(20, 20, 18, 0.06);
+  --color-line-bone: rgba(20, 20, 18, 0.18);
 
-  /* Fonts — Switzer only. Every legacy --font-serif / --font-display /
-     --font-mono token points back to Switzer so inline style
-     references still resolve. */
+  /* Fonts — Switzer only */
   --font-sans: "Switzer", "Helvetica Neue", Arial, sans-serif;
   --font-serif: var(--font-sans);
   --font-display: var(--font-sans);
@@ -91,7 +96,7 @@
 }
 
 /* ============================================================
-   BASE — dark default
+   BASE — paper-white default
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -114,24 +119,23 @@ img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
 
-/* When a section opts into the ivory surface, scope inverts text */
-.on-light {
-  background: var(--color-bg-light);
-  color: var(--color-ink-on-light);
+/* Dark-section scope — inverts text colors */
+.on-dark {
+  background: var(--color-near-black);
+  color: var(--color-ivory);
 }
-.on-light-soft { background: var(--color-bg-light-soft); color: var(--color-ink-on-light); }
+.on-dark-warm { background: var(--color-warm-black); color: var(--color-ivory); }
 
 /* ============================================================
    TYPOGRAPHY · Switzer hierarchy
-   Headlines 500-700 (Aether/RB-tier restraint, not bold-bold)
-   Body 400 · Eyebrows 500 +0.08em · CTAs 600 +0.04em
+   Headlines 500-600 (Lemaire/Loewe/RB restraint, not bold-bold)
+   Body 400 · Eyebrows 500 +0.18em · CTAs 600 +0.16em
    ============================================================ */
 
-/* Hero display — Switzer Medium, restrained scale */
 .ed-display {
   font-family: var(--font-sans);
   font-weight: 500;
-  font-size: clamp(56px, 9vw, 152px);
+  font-size: clamp(48px, 6.5vw, 112px);
   letter-spacing: -0.01em;
   line-height: 1.05;
   color: var(--color-ink);
@@ -140,7 +144,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .ed-tile-label {
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: clamp(34px, 4.2vw, 60px);
+  font-size: clamp(28px, 3.4vw, 48px);
   letter-spacing: -0.01em;
   line-height: 1.05;
   color: var(--color-ink);
@@ -149,35 +153,35 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .ed-card-headline {
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: clamp(22px, 2.4vw, 30px);
+  font-size: clamp(20px, 2.2vw, 28px);
   letter-spacing: -0.005em;
-  line-height: 1.15;
+  line-height: 1.18;
   color: var(--color-ink);
 }
 
 .ed-footer-headline {
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: clamp(28px, 3.6vw, 48px);
+  font-size: clamp(26px, 3.4vw, 44px);
   letter-spacing: -0.01em;
-  line-height: 1.08;
+  line-height: 1.1;
   color: var(--color-ink);
 }
 
 .ed-h2 {
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: clamp(36px, 4.8vw, 64px);
+  font-size: clamp(30px, 4vw, 52px);
   letter-spacing: -0.01em;
-  line-height: 1.06;
+  line-height: 1.08;
   color: var(--color-ink);
 }
 
 .ed-h3 {
   font-family: var(--font-sans);
   font-weight: 500;
-  font-size: clamp(18px, 1.8vw, 24px);
-  letter-spacing: 0.04em;
+  font-size: clamp(16px, 1.6vw, 22px);
+  letter-spacing: 0.06em;
   line-height: 1.2;
   text-transform: uppercase;
   color: var(--color-ink);
@@ -187,7 +191,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-family: var(--font-sans);
   font-weight: 500;
   font-size: 13px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-ink);
 }
@@ -195,7 +199,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .ed-body {
   font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--color-ink-soft);
   font-weight: 400;
 }
@@ -211,7 +215,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .ed-eyebrow {
   font-family: var(--font-sans);
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-bronze);
   font-weight: 500;
@@ -220,7 +224,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .ed-meta {
   font-family: var(--font-sans);
   font-size: 11px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-bronze);
   font-weight: 500;
@@ -244,8 +248,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* ============================================================
-   CTAs · Ivory primary, transparent ivory-border secondary.
-   NO cream buttons.
+   CTAs · Dark-fill primary on light pages (Loewe/Lemaire/RB).
+   Ivory-fill primary reserved for use over dark photography.
    ============================================================ */
 .mt-cta {
   display: inline-flex;
@@ -254,7 +258,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-family: var(--font-sans);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   padding: 17px 38px;
   border-radius: 0;
@@ -262,7 +266,26 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   transition: background-color 0.3s var(--ease), color 0.3s var(--ease), opacity 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 
-/* Primary on dark: ivory fill + near-black ink */
+/* Primary on paper: warm-black fill + ivory ink (Lemaire default) */
+.mt-cta--solid-dark {
+  background: var(--color-warm-black);
+  color: var(--color-ivory);
+  border-color: var(--color-warm-black);
+}
+.mt-cta--solid-dark:hover { opacity: 0.84; }
+
+/* Secondary on paper: transparent + 1px ink border */
+.mt-cta--ghost-dark {
+  background: transparent;
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+.mt-cta--ghost-dark:hover {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+/* Primary on dark photography: ivory fill + warm-black ink */
 .mt-cta--solid-light {
   background: var(--color-ivory);
   color: var(--color-warm-black);
@@ -273,7 +296,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: var(--color-ivory);
 }
 
-/* Secondary on dark: transparent + 1px ivory border + ivory text */
+/* Secondary on dark photography: transparent + 1px ivory border */
 .mt-cta--ghost-light {
   background: transparent;
   color: var(--color-ivory);
@@ -285,26 +308,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border-color: var(--color-ivory);
 }
 
-/* Primary on light surface: near-black fill + ivory ink */
-.mt-cta--solid-dark {
-  background: var(--color-warm-black);
-  color: var(--color-ivory);
-  border-color: var(--color-warm-black);
-}
-.mt-cta--solid-dark:hover { opacity: 0.85; }
-
-/* Secondary on light surface */
-.mt-cta--ghost-dark {
-  background: transparent;
-  color: var(--color-warm-black);
-  border-color: var(--color-warm-black);
-}
-.mt-cta--ghost-dark:hover {
-  background: var(--color-warm-black);
-  color: var(--color-ivory);
-}
-
-/* Legacy CTA selectors map to the new system */
+/* Legacy CTA selectors — solid dark by default (light-page primary) */
 .ed-cta,
 .rb-cta,
 .btn-solid {
@@ -314,18 +318,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-family: var(--font-sans);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   padding: 17px 38px;
-  background: var(--color-ivory);
-  color: var(--color-warm-black);
-  border: 1px solid var(--color-ivory);
-  transition: background 0.3s var(--ease), color 0.3s var(--ease), opacity 0.3s var(--ease);
-}
-.ed-cta:hover, .rb-cta:hover, .btn-solid:hover {
-  background: transparent;
+  background: var(--color-warm-black);
   color: var(--color-ivory);
+  border: 1px solid var(--color-warm-black);
+  transition: opacity 0.3s var(--ease);
 }
+.ed-cta:hover, .rb-cta:hover, .btn-solid:hover { opacity: 0.84; }
 
 .ed-cta-outline,
 .rb-cta-outline,
@@ -336,21 +337,20 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-family: var(--font-sans);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   padding: 17px 38px;
   background: transparent;
-  color: var(--color-ivory);
-  border: 1px solid rgba(245, 239, 230, 0.55);
-  transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease);
+  color: var(--color-ink);
+  border: 1px solid var(--color-ink);
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
 }
 .ed-cta-outline:hover, .rb-cta-outline:hover, .btn-outline:hover {
-  background: var(--color-ivory);
-  color: var(--color-warm-black);
-  border-color: var(--color-ivory);
+  background: var(--color-ink);
+  color: var(--color-paper);
 }
 
-/* ed-cta-light — used in dark sections that need an ivory fill button */
+/* ed-cta-light — for use over dark hero imagery */
 .ed-cta-light {
   display: inline-flex;
   align-items: center;
@@ -358,18 +358,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-family: var(--font-sans);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   padding: 17px 38px;
   background: var(--color-ivory);
   color: var(--color-warm-black);
   border: 1px solid var(--color-ivory);
-  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+  transition: opacity 0.3s var(--ease);
 }
-.ed-cta-light:hover {
-  background: transparent;
-  color: var(--color-ivory);
-}
+.ed-cta-light:hover { opacity: 0.85; }
 
 .ed-more, .rb-more {
   display: inline-flex;
@@ -378,17 +375,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-family: var(--font-sans);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-ivory);
+  color: var(--color-ink);
   padding-bottom: 4px;
-  border-bottom: 1px solid rgba(245, 239, 230, 0.45);
-  transition: opacity 0.2s var(--ease), border-color 0.2s var(--ease);
+  border-bottom: 1px solid var(--color-ink);
+  transition: opacity 0.2s var(--ease);
 }
-.ed-more:hover, .rb-more:hover {
-  opacity: 1;
-  border-bottom-color: var(--color-ivory);
-}
+.ed-more:hover, .rb-more:hover { opacity: 0.6; }
 
 /* ============================================================
    SECTION SPACING
@@ -404,14 +398,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* ============================================================
-   CARD · Product card on dark surfaces
+   CARD · Product card on paper
    ============================================================ */
 .ed-card, .rb-product-card { background: transparent; }
 .ed-card-img-wrap, .rb-card-img-wrap {
   overflow: hidden;
   position: relative;
   aspect-ratio: 4 / 5;
-  background: var(--color-bg-light-soft); /* white-plate scale shots land on ivory */
+  background: var(--color-paper-alt);
 }
 .ed-card-img, .rb-card-img { transition: transform 1.1s var(--ease); }
 .ed-card:hover .ed-card-img,
@@ -423,7 +417,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: clamp(15px, 1.4vw, 19px);
   letter-spacing: 0.04em;
   font-weight: 600;
-  color: var(--color-bronze);
+  color: var(--color-cognac);
   text-transform: uppercase;
   display: inline-block;
   line-height: 1;
@@ -433,9 +427,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   top: 100%;
   left: 0;
   right: 0;
-  background: var(--color-bg-alt);
+  background: var(--color-paper);
   border-top: 1px solid var(--color-rule);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 30px rgba(20, 20, 18, 0.06);
   opacity: 0;
   pointer-events: none;
   transform: translateY(-6px);
@@ -465,7 +459,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .eyebrow, .rb-eyebrow, .eye {
   font-family: var(--font-sans);
   font-size: 11px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-bronze);
   font-weight: 500;
@@ -473,7 +467,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .meta, .rb-meta {
   font-family: var(--font-sans);
   font-size: 11px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-bronze);
   font-weight: 500;
@@ -483,6 +477,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.05;
+  color: var(--color-ink);
 }
 .rb-h2 {
   font-family: var(--font-sans);
@@ -496,14 +491,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-family: var(--font-sans);
   font-weight: 500;
   font-size: 13px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-ink);
 }
 .rb-body, .body-text, .body-copy {
   font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--color-ink-soft);
   font-weight: 400;
 }
@@ -533,14 +528,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-family: var(--font-sans);
   font-weight: 600;
   font-size: 11px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  border-bottom: 1px solid rgba(245, 239, 230, 0.5);
+  border-bottom: 1px solid var(--color-ink);
   padding-bottom: 3px;
-  color: var(--color-ivory);
-  transition: border-color 0.2s ease;
+  color: var(--color-ink);
+  transition: opacity 0.2s ease;
 }
-.link-underline:hover { border-bottom-color: var(--color-ivory); }
+.link-underline:hover { opacity: 0.6; }
 
 /* ============================================================
    SCROLL REVEAL
@@ -559,9 +554,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .kenburns { animation: kenburns 24s var(--ease-in-out) infinite alternate; }
 
 /* ============================================================
-   CART DRAWER
+   CART DRAWER · paper-white drawer, charcoal ink
    ============================================================ */
-.cart-scrim { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.55); z-index: 90; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+.cart-scrim { position: fixed; inset: 0; background: rgba(20, 20, 18, 0.45); z-index: 90; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
 .cart-scrim.open { opacity: 1; pointer-events: all; }
-.cart-drawer { position: fixed; top: 0; right: 0; width: min(420px, 90vw); height: 100dvh; background: var(--color-bg-alt); z-index: 91; transform: translateX(100%); transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1); display: flex; flex-direction: column; color: var(--color-ink); }
+.cart-drawer { position: fixed; top: 0; right: 0; width: min(420px, 90vw); height: 100dvh; background: var(--color-paper); z-index: 91; transform: translateX(100%); transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1); display: flex; flex-direction: column; color: var(--color-ink); }
 .cart-drawer.open { transform: translateX(0); }

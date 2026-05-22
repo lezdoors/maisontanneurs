@@ -16,7 +16,6 @@ const NAV_LINKS: { label: string; href: string }[] = [
 const NAV_LINK_CLASS =
   "text-[11px] font-medium uppercase tracking-[0.18em] transition-colors";
 
-// Navbar sits BELOW the 40px TopStrip on every breakpoint.
 export default function Navbar() {
   const router = useRouter();
   const { items, openCart } = useCart();
@@ -42,16 +41,19 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Both states are ivory text: transparent over hero, solid near-black on
-  // scroll. No cream wash ever.
-  const linkColor = "text-[color:var(--color-ivory)]";
-  const linkHover = "hover:text-[color:var(--color-bronze)]";
+  // Transparent over hero (ivory text), paper-white on scroll (charcoal text).
+  const linkColor = scrolled
+    ? "text-[color:var(--color-ink)]"
+    : "text-[color:var(--color-ivory)]";
+  const linkHover = scrolled
+    ? "hover:text-[color:var(--color-cognac)]"
+    : "hover:opacity-70";
 
   return (
     <header
       className={`fixed top-[40px] inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[color:var(--color-near-black)]/95 backdrop-blur-md shadow-[0_1px_0_var(--color-rule)]"
+          ? "bg-[color:var(--color-paper)]/95 backdrop-blur-md shadow-[0_1px_0_var(--color-rule)]"
           : "bg-transparent"
       }`}
     >
@@ -81,7 +83,7 @@ export default function Navbar() {
           </nav>
         </div>
 
-        {/* Centered brand monogram — always inverted to ivory */}
+        {/* Centered brand monogram — invert when over hero only */}
         <Link
           href="/"
           aria-label="Maison Tanneurs"
@@ -93,7 +95,9 @@ export default function Navbar() {
             width={2048}
             height={2048}
             priority
-            className="h-[40px] md:h-[44px] w-auto invert"
+            className={`h-[40px] md:h-[44px] w-auto transition-[filter] duration-500 ${
+              scrolled ? "" : "invert"
+            }`}
           />
           <span
             className="hidden sm:inline tracking-[0.22em] text-[12px] md:text-[13px]"
@@ -116,7 +120,13 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-4 md:gap-5 md:ml-2 md:pl-5 md:border-l md:border-[color:var(--color-ivory)]/25">
+          <div
+            className={`flex items-center gap-4 md:gap-5 md:ml-2 md:pl-5 md:border-l transition-colors ${
+              scrolled
+                ? "md:border-[color:var(--color-rule)]"
+                : "md:border-[color:var(--color-ivory)]/30"
+            }`}
+          >
             <button
               onClick={() => setSearchOpen((v) => !v)}
               aria-label="Search"
@@ -138,7 +148,11 @@ export default function Navbar() {
               </svg>
               {cartCount > 0 && (
                 <span
-                  className="absolute -top-1 -right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-[color:var(--color-ivory)] text-[color:var(--color-warm-black)] text-[10px] font-medium flex items-center justify-center"
+                  className={`absolute -top-1 -right-1.5 min-w-[16px] h-4 px-1 rounded-full text-[10px] font-medium flex items-center justify-center ${
+                    scrolled
+                      ? "bg-[color:var(--color-ink)] text-[color:var(--color-paper)]"
+                      : "bg-[color:var(--color-ivory)] text-[color:var(--color-warm-black)]"
+                  }`}
                   style={{ fontFamily: "var(--font-sans)" }}
                 >
                   {cartCount}
@@ -149,21 +163,21 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Search overlay — near-black panel with ivory text */}
+      {/* Search overlay — paper-white panel with charcoal text */}
       {searchOpen && (
-        <div className="absolute top-full inset-x-0 bg-[color:var(--color-near-black)] border-t border-[color:var(--color-rule)] px-6 md:px-10 py-6">
+        <div className="absolute top-full inset-x-0 bg-[color:var(--color-paper)] border-t border-[color:var(--color-rule)] px-6 md:px-10 py-6">
           <form onSubmit={submitSearch} className="max-w-[640px] mx-auto">
-            <div className="flex items-stretch border-b border-[color:var(--color-ivory)]/40">
+            <div className="flex items-stretch border-b border-[color:var(--color-ink)]">
               <input
                 autoFocus
                 type="search"
                 placeholder="Search pieces, drops, stories"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
-                className="flex-1 py-3 text-[16px] bg-transparent outline-none text-[color:var(--color-ivory)] placeholder:text-[color:var(--color-ivory)]/45"
+                className="flex-1 py-3 text-[16px] bg-transparent outline-none text-[color:var(--color-ink)] placeholder:text-[color:var(--color-ink-muted)]"
                 style={{ fontFamily: "var(--font-sans)" }}
               />
-              <button type="submit" className="ed-eyebrow px-3">
+              <button type="submit" className="ed-eyebrow px-3 text-[color:var(--color-ink)]">
                 Search
               </button>
             </div>
@@ -171,24 +185,24 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* Mobile drawer — solid opaque near-black, ivory text */}
+      {/* Mobile drawer — paper-white, charcoal ink */}
       {drawer && (
         <>
           <div
             onClick={() => setDrawer(false)}
-            className="md:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+            className="md:hidden fixed inset-0 bg-[color:var(--color-warm-black)]/45 backdrop-blur-sm z-40"
             aria-hidden
           />
           <aside
             className="md:hidden fixed left-0 top-0 bottom-0 w-[300px] z-50 overflow-y-auto"
             style={{
-              background: "var(--color-near-black)",
-              color: "var(--color-ivory)",
+              background: "var(--color-paper)",
+              color: "var(--color-ink)",
             }}
           >
             <div className="flex items-center justify-between px-7 py-5 border-b border-[color:var(--color-rule)]">
               <span
-                className="text-[11px] font-medium tracking-[0.18em] uppercase text-[color:var(--color-bronze)]"
+                className="text-[11px] font-medium tracking-[0.22em] uppercase text-[color:var(--color-bronze)]"
                 style={{ fontFamily: "var(--font-sans)" }}
               >
                 Menu
@@ -196,7 +210,7 @@ export default function Navbar() {
               <button
                 onClick={() => setDrawer(false)}
                 aria-label="Close menu"
-                className="text-[color:var(--color-ivory)]"
+                className="text-[color:var(--color-ink)]"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M6 6l12 12M6 18L18 6" />
@@ -210,7 +224,7 @@ export default function Navbar() {
                   key={l.label}
                   href={l.href}
                   onClick={() => setDrawer(false)}
-                  className="text-[15px] tracking-[0.06em] uppercase font-medium text-[color:var(--color-ivory)]"
+                  className="text-[15px] tracking-[0.06em] uppercase font-medium text-[color:var(--color-ink)]"
                 >
                   {l.label}
                 </Link>
@@ -220,21 +234,21 @@ export default function Navbar() {
               <Link
                 href="/legal/shipping"
                 onClick={() => setDrawer(false)}
-                className="text-[13px] text-[color:var(--color-ivory)]/80"
+                className="text-[13px] text-[color:var(--color-ink-soft)]"
               >
                 Shipping
               </Link>
               <Link
                 href="/legal/returns"
                 onClick={() => setDrawer(false)}
-                className="text-[13px] text-[color:var(--color-ivory)]/80"
+                className="text-[13px] text-[color:var(--color-ink-soft)]"
               >
                 Returns
               </Link>
               <Link
                 href="/legal/faq"
                 onClick={() => setDrawer(false)}
-                className="text-[13px] text-[color:var(--color-ivory)]/80"
+                className="text-[13px] text-[color:var(--color-ink-soft)]"
               >
                 FAQ
               </Link>

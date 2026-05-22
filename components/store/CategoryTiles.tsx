@@ -71,11 +71,22 @@ export default function CategoryTiles() {
                     "linear-gradient(180deg, transparent 55%, rgba(28,26,24,0.45) 100%)",
                 }}
               />
-              <div className="relative h-full w-full flex flex-col justify-end p-8 md:p-12 text-white">
-                <div className="ed-eyebrow text-white/75 mb-3">
+              <div
+                className="relative h-full w-full flex flex-col justify-end p-8 md:p-12"
+                style={{ color: "#f5efe6" }}
+              >
+                <div
+                  className="ed-eyebrow mb-3"
+                  style={{ color: "rgba(245, 239, 230, 0.8)" }}
+                >
                   {tile.caption}
                 </div>
-                <div className="ed-tile-label text-white">{tile.label}</div>
+                <div
+                  className="ed-tile-label"
+                  style={{ color: "#f5efe6" }}
+                >
+                  {tile.label}
+                </div>
               </div>
             </Link>
           ))}
