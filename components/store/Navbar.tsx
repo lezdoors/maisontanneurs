@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -13,6 +13,10 @@ const NAV_LINKS: { label: string; href: string }[] = [
   { label: "Contact", href: "mailto:hello@maisontanneurs.com" },
 ];
 
+const NAV_LINK_CLASS =
+  "text-[12px] font-medium uppercase tracking-[0.06em] transition-colors";
+
+// Navbar sits BELOW the 40px TopStrip on every breakpoint.
 export default function Navbar() {
   const router = useRouter();
   const { items, openCart } = useCart();
@@ -32,27 +36,30 @@ export default function Navbar() {
   }
 
   useEffect(() => {
-    // Trigger past the hero fold so nav stays transparent over the hero image
     const onScroll = () => setScrolled(window.scrollY > 320);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Transparent over hero, solid bone after 200px scroll (past hero fold)
-  const inkClass = scrolled ? "text-[var(--color-ink)]" : "text-white";
-  const hoverClass = scrolled ? "hover:text-[var(--color-bronze-hi)]" : "hover:opacity-65";
+  // Transparent over hero, opaque after past-fold scroll. Always sits at
+  // top-[40px] under the TopStrip.
+  const inkClass = scrolled
+    ? "text-[color:var(--color-ink)]"
+    : "text-[color:var(--color-cream)]";
+  const hoverClass = scrolled
+    ? "hover:text-[color:var(--color-cognac)]"
+    : "hover:opacity-65";
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+      className={`fixed top-[40px] inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[var(--color-bg)]/95 backdrop-blur-md shadow-[0_1px_0_var(--color-rule)]"
+          ? "bg-[color:var(--color-cream)]/95 backdrop-blur-md shadow-[0_1px_0_var(--color-rule)]"
           : "bg-transparent"
       }`}
     >
-      <div className="relative h-[72px] md:h-[84px] flex items-center px-5 md:px-10">
-        {/* Left: menu (mobile) + nav (desktop) */}
+      <div className="relative h-[64px] md:h-[76px] flex items-center px-5 md:px-10">
         <div className="flex items-center gap-8 z-10">
           <button
             onClick={() => setDrawer((v) => !v)}
@@ -70,7 +77,7 @@ export default function Navbar() {
               <Link
                 key={l.label}
                 href={l.href}
-                className={`text-[11px] tracking-[0.18em] uppercase font-medium transition-colors ${inkClass} ${hoverClass}`}
+                className={`${NAV_LINK_CLASS} ${inkClass} ${hoverClass}`}
               >
                 {l.label}
               </Link>
@@ -90,33 +97,36 @@ export default function Navbar() {
             width={2048}
             height={2048}
             priority
-            className={`h-[44px] md:h-[48px] w-auto transition-[filter] duration-500 ${
+            className={`h-[40px] md:h-[44px] w-auto transition-[filter] duration-500 ${
               scrolled ? "" : "invert"
             }`}
           />
           <span
-            className="hidden sm:inline font-serif tracking-[0.18em] text-[14px] md:text-[15px]"
-            style={{ fontFamily: "var(--font-serif, 'Cormorant Garamond', 'Times New Roman', serif)" }}
+            className="hidden sm:inline tracking-[0.18em] text-[13px] md:text-[14px]"
+            style={{ fontFamily: "var(--font-sans)", fontWeight: 600 }}
           >
-MAISON TANNEURS
+            MAISON TANNEURS
           </span>
         </Link>
 
-        {/* Right: desktop nav (2) + icons */}
         <div className="ml-auto flex items-center gap-5 md:gap-7 z-10">
           <nav className="hidden md:flex items-center gap-8 lg:gap-10">
             {NAV_LINKS.slice(2).map((l) => (
               <Link
                 key={l.label}
                 href={l.href}
-                className={`text-[11px] tracking-[0.18em] uppercase font-medium transition-colors ${inkClass} ${hoverClass}`}
+                className={`${NAV_LINK_CLASS} ${inkClass} ${hoverClass}`}
               >
                 {l.label}
               </Link>
             ))}
           </nav>
 
-          <div className={`flex items-center gap-4 md:gap-5 md:ml-2 md:pl-5 md:border-l transition-colors ${scrolled ? "md:border-[var(--color-rule)]" : "md:border-white/30"}`}>
+          <div
+            className={`flex items-center gap-4 md:gap-5 md:ml-2 md:pl-5 md:border-l transition-colors ${
+              scrolled ? "md:border-[color:var(--color-rule)]" : "md:border-[color:var(--color-cream)]/30"
+            }`}
+          >
             <button
               onClick={() => setSearchOpen((v) => !v)}
               aria-label="Search"
@@ -137,7 +147,10 @@ MAISON TANNEURS
                 <path d="M8 8V6a4 4 0 0 1 8 0v2" />
               </svg>
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-[var(--color-ink)] text-[var(--color-bg)] text-[10px] font-medium flex items-center justify-center">
+                <span
+                  className="absolute -top-1 -right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-[color:var(--color-ink)] text-[color:var(--color-cream)] text-[10px] font-medium flex items-center justify-center"
+                  style={{ fontFamily: "var(--font-sans)" }}
+                >
                   {cartCount}
                 </span>
               )}
@@ -148,18 +161,19 @@ MAISON TANNEURS
 
       {/* Search overlay */}
       {searchOpen && (
-        <div className="absolute top-full inset-x-0 bg-[var(--color-bg)] border-t border-[var(--color-rule)] px-6 md:px-10 py-6">
+        <div className="absolute top-full inset-x-0 bg-[color:var(--color-bg)] border-t border-[color:var(--color-rule)] px-6 md:px-10 py-6">
           <form onSubmit={submitSearch} className="max-w-[640px] mx-auto">
-            <div className="flex items-stretch border-b border-[var(--color-ink)]">
+            <div className="flex items-stretch border-b border-[color:var(--color-ink)]">
               <input
                 autoFocus
                 type="search"
                 placeholder="Search pieces, drops, stories"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
-                className="flex-1 py-3 text-[16px] bg-transparent outline-none placeholder:text-[var(--color-mineral)]"
+                className="flex-1 py-3 text-[16px] bg-transparent outline-none placeholder:text-[color:var(--color-mineral)]"
+                style={{ fontFamily: "var(--font-sans)" }}
               />
-              <button type="submit" className="ed-eyebrow text-[var(--color-ink)] px-3">
+              <button type="submit" className="ed-eyebrow text-[color:var(--color-ink)] px-3">
                 Search
               </button>
             </div>
@@ -167,33 +181,71 @@ MAISON TANNEURS
         </div>
       )}
 
-      {/* Mobile slide-out drawer */}
+      {/* Mobile drawer — SOLID OPAQUE background, z-50. Backdrop is darker
+          and full-screen so hero text never bleeds through. */}
       {drawer && (
         <>
           <div
             onClick={() => setDrawer(false)}
-            className="md:hidden fixed inset-0 top-[72px] bg-black/30 z-40"
+            className="md:hidden fixed inset-0 bg-[color:var(--color-ink)]/55 backdrop-blur-sm z-40"
             aria-hidden
           />
-          <aside className="md:hidden fixed left-0 top-[72px] bottom-0 w-[300px] bg-[var(--color-bg)] border-r border-[var(--color-rule)] z-50 overflow-y-auto">
-            <nav className="px-7 py-10 flex flex-col gap-7">
-              <div className="ed-eyebrow text-[var(--color-mineral)]">Browse</div>
+          <aside
+            className="md:hidden fixed left-0 top-0 bottom-0 w-[300px] z-50 overflow-y-auto"
+            style={{ background: "var(--color-cream)" }}
+          >
+            <div className="flex items-center justify-between px-7 py-5 border-b border-[color:var(--color-rule)]">
+              <span
+                className="text-[12px] font-medium tracking-[0.08em] uppercase text-[color:var(--color-ink)]"
+                style={{ fontFamily: "var(--font-sans)" }}
+              >
+                Menu
+              </span>
+              <button
+                onClick={() => setDrawer(false)}
+                aria-label="Close menu"
+                className="text-[color:var(--color-ink)]"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M6 6l12 12M6 18L18 6" />
+                </svg>
+              </button>
+            </div>
+            <nav className="px-7 py-8 flex flex-col gap-6">
+              <div className="ed-eyebrow">Browse</div>
               {NAV_LINKS.map((l) => (
                 <Link
                   key={l.label}
                   href={l.href}
                   onClick={() => setDrawer(false)}
-                  className="text-[16px] tracking-[0.04em] uppercase font-medium text-[var(--color-ink)]"
+                  className="text-[16px] tracking-[0.04em] uppercase font-medium text-[color:var(--color-ink)]"
                 >
                   {l.label}
                 </Link>
               ))}
-
-              <div className="h-px bg-[var(--color-rule)] my-2" />
-              <div className="ed-eyebrow text-[var(--color-mineral)]">Help</div>
-              <Link href="/legal/shipping" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Shipping</Link>
-              <Link href="/legal/returns" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">Returns</Link>
-              <Link href="/legal/faq" onClick={() => setDrawer(false)} className="text-[13px] text-[var(--color-ink-soft)]">FAQ</Link>
+              <div className="h-px bg-[color:var(--color-rule)] my-2" />
+              <div className="ed-eyebrow">Help</div>
+              <Link
+                href="/legal/shipping"
+                onClick={() => setDrawer(false)}
+                className="text-[13px] text-[color:var(--color-ink-soft)]"
+              >
+                Shipping
+              </Link>
+              <Link
+                href="/legal/returns"
+                onClick={() => setDrawer(false)}
+                className="text-[13px] text-[color:var(--color-ink-soft)]"
+              >
+                Returns
+              </Link>
+              <Link
+                href="/legal/faq"
+                onClick={() => setDrawer(false)}
+                className="text-[13px] text-[color:var(--color-ink-soft)]"
+              >
+                FAQ
+              </Link>
             </nav>
           </aside>
         </>

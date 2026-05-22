@@ -1,35 +1,29 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import {
-  Cormorant_Garamond,
-  Inter_Tight,
-  JetBrains_Mono,
-} from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import CookieBanner from "@/components/store/CookieBanner";
 import ConsentedClarity from "@/components/store/ConsentedClarity";
 import MetaPixel from "@/components/store/MetaPixel";
 import GA4 from "@/components/store/GA4";
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
-  variable: "--font-serif",
-  display: "swap",
-});
-
-const interTight = Inter_Tight({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+// Switzer is the only typeface in the site. Variable file covers 100→900
+// in both upright and italic. License: FFL (commercial OK) — see
+// public/fonts/switzer/LICENSE.txt.
+const switzer = localFont({
+  src: [
+    {
+      path: "../public/fonts/switzer/Switzer-Variable.woff2",
+      style: "normal",
+      weight: "100 900",
+    },
+    {
+      path: "../public/fonts/switzer/Switzer-VariableItalic.woff2",
+      style: "italic",
+      weight: "100 900",
+    },
+  ],
   variable: "--font-sans",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
   display: "swap",
 });
 
@@ -91,10 +85,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${cormorant.variable} ${interTight.variable} ${jetbrainsMono.variable}`}
-    >
+    <html lang="en" className={switzer.variable}>
       <body>
         <Script
           id="organization-ld"

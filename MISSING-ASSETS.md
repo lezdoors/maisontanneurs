@@ -2,6 +2,32 @@
 
 The HF work list. Every asset referenced by the site but not yet generated lives here. One row per shot to fire.
 
+## Brand imagery slots — `public/brand/`
+
+French editorial luxury × Moroccan craft register (Loewe / Bottega / Hermès tier). Quiet luxury, restrained, model-led when a human is present. Settings: Parisian interiors, Marrakech riads, Marrakech rooftops, sun-dappled palm groves, golden-hour soft light. **NEVER** desert / camel / dune / souk / lantern. Palette anchors: cream, oxblood, cognac, whiskey-brown, charcoal, brass-gold, dove-grey. See [`public/brand/README.md`](public/brand/README.md) for full conventions.
+
+Encoding: WebP q=82, 2400px long edge minimum (4K supported), no baked-in typography.
+
+### Hero slots (`public/brand/hero/`)
+
+| File | Where | Aspect | Status |
+|---|---|---|---|
+| `home-hero.webp` | `components/store/Hero.tsx` | 16:9 desktop, 4:5 mobile | **MISSING** — currently falls back to `/hero/hero-leather-campaign.webp` (legacy). Generate: Mediterranean-featured woman in a sun-dappled Marrakech riad courtyard, cognac satchel slung across her shoulder, soft golden-hour light, generous negative space upper-third. |
+| `atelier-hero.webp` | `app/(store)/about/page.tsx` | 21:9 cinematic | placeholder — currently legacy supplier wide. Generate: wide interior of a Marrakech leather atelier — limestone arches, soft daylight through arched window, brass tools on workbench, no model. |
+| `shop-hero.webp` | `app/(store)/products/page.tsx` (header) | 21:9 banner | not wired yet — when hero is added to /products, generate: editorial top-down on a walnut writing desk with three or four cognac leather pieces arranged in flat-lay, soft daylight, no model. |
+| `editorial-rooftop.webp` | optional hero slot, future homepage variant | 16:9 | optional. Generate: Mediterranean-featured woman in cream linen on a Marrakech medina rooftop at golden hour, cognac duffle at her feet, distant minarets soft in the background. |
+
+### Section slots (`public/brand/section/`)
+
+| File | Where | Aspect | Status |
+|---|---|---|---|
+| `home-feature.webp` | `components/store/FeaturedDrop.tsx` background | 16:9 | placeholder until provided |
+| `home-atelier.webp` | `components/store/AtelierFocus.tsx` | 4:5 portrait | placeholder until provided |
+| `home-editorial.webp` | `components/store/EditorialStrip.tsx` | 4:5 portrait | placeholder until provided |
+| `home-brand-story.webp` | `components/store/BrandStoryEditorial.tsx` | 5:6 portrait | placeholder until provided |
+
+When wiring new files: drop them into the matching folder slug-named, then bump the `src=` in the component. No DB change needed — these aren't products.
+
 ## How to grep for missing assets
 
 ```bash

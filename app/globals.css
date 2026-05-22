@@ -2,57 +2,64 @@
 
 @theme {
   /* ============================================================
-     MAISON TANNEURS · Hand-stitched leather from Marrakech
-     White-base luxury register: Le Tanneur / Loewe / Aether / Meqnes
-     Brown brand accents (bronze, terracotta) sing against pure white.
+     MAISON TANNEURS · French editorial luxury × Moroccan craft
+     Quiet-luxury palette — cream / oxblood / cognac / whiskey-brown /
+     charcoal / brass-gold / dove-grey. Nothing else.
      ============================================================ */
 
-  /* Surfaces — pure white base, leather accents on top */
-  --color-bg: #FFFFFF;              /* white, primary surface */
-  --color-bg-alt: #FAFAFA;          /* near-white, alt sections */
-  --color-bg-tinted: #F0EFEC;       /* warm gray, tertiary tile bg */
-  --color-bg-dark: #1c1a18;         /* washed-black, dark sections + footer */
-  --color-bg-dark-soft: #2a2622;    /* charcoal-warm, dark cards */
+  /* Brand palette */
+  --color-cream: #f5efe5;            /* primary surface, warm off-white */
+  --color-cream-soft: #efe8db;       /* alt section, slightly cooler */
+  --color-oxblood: #5e1f24;          /* deep oxblood, sparing accent */
+  --color-cognac: #9a5a2b;           /* full-grain cognac, primary brand */
+  --color-whiskey-brown: #6e3a1e;    /* darker leather, hovers + body */
+  --color-charcoal: #1c1a18;         /* primary ink, never pure black */
+  --color-brass-gold: #b08a3e;       /* brass hardware accent */
+  --color-dove-grey: #b6ada1;        /* tertiary text, dividers */
 
-  /* Ink hierarchy */
-  --color-ink: #1c1a18;             /* primary, washed-black, never pure black */
-  --color-ink-soft: #3a342e;        /* body copy */
-  --color-muted: #6b6258;           /* secondary text, captions */
-  --color-mineral: #8a8275;         /* tertiary text, eyebrows, dates */
+  /* Semantic aliases — every UI surface maps here. Palette stays locked. */
+  --color-bg: var(--color-cream);
+  --color-bg-alt: var(--color-cream-soft);
+  --color-bg-dark: var(--color-charcoal);
+  --color-bg-dark-soft: #2a2622;
+  --color-ink: var(--color-charcoal);
+  --color-ink-soft: #3a342e;
+  --color-muted: #6b6258;
+  --color-mineral: var(--color-dove-grey);
+  --color-rule: #e1d8c8;
+  --color-rule-soft: #ecdfca;
+  --color-bronze: var(--color-brass-gold);
+  --color-bronze-hi: var(--color-whiskey-brown);
+  --color-stamp: var(--color-oxblood);
+  --color-brass: var(--color-brass-gold);
+  --color-brass-hi: var(--color-whiskey-brown);
+  --color-terracotta: var(--color-cognac);
+  --color-mineral-blue: var(--color-cognac);
+  --color-mineral-green: var(--color-whiskey-brown);
 
-  /* Lines + dividers */
-  --color-rule: #E8E6E0;            /* hairline borders, neutral warm gray */
-  --color-rule-soft: #F0EEE8;       /* internal grid dividers */
-
-  /* Brand accents — used sparingly */
-  --color-bronze: #8c6b3a;          /* burnished bronze — primary accent */
-  --color-bronze-hi: #6a4f29;       /* bronze hover */
-  --color-terracotta: #b85a3a;      /* terracotta — sparing pops */
-  --color-mineral-blue: #1e4a6b;    /* deep Moroccan blue, occasional accent */
-  --color-mineral-green: #4a5c3a;   /* mineral green, occasional accent */
-
-  /* Legacy palette retained for admin/cart (don't bloom new use) */
+  /* Legacy aliases kept for unmigrated component selectors */
   --rb-card-bg: var(--color-bg);
   --rb-card-bg-alt: var(--color-bg-alt);
-  --color-stamp: var(--color-terracotta);
-  --color-brass: var(--color-bronze);
-  --color-brass-hi: var(--color-bronze-hi);
-  --color-line: rgba(28,26,24,.14);
-  --color-line-soft: rgba(28,26,24,.06);
-  --color-warm-white: #FFFFFF;
-  --color-pearl: var(--color-bg-alt);
+  --color-line: rgba(28, 26, 24, 0.14);
+  --color-line-soft: rgba(28, 26, 24, 0.06);
+  --color-warm-white: var(--color-cream);
+  --color-pearl: var(--color-cream-soft);
   --color-stone: var(--color-rule);
   --color-graphite: var(--color-ink-soft);
-  --color-shadow: rgba(28,26,24,0.04);
+  --color-shadow: rgba(28, 26, 24, 0.04);
+  --color-bg-tinted: var(--color-cream-soft);
 
-  /* Fonts — Cormorant serif for editorial titles, Inter Tight for everything else */
-  --font-display: "Cormorant Garamond", "Times New Roman", Georgia, serif;
-  --font-serif: "Cormorant Garamond", "Times New Roman", Georgia, serif;
-  --font-sans: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  /* Fonts — Switzer only. Every legacy --font-serif / --font-display /
+     --font-mono token now points back to Switzer so existing inline
+     style="font-family: var(--font-serif)" still renders Switzer until
+     those usages are deleted in the full-page pass. */
+  --font-sans: "Switzer", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-sans);
+  --font-display: var(--font-sans);
+  --font-mono: var(--font-sans);
 
-  --ease: cubic-bezier(.16,1,.3,1);
-  --ease-in-out: cubic-bezier(.65,.05,.36,1);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0.05, 0.36, 1);
 }
 
 /* ============================================================
@@ -67,6 +74,8 @@ html, body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -78,70 +87,68 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
 
 /* ============================================================
-   TYPOGRAPHY · Lemaire/Jacquemus/Fear of God hierarchy
-   Refined serif for editorial · clean sans for UI/body
+   TYPOGRAPHY · Switzer hierarchy
+   Headlines 700-800 · Subheads 300-400 · Body 400 · Eyebrows/Nav 500
+   CTAs 600 · uppercase tracking varies per spec
    ============================================================ */
 
-/* Hero display — serif italic, oversized, restrained */
+/* Hero display — Switzer Extrabold, oversized restraint */
 .ed-display {
-  font-family: var(--font-serif);
-  font-weight: 300;
-  font-style: italic;
-  font-size: clamp(80px, 12vw, 180px);
-  letter-spacing: -0.012em;
-  line-height: 0.92;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: clamp(60px, 10vw, 168px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
   color: var(--color-ink);
 }
 
-/* Large editorial title for tiles + journal cards */
+/* Large tile / category label */
 .ed-tile-label {
-  font-family: var(--font-serif);
-  font-weight: 300;
-  font-style: italic;
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: clamp(36px, 4.5vw, 64px);
-  letter-spacing: -0.005em;
-  line-height: 0.98;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  color: var(--color-ink);
 }
 
-/* Mid editorial title for journal/fulfillment cards */
+/* Mid editorial card headline */
 .ed-card-headline {
-  font-family: var(--font-serif);
-  font-weight: 300;
-  font-style: italic;
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: clamp(22px, 2.4vw, 30px);
-  letter-spacing: -0.005em;
-  line-height: 1.12;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
   color: var(--color-ink);
 }
 
-/* Newsletter / footer editorial headline */
+/* Newsletter / footer headline */
 .ed-footer-headline {
-  font-family: var(--font-serif);
-  font-weight: 300;
-  font-style: italic;
+  font-family: var(--font-sans);
+  font-weight: 700;
   font-size: clamp(28px, 3.6vw, 48px);
-  letter-spacing: -0.005em;
-  line-height: 1.04;
-}
-
-/* Editorial section heading — serif, large but quieter than hero */
-.ed-h2 {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-style: italic;
-  font-size: clamp(36px, 4.8vw, 64px);
-  letter-spacing: -0.005em;
-  line-height: 1.04;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
   color: var(--color-ink);
 }
 
-/* Sub-section heading — sans, oversized FoG-style uppercase */
+/* Section H2 — Switzer Bold, generous but quiet */
+.ed-h2 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(36px, 4.8vw, 64px);
+  letter-spacing: -0.02em;
+  line-height: 1.06;
+  color: var(--color-ink);
+}
+
+/* Sub-section eyebrow heading */
 .ed-h3 {
   font-family: var(--font-sans);
-  font-weight: 400;
+  font-weight: 500;
   font-size: clamp(20px, 2vw, 28px);
-  letter-spacing: 0.02em;
-  line-height: 1.15;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
   text-transform: uppercase;
   color: var(--color-ink);
 }
@@ -149,7 +156,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* Card / product title */
 .ed-card-title {
   font-family: var(--font-sans);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 14px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -159,26 +166,26 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* Body */
 .ed-body {
   font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--color-ink-soft);
-  font-weight: 300;
+  font-weight: 400;
 }
 
-/* Editorial body — slightly larger, more breathing */
+/* Editorial body — larger lede */
 .ed-body-lg {
   font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 18px;
+  line-height: 1.65;
   color: var(--color-ink-soft);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* Eyebrow / section label */
 .ed-eyebrow {
   font-family: var(--font-sans);
-  font-size: 11px;
-  letter-spacing: 0.22em;
+  font-size: 12px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-mineral);
   font-weight: 500;
@@ -187,26 +194,26 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* Date / meta */
 .ed-meta {
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-mineral);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 /* Price */
 .ed-price {
   font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--color-ink);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 
-/* Italic serif quote — for editorial passages */
+/* Editorial passage — italic Switzer */
 .ed-serif-quote {
-  font-family: var(--font-serif);
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-weight: 300;
   font-style: italic;
   font-size: clamp(18px, 1.5vw, 22px);
   line-height: 1.55;
@@ -214,136 +221,292 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* ============================================================
-   CTAs · Restrained luxury — no flourishes
+   CTAs · One container system, blur backdrop, border-on-light works
+   on any hero brightness. Variants below.
    ============================================================ */
-.ed-cta {
+.mt-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  border-radius: 0;
+  border: 1px solid currentColor;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background-color 0.25s var(--ease), color 0.25s var(--ease), opacity 0.25s var(--ease);
+}
+
+.mt-cta--solid-light {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  border-color: var(--color-cream);
+}
+.mt-cta--solid-light:hover {
+  background: transparent;
+  color: var(--color-cream);
+  border-color: var(--color-cream);
+}
+
+.mt-cta--solid-dark {
+  background: var(--color-ink);
+  color: var(--color-cream);
+  border-color: var(--color-ink);
+}
+.mt-cta--solid-dark:hover { opacity: 0.85; }
+
+.mt-cta--ghost-light {
+  background: rgba(245, 239, 229, 0.08);
+  color: var(--color-cream);
+  border-color: rgba(245, 239, 229, 0.6);
+}
+.mt-cta--ghost-light:hover {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  border-color: var(--color-cream);
+}
+
+.mt-cta--ghost-dark {
+  background: rgba(28, 26, 24, 0.04);
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+.mt-cta--ghost-dark:hover {
+  background: var(--color-ink);
+  color: var(--color-cream);
+}
+
+/* Legacy CTA selectors — point at new system so old markup still renders */
+.ed-cta,
+.rb-cta,
+.btn-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   padding: 16px 36px;
   background: var(--color-ink);
-  color: var(--color-bg);
+  color: var(--color-cream);
   border: 1px solid var(--color-ink);
-  transition: background .25s var(--ease), color .25s var(--ease);
+  transition: opacity 0.25s var(--ease);
 }
-.ed-cta:hover { background: transparent; color: var(--color-ink); }
+.ed-cta:hover, .rb-cta:hover, .btn-solid:hover { opacity: 0.85; }
 
-.ed-cta-outline {
+.ed-cta-outline,
+.rb-cta-outline,
+.btn-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   padding: 16px 36px;
   background: transparent;
   color: var(--color-ink);
   border: 1px solid var(--color-ink);
-  transition: background .25s var(--ease), color .25s var(--ease);
+  transition: background 0.25s var(--ease), color 0.25s var(--ease);
 }
-.ed-cta-outline:hover { background: var(--color-ink); color: var(--color-bg); }
+.ed-cta-outline:hover, .rb-cta-outline:hover, .btn-outline:hover {
+  background: var(--color-ink);
+  color: var(--color-cream);
+}
 
 .ed-cta-light {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   padding: 16px 36px;
-  background: var(--color-bg);
+  background: var(--color-cream);
   color: var(--color-ink);
-  border: 1px solid var(--color-bg);
-  transition: opacity .25s var(--ease);
+  border: 1px solid var(--color-cream);
+  transition: opacity 0.25s var(--ease);
 }
 .ed-cta-light:hover { opacity: 0.85; }
 
 /* Inline editorial "more" link */
-.ed-more {
+.ed-more, .rb-more {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--color-ink);
   padding-bottom: 4px;
   border-bottom: 1px solid var(--color-ink);
-  transition: opacity .2s var(--ease);
+  transition: opacity 0.2s var(--ease);
 }
-.ed-more:hover { opacity: 0.65; }
+.ed-more:hover, .rb-more:hover { opacity: 0.65; }
 
 /* ============================================================
-   SECTION SPACING · Fear of God / Roche Bobois rhythm
+   SECTION SPACING
    ============================================================ */
-.ed-section { padding: clamp(80px, 9vw, 140px) clamp(20px, 4vw, 72px); }
-.ed-section-tight { padding: clamp(48px, 6vw, 90px) clamp(20px, 4vw, 72px); }
-.ed-section-wide { padding: clamp(80px, 9vw, 140px) clamp(8px, 2vw, 24px); }
+.ed-section, .rb-section {
+  padding: clamp(80px, 9vw, 140px) clamp(20px, 4vw, 72px);
+}
+.ed-section-tight, .rb-section-tight {
+  padding: clamp(48px, 6vw, 90px) clamp(20px, 4vw, 72px);
+}
+.ed-section-wide {
+  padding: clamp(80px, 9vw, 140px) clamp(8px, 2vw, 24px);
+}
 
 /* ============================================================
-   CARD · Editorial product card, no badges no shouting
+   CARD · Editorial product card
    ============================================================ */
-.ed-card { background: transparent; }
-.ed-card-img-wrap { overflow: hidden; position: relative; aspect-ratio: 4/5; background: var(--color-bg-alt); }
-.ed-card-img { transition: transform 1.1s var(--ease); }
-.ed-card:hover .ed-card-img { transform: scale(1.04); }
-
-/* ============================================================
-   LEGACY (preserved for admin/cart pages still using .rb-*)
-   ============================================================ */
-.rb-section { padding: clamp(80px, 9vw, 140px) clamp(20px, 4vw, 72px); }
-.rb-section-tight { padding: clamp(48px, 6vw, 90px) clamp(20px, 4vw, 72px); }
-.rb-display { font-family: var(--font-serif); font-weight: 300; font-style: italic; letter-spacing: -0.012em; line-height: 1.04; color: var(--color-ink); }
-.rb-h2 { font-family: var(--font-sans); font-weight: 400; font-size: clamp(22px, 2.2vw, 30px); letter-spacing: -0.008em; line-height: 1.18; color: var(--color-ink); }
-.rb-card-title { font-family: var(--font-sans); font-weight: 400; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-ink); }
-.rb-body { font-family: var(--font-sans); font-size: 14px; line-height: 1.7; color: var(--color-ink-soft); font-weight: 300; }
-.rb-eyebrow { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-mineral); font-weight: 500; }
-.rb-meta { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mineral); font-weight: 400; }
-.rb-price { font-family: var(--font-sans); font-size: 13px; font-weight: 400; color: var(--color-ink); letter-spacing: 0.04em; }
-.rb-more { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-sans); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-ink); padding-bottom: 4px; border-bottom: 1px solid var(--color-ink); transition: opacity .2s var(--ease); }
-.rb-more:hover { opacity: 0.65; }
-.rb-cta { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-sans); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; padding: 16px 36px; background: var(--color-ink); color: var(--color-bg); border: 1px solid var(--color-ink); transition: background .25s var(--ease), color .25s var(--ease); }
-.rb-cta:hover { background: transparent; color: var(--color-ink); }
-.rb-cta-outline { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-sans); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; padding: 16px 36px; background: transparent; color: var(--color-ink); border: 1px solid var(--color-ink); transition: background .25s var(--ease), color .25s var(--ease); }
-.rb-cta-outline:hover { background: var(--color-ink); color: var(--color-bg); }
-.rb-product-card { background: transparent; }
-.rb-card-img-wrap { overflow: hidden; position: relative; }
-.rb-card-img { transition: transform .9s var(--ease); }
+.ed-card, .rb-product-card { background: transparent; }
+.ed-card-img-wrap, .rb-card-img-wrap {
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--color-bg-alt);
+}
+.ed-card-img, .rb-card-img { transition: transform 1.1s var(--ease); }
+.ed-card:hover .ed-card-img,
 .rb-product-card:hover .rb-card-img { transform: scale(1.04); }
 .rb-scroll-x { scrollbar-width: none; -ms-overflow-style: none; }
 .rb-scroll-x::-webkit-scrollbar { display: none; }
-.rb-promo-wordmark { font-family: var(--font-sans); font-size: clamp(15px, 1.4vw, 19px); letter-spacing: 0.04em; font-weight: 700; font-style: italic; color: var(--color-bronze); text-transform: uppercase; display: inline-block; line-height: 1; }
-.rb-mega { position: absolute; top: 100%; left: 0; right: 0; background: var(--color-bg); border-top: 1px solid var(--color-rule); box-shadow: 0 12px 30px rgba(28,26,24,0.04); opacity: 0; pointer-events: none; transform: translateY(-6px); transition: opacity .2s ease, transform .2s ease; }
+.rb-promo-wordmark {
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.4vw, 19px);
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  color: var(--color-cognac);
+  text-transform: uppercase;
+  display: inline-block;
+  line-height: 1;
+}
+.rb-mega {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-rule);
+  box-shadow: 0 12px 30px rgba(28, 26, 24, 0.04);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
 .rb-mega.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
-.rb-stamp { display: inline-flex; align-items: center; justify-content: center; width: 76px; height: 76px; border-radius: 50%; background: var(--color-terracotta); color: var(--color-bg); font-family: var(--font-sans); font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; line-height: 1.15; padding: 8px; }
+.rb-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--color-oxblood);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.15;
+  padding: 8px;
+}
 
-/* Other utility classes preserved */
-.eyebrow { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-mineral); font-weight: 500; }
-.display { font-family: var(--font-serif); font-weight: 300; font-style: italic; letter-spacing: -0.012em; line-height: 1.04; }
-.disp { font-family: var(--font-serif); font-weight: 300; font-style: italic; letter-spacing: -0.012em; line-height: 1.05; }
-.lede { font-family: var(--font-sans); font-weight: 300; font-size: clamp(15px, 1.2vw, 17px); line-height: 1.7; color: var(--color-ink-soft); }
-.body-text, .body-copy { font-family: var(--font-sans); font-size: 14px; line-height: 1.7; color: var(--color-ink-soft); font-weight: 300; }
-.serif-body { font-family: var(--font-serif); font-weight: 400; font-style: italic; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55; color: var(--color-ink-soft); }
-.meta { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mineral); font-weight: 400; }
-.eye { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-mineral); font-weight: 500; }
+/* Utility echoes for older selectors */
+.eyebrow, .rb-eyebrow, .eye {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-mineral);
+  font-weight: 500;
+}
+.meta, .rb-meta {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-mineral);
+  font-weight: 500;
+}
+.display, .disp, .rb-display {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.rb-h2 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(22px, 2.2vw, 30px);
+  letter-spacing: -0.015em;
+  line-height: 1.18;
+  color: var(--color-ink);
+}
+.rb-card-title {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+.rb-body, .body-text, .body-copy {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+  font-weight: 400;
+}
+.rb-price {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-ink);
+  letter-spacing: 0.02em;
+}
+.lede {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.65;
+  color: var(--color-ink-soft);
+}
+.serif-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(17px, 1.4vw, 20px);
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+}
 
-.link-underline { font-family: var(--font-sans); font-weight: 500; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; border-bottom: 1px solid var(--color-ink); padding-bottom: 3px; color: var(--color-ink); transition: opacity .2s ease; }
+.link-underline {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-ink);
+  padding-bottom: 3px;
+  color: var(--color-ink);
+  transition: opacity 0.2s ease;
+}
 .link-underline:hover { opacity: 0.65; }
-.btn-solid { display: inline-block; font-family: var(--font-sans); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; padding: 16px 36px; background: var(--color-ink); color: var(--color-bg); border: 1px solid var(--color-ink); cursor: pointer; transition: background .25s var(--ease), color .25s var(--ease); }
-.btn-solid:hover { background: transparent; color: var(--color-ink); }
-.btn-outline { display: inline-block; font-family: var(--font-sans); font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; padding: 16px 36px; background: transparent; color: var(--color-ink); border: 1px solid var(--color-ink); cursor: pointer; transition: background .25s var(--ease), color .25s var(--ease); }
-.btn-outline:hover { background: var(--color-ink); color: var(--color-bg); }
 
 /* ============================================================
    SCROLL REVEAL · subtle fade-up only
@@ -355,13 +518,16 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 
-@keyframes kenburns { 0% { transform: scale(1.02) translate(0, 0); } 100% { transform: scale(1.08) translate(-0.5%, -0.8%); } }
+@keyframes kenburns {
+  0% { transform: scale(1.02) translate(0, 0); }
+  100% { transform: scale(1.08) translate(-0.5%, -0.8%); }
+}
 .kenburns { animation: kenburns 24s var(--ease-in-out) infinite alternate; }
 
 /* ============================================================
-   CART DRAWER (unchanged)
+   CART DRAWER
    ============================================================ */
-.cart-scrim { position: fixed; inset: 0; background: rgba(28,26,24,0.3); z-index: 90; opacity: 0; pointer-events: none; transition: opacity .4s ease; }
+.cart-scrim { position: fixed; inset: 0; background: rgba(28, 26, 24, 0.3); z-index: 90; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
 .cart-scrim.open { opacity: 1; pointer-events: all; }
-.cart-drawer { position: fixed; top: 0; right: 0; width: min(420px, 90vw); height: 100dvh; background: var(--color-bg); z-index: 91; transform: translateX(100%); transition: transform .45s cubic-bezier(0.23, 1, 0.32, 1); display: flex; flex-direction: column; }
+.cart-drawer { position: fixed; top: 0; right: 0; width: min(420px, 90vw); height: 100dvh; background: var(--color-bg); z-index: 91; transform: translateX(100%); transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1); display: flex; flex-direction: column; }
 .cart-drawer.open { transform: translateX(0); }

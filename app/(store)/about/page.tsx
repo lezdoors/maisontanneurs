@@ -41,13 +41,14 @@ export default function AboutPage() {
               About · Maison Tanneurs
             </div>
             <h1
-              className="font-serif leading-[1.0] text-[#f5f4f1]"
+              className="text-[color:var(--color-cream)]"
               style={{
-                fontFamily:
-                  "var(--font-serif, 'Cormorant Garamond', 'Times New Roman', serif)",
-                fontSize: "clamp(40px, 6vw, 88px)",
-                letterSpacing: "-0.015em",
-                fontWeight: 500,
+                fontFamily: "var(--font-sans)",
+                fontSize: "clamp(40px, 6vw, 96px)",
+                letterSpacing: "-0.02em",
+                fontWeight: 800,
+                lineHeight: 1.05,
+                textShadow: "0 0 6px rgba(0,0,0,0.7)",
               }}
             >
               Hand-stitched in Marrakech.
@@ -60,8 +61,10 @@ export default function AboutPage() {
       <section className="ed-section bg-[var(--color-bg)]">
         <div className="max-w-[680px] mx-auto px-6">
           <div className="ed-eyebrow mb-6">The Brand</div>
-          <p className="text-[19px] md:text-[21px] font-serif italic font-light leading-[1.45] text-[var(--color-ink)] mb-8"
-             style={{ fontFamily: "var(--font-serif, 'Cormorant Garamond', serif)" }}>
+          <p
+            className="text-[20px] md:text-[24px] leading-[1.4] text-[color:var(--color-ink)] mb-8"
+            style={{ fontFamily: "var(--font-sans)", fontWeight: 600, letterSpacing: "-0.015em" }}
+          >
             A leather house for people who want the maker&apos;s mark on the
             bag they carry.
           </p>
@@ -89,7 +92,7 @@ export default function AboutPage() {
       <section className="px-6 md:px-10 pb-8 bg-[var(--color-bg)]">
         <div className="relative aspect-[21/9] overflow-hidden bg-[var(--color-bg-alt)] max-w-[1400px] mx-auto">
           <Image
-            src="https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/heritage-rucksack-01-v2.webp"
+            src="https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/heritage-rucksack-scale.webp"
             alt="Heritage Rucksack in cognac full-grain leather"
             fill
             className="object-cover"

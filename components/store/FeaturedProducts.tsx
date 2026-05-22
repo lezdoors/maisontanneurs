@@ -15,8 +15,15 @@ export default function FeaturedProducts() {
     <section className="section-pad bg-[var(--color-umber)] text-[var(--color-bone)]">
       {/* Section header */}
       <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-6 md:gap-16 mb-16 md:mb-24 max-w-[1200px] mx-auto px-6 md:px-10">
-        <h2 className="font-serif text-[clamp(36px,5vw,76px)] leading-[1.08] tracking-[-0.015em] reveal">
-          In the workshop <em className="italic text-[var(--color-clay)]">this season</em>.
+        <h2
+          className="text-[clamp(36px,5vw,76px)] leading-[1.05] reveal"
+          style={{ fontFamily: "var(--font-sans)", fontWeight: 800, letterSpacing: "-0.02em" }}
+        >
+          In the workshop{" "}
+          <em className="italic text-[color:var(--color-cognac)]" style={{ fontWeight: 700 }}>
+            this season
+          </em>
+          .
         </h2>
         <div className="flex flex-col justify-end">
           <div className="flex items-center gap-3.5 mb-3 reveal reveal-delay-1">

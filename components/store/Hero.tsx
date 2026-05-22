@@ -1,105 +1,91 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const HERO_IMAGE = "/hero/hero-leather-campaign.webp";
+// Hero asset lives in public/brand/hero/. Slug-named, 16:9 desktop, 4:5
+// mobile. Until the new brand hero lands, falls back to the existing
+// campaign still. Track gaps in MISSING-ASSETS.md.
+const HERO_IMAGE = "/hero/hero-leather-campaign.webp"; // TODO: /brand/hero/home-hero.webp
 
 export default function Hero() {
   return (
     <section
-      className="relative flex items-end overflow-hidden bg-[#0e0d0c]"
-      style={{ minHeight: "100svh" }}
+      className="relative isolate flex items-end overflow-hidden bg-[color:var(--color-charcoal)] w-full"
+      style={{ height: "100svh", minHeight: "100svh" }}
     >
       <Image
         src={HERO_IMAGE}
-        alt="Maison Tanneurs Drop 01"
+        alt="Maison Tanneurs"
         fill
         priority
         sizes="100vw"
-        className="object-cover kenburns"
+        className="object-cover"
+        style={{ objectPosition: "center" }}
       />
 
-      {/* Whisper-thin top scrim — just enough for navbar legibility over
-          the bright atelier ceiling. NOT the heavy dark band the old
-          version was rendering (78% → that read as a black header). */}
+      {/* Scrim — gradient across lower 60% per spec. Ensures legibility on
+          any hero brightness without crushing the upper image. */}
       <div
         aria-hidden
-        className="absolute inset-x-0 top-0 h-[120px] pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(8,7,6,0.32) 0%, rgba(8,7,6,0.12) 60%, rgba(8,7,6,0) 100%)",
-        }}
-      />
-
-      {/* Bottom scrim — soft lift behind the CTA buttons + subhead. */}
-      <div
-        aria-hidden
-        className="absolute inset-x-0 bottom-0 h-[300px] pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(8,7,6,0) 0%, rgba(8,7,6,0.15) 50%, rgba(8,7,6,0.55) 100%)",
-        }}
+        className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-b from-transparent via-black/15 to-black/40 pointer-events-none"
       />
 
       <div
-        className="relative w-full text-[#f5f4f1]"
+        className="relative w-full text-[color:var(--color-cream)]"
         style={{
           paddingLeft: "clamp(20px, 5vw, 80px)",
           paddingRight: "clamp(20px, 5vw, 80px)",
-          paddingTop: "clamp(120px, 15vw, 200px)",
-          paddingBottom: "clamp(60px, 8vw, 120px)",
+          paddingBottom: "clamp(56px, 8vw, 112px)",
         }}
       >
         <div className="max-w-[1600px] mx-auto">
           <div
             className="mb-6 uppercase"
             style={{
-              fontSize: "clamp(10px, 0.85vw, 12px)",
-              letterSpacing: "0.32em",
-              color: "rgba(245,244,241,0.82)",
+              fontSize: "clamp(11px, 0.85vw, 13px)",
+              letterSpacing: "0.08em",
+              fontWeight: 500,
+              color: "rgba(245, 239, 229, 0.9)",
+              textShadow: "0 0 6px rgba(0, 0, 0, 0.6)",
             }}
           >
             Drop 01 · June 2026
           </div>
 
           <h1
-            className="font-serif max-w-[14ch] leading-[0.92]"
+            className="max-w-[14ch]"
             style={{
-              fontFamily:
-                "var(--font-serif, 'Cormorant Garamond', 'Times New Roman', serif)",
-              fontSize: "clamp(60px, 10vw, 168px)",
-              letterSpacing: "-0.015em",
-              fontWeight: 500,
-              textShadow: "0 2px 24px rgba(0,0,0,0.4)",
+              fontFamily: "var(--font-sans)",
+              fontWeight: 800,
+              fontSize: "clamp(48px, 8vw, 128px)",
+              letterSpacing: "-0.02em",
+              lineHeight: 1.05,
+              textShadow: "0 0 6px rgba(0, 0, 0, 0.8)",
             }}
           >
             Hand-shaped in Morocco.
           </h1>
 
           <p
-            className="mt-8 max-w-[44ch] uppercase"
+            className="mt-7 max-w-[52ch]"
             style={{
-              fontSize: "clamp(12px, 1vw, 14px)",
-              letterSpacing: "0.22em",
-              color: "rgba(245,244,241,0.85)",
+              fontFamily: "var(--font-sans)",
+              fontWeight: 400,
+              fontSize: "clamp(15px, 1.05vw, 18px)",
+              lineHeight: 1.55,
+              color: "rgba(245, 239, 229, 0.85)",
+              textShadow: "0 0 6px rgba(0, 0, 0, 0.7)",
             }}
           >
-            Full-grain leather, hand-stitched and
-            shipped from Marrakech.
+            Full-grain leather, hand-stitched in a small Marrakech atelier.
+            Editorial silhouettes, French register, shipped worldwide in
+            three to five days.
           </p>
 
-          <div className="mt-12 flex flex-col sm:flex-row items-start gap-4">
-            <Link
-              href="#drop"
-              className="inline-flex items-center bg-[#f5f4f1] text-[#0e0d0c] hover:bg-white transition-colors px-9 py-[18px] uppercase font-medium shadow-[0_8px_32px_rgba(0,0,0,0.35)]"
-              style={{ fontSize: "11px", letterSpacing: "0.22em" }}
-            >
+          <div className="mt-10 flex flex-col sm:flex-row items-start gap-4">
+            <Link href="#drop" className="mt-cta mt-cta--solid-light">
               Shop the Drop
             </Link>
-            <Link
-              href="/about"
-              className="inline-flex items-center text-[#f5f4f1] border border-[rgba(245,244,241,0.55)] px-9 py-[18px] uppercase font-medium hover:bg-[rgba(245,244,241,0.12)] transition-colors"
-              style={{ fontSize: "11px", letterSpacing: "0.22em" }}
-            >
+            <Link href="/about" className="mt-cta mt-cta--ghost-light">
               The Atelier
             </Link>
           </div>
