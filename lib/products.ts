@@ -20,7 +20,8 @@ export const STATIC_PRODUCTS: Product[] = [
     images: [
       `${STORAGE}/heritage-rucksack-scale.webp`,
       `${STORAGE}/heritage-rucksack-archive-1.webp`,
-      `${STORAGE}/heritage-rucksack-archive-2.webp`,
+      // heritage-rucksack-archive-2.webp removed 2026-05-22 — supplier workshop raw,
+      // violates no-supplier-raws rule. Re-add after HF restage.
     ],
     category: "Leather Goods",
     status: "available",

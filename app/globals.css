@@ -3,32 +3,75 @@
 @theme {
   /* ============================================================
      MAISON TANNEURS · French editorial luxury × Moroccan craft
-     Quiet-luxury palette — cream / oxblood / cognac / whiskey-brown /
-     charcoal / brass-gold / dove-grey. Nothing else.
+     Paper-white retail page (Lemaire / Loewe / Roche-Bobois) with
+     dark editorial photography for hero + brand-story pulls. No
+     cream wash, no full-dark site.
      ============================================================ */
 
-  /* Brand palette */
-  --color-cream: #f5efe5;            /* primary surface, warm off-white */
-  --color-cream-soft: #efe8db;       /* alt section, slightly cooler */
-  --color-oxblood: #5e1f24;          /* deep oxblood, sparing accent */
-  --color-cognac: #9a5a2b;           /* full-grain cognac, primary brand */
-  --color-whiskey-brown: #6e3a1e;    /* darker leather, hovers + body */
-  --color-charcoal: #1c1a18;         /* primary ink, never pure black */
-  --color-brass-gold: #b08a3e;       /* brass hardware accent */
-  --color-dove-grey: #b6ada1;        /* tertiary text, dividers */
+  /* Core palette */
+  --color-paper: #ffffff;          /* default page bg — pure white (Aether-tier) */
+  --color-paper-alt: #fafaf9;      /* alt section bg, barely tinted */
+  --color-paper-soft: #f1f0ec;     /* subtle bands */
+  --color-plate: #efedea;          /* limestone — product tile plate (Aether) */
+  --color-near-black: #0a0a0a;     /* deep ink — type + dark editorial sections */
+  --color-warm-black: #141210;     /* RB-warm dark for hero zones + footer */
+  --color-warm-black-soft: #1c1a17;
+  --color-ivory: #f5efe6;          /* type on dark sections only */
+  --color-ivory-soft: #ebe2d3;
 
-  /* Semantic aliases — every UI surface maps here. Palette stays locked. */
-  --color-bg: var(--color-cream);
-  --color-bg-alt: var(--color-cream-soft);
-  --color-bg-dark: var(--color-charcoal);
-  --color-bg-dark-soft: #2a2622;
-  --color-ink: var(--color-charcoal);
-  --color-ink-soft: #3a342e;
-  --color-muted: #6b6258;
-  --color-mineral: var(--color-dove-grey);
-  --color-rule: #e1d8c8;
-  --color-rule-soft: #ecdfca;
-  --color-bronze: var(--color-brass-gold);
+  --color-cognac: #7a4a2b;
+  --color-cognac-hi: #9a5a2b;
+  --color-bronze: #8c7a5a;          /* eyebrow accent on light surfaces */
+  --color-bronze-on-dark: #a8997e;  /* eyebrow on dark surfaces */
+  --color-brass-gold: #b08a3e;
+  --color-oxblood: #5e1f24;
+  --color-whiskey-brown: #6e3a1e;
+
+  /* Semantic — primary surface is paper-white */
+  --color-bg: var(--color-paper);
+  --color-bg-alt: var(--color-paper-alt);
+  --color-bg-soft: var(--color-paper-soft);
+  --color-bg-tile: var(--color-paper-alt);
+  --color-bg-dark: var(--color-near-black);
+  --color-bg-dark-soft: var(--color-warm-black);
+  --color-bg-light: var(--color-paper);
+  --color-bg-light-soft: var(--color-paper-alt);
+
+  --color-ink: var(--color-near-black);           /* default type — deep charcoal on paper */
+  --color-ink-soft: #3a3a38;                       /* secondary text */
+  --color-ink-muted: #6b6a66;                      /* tertiary text */
+  --color-ink-on-dark: var(--color-ivory);         /* inverse — for dark sections */
+  --color-ink-on-dark-soft: rgba(245, 239, 230, 0.78);
+  --color-muted: var(--color-ink-muted);
+  --color-mineral: var(--color-bronze);
+
+  --color-rule: rgba(10, 10, 10, 0.12);
+  --color-rule-soft: rgba(10, 10, 10, 0.07);
+  --color-rule-strong: rgba(10, 10, 10, 0.22);  /* visible Aether hairline */
+  --color-rule-on-dark: rgba(255, 255, 255, 0.32);  /* visible over hero photo */
+  --color-rule-on-dark-soft: rgba(255, 255, 255, 0.14);
+
+  /* Charcoal kept for old refs — equals near-black now */
+  --color-charcoal: var(--color-near-black);
+
+  /* Legacy "cream" aliases — anything still using --color-cream
+     renders paper-white now. Slightly cooler than before so the
+     overall page reads white, not yellow. */
+  --color-cream: var(--color-paper);
+  --color-cream-soft: var(--color-paper-alt);
+  --color-warm-white: var(--color-paper);
+  --color-pearl: var(--color-paper-alt);
+  --color-stone: var(--color-rule);
+  --color-graphite: var(--color-ink-soft);
+  --color-bg-tinted: var(--color-paper-alt);
+  --color-shadow: rgba(0, 0, 0, 0.06);
+  --color-dove-grey: #b6ada1;
+  --color-bone: var(--color-paper);
+  --color-sand: var(--color-bronze);
+  --color-cedar: var(--color-cognac);
+  --color-umber: var(--color-warm-black);
+
+  /* Bronze / brass aliases */
   --color-bronze-hi: var(--color-whiskey-brown);
   --color-stamp: var(--color-oxblood);
   --color-brass: var(--color-brass-gold);
@@ -37,22 +80,14 @@
   --color-mineral-blue: var(--color-cognac);
   --color-mineral-green: var(--color-whiskey-brown);
 
-  /* Legacy aliases kept for unmigrated component selectors */
-  --rb-card-bg: var(--color-bg);
-  --rb-card-bg-alt: var(--color-bg-alt);
-  --color-line: rgba(28, 26, 24, 0.14);
-  --color-line-soft: rgba(28, 26, 24, 0.06);
-  --color-warm-white: var(--color-cream);
-  --color-pearl: var(--color-cream-soft);
-  --color-stone: var(--color-rule);
-  --color-graphite: var(--color-ink-soft);
-  --color-shadow: rgba(28, 26, 24, 0.04);
-  --color-bg-tinted: var(--color-cream-soft);
+  /* Legacy card aliases */
+  --rb-card-bg: var(--color-paper);
+  --rb-card-bg-alt: var(--color-paper-alt);
+  --color-line: rgba(20, 20, 18, 0.14);
+  --color-line-soft: rgba(20, 20, 18, 0.06);
+  --color-line-bone: rgba(20, 20, 18, 0.18);
 
-  /* Fonts — Switzer only. Every legacy --font-serif / --font-display /
-     --font-mono token now points back to Switzer so existing inline
-     style="font-family: var(--font-serif)" still renders Switzer until
-     those usages are deleted in the full-page pass. */
+  /* Fonts — Switzer only */
   --font-sans: "Switzer", "Helvetica Neue", Arial, sans-serif;
   --font-serif: var(--font-sans);
   --font-display: var(--font-sans);
@@ -63,7 +98,7 @@
 }
 
 /* ============================================================
-   BASE
+   BASE — paper-white default
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -86,93 +121,91 @@ img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
 
+/* Dark-section scope — inverts text colors */
+.on-dark {
+  background: var(--color-near-black);
+  color: var(--color-ivory);
+}
+.on-dark-warm { background: var(--color-warm-black); color: var(--color-ivory); }
+
 /* ============================================================
    TYPOGRAPHY · Switzer hierarchy
-   Headlines 700-800 · Subheads 300-400 · Body 400 · Eyebrows/Nav 500
-   CTAs 600 · uppercase tracking varies per spec
+   Headlines 500-600 (Lemaire/Loewe/RB restraint, not bold-bold)
+   Body 400 · Eyebrows 500 +0.18em · CTAs 600 +0.16em
    ============================================================ */
 
-/* Hero display — Switzer Extrabold, oversized restraint */
 .ed-display {
   font-family: var(--font-sans);
-  font-weight: 800;
-  font-size: clamp(60px, 10vw, 168px);
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  font-size: clamp(48px, 6.5vw, 112px);
+  letter-spacing: -0.01em;
   line-height: 1.05;
   color: var(--color-ink);
 }
 
-/* Large tile / category label */
 .ed-tile-label {
   font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: clamp(36px, 4.5vw, 64px);
-  letter-spacing: -0.015em;
+  font-weight: 600;
+  font-size: clamp(28px, 3.4vw, 48px);
+  letter-spacing: -0.01em;
   line-height: 1.05;
   color: var(--color-ink);
 }
 
-/* Mid editorial card headline */
 .ed-card-headline {
   font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: clamp(22px, 2.4vw, 30px);
-  letter-spacing: -0.01em;
-  line-height: 1.15;
+  font-weight: 600;
+  font-size: clamp(20px, 2.2vw, 28px);
+  letter-spacing: -0.005em;
+  line-height: 1.18;
   color: var(--color-ink);
 }
 
-/* Newsletter / footer headline */
 .ed-footer-headline {
   font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: clamp(28px, 3.6vw, 48px);
-  letter-spacing: -0.015em;
+  font-weight: 600;
+  font-size: clamp(26px, 3.4vw, 44px);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--color-ink);
+}
+
+.ed-h2 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(30px, 4vw, 52px);
+  letter-spacing: -0.01em;
   line-height: 1.08;
   color: var(--color-ink);
 }
 
-/* Section H2 — Switzer Bold, generous but quiet */
-.ed-h2 {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: clamp(36px, 4.8vw, 64px);
-  letter-spacing: -0.02em;
-  line-height: 1.06;
-  color: var(--color-ink);
-}
-
-/* Sub-section eyebrow heading */
 .ed-h3 {
   font-family: var(--font-sans);
   font-weight: 500;
-  font-size: clamp(20px, 2vw, 28px);
-  letter-spacing: 0.04em;
+  font-size: clamp(16px, 1.6vw, 22px);
+  letter-spacing: 0.06em;
   line-height: 1.2;
   text-transform: uppercase;
   color: var(--color-ink);
 }
 
-/* Card / product title */
 .ed-card-title {
   font-family: var(--font-sans);
   font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.04em;
+  font-size: 13px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-ink);
 }
 
-/* Body */
 .ed-body {
   font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--color-ink-soft);
   font-weight: 400;
 }
 
-/* Editorial body — larger lede */
 .ed-body-lg {
   font-family: var(--font-sans);
   font-size: 18px;
@@ -181,36 +214,32 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-weight: 400;
 }
 
-/* Eyebrow / section label */
 .ed-eyebrow {
   font-family: var(--font-sans);
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-mineral);
+  color: var(--color-bronze);
   font-weight: 500;
 }
 
-/* Date / meta */
 .ed-meta {
   font-family: var(--font-sans);
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-mineral);
+  color: var(--color-bronze);
   font-weight: 500;
 }
 
-/* Price */
 .ed-price {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--color-ink);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
 }
 
-/* Editorial passage — italic Switzer */
 .ed-serif-quote {
   font-family: var(--font-sans);
   font-weight: 300;
@@ -221,66 +250,69 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* ============================================================
-   CTAs · One container system, blur backdrop, border-on-light works
-   on any hero brightness. Variants below.
+   CTAs · Aether pill system — rounded-full, uppercase tracked.
+   Two surfaces (paper / dark photography) × two roles (solid / outline).
    ============================================================ */
 .mt-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 16px 36px;
-  border-radius: 0;
+  padding: 12px 26px;
+  min-height: 40px;
+  border-radius: 999px;
   border: 1px solid currentColor;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: background-color 0.25s var(--ease), color 0.25s var(--ease), opacity 0.25s var(--ease);
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease), opacity 0.3s var(--ease), border-color 0.3s var(--ease);
+  white-space: nowrap;
 }
 
-.mt-cta--solid-light {
-  background: var(--color-cream);
-  color: var(--color-ink);
-  border-color: var(--color-cream);
-}
-.mt-cta--solid-light:hover {
-  background: transparent;
-  color: var(--color-cream);
-  border-color: var(--color-cream);
-}
-
+/* Primary on paper — solid near-black pill, paper text */
 .mt-cta--solid-dark {
-  background: var(--color-ink);
-  color: var(--color-cream);
-  border-color: var(--color-ink);
+  background: var(--color-near-black);
+  color: var(--color-paper);
+  border-color: var(--color-near-black);
 }
-.mt-cta--solid-dark:hover { opacity: 0.85; }
+.mt-cta--solid-dark:hover { opacity: 0.86; }
 
-.mt-cta--ghost-light {
-  background: rgba(245, 239, 229, 0.08);
-  color: var(--color-cream);
-  border-color: rgba(245, 239, 229, 0.6);
-}
-.mt-cta--ghost-light:hover {
-  background: var(--color-cream);
-  color: var(--color-ink);
-  border-color: var(--color-cream);
-}
-
+/* Secondary on paper — outline pill, 1px ink border */
 .mt-cta--ghost-dark {
-  background: rgba(28, 26, 24, 0.04);
+  background: transparent;
   color: var(--color-ink);
   border-color: var(--color-ink);
 }
 .mt-cta--ghost-dark:hover {
   background: var(--color-ink);
-  color: var(--color-cream);
+  color: var(--color-paper);
 }
 
-/* Legacy CTA selectors — point at new system so old markup still renders */
+/* Primary on dark photography — solid ivory pill, near-black text */
+.mt-cta--solid-light {
+  background: var(--color-ivory);
+  color: var(--color-near-black);
+  border-color: var(--color-ivory);
+}
+.mt-cta--solid-light:hover {
+  background: transparent;
+  color: var(--color-ivory);
+}
+
+/* Secondary on dark photography — outline ivory pill */
+.mt-cta--ghost-light {
+  background: transparent;
+  color: var(--color-ivory);
+  border-color: rgba(245, 239, 230, 0.55);
+}
+.mt-cta--ghost-light:hover {
+  background: var(--color-ivory);
+  color: var(--color-near-black);
+  border-color: var(--color-ivory);
+}
+
+/* Legacy CTA selectors → pill solid-dark */
 .ed-cta,
 .rb-cta,
 .btn-solid {
@@ -288,17 +320,20 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   align-items: center;
   justify-content: center;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 16px 36px;
-  background: var(--color-ink);
-  color: var(--color-cream);
-  border: 1px solid var(--color-ink);
-  transition: opacity 0.25s var(--ease);
+  padding: 12px 26px;
+  min-height: 40px;
+  border-radius: 999px;
+  background: var(--color-near-black);
+  color: var(--color-paper);
+  border: 1px solid var(--color-near-black);
+  transition: opacity 0.3s var(--ease);
+  white-space: nowrap;
 }
-.ed-cta:hover, .rb-cta:hover, .btn-solid:hover { opacity: 0.85; }
+.ed-cta:hover, .rb-cta:hover, .btn-solid:hover { opacity: 0.86; }
 
 .ed-cta-outline,
 .rb-cta-outline,
@@ -307,54 +342,281 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   align-items: center;
   justify-content: center;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 16px 36px;
+  padding: 12px 26px;
+  min-height: 40px;
+  border-radius: 999px;
   background: transparent;
   color: var(--color-ink);
   border: 1px solid var(--color-ink);
-  transition: background 0.25s var(--ease), color 0.25s var(--ease);
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+  white-space: nowrap;
 }
 .ed-cta-outline:hover, .rb-cta-outline:hover, .btn-outline:hover {
   background: var(--color-ink);
-  color: var(--color-cream);
+  color: var(--color-paper);
 }
 
+/* ed-cta-light — pill for use over dark hero imagery */
 .ed-cta-light {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 16px 36px;
-  background: var(--color-cream);
-  color: var(--color-ink);
-  border: 1px solid var(--color-cream);
-  transition: opacity 0.25s var(--ease);
+  padding: 12px 26px;
+  min-height: 40px;
+  border-radius: 999px;
+  background: var(--color-ivory);
+  color: var(--color-near-black);
+  border: 1px solid var(--color-ivory);
+  transition: opacity 0.3s var(--ease);
+  white-space: nowrap;
 }
 .ed-cta-light:hover { opacity: 0.85; }
 
-/* Inline editorial "more" link */
+/* ============================================================
+   HAIRLINE FRAME SYSTEM · Aether's structural lines
+   Horizontal rules between sections, vertical rules dividing columns.
+   ============================================================ */
+.mt-rule-h {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--color-rule-strong);
+  border: 0;
+  margin: 0;
+}
+.mt-rule-v {
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: var(--color-rule-strong);
+  border: 0;
+  margin: 0;
+}
+.mt-rule-h--soft { background: var(--color-rule); }
+.mt-rule-v--soft { background: var(--color-rule); }
+
+.mt-rule-h--on-dark { background: var(--color-rule-on-dark); }
+.mt-rule-v--on-dark { background: var(--color-rule-on-dark); }
+
+/* Section frame — horizontal rule above + vertical rule on right edge,
+   echoes Aether's bounded-rectangle composition. */
+.mt-frame {
+  position: relative;
+}
+.mt-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-rule-strong);
+  pointer-events: none;
+  z-index: 4;
+}
+.mt-frame--right::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 1px;
+  background: var(--color-rule-strong);
+  pointer-events: none;
+  z-index: 4;
+}
+.mt-frame--left::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: var(--color-rule-strong);
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Frame variant for use over dark hero photography — ivory-tinted hairlines */
+.mt-frame--on-dark::before {
+  background: var(--color-rule-on-dark);
+}
+.mt-frame--on-dark.mt-frame--right::after,
+.mt-frame--on-dark.mt-frame--left::after {
+  background: var(--color-rule-on-dark);
+}
+
+/* Full-bleed hero rotating crossfade */
+.mt-hero-rotator {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.mt-hero-rotator__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.6s var(--ease);
+}
+.mt-hero-rotator__slide.is-active { opacity: 1; }
+.mt-hero-rotator__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Page-wide vertical rule running down the right edge of the main column,
+   echoing Aether's continuous right-edge line. Renders only on lg+. */
+.mt-page-frame {
+  position: relative;
+}
+@media (min-width: 1024px) {
+  .mt-page-frame::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 1px;
+    background: var(--color-rule-strong);
+    pointer-events: none;
+    z-index: 3;
+  }
+  .mt-page-frame::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background: var(--color-rule-strong);
+    pointer-events: none;
+    z-index: 3;
+  }
+}
+
+/* ============================================================
+   MARQUEE · Infinite horizontal scroll ticker (Aether-adjacent)
+   ============================================================ */
+.mt-marquee {
+  overflow: hidden;
+  background: var(--color-paper);
+  border-top: 1px solid var(--color-rule-strong);
+  border-bottom: 1px solid var(--color-rule-strong);
+}
+.mt-marquee__track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: mt-marquee-scroll 40s linear infinite;
+  will-change: transform;
+}
+.mt-marquee:hover .mt-marquee__track { animation-play-state: paused; }
+.mt-marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 32px;
+  padding: 14px 32px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+.mt-marquee__dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-bronze);
+}
+@keyframes mt-marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   ANIMATED HEADLINE REVEAL · CSS keyframes, word stagger
+   Used on hero. JS adds .mt-reveal-word spans; CSS does the rest.
+   ============================================================ */
+.mt-reveal-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: mt-reveal-in 0.9s var(--ease) forwards;
+}
+@keyframes mt-reveal-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mt-reveal-word {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* ============================================================
+   CROSS-FADE CAROUSEL · Aether sweat-set tile pattern
+   ============================================================ */
+.mt-xfade {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--color-plate);
+}
+.mt-xfade__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s var(--ease);
+}
+.mt-xfade__slide.is-active { opacity: 1; }
+.mt-xfade__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(251, 250, 247, 0.86);
+  z-index: 3;
+}
+.mt-xfade__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-rule-strong);
+  transition: background 0.3s var(--ease);
+}
+.mt-xfade__dot.is-active { background: var(--color-near-black); }
+
 .ed-more, .rb-more {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-ink);
   padding-bottom: 4px;
   border-bottom: 1px solid var(--color-ink);
   transition: opacity 0.2s var(--ease);
 }
-.ed-more:hover, .rb-more:hover { opacity: 0.65; }
+.ed-more:hover, .rb-more:hover { opacity: 0.6; }
 
 /* ============================================================
    SECTION SPACING
@@ -370,14 +632,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* ============================================================
-   CARD · Editorial product card
+   CARD · Product card on paper
    ============================================================ */
 .ed-card, .rb-product-card { background: transparent; }
 .ed-card-img-wrap, .rb-card-img-wrap {
   overflow: hidden;
   position: relative;
   aspect-ratio: 4 / 5;
-  background: var(--color-bg-alt);
+  background: var(--color-plate);
 }
 .ed-card-img, .rb-card-img { transition: transform 1.1s var(--ease); }
 .ed-card:hover .ed-card-img,
@@ -388,7 +650,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-family: var(--font-sans);
   font-size: clamp(15px, 1.4vw, 19px);
   letter-spacing: 0.04em;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-cognac);
   text-transform: uppercase;
   display: inline-block;
@@ -399,9 +661,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   top: 100%;
   left: 0;
   right: 0;
-  background: var(--color-bg);
+  background: var(--color-paper);
   border-top: 1px solid var(--color-rule);
-  box-shadow: 0 12px 30px rgba(28, 26, 24, 0.04);
+  box-shadow: 0 12px 30px rgba(20, 20, 18, 0.06);
   opacity: 0;
   pointer-events: none;
   transform: translateY(-6px);
@@ -416,7 +678,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   height: 76px;
   border-radius: 50%;
   background: var(--color-oxblood);
-  color: var(--color-cream);
+  color: var(--color-ivory);
   font-family: var(--font-sans);
   font-size: 10px;
   font-weight: 600;
@@ -427,58 +689,59 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   padding: 8px;
 }
 
-/* Utility echoes for older selectors */
+/* Utility echoes for legacy selectors */
 .eyebrow, .rb-eyebrow, .eye {
   font-family: var(--font-sans);
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--color-mineral);
+  color: var(--color-bronze);
   font-weight: 500;
 }
 .meta, .rb-meta {
   font-family: var(--font-sans);
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-mineral);
+  color: var(--color-bronze);
   font-weight: 500;
 }
 .display, .disp, .rb-display {
   font-family: var(--font-sans);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   line-height: 1.05;
+  color: var(--color-ink);
 }
 .rb-h2 {
   font-family: var(--font-sans);
-  font-weight: 700;
+  font-weight: 600;
   font-size: clamp(22px, 2.2vw, 30px);
-  letter-spacing: -0.015em;
+  letter-spacing: -0.005em;
   line-height: 1.18;
   color: var(--color-ink);
 }
 .rb-card-title {
   font-family: var(--font-sans);
   font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 0.04em;
+  font-size: 13px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-ink);
 }
 .rb-body, .body-text, .body-copy {
   font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--color-ink-soft);
   font-weight: 400;
 }
 .rb-price {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--color-ink);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
 }
 .lede {
   font-family: var(--font-sans);
@@ -498,18 +761,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .link-underline {
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.04em;
+  font-size: 11px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   border-bottom: 1px solid var(--color-ink);
   padding-bottom: 3px;
   color: var(--color-ink);
   transition: opacity 0.2s ease;
 }
-.link-underline:hover { opacity: 0.65; }
+.link-underline:hover { opacity: 0.6; }
 
 /* ============================================================
-   SCROLL REVEAL · subtle fade-up only
+   SCROLL REVEAL
    ============================================================ */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 1.1s var(--ease), transform 1.1s var(--ease); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -525,9 +788,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .kenburns { animation: kenburns 24s var(--ease-in-out) infinite alternate; }
 
 /* ============================================================
-   CART DRAWER
+   CART DRAWER · paper-white drawer, charcoal ink
    ============================================================ */
-.cart-scrim { position: fixed; inset: 0; background: rgba(28, 26, 24, 0.3); z-index: 90; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+.cart-scrim { position: fixed; inset: 0; background: rgba(20, 20, 18, 0.45); z-index: 90; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
 .cart-scrim.open { opacity: 1; pointer-events: all; }
-.cart-drawer { position: fixed; top: 0; right: 0; width: min(420px, 90vw); height: 100dvh; background: var(--color-bg); z-index: 91; transform: translateX(100%); transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1); display: flex; flex-direction: column; }
+.cart-drawer { position: fixed; top: 0; right: 0; width: min(420px, 90vw); height: 100dvh; background: var(--color-paper); z-index: 91; transform: translateX(100%); transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1); display: flex; flex-direction: column; color: var(--color-ink); }
 .cart-drawer.open { transform: translateX(0); }

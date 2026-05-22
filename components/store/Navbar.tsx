@@ -14,9 +14,8 @@ const NAV_LINKS: { label: string; href: string }[] = [
 ];
 
 const NAV_LINK_CLASS =
-  "text-[12px] font-medium uppercase tracking-[0.06em] transition-colors";
+  "text-[11px] font-medium uppercase tracking-[0.18em] transition-colors";
 
-// Navbar sits BELOW the 40px TopStrip on every breakpoint.
 export default function Navbar() {
   const router = useRouter();
   const { items, openCart } = useCart();
@@ -42,20 +41,19 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Transparent over hero, opaque after past-fold scroll. Always sits at
-  // top-[40px] under the TopStrip.
-  const inkClass = scrolled
+  // Transparent over hero (ivory text), paper-white on scroll (charcoal text).
+  const linkColor = scrolled
     ? "text-[color:var(--color-ink)]"
-    : "text-[color:var(--color-cream)]";
-  const hoverClass = scrolled
+    : "text-[color:var(--color-ivory)]";
+  const linkHover = scrolled
     ? "hover:text-[color:var(--color-cognac)]"
-    : "hover:opacity-65";
+    : "hover:opacity-70";
 
   return (
     <header
       className={`fixed top-[40px] inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[color:var(--color-cream)]/95 backdrop-blur-md shadow-[0_1px_0_var(--color-rule)]"
+          ? "bg-[color:var(--color-paper)]/95 backdrop-blur-md shadow-[0_1px_0_var(--color-rule)]"
           : "bg-transparent"
       }`}
     >
@@ -65,7 +63,7 @@ export default function Navbar() {
             onClick={() => setDrawer((v) => !v)}
             aria-label="Menu"
             aria-expanded={drawer}
-            className={`md:hidden inline-flex items-center transition-colors ${inkClass} ${hoverClass}`}
+            className={`md:hidden inline-flex items-center transition-colors ${linkColor} ${linkHover}`}
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M3 6h18M3 12h18M3 18h18" />
@@ -77,7 +75,7 @@ export default function Navbar() {
               <Link
                 key={l.label}
                 href={l.href}
-                className={`${NAV_LINK_CLASS} ${inkClass} ${hoverClass}`}
+                className={`${NAV_LINK_CLASS} ${linkColor} ${linkHover}`}
               >
                 {l.label}
               </Link>
@@ -85,11 +83,11 @@ export default function Navbar() {
           </nav>
         </div>
 
-        {/* Centered brand monogram */}
+        {/* Centered brand monogram — invert when over hero only */}
         <Link
           href="/"
           aria-label="Maison Tanneurs"
-          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none flex items-center gap-3 transition-colors ${inkClass}`}
+          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none flex items-center gap-3 transition-colors ${linkColor}`}
         >
           <Image
             src="/brand/maison-tanneurs.png"
@@ -102,7 +100,7 @@ export default function Navbar() {
             }`}
           />
           <span
-            className="hidden sm:inline tracking-[0.18em] text-[13px] md:text-[14px]"
+            className="hidden sm:inline tracking-[0.22em] text-[12px] md:text-[13px]"
             style={{ fontFamily: "var(--font-sans)", fontWeight: 600 }}
           >
             MAISON TANNEURS
@@ -115,7 +113,7 @@ export default function Navbar() {
               <Link
                 key={l.label}
                 href={l.href}
-                className={`${NAV_LINK_CLASS} ${inkClass} ${hoverClass}`}
+                className={`${NAV_LINK_CLASS} ${linkColor} ${linkHover}`}
               >
                 {l.label}
               </Link>
@@ -124,13 +122,15 @@ export default function Navbar() {
 
           <div
             className={`flex items-center gap-4 md:gap-5 md:ml-2 md:pl-5 md:border-l transition-colors ${
-              scrolled ? "md:border-[color:var(--color-rule)]" : "md:border-[color:var(--color-cream)]/30"
+              scrolled
+                ? "md:border-[color:var(--color-rule)]"
+                : "md:border-[color:var(--color-ivory)]/30"
             }`}
           >
             <button
               onClick={() => setSearchOpen((v) => !v)}
               aria-label="Search"
-              className={`hidden md:inline-flex transition-colors ${inkClass} ${hoverClass}`}
+              className={`hidden md:inline-flex transition-colors ${linkColor} ${linkHover}`}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <circle cx="11" cy="11" r="7" />
@@ -140,7 +140,7 @@ export default function Navbar() {
             <button
               onClick={openCart}
               aria-label="Cart"
-              className={`relative transition-colors ${inkClass} ${hoverClass}`}
+              className={`relative transition-colors ${linkColor} ${linkHover}`}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M4 8h16l-1 11a2 2 0 0 1-2 1.75H7a2 2 0 0 1-2-1.75L4 8z" />
@@ -148,7 +148,11 @@ export default function Navbar() {
               </svg>
               {cartCount > 0 && (
                 <span
-                  className="absolute -top-1 -right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-[color:var(--color-ink)] text-[color:var(--color-cream)] text-[10px] font-medium flex items-center justify-center"
+                  className={`absolute -top-1 -right-1.5 min-w-[16px] h-4 px-1 rounded-full text-[10px] font-medium flex items-center justify-center ${
+                    scrolled
+                      ? "bg-[color:var(--color-ink)] text-[color:var(--color-paper)]"
+                      : "bg-[color:var(--color-ivory)] text-[color:var(--color-warm-black)]"
+                  }`}
                   style={{ fontFamily: "var(--font-sans)" }}
                 >
                   {cartCount}
@@ -159,9 +163,9 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Search overlay */}
+      {/* Search overlay — paper-white panel with charcoal text */}
       {searchOpen && (
-        <div className="absolute top-full inset-x-0 bg-[color:var(--color-bg)] border-t border-[color:var(--color-rule)] px-6 md:px-10 py-6">
+        <div className="absolute top-full inset-x-0 bg-[color:var(--color-paper)] border-t border-[color:var(--color-rule)] px-6 md:px-10 py-6">
           <form onSubmit={submitSearch} className="max-w-[640px] mx-auto">
             <div className="flex items-stretch border-b border-[color:var(--color-ink)]">
               <input
@@ -170,10 +174,10 @@ export default function Navbar() {
                 placeholder="Search pieces, drops, stories"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
-                className="flex-1 py-3 text-[16px] bg-transparent outline-none placeholder:text-[color:var(--color-mineral)]"
+                className="flex-1 py-3 text-[16px] bg-transparent outline-none text-[color:var(--color-ink)] placeholder:text-[color:var(--color-ink-muted)]"
                 style={{ fontFamily: "var(--font-sans)" }}
               />
-              <button type="submit" className="ed-eyebrow text-[color:var(--color-ink)] px-3">
+              <button type="submit" className="ed-eyebrow px-3 text-[color:var(--color-ink)]">
                 Search
               </button>
             </div>
@@ -181,22 +185,24 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* Mobile drawer — SOLID OPAQUE background, z-50. Backdrop is darker
-          and full-screen so hero text never bleeds through. */}
+      {/* Mobile drawer — paper-white, charcoal ink */}
       {drawer && (
         <>
           <div
             onClick={() => setDrawer(false)}
-            className="md:hidden fixed inset-0 bg-[color:var(--color-ink)]/55 backdrop-blur-sm z-40"
+            className="md:hidden fixed inset-0 bg-[color:var(--color-warm-black)]/45 backdrop-blur-sm z-40"
             aria-hidden
           />
           <aside
             className="md:hidden fixed left-0 top-0 bottom-0 w-[300px] z-50 overflow-y-auto"
-            style={{ background: "var(--color-cream)" }}
+            style={{
+              background: "var(--color-paper)",
+              color: "var(--color-ink)",
+            }}
           >
             <div className="flex items-center justify-between px-7 py-5 border-b border-[color:var(--color-rule)]">
               <span
-                className="text-[12px] font-medium tracking-[0.08em] uppercase text-[color:var(--color-ink)]"
+                className="text-[11px] font-medium tracking-[0.22em] uppercase text-[color:var(--color-bronze)]"
                 style={{ fontFamily: "var(--font-sans)" }}
               >
                 Menu
@@ -218,7 +224,7 @@ export default function Navbar() {
                   key={l.label}
                   href={l.href}
                   onClick={() => setDrawer(false)}
-                  className="text-[16px] tracking-[0.04em] uppercase font-medium text-[color:var(--color-ink)]"
+                  className="text-[15px] tracking-[0.06em] uppercase font-medium text-[color:var(--color-ink)]"
                 >
                   {l.label}
                 </Link>

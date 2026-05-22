@@ -14,7 +14,7 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
 
   return (
     <div className="flex flex-col gap-3 px-[clamp(16px,3vw,40px)]">
-      <div className="relative aspect-[4/5] bg-white overflow-hidden">
+      <div className="relative aspect-[4/5] bg-[color:var(--color-bg-light-soft)] overflow-hidden">
         <Image
           src={gallery[active]}
           alt={`${title}${gallery.length > 1 ? ` — view ${active + 1}` : ""}`}
@@ -36,10 +36,10 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
                 onClick={() => setActive(i)}
                 aria-label={`View ${i + 1}`}
                 aria-current={isActive}
-                className={`relative aspect-square bg-white overflow-hidden border transition-colors ${
+                className={`relative aspect-square bg-[color:var(--color-bg-light-soft)] overflow-hidden border transition-colors ${
                   isActive
-                    ? "border-[var(--color-ink)]"
-                    : "border-transparent hover:border-[var(--color-rule)]"
+                    ? "border-[color:var(--color-ivory)]"
+                    : "border-transparent hover:border-[color:var(--color-ivory)]/40"
                 }`}
               >
                 <Image
