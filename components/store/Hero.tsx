@@ -2,93 +2,108 @@ import Image from "next/image";
 import Link from "next/link";
 
 const HERO_IMAGE = "/brand/hero/home-hero.webp";
+const HEADLINE = "Hand-shaped in Morocco.";
 
 export default function Hero() {
+  const words = HEADLINE.split(" ");
   return (
     <section
-      className="relative isolate overflow-hidden bg-[color:var(--color-near-black)] w-full"
-      style={{ height: "92svh", minHeight: "640px" }}
+      className="relative isolate overflow-hidden bg-[color:var(--color-paper)] w-full mt-frame mt-frame--right"
+      style={{ minHeight: "640px" }}
     >
-      <Image
-        src={HERO_IMAGE}
-        alt="Maison Tanneurs Heritage Duffle"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-        style={{ objectPosition: "center 42%" }}
-      />
-
-      {/* Bottom scrim — keep restrained, just enough to seat the small
-          text block at bottom-left. No heavy washes. */}
-      <div
-        aria-hidden
-        className="absolute inset-x-0 bottom-0 h-[40%] pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.45) 100%)",
-        }}
-      />
-
-      {/* Editorial block, bottom-left, restrained — bag is the hero, not the type */}
-      <div
-        className="absolute inset-x-0 bottom-0 text-[color:var(--color-ivory)]"
-        style={{
-          paddingLeft: "clamp(24px, 5vw, 80px)",
-          paddingRight: "clamp(24px, 5vw, 80px)",
-          paddingBottom: "clamp(40px, 5vw, 72px)",
-        }}
-      >
-        <div className="max-w-[1600px] mx-auto">
+      <div className="relative grid grid-cols-1 lg:grid-cols-12">
+        {/* Left rail — text on paper, Aether-style */}
+        <div className="relative lg:col-span-5 lg:order-1 order-2 flex flex-col justify-end lg:justify-center bg-[color:var(--color-paper)]"
+          style={{
+            paddingLeft: "clamp(24px, 4vw, 64px)",
+            paddingRight: "clamp(24px, 3vw, 56px)",
+            paddingTop: "clamp(36px, 4vw, 72px)",
+            paddingBottom: "clamp(48px, 5vw, 88px)",
+            minHeight: "clamp(320px, 40vh, 480px)",
+          }}>
           <div
-            className="mb-4 uppercase"
+            className="mb-6 uppercase"
             style={{
               fontSize: "11px",
               letterSpacing: "0.22em",
               fontWeight: 500,
-              color: "rgba(245, 239, 230, 0.78)",
+              color: "var(--color-bronze)",
             }}
           >
             Drop 01 — June 2026
           </div>
 
           <h1
-            className="max-w-[18ch]"
             style={{
               fontFamily: "var(--font-sans)",
               fontWeight: 500,
-              fontSize: "clamp(28px, 3.4vw, 56px)",
-              letterSpacing: "-0.01em",
-              lineHeight: 1.08,
-              color: "var(--color-ivory)",
+              fontSize: "clamp(38px, 4.6vw, 72px)",
+              letterSpacing: "-0.018em",
+              lineHeight: 1.04,
+              color: "var(--color-ink)",
+              margin: 0,
             }}
           >
-            Hand-shaped in Morocco.
+            {words.map((word, i) => (
+              <span
+                key={`${word}-${i}`}
+                className="mt-reveal-word"
+                style={{
+                  animationDelay: `${i * 90}ms`,
+                  marginRight: i < words.length - 1 ? "0.28em" : 0,
+                }}
+              >
+                {word}
+              </span>
+            ))}
           </h1>
 
           <p
-            className="mt-5 max-w-[46ch]"
+            className="mt-6 max-w-[42ch]"
             style={{
               fontFamily: "var(--font-sans)",
               fontWeight: 400,
-              fontSize: "clamp(13px, 0.95vw, 15px)",
-              lineHeight: 1.6,
-              color: "rgba(245, 239, 230, 0.78)",
+              fontSize: "clamp(14px, 0.95vw, 16px)",
+              lineHeight: 1.65,
+              color: "var(--color-ink-soft)",
             }}
           >
             Full-grain leather, hand-stitched in a small Marrakech atelier.
             Shipped worldwide in three to five days.
           </p>
 
-          <div className="mt-7 flex flex-col sm:flex-row items-start gap-3">
-            <Link href="#drop" className="mt-cta mt-cta--solid-light">
+          <div className="mt-8 flex flex-col sm:flex-row items-start gap-3">
+            <Link href="#drop" className="mt-cta mt-cta--solid-dark">
               Shop the Drop
             </Link>
-            <Link href="/about" className="mt-cta mt-cta--ghost-light">
+            <Link href="/about" className="mt-cta mt-cta--ghost-dark">
               The Atelier
             </Link>
           </div>
         </div>
+
+        {/* Right photo panel — Aether-style chiaroscuro framed by hairline */}
+        <div
+          className="relative lg:col-span-7 lg:order-2 order-1 overflow-hidden bg-[color:var(--color-near-black)]"
+          style={{ aspectRatio: "16 / 11", minHeight: "clamp(360px, 60vh, 720px)" }}
+        >
+          <Image
+            src={HERO_IMAGE}
+            alt="Maison Tanneurs Heritage Duffle in Marrakech courtyard"
+            fill
+            priority
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            className="object-cover"
+            style={{ objectPosition: "center 45%" }}
+          />
+        </div>
+
+        {/* Vertical rule between the two columns on lg+ */}
+        <span
+          aria-hidden
+          className="hidden lg:block absolute top-0 bottom-0 mt-rule-v"
+          style={{ left: "calc(5/12 * 100%)" }}
+        />
       </div>
     </section>
   );
