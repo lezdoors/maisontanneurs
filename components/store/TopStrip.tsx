@@ -2,13 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-// Sticky band above the main nav. Three slots:
-//   LEFT   — brand voice line
-//   CENTER — promo pill (clickable)
-//   RIGHT  — Marrakech live time, GMT+1
-//
-// 11-13px Switzer Medium uppercase, +0.08em. Sticks at the top with z-50
-// just BELOW the Navbar (which is z-[60] after the refactor).
+// Aether-pattern announcement strip — sticks at top above the main nav.
+// Three columns: brand voice left · pill announcement center · Marrakech time right.
+// Light register: #FFFFFF bg, #0F0F0F text, #E5E5E5 bottom rule.
 
 function formatMarrakechTime(now: Date): string {
   return new Intl.DateTimeFormat("en-GB", {
@@ -31,45 +27,58 @@ export default function TopStrip() {
 
   return (
     <div
-      className="fixed top-0 inset-x-0 z-[60] w-full bg-[color:var(--color-charcoal)] text-[color:var(--color-cream)] border-b border-[color:var(--color-rule-soft)]/10"
+      className="fixed top-0 inset-x-0 z-[60] w-full"
       role="region"
       aria-label="Brand strip"
       style={{
+        background: "#FFFFFF",
+        color: "#0F0F0F",
+        borderBottom: "1px solid #E5E5E5",
         fontFamily: "var(--font-sans)",
         fontWeight: 500,
         textTransform: "uppercase",
-        letterSpacing: "0.08em",
-        fontSize: "clamp(11px, 0.85vw, 13px)",
+        letterSpacing: "0.10em",
+        fontSize: "11px",
       }}
     >
-      <div className="h-[40px] flex items-center justify-between gap-4 px-5 md:px-8">
+      <div className="h-[44px] flex items-center justify-between gap-4 px-5 md:px-8">
         {/* LEFT — brand voice */}
-        <span className="hidden sm:inline-block opacity-90 whitespace-nowrap">
+        <span className="hidden sm:inline-block whitespace-nowrap" style={{ color: "#0F0F0F" }}>
           Hand-cut in Fes
         </span>
-        <span className="sm:hidden opacity-90 whitespace-nowrap">
-          Hand-cut · Fes
+        <span className="sm:hidden whitespace-nowrap" style={{ color: "#0F0F0F" }}>
+          Fes
         </span>
 
-        {/* CENTER — promo pill */}
+        {/* CENTER — promo pill (Aether: solid black pill, white text) */}
         <a
           href="/products?from=insider"
-          className="inline-flex items-center px-3 py-1 border border-[color:var(--color-cream)]/35 rounded-full hover:bg-[color:var(--color-cream)]/10 transition-colors"
-          style={{ letterSpacing: "0.06em" }}
+          className="inline-flex items-center rounded-full transition-opacity hover:opacity-85"
+          style={{
+            background: "#0F0F0F",
+            color: "#FFFFFF",
+            padding: "6px 18px",
+            letterSpacing: "0.10em",
+          }}
         >
-          <span aria-hidden className="mr-2 h-1.5 w-1.5 rounded-full bg-[color:var(--color-brass-gold)]" />
           Insider 15% off first order
         </a>
 
         {/* RIGHT — Marrakech time */}
-        <span className="hidden md:inline-flex items-center gap-2 opacity-90 whitespace-nowrap tabular-nums">
+        <span
+          className="hidden md:inline-flex items-center gap-2 whitespace-nowrap tabular-nums"
+          style={{ color: "#0F0F0F" }}
+        >
           <span>Marrakech</span>
           <span aria-live="polite">{time || "--:--"}</span>
-          <span className="opacity-60">GMT+1</span>
+          <span style={{ opacity: 0.55 }}>GMT+1</span>
         </span>
-        <span className="md:hidden inline-flex items-center gap-1.5 opacity-90 whitespace-nowrap tabular-nums">
+        <span
+          className="md:hidden inline-flex items-center gap-1.5 whitespace-nowrap tabular-nums"
+          style={{ color: "#0F0F0F" }}
+        >
           <span aria-live="polite">{time || "--:--"}</span>
-          <span className="opacity-60">GMT+1</span>
+          <span style={{ opacity: 0.55 }}>GMT+1</span>
         </span>
       </div>
     </div>

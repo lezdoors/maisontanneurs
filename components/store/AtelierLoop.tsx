@@ -1,89 +1,110 @@
-// Full-bleed muted-autoplay editorial film block.
-// Used as an atmospheric break between commerce sections on home.
+// Aether "Engineered For Performance" pattern — half/half, video left, copy right.
+// Replaces the old full-bleed video block for the airy Aether register.
 
 import Link from "next/link";
 
 export default function AtelierLoop() {
   return (
     <section
-      className="relative w-full overflow-hidden bg-[color:var(--color-near-black)]"
-      aria-label="Maison film — the atelier in motion"
+      className="w-full"
       style={{
-        borderTop: "1px solid var(--color-rule-strong)",
-        borderBottom: "1px solid var(--color-rule-strong)",
+        background: "#FFFFFF",
+        borderTop: "1px solid #E5E5E5",
+        borderBottom: "1px solid #E5E5E5",
       }}
+      aria-label="Maison film — the atelier in motion"
     >
       <div
-        className="relative w-full"
-        style={{ aspectRatio: "1100 / 620", maxHeight: "82svh" }}
+        className="mx-auto grid grid-cols-1 lg:grid-cols-2 items-center"
+        style={{
+          maxWidth: "1600px",
+          paddingLeft: "clamp(16px, 3vw, 32px)",
+          paddingRight: "clamp(16px, 3vw, 32px)",
+          paddingTop: "clamp(48px, 7vw, 96px)",
+          paddingBottom: "clamp(48px, 7vw, 96px)",
+          gap: "clamp(28px, 4vw, 64px)",
+        }}
       >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/brand/hero/home-hero-3-woman-arches.webp"
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/videos/atelier-loop.webm" type="video/webm" />
-          <source src="/videos/atelier-loop.mp4" type="video/mp4" />
-        </video>
-
-        {/* Bottom-left scrim for text legibility */}
+        {/* Video */}
         <div
-          aria-hidden
-          className="absolute inset-x-0 bottom-0 pointer-events-none"
-          style={{
-            height: "62%",
-            background:
-              "linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.18) 50%, rgba(10,10,10,0.55) 100%)",
-          }}
-        />
-
-        {/* Editorial overlay — bottom-left, restrained */}
-        <div
-          className="absolute inset-x-0 bottom-0 z-[2]"
-          style={{
-            paddingLeft: "clamp(24px, 5vw, 80px)",
-            paddingRight: "clamp(24px, 5vw, 80px)",
-            paddingBottom: "clamp(36px, 5vw, 72px)",
-          }}
+          className="relative w-full overflow-hidden"
+          style={{ aspectRatio: "1100 / 620", background: "#F9F9F9" }}
         >
-          <div className="max-w-[1480px] mx-auto">
-            <div
-              className="mb-4 uppercase"
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "11px",
-                letterSpacing: "0.22em",
-                fontWeight: 500,
-                color: "rgba(255, 255, 255, 0.78)",
-              }}
-            >
-              MAISON FILM / 0:10
-            </div>
-            <h2
-              className="max-w-[18ch]"
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontWeight: 500,
-                fontSize: "clamp(28px, 3.4vw, 56px)",
-                letterSpacing: "-0.02em",
-                lineHeight: 1.04,
-                color: "#ffffff",
-                margin: 0,
-                textShadow: "0 1px 28px rgba(0,0,0,0.18)",
-              }}
-            >
-              Worn where it was made.
-            </h2>
-            <div className="mt-7">
-              <Link href="/about" className="mt-cta mt-cta--ghost-light">
-                Read the House
-              </Link>
-            </div>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="/brand/hero/home-hero-3-woman-arches.webp"
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/videos/atelier-loop.webm" type="video/webm" />
+            <source src="/videos/atelier-loop.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        {/* Copy */}
+        <div className="max-w-[44ch]">
+          <div
+            className="uppercase"
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "11px",
+              letterSpacing: "0.18em",
+              fontWeight: 500,
+              color: "#8C4A26",
+              marginBottom: "20px",
+            }}
+          >
+            Maison Film
           </div>
+          <h2
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontWeight: 600,
+              fontSize: "clamp(32px, 3.6vw, 56px)",
+              letterSpacing: "-0.03em",
+              lineHeight: 1.04,
+              color: "#0F0F0F",
+              margin: 0,
+            }}
+          >
+            Engineered for daily wear.
+          </h2>
+          <p
+            style={{
+              marginTop: "20px",
+              fontFamily: "var(--font-sans)",
+              fontWeight: 400,
+              fontSize: "16px",
+              lineHeight: 1.65,
+              color: "#0F0F0F",
+              opacity: 0.78,
+            }}
+          >
+            Full-grain leather softens into your shape over weeks, then patinas
+            warm over years. Saddle-stitched seams that outlast machine work,
+            brass hardware that ages without flaking. Built to be worn — never
+            stored.
+          </p>
+          <Link
+            href="/about"
+            className="inline-flex items-center rounded-full mt-7"
+            style={{
+              background: "transparent",
+              color: "#0F0F0F",
+              padding: "13px 27px",
+              border: "1px solid #0F0F0F",
+              fontFamily: "var(--font-sans)",
+              fontSize: "13px",
+              fontWeight: 500,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+            }}
+          >
+            Explore the House
+          </Link>
         </div>
       </div>
     </section>

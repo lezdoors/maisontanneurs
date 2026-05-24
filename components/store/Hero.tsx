@@ -11,12 +11,11 @@ const HEROES = [
   { src: "/brand/hero/home-hero-4-pool-tote.webp", alt: "Tobacco tote at a Moroccan riad pool" },
 ];
 
-const HEADLINE = "Hand-shaped in Morocco.";
+const HEADLINE = "Field-Tested in Morocco.\nBuilt For Anywhere.";
 const ROTATE_MS = 6000;
 
 export default function Hero() {
   const [active, setActive] = useState(0);
-  const words = HEADLINE.split(" ");
 
   useEffect(() => {
     const id = window.setInterval(() => {
@@ -27,8 +26,14 @@ export default function Hero() {
 
   return (
     <section
-      className="relative isolate overflow-hidden bg-[color:var(--color-near-black)] w-full mt-frame mt-frame--right mt-frame--on-dark"
-      style={{ height: "92svh", minHeight: "640px" }}
+      className="relative isolate overflow-hidden w-full"
+      style={{
+        height: "92svh",
+        minHeight: "640px",
+        background: "#ffffff",
+        borderBottom: "1px solid #E5E5E5",
+      }}
+      aria-label="Hero"
     >
       {/* Rotating photo stack */}
       <div className="mt-hero-rotator">
@@ -51,18 +56,17 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Subtle bottom scrim so the text panel reads on any of the four shots */}
+      {/* Aether-style light wash — desaturates + lifts the photo so dark type reads */}
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 pointer-events-none z-[1]"
+        className="absolute inset-0 pointer-events-none z-[1]"
         style={{
-          height: "55%",
           background:
-            "linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.18) 45%, rgba(10,10,10,0.62) 100%)",
+            "linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.30) 38%, rgba(255,255,255,0.20) 100%)",
         }}
       />
 
-      {/* Top-left editorial block (Aether pattern) */}
+      {/* Top-left editorial block */}
       <div
         className="absolute inset-x-0 top-0 z-[2]"
         style={{
@@ -72,96 +76,89 @@ export default function Hero() {
         }}
       >
         <div className="max-w-[1600px] mx-auto">
-          <div
-            className="mb-5 uppercase"
-            style={{
-              fontSize: "11px",
-              letterSpacing: "0.22em",
-              fontWeight: 500,
-              color: "rgba(255, 255, 255, 0.78)",
-            }}
-          >
-            Drop 01 — June 2026
-          </div>
           <h1
-            className="max-w-[14ch]"
+            className="max-w-[16ch]"
             style={{
               fontFamily: "var(--font-sans)",
-              fontWeight: 500,
-              fontSize: "clamp(44px, 5.4vw, 88px)",
-              letterSpacing: "-0.02em",
+              fontWeight: 600,
+              fontSize: "clamp(48px, 6vw, 104px)",
+              letterSpacing: "-0.04em",
               lineHeight: 1.02,
-              color: "#ffffff",
+              color: "#0F0F0F",
               margin: 0,
-              textShadow: "0 1px 32px rgba(0,0,0,0.18)",
+              whiteSpace: "pre-line",
             }}
           >
-            {words.map((word, i) => (
-              <span
-                key={`${word}-${i}`}
-                className="mt-reveal-word"
-                style={{
-                  animationDelay: `${i * 90}ms`,
-                  marginRight: i < words.length - 1 ? "0.28em" : 0,
-                }}
-              >
-                {word}
-              </span>
-            ))}
+            {HEADLINE}
           </h1>
-        </div>
-      </div>
-
-      {/* Bottom-left CTAs */}
-      <div
-        className="absolute inset-x-0 bottom-0 z-[2]"
-        style={{
-          paddingLeft: "clamp(24px, 5vw, 80px)",
-          paddingRight: "clamp(24px, 5vw, 80px)",
-          paddingBottom: "clamp(36px, 5vh, 72px)",
-        }}
-      >
-        <div className="max-w-[1600px] mx-auto">
           <p
-            className="max-w-[42ch] mb-7"
+            className="max-w-[42ch]"
             style={{
+              marginTop: "clamp(20px, 2.2vh, 32px)",
               fontFamily: "var(--font-sans)",
               fontWeight: 400,
-              fontSize: "clamp(13px, 0.95vw, 15px)",
-              lineHeight: 1.6,
-              color: "rgba(255, 255, 255, 0.86)",
+              fontSize: "clamp(14px, 1vw, 16px)",
+              lineHeight: 1.55,
+              color: "#0F0F0F",
+              opacity: 0.78,
             }}
           >
-            Full-grain leather, hand-stitched in a small Marrakech atelier.
-            Shipped worldwide in three to five days.
+            Hand-cut full-grain leather, saddle-stitched in a small Marrakech atelier. Shipped worldwide in three to five days.
           </p>
-          <div className="flex flex-col sm:flex-row items-start gap-3">
-            <Link href="#drop" className="mt-cta mt-cta--solid-light">
+          <div className="flex flex-col sm:flex-row items-start gap-3 mt-7">
+            <Link
+              href="/products"
+              className="inline-flex items-center justify-center rounded-full transition-colors"
+              style={{
+                background: "#0F0F0F",
+                color: "#FFFFFF",
+                padding: "14px 28px",
+                fontFamily: "var(--font-sans)",
+                fontSize: "13px",
+                fontWeight: 500,
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+              }}
+            >
               Shop the Drop
             </Link>
-            <Link href="/about" className="mt-cta mt-cta--ghost-light">
+            <Link
+              href="/about"
+              className="inline-flex items-center justify-center rounded-full transition-colors"
+              style={{
+                background: "transparent",
+                color: "#0F0F0F",
+                padding: "13px 27px",
+                border: "1px solid #0F0F0F",
+                fontFamily: "var(--font-sans)",
+                fontSize: "13px",
+                fontWeight: 500,
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+              }}
+            >
               The Atelier
             </Link>
           </div>
-
-          {/* Pagination dots — Aether-style cluster bottom-right */}
-          <div className="absolute right-[clamp(24px,5vw,80px)] bottom-[clamp(36px,5vh,72px)] hidden md:flex items-center gap-2 px-3 py-2 rounded-full bg-black/35 backdrop-blur-sm">
-            {HEROES.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setActive(i)}
-                aria-label={`Show hero ${i + 1}`}
-                aria-current={i === active}
-                className="block w-1.5 h-1.5 rounded-full transition-colors"
-                style={{
-                  background:
-                    i === active ? "#ffffff" : "rgba(255,255,255,0.4)",
-                }}
-              />
-            ))}
-          </div>
         </div>
+      </div>
+
+      {/* Pagination dots — Aether-style cluster bottom-right */}
+      <div
+        className="absolute right-[clamp(24px,5vw,80px)] bottom-[clamp(36px,5vh,72px)] z-[2] hidden md:flex items-center gap-2 px-3 py-2 rounded-full"
+        style={{ background: "rgba(255,255,255,0.78)", border: "1px solid #E5E5E5" }}
+      >
+        {HEROES.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            onClick={() => setActive(i)}
+            aria-label={`Show hero ${i + 1}`}
+            aria-current={i === active}
+            className="block w-1.5 h-1.5 rounded-full transition-colors"
+            style={{ background: i === active ? "#0F0F0F" : "rgba(15,15,15,0.30)" }}
+          />
+        ))}
       </div>
     </section>
   );
