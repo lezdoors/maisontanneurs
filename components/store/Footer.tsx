@@ -1,234 +1,138 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
 
-const SHOP_LINKS = [
-  { label: "New Drop", href: "/products" },
-  { label: "Bags", href: "/products?category=Leather%20Goods" },
+type ColumnDef = { title: string; links: { label: string; href: string }[] };
+
+const COLUMNS: ColumnDef[] = [
+  {
+    title: "Collection",
+    links: [
+      { label: "All Objects", href: "/products" },
+      { label: "Weekender", href: "/products?category=Duffles" },
+      { label: "Tote", href: "/products?category=Totes" },
+      { label: "Crossbody", href: "/products?category=Crossbody" },
+      { label: "Archive", href: "/products?archive=1" },
+    ],
+  },
+  {
+    title: "Atelier",
+    links: [
+      { label: "The Tannery", href: "/about" },
+      { label: "Artisans", href: "/about#artisans" },
+      { label: "Materials", href: "/legal/care" },
+      { label: "Method", href: "#atelier" },
+    ],
+  },
+  {
+    title: "Journal",
+    links: [
+      { label: "Field Notes", href: "/feed" },
+      { label: "Dispatches", href: "/feed" },
+      { label: "Lookbook", href: "/feed" },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      { label: "Care Guide", href: "/legal/care" },
+      { label: "Shipping", href: "/legal/shipping" },
+      { label: "Returns", href: "/legal/returns" },
+      { label: "FAQ", href: "/legal/faq" },
+      { label: "Contact", href: "mailto:hello@maisontanneurs.com" },
+    ],
+  },
+  {
+    title: "Connect",
+    links: [
+      { label: "Instagram", href: "https://instagram.com/maisontanneurs" },
+      {
+        label: "Atelier List",
+        href: "mailto:hello@maisontanneurs.com?subject=Atelier%20List",
+      },
+      {
+        label: "Trade Inquiries",
+        href: "mailto:hello@maisontanneurs.com?subject=Trade",
+      },
+    ],
+  },
 ];
-
-const HOUSE_LINKS = [
-  { label: "The Story", href: "/about" },
-  { label: "The Atelier", href: "/about" },
-  { label: "Press", href: "mailto:hello@maisontanneurs.com?subject=Press" },
-];
-
-const HELP_LINKS = [
-  { label: "Shipping", href: "/legal/shipping" },
-  { label: "Returns", href: "/legal/returns" },
-  { label: "Care", href: "/legal/care" },
-  { label: "Contact", href: "mailto:hello@maisontanneurs.com" },
-];
-
-const SOCIAL = [
-  { label: "Instagram", href: "https://www.instagram.com/maisontanneurs" },
-  { label: "TikTok", href: "https://www.tiktok.com/@maisontanneurs" },
-];
-
-type NewsletterStatus = "idle" | "submitting" | "ok" | "error";
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<NewsletterStatus>("idle");
-  const [message, setMessage] = useState("");
-
-  async function handleSubscribe(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (status === "submitting") return;
-    setStatus("submitting");
-    setMessage("");
-    try {
-      const res = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, consent: true }),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        setStatus("error");
-        setMessage(data?.error || "Could not subscribe right now.");
-        return;
-      }
-      setStatus("ok");
-      setMessage("Thank you. We'll be in touch.");
-      setEmail("");
-    } catch {
-      setStatus("error");
-      setMessage("Network error. Please try again.");
-    }
-  }
-
   return (
-    <footer
-      className="bg-[color:var(--color-paper)] text-[color:var(--color-ink)]"
-      style={{ borderTop: "1px solid var(--color-rule-strong)" }}
-    >
-      {/* Newsletter editorial band */}
-      <div style={{ borderBottom: "1px solid var(--color-rule)" }}>
-        <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-16 md:py-20 grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-10 md:gap-16 items-end">
-          <div>
-            <div
-              className="mb-5 uppercase"
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "11px",
-                letterSpacing: "0.22em",
-                fontWeight: 500,
-                color: "var(--color-bronze)",
-              }}
-            >
-              The List
-            </div>
-            <h3
-              className="max-w-[18ch]"
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontWeight: 500,
-                fontSize: "clamp(26px, 3.2vw, 40px)",
-                letterSpacing: "-0.015em",
-                lineHeight: 1.1,
-                color: "var(--color-ink)",
-                margin: 0,
-              }}
-            >
-              Quiet correspondence. Drops, dispatches, nothing else.
-            </h3>
-          </div>
-          <form
-            onSubmit={handleSubscribe}
-            className="flex flex-col gap-3 md:pb-3"
-            aria-live="polite"
-          >
-            <div
-              className="flex items-stretch"
-              style={{ borderBottom: "1px solid var(--color-ink)" }}
-            >
-              <input
-                type="email"
-                placeholder="Your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                disabled={status === "submitting"}
-                className="flex-1 py-3.5 text-[15px] bg-transparent outline-none disabled:opacity-50"
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  color: "var(--color-ink)",
-                }}
-              />
-              <button
-                type="submit"
-                disabled={status === "submitting"}
-                className="px-3 uppercase disabled:opacity-60"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "11px",
-                  letterSpacing: "0.22em",
-                  fontWeight: 500,
-                  color: "var(--color-ink)",
-                }}
-              >
-                {status === "submitting" ? "Sending…" : "Join"}
-              </button>
-            </div>
-            {message && (
-              <p
-                className="text-[12px]"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  color:
-                    status === "ok"
-                      ? "var(--color-ink-soft)"
-                      : "var(--color-oxblood)",
-                }}
-              >
-                {message}
-              </p>
-            )}
-          </form>
-        </div>
-      </div>
-
-      {/* Link columns */}
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 pt-14 pb-10 grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
-        {[
-          { label: "Shop", items: SHOP_LINKS },
-          { label: "House", items: HOUSE_LINKS },
-          { label: "Help", items: HELP_LINKS },
-          { label: "Follow", items: SOCIAL },
-        ].map((col) => (
-          <div key={col.label}>
-            <div
-              className="mb-5 uppercase"
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "11px",
-                letterSpacing: "0.22em",
-                fontWeight: 500,
-                color: "var(--color-bronze)",
-              }}
-            >
-              {col.label}
-            </div>
-            <ul className="space-y-3">
-              {col.items.map((l) => (
-                <li key={l.label}>
-                  <Link
-                    href={l.href}
-                    className="text-[13px] transition-colors hover:underline"
-                    style={{ color: "var(--color-ink-soft)" }}
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+    <footer className="w-full bg-white text-[#0f0f0f] border-t border-[#e5e5e5]">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-y-10 gap-x-6 px-6 pt-14 pb-10">
+        {COLUMNS.map((c) => (
+          <Column key={c.title} {...c} />
         ))}
       </div>
 
-      {/* Bottom utility */}
-      <div style={{ borderTop: "1px solid var(--color-rule)" }}>
+      <div className="px-6 pb-2 overflow-hidden" aria-hidden>
         <div
-          className="max-w-[1280px] mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3"
-          style={{ color: "var(--color-ink-muted)" }}
+          className="font-semibold leading-[0.85] select-none"
+          style={{
+            fontFamily: "var(--font-sans)",
+            letterSpacing: "-0.05em",
+            fontSize: "clamp(80px, 17.2vw, 360px)",
+          }}
         >
-          <div
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontStyle: "italic",
-              fontWeight: 300,
-              fontSize: "13px",
-              color: "var(--color-ink-soft)",
-            }}
-          >
-            maison tanneurs · hand-stitched in marrakech
-          </div>
-          <div
-            className="flex items-center gap-5 uppercase"
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "11px",
-              letterSpacing: "0.18em",
-            }}
-          >
+          MAISON TANNEURS
+        </div>
+      </div>
+
+      <div className="border-t border-[#e5e5e5]">
+        <div className="px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <span className="tech-meta opacity-70">
+            Filed in Marrakech — Carried Anywhere.
+          </span>
+          <span className="tech-meta opacity-70">
+            © 2026 Maison Tanneurs · All Rights Reserved
+          </span>
+          <div className="flex items-center gap-6 tech-meta opacity-70">
             <Link
               href="/legal/privacy"
-              className="transition-colors hover:text-[color:var(--color-ink)]"
+              className="hover:underline underline-offset-4"
             >
               Privacy
             </Link>
             <Link
               href="/legal/terms"
-              className="transition-colors hover:text-[color:var(--color-ink)]"
+              className="hover:underline underline-offset-4"
             >
               Terms
             </Link>
-            <span>© {new Date().getFullYear()} Maison Tanneurs</span>
+            <Link
+              href="/legal/accessibility"
+              className="hover:underline underline-offset-4"
+            >
+              Accessibility
+            </Link>
           </div>
         </div>
       </div>
     </footer>
+  );
+}
+
+function Column({ title, links }: ColumnDef) {
+  return (
+    <div>
+      <h4
+        className="font-medium"
+        style={{ fontSize: "15px", letterSpacing: "-0.015em" }}
+      >
+        {title}
+      </h4>
+      <ul className="mt-5 flex flex-col gap-2.5">
+        {links.map((l) => (
+          <li key={l.label}>
+            <Link
+              href={l.href}
+              className="tech-meta opacity-75 hover:opacity-100 hover:underline underline-offset-4"
+            >
+              {l.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

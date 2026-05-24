@@ -1,165 +1,115 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const HEROES = [
-  { src: "/brand/hero/home-hero-1-arches.webp", alt: "Heritage Duffle in Marrakech courtyard, sunset arches" },
-  { src: "/brand/hero/home-hero-2-couple-atelier.webp", alt: "Cognac duffle in the atelier" },
-  { src: "/brand/hero/home-hero-3-woman-arches.webp", alt: "Cognac duffle with model in arched gallery" },
-  { src: "/brand/hero/home-hero-4-pool-tote.webp", alt: "Tobacco tote at a Moroccan riad pool" },
-];
-
-const HEADLINE = "Field-Tested in Morocco.\nBuilt For Anywhere.";
-const ROTATE_MS = 6000;
+const HERO_SRC = "/brand/hero/home-hero-1-arches.webp";
+const HERO_ALT =
+  "Cognac full-grain leather duffle, Marrakech courtyard, late golden hour";
 
 export default function Hero() {
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      setActive((i) => (i + 1) % HEROES.length);
-    }, ROTATE_MS);
-    return () => window.clearInterval(id);
-  }, []);
-
   return (
     <section
-      className="relative isolate overflow-hidden w-full"
-      style={{
-        height: "92svh",
-        minHeight: "640px",
-        background: "#ffffff",
-        borderBottom: "1px solid #E5E5E5",
-      }}
-      aria-label="Hero"
+      id="top"
+      className="relative w-full min-h-[100svh] bg-[#0f0f0f] text-white overflow-hidden"
+      aria-label="Engineered in Marrakech"
     >
-      {/* Rotating photo stack */}
-      <div className="mt-hero-rotator">
-        {HEROES.map((h, i) => (
-          <div
-            key={h.src}
-            className={`mt-hero-rotator__slide ${i === active ? "is-active" : ""}`}
-            aria-hidden={i !== active}
-          >
-            <Image
-              src={h.src}
-              alt={h.alt}
-              fill
-              priority={i === 0}
-              sizes="100vw"
-              className="object-cover"
-              style={{ objectPosition: "center 46%" }}
-            />
-          </div>
-        ))}
+      <div className="absolute inset-0">
+        <Image
+          src={HERO_SRC}
+          alt={HERO_ALT}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: "center 46%" }}
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.20) 38%, rgba(0,0,0,0) 65%)",
+          }}
+        />
       </div>
 
-      {/* Aether-style light wash — desaturates + lifts the photo so dark type reads */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none z-[1]"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.30) 38%, rgba(255,255,255,0.20) 100%)",
-        }}
-      />
+      <div className="relative z-10 flex items-center justify-between px-6 pt-6 text-white/80">
+        <span className="tech-meta">§01 — Cinematic</span>
+        <span className="tech-meta hidden md:inline">
+          N 31°37′ W 7°59′ · Marrakech
+        </span>
+        <span className="tech-meta">Edition 04 / 2026</span>
+      </div>
 
-      {/* Top-left editorial block */}
-      <div
-        className="absolute inset-x-0 top-0 z-[2]"
-        style={{
-          paddingTop: "clamp(140px, 13vh, 200px)",
-          paddingLeft: "clamp(24px, 5vw, 80px)",
-          paddingRight: "clamp(24px, 5vw, 80px)",
-        }}
-      >
-        <div className="max-w-[1600px] mx-auto">
+      <div className="pointer-events-none absolute inset-y-0 left-6 border-l border-white/10" />
+      <div className="pointer-events-none absolute inset-y-0 right-6 border-l border-white/10" />
+
+      <div className="relative z-10 flex min-h-[100svh] flex-col justify-end px-6 pb-12">
+        <div className="max-w-[1400px]">
+          <div className="mb-6 flex items-center gap-4 text-white/70">
+            <span className="h-px w-10 bg-white/40" />
+            <span className="tech-meta">Spring Atelier — Vol. 04</span>
+          </div>
+
           <h1
-            className="max-w-[16ch]"
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontWeight: 600,
-              fontSize: "clamp(48px, 6vw, 104px)",
-              letterSpacing: "-0.04em",
-              lineHeight: 1.02,
-              color: "#0F0F0F",
-              margin: 0,
-              whiteSpace: "pre-line",
-            }}
+            className="display-xxl text-white"
+            style={{ fontSize: "clamp(56px, 11.5vw, 200px)" }}
           >
-            {HEADLINE}
+            Engineered
+            <br />
+            in&nbsp;Marrakech<span className="text-white/40">.</span>
           </h1>
+
           <p
-            className="max-w-[42ch]"
-            style={{
-              marginTop: "clamp(20px, 2.2vh, 32px)",
-              fontFamily: "var(--font-sans)",
-              fontWeight: 400,
-              fontSize: "clamp(14px, 1vw, 16px)",
-              lineHeight: 1.55,
-              color: "#0F0F0F",
-              opacity: 0.78,
-            }}
+            className="mt-8 text-white/75 leading-relaxed"
+            style={{ fontSize: "15px", letterSpacing: "-0.01em", maxWidth: "62ch" }}
           >
-            Hand-cut full-grain leather, saddle-stitched in a small Marrakech atelier. Shipped worldwide in three to five days.
+            Uncompromising leather architecture. Direct from the Medina artisans.
           </p>
-          <div className="flex flex-col sm:flex-row items-start gap-3 mt-7">
+
+          <div className="mt-10 flex flex-wrap items-center gap-3">
             <Link
-              href="/products"
-              className="inline-flex items-center justify-center rounded-full transition-colors"
+              href="#collection"
+              className="inline-flex h-12 items-center justify-center bg-white px-7 text-[#0f0f0f] hover:opacity-80 transition-opacity"
               style={{
-                background: "#0F0F0F",
-                color: "#FFFFFF",
-                padding: "14px 28px",
-                fontFamily: "var(--font-sans)",
-                fontSize: "13px",
+                fontSize: "12px",
                 fontWeight: 500,
-                letterSpacing: "0.06em",
+                letterSpacing: "0.22em",
                 textTransform: "uppercase",
               }}
             >
-              Shop the Drop
+              View the Collection
             </Link>
             <Link
-              href="/about"
-              className="inline-flex items-center justify-center rounded-full transition-colors"
+              href="#atelier"
+              className="inline-flex h-12 items-center justify-center border border-white/40 px-7 text-white hover:opacity-70 transition-opacity"
               style={{
-                background: "transparent",
-                color: "#0F0F0F",
-                padding: "13px 27px",
-                border: "1px solid #0F0F0F",
-                fontFamily: "var(--font-sans)",
-                fontSize: "13px",
+                fontSize: "12px",
                 fontWeight: 500,
-                letterSpacing: "0.06em",
+                letterSpacing: "0.22em",
                 textTransform: "uppercase",
               }}
             >
-              The Atelier
+              Inside the Atelier
             </Link>
+          </div>
+
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-3 border-t border-white/15 pt-5 text-white/70">
+            <Ledger k="Material" v="Bovine, Vegetable-Tanned" />
+            <Ledger k="Origin" v="Tannerie Chouara" />
+            <Ledger k="Hands" v="07 Artisans" />
+            <Ledger k="Cycle" v="14 Days / Object" />
           </div>
         </div>
       </div>
-
-      {/* Pagination dots — Aether-style cluster bottom-right */}
-      <div
-        className="absolute right-[clamp(24px,5vw,80px)] bottom-[clamp(36px,5vh,72px)] z-[2] hidden md:flex items-center gap-2 px-3 py-2 rounded-full"
-        style={{ background: "rgba(255,255,255,0.78)", border: "1px solid #E5E5E5" }}
-      >
-        {HEROES.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => setActive(i)}
-            aria-label={`Show hero ${i + 1}`}
-            aria-current={i === active}
-            className="block w-1.5 h-1.5 rounded-full transition-colors"
-            style={{ background: i === active ? "#0F0F0F" : "rgba(15,15,15,0.30)" }}
-          />
-        ))}
-      </div>
     </section>
+  );
+}
+
+function Ledger({ k, v }: { k: string; v: string }) {
+  return (
+    <div className="flex flex-col gap-1">
+      <span className="tech-meta opacity-60">{k}</span>
+      <span className="tech-meta">{v}</span>
+    </div>
   );
 }

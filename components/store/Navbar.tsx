@@ -1,256 +1,211 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/components/store/CartProvider";
 
-const NAV_LINKS: { label: string; href: string }[] = [
-  { label: "Shop", href: "/products" },
-  { label: "Care", href: "/legal/care" },
-  { label: "Story", href: "/about" },
-  { label: "Contact", href: "mailto:hello@maisontanneurs.com" },
+const NAV_LEFT = [
+  { label: "Collection", href: "/products" },
+  { label: "Atelier", href: "/about" },
+  { label: "Journal", href: "/feed" },
 ];
-
-const NAV_LINK_CLASS =
-  "text-[11px] font-medium uppercase tracking-[0.18em] transition-colors";
 
 export default function Navbar() {
   const router = useRouter();
   const { items, openCart } = useCart();
-  const [scrolled, setScrolled] = useState(false);
-  const [drawer, setDrawer] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [drawer, setDrawer] = useState(false);
   const cartCount = items.reduce((s, i) => s + i.quantity, 0);
+
+  useEffect(() => {
+    if (!drawer) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setDrawer(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [drawer]);
 
   function submitSearch(e: React.FormEvent) {
     e.preventDefault();
     const q = searchValue.trim();
     setSearchOpen(false);
     setSearchValue("");
-    if (q) router.push(`/products?q=${encodeURIComponent(q)}`);
-    else router.push("/products");
+    router.push(q ? `/products?q=${encodeURIComponent(q)}` : "/products");
   }
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 320);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Transparent over hero (ivory text), paper-white on scroll (charcoal text).
-  const linkColor = scrolled
-    ? "text-[color:var(--color-ink)]"
-    : "text-[color:var(--color-ivory)]";
-  const linkHover = scrolled
-    ? "hover:text-[color:var(--color-cognac)]"
-    : "hover:opacity-70";
-
   return (
-    <header
-      className={`fixed top-[40px] inset-x-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[color:var(--color-paper)]/95 backdrop-blur-md shadow-[0_1px_0_var(--color-rule)]"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="relative h-[64px] md:h-[76px] flex items-center px-5 md:px-10">
-        <div className="flex items-center gap-8 z-10">
+    <header className="sticky top-0 z-50 w-full bg-white border-b border-[#e5e5e5]">
+      <div className="hidden md:flex h-7 items-center justify-between px-6 border-b border-[#e5e5e5] text-[#0f0f0f]/70">
+        <span className="tech-meta">SHIPPING WORLDWIDE — FROM MARRAKECH</span>
+        <span className="tech-meta">EN · FR · AR</span>
+        <span className="tech-meta">EDITION 04 / SPRING 2026</span>
+      </div>
+
+      <div className="grid grid-cols-3 items-center h-14 px-5 md:px-6">
+        <nav className="flex items-center gap-5 md:gap-8">
           <button
+            type="button"
             onClick={() => setDrawer((v) => !v)}
-            aria-label="Menu"
+            aria-label="Open menu"
             aria-expanded={drawer}
-            className={`md:hidden inline-flex items-center transition-colors ${linkColor} ${linkHover}`}
+            className="md:hidden inline-flex items-center text-[#0f0f0f]"
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              aria-hidden
+            >
               <path d="M3 6h18M3 12h18M3 18h18" />
             </svg>
           </button>
 
-          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
-            {NAV_LINKS.slice(0, 2).map((l) => (
+          <Link
+            href="/"
+            aria-label="Maison Tanneurs"
+            className="flex h-6 w-6 items-center justify-center border border-[#0f0f0f]"
+          >
+            <span className="tech-label text-[#0f0f0f]">MT</span>
+          </Link>
+
+          <div className="hidden md:flex items-center gap-8">
+            {NAV_LEFT.map((l) => (
               <Link
                 key={l.label}
                 href={l.href}
-                className={`${NAV_LINK_CLASS} ${linkColor} ${linkHover}`}
+                className="tech-label hover:opacity-60"
               >
                 {l.label}
               </Link>
             ))}
-          </nav>
+          </div>
+        </nav>
+
+        <div className="flex justify-center">
+          <Link
+            href="/"
+            aria-label="Maison Tanneurs home"
+            className="font-medium"
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: "clamp(14px, 1.4vw, 18px)",
+              letterSpacing: "0.34em",
+            }}
+          >
+            MAISON&nbsp;&nbsp;TANNEURS
+          </Link>
         </div>
 
-        {/* Centered brand monogram — invert when over hero only */}
-        <Link
-          href="/"
-          aria-label="Maison Tanneurs"
-          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none flex items-center gap-3 transition-colors ${linkColor}`}
-        >
-          <Image
-            src="/brand/maison-tanneurs.png"
-            alt=""
-            width={2048}
-            height={2048}
-            priority
-            className={`h-[40px] md:h-[44px] w-auto transition-[filter] duration-500 ${
-              scrolled ? "" : "invert"
-            }`}
-          />
-          <span
-            className="hidden sm:inline tracking-[0.22em] text-[12px] md:text-[13px]"
-            style={{ fontFamily: "var(--font-sans)", fontWeight: 600 }}
+        <div className="flex items-center justify-end gap-5 md:gap-6">
+          <button
+            type="button"
+            onClick={() => setSearchOpen((v) => !v)}
+            aria-label="Search"
+            className="hidden md:inline-flex tech-label hover:opacity-60"
           >
-            MAISON TANNEURS
-          </span>
-        </Link>
-
-        <div className="ml-auto flex items-center gap-5 md:gap-7 z-10">
-          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
-            {NAV_LINKS.slice(2).map((l) => (
-              <Link
-                key={l.label}
-                href={l.href}
-                className={`${NAV_LINK_CLASS} ${linkColor} ${linkHover}`}
-              >
-                {l.label}
-              </Link>
-            ))}
-          </nav>
-
-          <div
-            className={`flex items-center gap-4 md:gap-5 md:ml-2 md:pl-5 md:border-l transition-colors ${
-              scrolled
-                ? "md:border-[color:var(--color-rule)]"
-                : "md:border-[color:var(--color-ivory)]/30"
-            }`}
+            Search
+          </button>
+          <button
+            type="button"
+            onClick={openCart}
+            aria-label="Bag"
+            className="tech-label hover:opacity-60"
           >
-            <button
-              onClick={() => setSearchOpen((v) => !v)}
-              aria-label="Search"
-              className={`hidden md:inline-flex transition-colors ${linkColor} ${linkHover}`}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <circle cx="11" cy="11" r="7" />
-                <path d="m20 20-3.5-3.5" />
-              </svg>
-            </button>
-            <button
-              onClick={openCart}
-              aria-label="Cart"
-              className={`relative transition-colors ${linkColor} ${linkHover}`}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M4 8h16l-1 11a2 2 0 0 1-2 1.75H7a2 2 0 0 1-2-1.75L4 8z" />
-                <path d="M8 8V6a4 4 0 0 1 8 0v2" />
-              </svg>
-              {cartCount > 0 && (
-                <span
-                  className={`absolute -top-1 -right-1.5 min-w-[16px] h-4 px-1 rounded-full text-[10px] font-medium flex items-center justify-center ${
-                    scrolled
-                      ? "bg-[color:var(--color-ink)] text-[color:var(--color-paper)]"
-                      : "bg-[color:var(--color-ivory)] text-[color:var(--color-warm-black)]"
-                  }`}
-                  style={{ fontFamily: "var(--font-sans)" }}
-                >
-                  {cartCount}
-                </span>
-              )}
-            </button>
-          </div>
+            Bag&nbsp;({cartCount})
+          </button>
         </div>
       </div>
 
-      {/* Search overlay — paper-white panel with charcoal text */}
       {searchOpen && (
-        <div className="absolute top-full inset-x-0 bg-[color:var(--color-paper)] border-t border-[color:var(--color-rule)] px-6 md:px-10 py-6">
-          <form onSubmit={submitSearch} className="max-w-[640px] mx-auto">
-            <div className="flex items-stretch border-b border-[color:var(--color-ink)]">
-              <input
-                autoFocus
-                type="search"
-                placeholder="Search pieces, drops, stories"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-                className="flex-1 py-3 text-[16px] bg-transparent outline-none text-[color:var(--color-ink)] placeholder:text-[color:var(--color-ink-muted)]"
-                style={{ fontFamily: "var(--font-sans)" }}
-              />
-              <button type="submit" className="ed-eyebrow px-3 text-[color:var(--color-ink)]">
-                Search
-              </button>
-            </div>
+        <div className="border-t border-[#e5e5e5] bg-white px-6 py-6">
+          <form
+            onSubmit={submitSearch}
+            className="max-w-[640px] mx-auto flex items-stretch border-b border-[#0f0f0f]"
+          >
+            <input
+              autoFocus
+              type="search"
+              placeholder="Search objects, drops, dossiers"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              className="flex-1 py-3 text-[15px] bg-transparent outline-none text-[#0f0f0f] placeholder:text-[#6b6b6b]"
+              style={{ letterSpacing: "-0.01em" }}
+            />
+            <button type="submit" className="tech-label px-4 text-[#0f0f0f]">
+              Search
+            </button>
           </form>
         </div>
       )}
 
-      {/* Mobile drawer — paper-white, charcoal ink */}
       {drawer && (
         <>
           <div
             onClick={() => setDrawer(false)}
-            className="md:hidden fixed inset-0 bg-[color:var(--color-warm-black)]/45 backdrop-blur-sm z-40"
+            className="md:hidden fixed inset-0 bg-[#0f0f0f]/45 z-40"
             aria-hidden
           />
           <aside
-            className="md:hidden fixed left-0 top-0 bottom-0 w-[300px] z-50 overflow-y-auto"
-            style={{
-              background: "var(--color-paper)",
-              color: "var(--color-ink)",
-            }}
+            className="md:hidden fixed left-0 top-0 bottom-0 w-[300px] z-50 bg-white border-r border-[#e5e5e5] overflow-y-auto"
           >
-            <div className="flex items-center justify-between px-7 py-5 border-b border-[color:var(--color-rule)]">
-              <span
-                className="text-[11px] font-medium tracking-[0.22em] uppercase text-[color:var(--color-bronze)]"
-                style={{ fontFamily: "var(--font-sans)" }}
-              >
-                Menu
-              </span>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[#e5e5e5]">
+              <span className="tech-label opacity-60">Menu</span>
               <button
                 onClick={() => setDrawer(false)}
                 aria-label="Close menu"
-                className="text-[color:var(--color-ink)]"
+                className="text-[#0f0f0f]"
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  aria-hidden
+                >
                   <path d="M6 6l12 12M6 18L18 6" />
                 </svg>
               </button>
             </div>
-            <nav className="px-7 py-8 flex flex-col gap-6">
-              <div className="ed-eyebrow">Browse</div>
-              {NAV_LINKS.map((l) => (
+            <nav className="px-6 py-8 flex flex-col gap-6">
+              {NAV_LEFT.map((l) => (
                 <Link
                   key={l.label}
                   href={l.href}
                   onClick={() => setDrawer(false)}
-                  className="text-[15px] tracking-[0.06em] uppercase font-medium text-[color:var(--color-ink)]"
+                  className="tech-label text-[#0f0f0f] text-[13px]"
                 >
                   {l.label}
                 </Link>
               ))}
-              <div className="h-px bg-[color:var(--color-rule)] my-2" />
-              <div className="ed-eyebrow">Help</div>
+              <div className="h-px bg-[#e5e5e5] my-2" />
+              <Link
+                href="/legal/care"
+                onClick={() => setDrawer(false)}
+                className="tech-meta text-[#0f0f0f]/70"
+              >
+                Care Guide
+              </Link>
               <Link
                 href="/legal/shipping"
                 onClick={() => setDrawer(false)}
-                className="text-[13px] text-[color:var(--color-ink-soft)]"
+                className="tech-meta text-[#0f0f0f]/70"
               >
                 Shipping
               </Link>
               <Link
                 href="/legal/returns"
                 onClick={() => setDrawer(false)}
-                className="text-[13px] text-[color:var(--color-ink-soft)]"
+                className="tech-meta text-[#0f0f0f]/70"
               >
                 Returns
-              </Link>
-              <Link
-                href="/legal/faq"
-                onClick={() => setDrawer(false)}
-                className="text-[13px] text-[color:var(--color-ink-soft)]"
-              >
-                FAQ
               </Link>
             </nav>
           </aside>

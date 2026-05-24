@@ -1,168 +1,148 @@
-// Administrative supply-chain register. Reads like a procurement dossier,
-// not a marketing About page. Black on white, structured, thin rules.
+import Image from "next/image";
 
-interface DossierRow {
-  label: string;
-  value: string;
-  meta?: string;
-}
+type Spec = { k: string; v: string; note?: string };
 
-const ROWS: DossierRow[] = [
-  {
-    label: "Atelier location",
-    value: "Marrakech Medina, Morocco",
-    meta: "Lat 31.6295°N / Lng -7.9811°W",
-  },
-  {
-    label: "Direct artisan collaboration",
-    value: "7 dedicated leatherworkers",
-    meta: "Avg. tenure with house: 14 years",
-  },
-  {
-    label: "Primary tannery source",
-    value: "Fes traditional pits, Chouara district",
-    meta: "Vegetable-tanned, 60-day cure",
-  },
-  {
-    label: "Leather grade",
-    value: "Full-grain Moroccan goatskin & cowhide",
-    meta: "No top-coat correction, no embossed grain",
-  },
-  {
-    label: "Hardware",
-    value: "Solid antique brass, 100% — no plating",
-    meta: "Cast & finished in-region",
-  },
-  {
-    label: "Construction",
-    value: "Hand saddle-stitch, contrast thread",
-    meta: "No glue, no machine assembly on closing seams",
-  },
-  {
-    label: "Output cadence",
-    value: "Small batch, 30-60 units per drop",
-    meta: "Two drops per year (Spring / Autumn)",
-  },
-  {
-    label: "Carbon footprint",
-    value: "≈ 4.2 kg CO₂e per unit",
-    meta: "Marrakech → EU air, packaging incl.",
-  },
+const SPECS: Spec[] = [
+  { k: "07", v: "Dedicated Artisans", note: "Master tanners & stitchers" },
+  { k: "Sourcing", v: "Marrakech Medina", note: "Tannerie Chouara — 16th c." },
+  { k: "Method", v: "Vegetable-Tanned", note: "Mimosa & oak bark, 21-day vats" },
+  { k: "Material", v: "100% Bovine", note: "Full-grain, single-origin hides" },
+  { k: "Cycle", v: "14 Days / Object", note: "From hide to final stitch" },
+  { k: "Output", v: "≤ 560 Objects / Year", note: "Numbered, never restocked" },
+  { k: "Warranty", v: "Lifetime", note: "Re-stitching, edge-coat, re-line" },
 ];
+
+const PLATE_SRC = "/brand/hero/home-hero-2-couple-atelier.webp";
 
 export default function ArtisanDossier() {
   return (
     <section
-      className="relative bg-[color:var(--color-paper)]"
-      style={{
-        paddingTop: "clamp(80px, 9vw, 140px)",
-        paddingBottom: "clamp(80px, 9vw, 140px)",
-        paddingLeft: "clamp(24px, 5vw, 80px)",
-        paddingRight: "clamp(24px, 5vw, 80px)",
-        borderTop: "1px solid var(--color-rule-strong)",
-        borderBottom: "1px solid var(--color-rule-strong)",
-      }}
+      id="atelier"
+      className="w-full bg-white text-[#0f0f0f]"
+      aria-label="Production specifications"
     >
-      <div className="max-w-[1480px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20">
-        {/* Left column — section title, dossier register */}
-        <div className="flex flex-col">
-          <div
-            className="mb-6 uppercase"
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "11px",
-              letterSpacing: "0.22em",
-              color: "var(--color-ink-muted)",
-            }}
-          >
-            DOC.MT-001 / Production
-          </div>
-          <h2
-            className="max-w-[14ch]"
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontWeight: 500,
-              fontSize: "clamp(34px, 4.2vw, 64px)",
-              letterSpacing: "-0.018em",
-              lineHeight: 1.02,
-              color: "var(--color-ink)",
-              margin: 0,
-            }}
-          >
-            Production Footprint
-          </h2>
-          <p
-            className="mt-6 max-w-[44ch]"
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "15px",
-              lineHeight: 1.65,
-              color: "var(--color-ink-soft)",
-            }}
-          >
-            We publish what we make, where it comes from, and who builds it.
-            No partial disclosures, no opaque sourcing language. The list at
-            right is the supply chain in full — read it before you buy.
-          </p>
-        </div>
-
-        {/* Right column — administrative dossier list */}
-        <div role="list" className="flex flex-col">
-          {ROWS.map((row, i) => (
-            <div
-              key={row.label}
-              role="listitem"
-              className="grid grid-cols-[140px_1fr] sm:grid-cols-[180px_1fr] gap-x-6 gap-y-1 py-5"
+      <div className="border-y border-[#e5e5e5]">
+        <div className="px-6 py-5 flex items-end justify-between">
+          <div className="flex items-end gap-6">
+            <span className="tech-label opacity-60">§03</span>
+            <h2
+              className="leading-none font-medium"
               style={{
-                borderTop:
-                  i === 0
-                    ? "1px solid var(--color-rule-strong)"
-                    : "1px solid var(--color-rule)",
-                borderBottom:
-                  i === ROWS.length - 1
-                    ? "1px solid var(--color-rule-strong)"
-                    : undefined,
+                fontSize: "clamp(28px, 3.6vw, 36px)",
+                letterSpacing: "-0.03em",
               }}
             >
+              Production Specifications
+            </h2>
+          </div>
+          <span className="tech-meta opacity-70 hidden md:inline">
+            Dossier — Filed 03.2026
+          </span>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-12">
+        <div className="col-span-12 md:col-span-5 border-r border-[#e5e5e5] px-6 py-10 md:py-14">
+          <div className="md:sticky md:top-24">
+            <span className="tech-label opacity-60">Production Footprint</span>
+            <h3
+              className="mt-6 display-xxl"
+              style={{ fontSize: "clamp(40px, 5.5vw, 86px)" }}
+            >
+              Hide,
+              <br />
+              hand,
+              <br />
+              stitch<span className="opacity-40">.</span>
+            </h3>
+            <p
+              className="mt-8 leading-relaxed text-[#0f0f0f]/75"
+              style={{ fontSize: "14px", letterSpacing: "-0.01em", maxWidth: "62ch" }}
+            >
+              Every object is the cumulative record of fourteen days, seven hands,
+              and one Medina. We do not scale. We do not season. We file the
+              dossier, then we build.
+            </p>
+
+            <div className="mt-10 border-t border-[#e5e5e5] pt-6">
               <div
-                className="uppercase"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "10.5px",
-                  letterSpacing: "0.14em",
-                  color: "var(--color-ink-muted)",
-                  paddingTop: "2px",
-                }}
+                className="relative bg-[#f9f9f9] overflow-hidden"
+                style={{ aspectRatio: "4 / 3" }}
               >
-                {row.label}
+                <Image
+                  src={PLATE_SRC}
+                  alt="Tannerie Chouara, Marrakech"
+                  fill
+                  sizes="(min-width: 768px) 41vw, 100vw"
+                  className="object-cover"
+                  style={{ filter: "grayscale(1) contrast(1.05)" }}
+                />
               </div>
-              <div className="flex flex-col gap-1">
-                <div
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "15px",
-                    fontWeight: 500,
-                    color: "var(--color-ink)",
-                    lineHeight: 1.35,
-                  }}
-                >
-                  {row.value}
+              <p className="mt-3 tech-meta opacity-60">
+                Plate 01 — Tannerie Chouara, Marrakech.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-span-12 md:col-span-7">
+          <ul className="divide-y divide-[#e5e5e5] border-b border-[#e5e5e5]">
+            {SPECS.map((s, i) => (
+              <li
+                key={s.k + s.v}
+                className="grid grid-cols-12 items-baseline gap-4 px-6 py-7 transition-colors hover:bg-[#f9f9f9]"
+              >
+                <span className="col-span-1 tech-meta opacity-50">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="col-span-4">
+                  <span className="tech-label opacity-60">{s.k}</span>
                 </div>
-                {row.meta && (
+                <div className="col-span-7">
                   <div
+                    className="font-medium leading-[1.1]"
                     style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "11px",
-                      letterSpacing: "0.04em",
-                      color: "var(--color-ink-muted)",
+                      fontSize: "clamp(22px, 2.4vw, 28px)",
+                      letterSpacing: "-0.03em",
                     }}
                   >
-                    {row.meta}
+                    {s.v}
                   </div>
-                )}
-              </div>
+                  {s.note && (
+                    <div className="mt-1.5 tech-meta opacity-60">{s.note}</div>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <div className="grid grid-cols-12 gap-4 px-6 py-10">
+            <div className="col-span-12 md:col-span-5">
+              <span className="tech-label opacity-60">Filed By</span>
+              <p
+                className="mt-3"
+                style={{ fontSize: "15px", letterSpacing: "-0.01em" }}
+              >
+                Y. Berrada — Atelier Director
+                <br />
+                <span className="opacity-60">Marrakech, MA</span>
+              </p>
             </div>
-          ))}
+            <div className="col-span-12 md:col-span-7 flex md:justify-end items-end">
+              <a
+                href="mailto:hello@maisontanneurs.com?subject=Dossier%20Request"
+                className="inline-flex h-12 items-center bg-[#0f0f0f] px-7 text-white hover:opacity-80"
+                style={{
+                  fontSize: "12px",
+                  fontWeight: 500,
+                  letterSpacing: "0.22em",
+                  textTransform: "uppercase",
+                }}
+              >
+                Request Full Dossier
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
