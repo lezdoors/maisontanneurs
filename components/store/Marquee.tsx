@@ -1,28 +1,40 @@
-const ITEMS = [
-  "Hand-cut in Fes",
-  "Full-grain leather only",
-  "Hand-stitched in Marrakech",
-  "Solid brass hardware",
-  "5-day shipping worldwide",
-  "Free EU returns",
-];
+"use client";
+
+import { motion } from "framer-motion";
+
+const PHRASE =
+  "HANDCRAFTED IN MARRAKECH • FULL GRAIN LEATHER • LIFETIME GUARANTEE • EXPRESS SHIPPING TO FRANCE & THE UK • ";
 
 export default function Marquee() {
-  // Duplicate the items so the -50% translate loop reads seamlessly.
-  const loop = [...ITEMS, ...ITEMS];
   return (
     <section
-      aria-label="Brand promise"
-      className="mt-marquee"
+      aria-label="House promises"
+      className="w-full bg-white border-y border-[#e5e5e5] overflow-hidden"
     >
-      <div className="mt-marquee__track">
-        {loop.map((item, i) => (
-          <span key={`${item}-${i}`} className="mt-marquee__item">
-            <span className="mt-marquee__dot" aria-hidden />
-            <span>{item}</span>
+      <motion.div
+        className="flex whitespace-nowrap py-4 will-change-transform"
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{
+          duration: 48,
+          ease: "linear",
+          repeat: Infinity,
+        }}
+        aria-hidden
+      >
+        {Array.from({ length: 4 }).map((_, i) => (
+          <span
+            key={i}
+            className="tech-label text-[#0f0f0f] mr-12"
+            style={{ fontSize: "12px", letterSpacing: "0.22em" }}
+          >
+            {PHRASE}
           </span>
         ))}
-      </div>
+      </motion.div>
+      <span className="sr-only">
+        Handcrafted in Marrakech. Full-grain leather. Lifetime guarantee.
+        Express shipping to France and the UK.
+      </span>
     </section>
   );
 }

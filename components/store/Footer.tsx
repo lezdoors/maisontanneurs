@@ -1,4 +1,5 @@
 import Link from "next/link";
+import NewsletterSignup from "@/components/store/NewsletterSignup";
 
 type ColumnDef = { title: string; links: { label: string; href: string }[] };
 
@@ -59,6 +60,8 @@ const COLUMNS: ColumnDef[] = [
 export default function Footer() {
   return (
     <footer className="w-full bg-white text-[#0f0f0f] border-t border-[#e5e5e5]">
+      <NewsletterSignup />
+
       <div className="grid grid-cols-2 md:grid-cols-5 gap-y-10 gap-x-6 px-6 pt-14 pb-10">
         {COLUMNS.map((c) => (
           <Column key={c.title} {...c} />
