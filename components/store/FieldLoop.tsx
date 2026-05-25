@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-const VIDEO_SRC_MP4 = "/videos/atelier-loop.mp4";
-const VIDEO_SRC_WEBM = "/videos/atelier-loop.webm";
+const VIDEO_SRC_MP4 = "/videos/hero-model-white-suit-bag.mp4";
+const VIDEO_SRC_WEBM = "/videos/atelier-loop.webm"; // legacy fallback only
 
 export default function FieldLoop() {
   const ref = useRef<HTMLVideoElement | null>(null);
@@ -56,11 +56,11 @@ export default function FieldLoop() {
             ref={ref}
             className="absolute inset-0 w-full h-full object-cover"
             preload="metadata"
-            poster="/brand/hero/home-hero-2-couple-atelier.webp"
+            poster="/brand/editorial/model-white-suit-salon.webp"
             aria-hidden
           >
-            <source src={VIDEO_SRC_WEBM} type="video/webm" />
             <source src={VIDEO_SRC_MP4} type="video/mp4" />
+            <source src={VIDEO_SRC_WEBM} type="video/webm" />
           </video>
         </div>
       </div>

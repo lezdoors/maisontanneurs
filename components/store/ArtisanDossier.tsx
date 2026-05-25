@@ -12,7 +12,7 @@ const SPECS: Spec[] = [
   { k: "Warranty", v: "Lifetime", note: "Re-stitching, edge-coat, re-line" },
 ];
 
-const PLATE_SRC = "/brand/hero/home-hero-2-couple-atelier.webp";
+const PLATE_SRC = "/brand/section/atelier-bw-portrait.webp";
 
 export default function ArtisanDossier() {
   return (
@@ -71,11 +71,10 @@ export default function ArtisanDossier() {
               >
                 <Image
                   src={PLATE_SRC}
-                  alt="Tannerie Chouara, Marrakech"
+                  alt="A master tanner saddle-stitching in the Marrakech atelier"
                   fill
                   sizes="(min-width: 768px) 41vw, 100vw"
                   className="object-cover"
-                  style={{ filter: "grayscale(1) contrast(1.05)" }}
                 />
               </div>
               <p className="mt-3 tech-meta opacity-60">
