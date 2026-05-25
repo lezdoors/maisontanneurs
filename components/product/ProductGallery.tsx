@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { bust } from "@/lib/image-url";
 
 interface ProductGalleryProps {
   images: string[];
@@ -16,7 +17,7 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
     <div className="flex flex-col gap-3 px-[clamp(16px,3vw,40px)]">
       <div className="relative aspect-square bg-white overflow-hidden">
         <Image
-          src={gallery[active]}
+          src={bust(gallery[active])}
           alt={`${title}${gallery.length > 1 ? ` — view ${active + 1}` : ""}`}
           fill
           sizes="(max-width: 768px) 100vw, 55vw"
@@ -43,7 +44,7 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
                 }`}
               >
                 <Image
-                  src={src}
+                  src={bust(src)}
                   alt=""
                   fill
                   sizes="120px"
