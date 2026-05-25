@@ -53,28 +53,16 @@ async function getProducts(category?: string, q?: string): Promise<Product[]> {
       return products as Product[];
     }
 
-    let query = supabase
+    // NOTE: don't filter by category at the DB level — Supabase legacy rows
+    // have category="Leather Goods" and would be excluded before the overlay
+    // gets a chance to remap them. Fetch all available+featured, merge with
+    // STATIC (which fixes legacy categories), then filter client-side.
+    const { data, error } = await supabase
       .from("products")
       .select("*")
       .eq("status", "available")
-      .eq("featured", true) // hidden SKUs (e.g. test-e2e) stay accessible by slug but never list
+      .eq("featured", true)
       .order("created_at", { ascending: false });
-
-    if (category && category !== "all") {
-      const r = resolveCategoryFilter(category);
-      if (r.in) {
-        query = query.in("category", r.in);
-      } else if (r.eq) {
-        query = query.eq("category", r.eq);
-      }
-    }
-
-    if (q) {
-      const needle = `%${q}%`;
-      query = query.or(`title.ilike.${needle},description.ilike.${needle},category.ilike.${needle}`);
-    }
-
-    const { data, error } = await query;
 
     if (error || !data) {
       // Fall back to static products only if Supabase truly errored.
