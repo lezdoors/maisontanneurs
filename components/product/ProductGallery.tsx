@@ -14,13 +14,13 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
 
   return (
     <div className="flex flex-col gap-3 px-[clamp(16px,3vw,40px)]">
-      <div className="relative aspect-[4/5] bg-[color:var(--color-bg-light-soft)] overflow-hidden">
+      <div className="relative aspect-square bg-white overflow-hidden">
         <Image
           src={gallery[active]}
           alt={`${title}${gallery.length > 1 ? ` — view ${active + 1}` : ""}`}
           fill
           sizes="(max-width: 768px) 100vw, 55vw"
-          className="object-contain"
+          className="object-cover"
           priority
         />
       </div>
@@ -47,7 +47,7 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
                   alt=""
                   fill
                   sizes="120px"
-                  className="object-contain"
+                  className="object-cover"
                 />
               </button>
             );

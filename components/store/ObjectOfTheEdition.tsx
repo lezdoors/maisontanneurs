@@ -111,8 +111,10 @@ export default async function ObjectOfTheEdition() {
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <Link
               href={`/products/${p.slug}`}
-              className="inline-flex h-12 items-center justify-center bg-[#0f0f0f] px-7 text-white hover:opacity-80"
+              className="inline-flex h-12 items-center justify-center px-7 hover:opacity-80"
               style={{
+                background: "#0f0f0f",
+                color: "#ffffff",
                 fontSize: "12px",
                 fontWeight: 500,
                 letterSpacing: "0.22em",
