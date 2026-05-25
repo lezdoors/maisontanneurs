@@ -8,10 +8,10 @@ type Family = {
 };
 
 const FAMILIES: Family[] = [
-  { code: "F.01", name: "Weekender", count: "02 Objects", href: "/products?family=weekender" },
-  { code: "F.02", name: "Tote", count: "04 Objects", href: "/products?family=tote" },
-  { code: "F.03", name: "Crossbody", count: "05 Objects", href: "/products?family=crossbody" },
-  { code: "F.04", name: "Doctor Bag", count: "01 Object", href: "/products?family=doctor-bag" },
+  { code: "F.01", name: "Backpack", count: "11 Objects", href: "/products?category=Backpack" },
+  { code: "F.02", name: "Crossbody", count: "04 Objects", href: "/products?category=Crossbody" },
+  { code: "F.03", name: "Weekender", count: "03 Objects", href: "/products?category=Weekender" },
+  { code: "F.04", name: "Tote", count: "01 Object", href: "/products?category=Tote" },
 ];
 
 export default function Families() {
@@ -35,7 +35,7 @@ export default function Families() {
             </h2>
           </div>
           <span className="tech-meta opacity-70 hidden md:inline">
-            04 Families · 12 Objects
+            04 Families · 19 Objects
           </span>
         </div>
       </div>

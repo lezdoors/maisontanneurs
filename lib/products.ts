@@ -22,7 +22,7 @@ export const STATIC_PRODUCTS: Product[] = [
       `${STORAGE}/heritage-rucksack-scale.webp`,
       `${STORAGE}/heritage-rucksack-archive-1.webp`,
     ],
-    category: "Leather Goods",
+    category: "Backpack",
     status: "available",
     featured: true,
     materials: ["Full-grain Moroccan leather", "Solid brass hardware", "Hand-stitched in Marrakech"],
@@ -46,7 +46,7 @@ export const STATIC_PRODUCTS: Product[] = [
     // SKUs by design. Re-publish by flipping back to "available" with a
     // real images[] once -pdp-white.webp + -scale.webp arrive.
     images: [],
-    category: "Leather Goods",
+    category: "Backpack",
     status: "reserved",
     featured: false,
     materials: ["Full-grain Moroccan leather", "Solid brass hardware", "Hand-stitched in Marrakech"],
@@ -71,7 +71,7 @@ export const STATIC_PRODUCTS: Product[] = [
       `${STORAGE}/black-stitched-backpack-archive-3.webp`,
       `${STORAGE}/black-stitched-backpack-archive-4.webp`,
     ],
-    category: "Leather Goods",
+    category: "Backpack",
     status: "available",
     featured: true,
     materials: ["Full-grain Moroccan leather", "Cream contrast zigzag stitching", "Solid brass buckle", "Tan-finished interior", "Hand-stitched in Marrakech"],
@@ -94,7 +94,7 @@ export const STATIC_PRODUCTS: Product[] = [
       `${STORAGE}/cognac-brogue-backpack-archive-1.webp`,
       `${STORAGE}/cognac-brogue-backpack-archive-2.webp`,
     ],
-    category: "Leather Goods",
+    category: "Backpack",
     status: "available",
     featured: true,
     materials: ["Full-grain Moroccan leather", "Brogue-style edge stitching", "Brass buckle hardware", "Hand-stitched in Marrakech"],
@@ -118,7 +118,7 @@ export const STATIC_PRODUCTS: Product[] = [
       `${STORAGE}/classic-cognac-satchel-archive-2.webp`,
       `${STORAGE}/classic-cognac-satchel-archive-3.webp`,
     ],
-    category: "Leather Goods",
+    category: "Satchel",
     status: "available",
     featured: true,
     materials: ["Full-grain Moroccan leather", "Dual brass buckle closures", "Top carry handle + crossbody strap", "Cream contrast saddle-stitch", "Hand-stitched in Marrakech"],
@@ -140,7 +140,7 @@ export const STATIC_PRODUCTS: Product[] = [
       `${STORAGE}/woven-leather-backpack-pdp-white.webp`,
       `${STORAGE}/woven-leather-backpack-archive-1.webp`,
     ],
-    category: "Leather Goods",
+    category: "Backpack",
     status: "available",
     featured: true,
     materials: ["Full-grain Moroccan leather", "Hand-woven leather panels", "Brass-finished buckle", "Drawstring closure", "Hand-stitched in Marrakech"],
@@ -162,7 +162,7 @@ export const STATIC_PRODUCTS: Product[] = [
       `${STORAGE}/vintage-buckle-backpack-pdp-white.webp`,
       `${STORAGE}/vintage-buckle-backpack-archive-1.webp`,
     ],
-    category: "Leather Goods",
+    category: "Backpack",
     status: "available",
     featured: true,
     materials: ["Full-grain Moroccan leather", "Aged brass hardware", "Three external pockets", "Drawstring inner closure", "Hand-stitched in Marrakech"],
@@ -183,7 +183,7 @@ export const STATIC_PRODUCTS: Product[] = [
     images: [
       "/assets/atlas-kilim-duffle/atlas-kilim-duffle.webp",
     ],
-    category: "Leather Goods",
+    category: "Weekender",
     status: "available",
     featured: true,
     materials: [
@@ -209,7 +209,7 @@ export const STATIC_PRODUCTS: Product[] = [
     images: [
       "/assets/explorer-rolltop-cognac/explorer-rolltop-cognac.webp",
     ],
-    category: "Leather Goods",
+    category: "Backpack",
     status: "available",
     featured: true,
     materials: [
@@ -236,7 +236,7 @@ export const STATIC_PRODUCTS: Product[] = [
     images: [
       "/assets/medina-crossbody-envelope/medina-crossbody-envelope.webp",
     ],
-    category: "Leather Goods",
+    category: "Crossbody",
     status: "available",
     featured: true,
     materials: [
@@ -262,7 +262,7 @@ export const STATIC_PRODUCTS: Product[] = [
     images: [
       "/assets/medina-rucksack-drawstring/medina-rucksack-drawstring.webp",
     ],
-    category: "Leather Goods",
+    category: "Backpack",
     status: "available",
     featured: true,
     materials: [
@@ -298,7 +298,7 @@ export const STATIC_PRODUCTS: Product[] = [
       "/products/saharienne-saddle-cognac/saharienne-saddle-cognac-archive-7.webp",
       "/products/saharienne-saddle-cognac/saharienne-saddle-cognac-archive-8.webp",
     ],
-    category: "Leather Goods",
+    category: "Crossbody",
     status: "available",
     featured: true,
     materials: [
@@ -332,7 +332,7 @@ export const STATIC_PRODUCTS: Product[] = [
       "/products/medersa-rucksack-cognac/medersa-rucksack-cognac-archive-7.webp",
       "/products/medersa-rucksack-cognac/medersa-rucksack-cognac-archive-8.webp",
     ],
-    category: "Leather Goods",
+    category: "Backpack",
     status: "available",
     featured: true,
     materials: [
@@ -367,7 +367,7 @@ export const STATIC_PRODUCTS: Product[] = [
       "/products/babouche-crossbody-cognac/babouche-crossbody-cognac-archive-7.webp",
       "/products/babouche-crossbody-cognac/babouche-crossbody-cognac-archive-8.webp",
     ],
-    category: "Leather Goods",
+    category: "Crossbody",
     status: "available",
     featured: true,
     materials: [
@@ -401,7 +401,7 @@ export const STATIC_PRODUCTS: Product[] = [
       "/products/kilim-duffle-polychrome/kilim-duffle-polychrome-archive-7.webp",
       "/products/kilim-duffle-polychrome/kilim-duffle-polychrome-archive-8.webp",
     ],
-    category: "Leather Goods",
+    category: "Weekender",
     status: "available",
     featured: true,
     materials: [
@@ -436,7 +436,7 @@ export const STATIC_PRODUCTS: Product[] = [
       "/products/kilim-duffle-amber/kilim-duffle-amber-archive-7.webp",
       "/products/kilim-duffle-amber/kilim-duffle-amber-archive-8.webp",
     ],
-    category: "Leather Goods",
+    category: "Weekender",
     status: "available",
     featured: true,
     materials: [
@@ -471,7 +471,7 @@ export const STATIC_PRODUCTS: Product[] = [
       "/products/cedre-crossbody-chocolate/cedre-crossbody-chocolate-archive-7.webp",
       "/products/cedre-crossbody-chocolate/cedre-crossbody-chocolate-archive-8.webp",
     ],
-    category: "Leather Goods",
+    category: "Crossbody",
     status: "available",
     featured: true,
     materials: [
@@ -506,7 +506,7 @@ export const STATIC_PRODUCTS: Product[] = [
       "/products/tadelakt-rucksack-cognac/tadelakt-rucksack-cognac-archive-7.webp",
       "/products/tadelakt-rucksack-cognac/tadelakt-rucksack-cognac-archive-8.webp",
     ],
-    category: "Leather Goods",
+    category: "Backpack",
     status: "available",
     featured: true,
     materials: [
@@ -541,7 +541,7 @@ export const STATIC_PRODUCTS: Product[] = [
       "/products/safran-tote-cognac/safran-tote-cognac-archive-7.webp",
       "/products/safran-tote-cognac/safran-tote-cognac-archive-8.webp",
     ],
-    category: "Leather Goods",
+    category: "Tote",
     status: "available",
     featured: true,
     materials: [
@@ -575,7 +575,7 @@ export const STATIC_PRODUCTS: Product[] = [
       "/products/rif-rucksack-tan/rif-rucksack-tan-archive-7.webp",
       "/products/rif-rucksack-tan/rif-rucksack-tan-archive-8.webp",
     ],
-    category: "Leather Goods",
+    category: "Backpack",
     status: "available",
     featured: true,
     materials: [
@@ -596,7 +596,7 @@ export const STATIC_PRODUCTS: Product[] = [
   },
 ];
 
-export const CATEGORIES = ["All", "Leather Goods"] as const;
+export const CATEGORIES = ["All", "Backpack", "Crossbody", "Tote", "Weekender", "Satchel"] as const;
 
 export type Category = (typeof CATEGORIES)[number];
 

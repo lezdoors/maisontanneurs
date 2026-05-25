@@ -8,27 +8,18 @@ const COLUMNS: ColumnDef[] = [
     title: "Collection",
     links: [
       { label: "All Objects", href: "/products" },
-      { label: "Weekender", href: "/products?category=Duffles" },
-      { label: "Tote", href: "/products?category=Totes" },
+      { label: "Backpacks", href: "/products?category=Backpack" },
       { label: "Crossbody", href: "/products?category=Crossbody" },
-      { label: "Archive", href: "/products?archive=1" },
+      { label: "Totes", href: "/products?category=Tote" },
+      { label: "Weekenders", href: "/products?category=Weekender" },
     ],
   },
   {
     title: "Atelier",
     links: [
-      { label: "The Tannery", href: "/about" },
-      { label: "Artisans", href: "/about#artisans" },
-      { label: "Materials", href: "/legal/care" },
-      { label: "Method", href: "#atelier" },
-    ],
-  },
-  {
-    title: "Journal",
-    links: [
-      { label: "Field Notes", href: "/feed" },
-      { label: "Dispatches", href: "/feed" },
-      { label: "Lookbook", href: "/feed" },
+      { label: "The Story", href: "/about" },
+      { label: "Production Footprint", href: "/about" },
+      { label: "Materials & Care", href: "/legal/care" },
     ],
   },
   {
@@ -38,7 +29,7 @@ const COLUMNS: ColumnDef[] = [
       { label: "Shipping", href: "/legal/shipping" },
       { label: "Returns", href: "/legal/returns" },
       { label: "FAQ", href: "/legal/faq" },
-      { label: "Contact", href: "mailto:hello@maisontanneurs.com" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
@@ -53,6 +44,10 @@ const COLUMNS: ColumnDef[] = [
         label: "Trade Inquiries",
         href: "mailto:hello@maisontanneurs.com?subject=Trade",
       },
+      {
+        label: "Repair Request",
+        href: "mailto:repair@maisontanneurs.com?subject=Repair%20Request",
+      },
     ],
   },
 ];
@@ -62,7 +57,7 @@ export default function Footer() {
     <footer className="w-full bg-white text-[#0f0f0f] border-t border-[#e5e5e5]">
       <NewsletterSignup />
 
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-y-10 gap-x-6 px-6 pt-14 pb-10">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 px-6 pt-14 pb-10">
         {COLUMNS.map((c) => (
           <Column key={c.title} {...c} />
         ))}
@@ -101,12 +96,6 @@ export default function Footer() {
               className="hover:underline underline-offset-4"
             >
               Terms
-            </Link>
-            <Link
-              href="/legal/accessibility"
-              className="hover:underline underline-offset-4"
-            >
-              Accessibility
             </Link>
           </div>
         </div>
