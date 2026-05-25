@@ -21,7 +21,6 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
           fill
           sizes="(max-width: 768px) 100vw, 55vw"
           className="object-cover"
-          style={{ transform: "scale(1.04)" }}
           priority
         />
       </div>

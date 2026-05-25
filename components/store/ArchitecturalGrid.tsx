@@ -130,7 +130,6 @@ function ProductCell({
               fill
               sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
               className="object-cover"
-              style={{ transform: "scale(1.04)" }}
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center text-[#0f0f0f]/40 tech-meta">

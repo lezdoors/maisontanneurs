@@ -65,9 +65,6 @@ export default async function ObjectOfTheEdition() {
               className="object-cover transition-transform duration-[1200ms]"
               style={{
                 transitionTimingFunction: "cubic-bezier(0.22,1,0.36,1)",
-                // Crop past the ~25-46px Higgsfield letterbox bars baked into
-                // the source webps. See docs/PRODUCT-IMAGES-MANIFEST.md.
-                transform: "scale(1.04)",
               }}
             />
           ) : (
