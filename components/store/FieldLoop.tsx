@@ -44,20 +44,25 @@ export default function FieldLoop() {
         <span className="tech-meta">MUTED · LOOPED</span>
       </div>
 
-      <div
-        className="relative w-full bg-[#0f0f0f] overflow-hidden"
-        style={{ aspectRatio: "16 / 9" }}
-      >
-        <video
-          ref={ref}
-          className="absolute inset-0 w-full h-full object-cover"
-          preload="metadata"
-          poster="/brand/hero/home-hero-2-couple-atelier.webp"
-          aria-hidden
+      {/* Constrained on large screens — the current cut crops awkwardly when
+          stretched to ultrawide. Cap at 1100px and center; replace with a
+          higher-resolution wide cut later to go full-bleed again. */}
+      <div className="w-full bg-[#0f0f0f] py-10 lg:py-14">
+        <div
+          className="relative mx-auto bg-[#0f0f0f] overflow-hidden"
+          style={{ aspectRatio: "16 / 9", maxWidth: "1100px" }}
         >
-          <source src={VIDEO_SRC_WEBM} type="video/webm" />
-          <source src={VIDEO_SRC_MP4} type="video/mp4" />
-        </video>
+          <video
+            ref={ref}
+            className="absolute inset-0 w-full h-full object-cover"
+            preload="metadata"
+            poster="/brand/hero/home-hero-2-couple-atelier.webp"
+            aria-hidden
+          >
+            <source src={VIDEO_SRC_WEBM} type="video/webm" />
+            <source src={VIDEO_SRC_MP4} type="video/mp4" />
+          </video>
+        </div>
       </div>
 
       <div className="grid grid-cols-12 px-6 py-5 border-t border-white/15 text-white/70 gap-y-2">
