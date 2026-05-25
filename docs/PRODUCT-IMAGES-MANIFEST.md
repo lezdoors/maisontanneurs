@@ -1,6 +1,6 @@
 # Product Images — Canonical Manifest
 
-_Generated: 2026-05-25 07:45 by `scripts/build-images-manifest.py`_
+_Generated: 2026-05-25 16:38 by `scripts/build-images-manifest.py`_
 
 Single source of truth for **every Maison Tanneurs product image**: what's in Supabase Storage, what's on Drive, what's wired to `products.images[]` on the live site, and what state each SKU is in.
 
@@ -73,21 +73,21 @@ Wired to `products.images[]`:
 
 ### `atlas-messenger-laptop`
 
-- **Storage files:** 12 (10 usable, 2 supplier-raw / banned)
-- **Hero:** `atlas-messenger-laptop-scale.webp`
+- **Storage files:** 21 (19 usable, 2 supplier-raw / banned)
+- **Hero:** `atlas-messenger-laptop-pdp-white.webp`
 - **Drive source:** `usable product pics/atlas-messenger-laptop/`
 
 Wired to `products.images[]`:
 
-0. `drop-02/atlas-messenger-laptop-scale.webp`
-1. `drop-02/atlas-messenger-laptop-scale-04.webp`
-2. `drop-02/atlas-messenger-laptop-scale-05.webp`
-3. `drop-02/atlas-messenger-laptop-scale-06.webp`
-4. `drop-02/atlas-messenger-laptop-scale-07.webp`
-5. `drop-02/atlas-messenger-laptop-scale-08.webp`
-6. `drop-02/atlas-messenger-laptop-scale-09.webp`
-7. `drop-02/atlas-messenger-laptop-scale-01.webp`
-8. `drop-02/atlas-messenger-laptop-scale-02.webp`
+0. `drop-02/atlas-messenger-laptop-pdp-white.webp`
+1. `drop-02/atlas-messenger-laptop-scale.webp`
+2. `drop-02/atlas-messenger-laptop-pdp-04.webp`
+3. `drop-02/atlas-messenger-laptop-pdp-05.webp`
+4. `drop-02/atlas-messenger-laptop-pdp-06.webp`
+5. `drop-02/atlas-messenger-laptop-pdp-07.webp`
+6. `drop-02/atlas-messenger-laptop-pdp-08.webp`
+7. `drop-02/atlas-messenger-laptop-pdp-01.webp`
+8. `drop-02/atlas-messenger-laptop-pdp-02.webp`
 
 ### `black-stitched-backpack`
 
@@ -163,21 +163,21 @@ Wired to `products.images[]`:
 
 ### `marrakech-tote-cognac`
 
-- **Storage files:** 20 (18 usable, 2 supplier-raw / banned)
-- **Hero:** `marrakech-tote-cognac-scale.webp`
+- **Storage files:** 21 (19 usable, 2 supplier-raw / banned)
+- **Hero:** `marrakech-tote-cognac-pdp-white.webp`
 - **Drive source:** `usable product pics/marrakech-tote-cognac/`
 
 Wired to `products.images[]`:
 
-0. `drop-02/marrakech-tote-cognac-scale.webp`
-1. `drop-02/marrakech-tote-cognac-pdp-04.webp`
-2. `drop-02/marrakech-tote-cognac-pdp-05.webp`
-3. `drop-02/marrakech-tote-cognac-pdp-06.webp`
-4. `drop-02/marrakech-tote-cognac-pdp-07.webp`
-5. `drop-02/marrakech-tote-cognac-pdp-08.webp`
-6. `drop-02/marrakech-tote-cognac-pdp-01.webp`
-7. `drop-02/marrakech-tote-cognac-pdp-02.webp`
-8. `drop-02/marrakech-tote-cognac-pdp-03.webp`
+0. `drop-02/marrakech-tote-cognac-pdp-white.webp`
+1. `drop-02/marrakech-tote-cognac-scale.webp`
+2. `drop-02/marrakech-tote-cognac-pdp-04.webp`
+3. `drop-02/marrakech-tote-cognac-pdp-05.webp`
+4. `drop-02/marrakech-tote-cognac-pdp-06.webp`
+5. `drop-02/marrakech-tote-cognac-pdp-07.webp`
+6. `drop-02/marrakech-tote-cognac-pdp-08.webp`
+7. `drop-02/marrakech-tote-cognac-pdp-01.webp`
+8. `drop-02/marrakech-tote-cognac-pdp-02.webp`
 
 ### `medina-crossbody-envelope`
 

@@ -8,7 +8,7 @@
 // Bump CACHE_BUSTER_VERSION any time we recrop / reprocess Storage files.
 // (Last bump: 2026-05-25 — Higgsfield black-bar source crop.)
 
-const CACHE_BUSTER_VERSION = "2026-05-25-bars";
+const CACHE_BUSTER_VERSION = "2026-05-25-curated";
 
 const SUPABASE_HOST = "xbtabpurfavngwmwtawc.supabase.co";
 
