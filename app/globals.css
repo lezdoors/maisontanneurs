@@ -2,23 +2,24 @@
 
 @theme {
   /* ============================================================
-     MAISON TANNEURS · French editorial luxury × Moroccan craft
-     Paper-white retail page (Lemaire / Loewe / Roche-Bobois) with
-     dark editorial photography for hero + brand-story pulls. No
-     cream wash, no full-dark site.
+     MAISON TANNEURS · Moroccan luxury × Parisian quiet
+     Polène-tier warm-neutral page (warm off-white + warm charcoal,
+     never pure white / pure black). Stone-cards. Cognac is an accent,
+     never a fill. No terracotta. No brown washes.
+     Palette confirmed 2026-05-25 against eng.polene-paris.com.
      ============================================================ */
 
   /* Core palette */
   --color-white: #ffffff;          /* restore default white token so text-white/bg-white render under Tailwind 4 @theme */
-  --color-paper: #ffffff;          /* default page bg — pure white (Aether-tier) */
-  --color-paper-alt: #fafaf9;      /* alt section bg, barely tinted */
-  --color-paper-soft: #f1f0ec;     /* subtle bands */
-  --color-plate: #efedea;          /* limestone — product tile plate (Aether) */
-  --color-near-black: #0a0a0a;     /* deep ink — type + dark editorial sections */
-  --color-warm-black: #141210;     /* RB-warm dark for hero zones + footer */
-  --color-warm-black-soft: #1c1a17;
-  --color-ivory: #f5efe6;          /* type on dark sections only */
-  --color-ivory-soft: #ebe2d3;
+  --color-paper: #f7f6f2;          /* default page bg — warm off-white (Polène) */
+  --color-paper-alt: #ebe9e4;      /* alt section bg, warm stone */
+  --color-paper-soft: #e2dfd8;     /* subtle bands */
+  --color-plate: #ebe9e4;          /* product tile plate — warm stone */
+  --color-near-black: #2c2a28;     /* warm charcoal — primary type (never pure black) */
+  --color-warm-black: #1f1d1b;     /* warm dark for hero zones + footer */
+  --color-warm-black-soft: #2c2a28;
+  --color-ivory: #f7f6f2;          /* type on dark sections — paper-white echo */
+  --color-ivory-soft: #ebe9e4;
 
   --color-cognac: #7a4a2b;
   --color-cognac-hi: #9a5a2b;

@@ -1,25 +1,23 @@
 import Hero from "@/components/store/Hero";
-import Marquee from "@/components/store/Marquee";
 import ObjectOfTheEdition from "@/components/store/ObjectOfTheEdition";
-import Families from "@/components/store/Families";
 import ArchitecturalGrid from "@/components/store/ArchitecturalGrid";
 import FieldLoop from "@/components/store/FieldLoop";
 import ArtisanDossier from "@/components/store/ArtisanDossier";
 import BatchGuarantee from "@/components/store/BatchGuarantee";
-import HousePromises from "@/components/store/HousePromises";
 
+// 6 sections (was 9). Polène-tier density. Dropped:
+// - Marquee   (announcement strip — duplicates TopStrip in (store)/layout)
+// - Families  (category overview — redundant with ArchitecturalGrid grid)
+// - HousePromises (3-promise strip — duplicates BatchGuarantee)
 export default async function Home() {
   return (
-    <main className="min-h-screen bg-white text-[#0f0f0f]">
+    <main className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
       <Hero />
-      <Marquee />
       <ObjectOfTheEdition />
-      <Families />
       <ArchitecturalGrid />
       <FieldLoop />
       <ArtisanDossier />
       <BatchGuarantee />
-      <HousePromises />
     </main>
   );
 }

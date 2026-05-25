@@ -18,7 +18,7 @@ export default function ArtisanDossier() {
   return (
     <section
       id="atelier"
-      className="w-full bg-white text-[#0f0f0f]"
+      className="w-full bg-[var(--color-paper)] text-[var(--color-ink)] py-[clamp(64px,10vw,140px)]"
       aria-label="Production specifications"
     >
       <div className="border-y border-[#e5e5e5]">

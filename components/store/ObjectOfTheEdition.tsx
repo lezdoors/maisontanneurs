@@ -46,7 +46,7 @@ export default async function ObjectOfTheEdition() {
   return (
     <section
       aria-label="Object of the edition"
-      className="w-full bg-white text-[#0f0f0f] border-b border-[#e5e5e5]"
+      className="w-full bg-[var(--color-paper)] text-[var(--color-ink)] border-b border-[var(--color-rule)] py-[clamp(56px,8vw,128px)]"
     >
       <div className="grid grid-cols-1 md:grid-cols-12 border-t border-[#e5e5e5]">
         {/* IMAGE — left 6 cols, full-bleed vitrine, source-respecting */}

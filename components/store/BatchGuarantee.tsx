@@ -11,7 +11,7 @@ export default function BatchGuarantee() {
   return (
     <section
       aria-label="The batch and the guarantee"
-      className="w-full bg-white text-[#0f0f0f] border-y border-[#e5e5e5]"
+      className="w-full bg-[var(--color-paper)] text-[var(--color-ink)] border-y border-[var(--color-rule)] py-[clamp(64px,10vw,140px)]"
     >
       <motion.div
         initial="hidden"

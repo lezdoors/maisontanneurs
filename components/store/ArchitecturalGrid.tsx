@@ -63,7 +63,7 @@ export default async function ArchitecturalGrid() {
   return (
     <section
       id="collection"
-      className="w-full bg-[#ffffff] text-[#0f0f0f]"
+      className="w-full bg-[var(--color-paper)] text-[var(--color-ink)] py-[clamp(64px,10vw,140px)]"
       aria-label="Current edition"
     >
       <div className="border-y border-[#e5e5e5]">

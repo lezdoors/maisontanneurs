@@ -6,28 +6,29 @@ import Link from "next/link";
 
 type Slide = { src: string; alt: string };
 
-// HD hero rotation — diverse casting, three continents, three time-of-days.
-// Frame 1 establishes brand identity (Marrakech twilight). 5 narrative beats.
+// HD hero rotation — warm-first sequence. Slide 1 must be welcoming, not
+// cold. Blue-hour and night frames demoted out of position 0 per Polène
+// guidance (warm light, easy on the eyes, no scrim wars).
 const SLIDES: Slide[] = [
   {
-    src: "/brand/hero/home-hero-medina-night.webp",
-    alt: "Cognac satchel on a Marrakech medina rooftop at blue-hour twilight",
+    src: "/brand/hero/home-hero-1-arches.webp",
+    alt: "Cognac duffle on a sunlit Marrakech stone plaza beneath carved arches at sunrise",
   },
   {
-    src: "/brand/hero/home-hero-cedar-forest.webp",
-    alt: "Cognac duffle in the Atlas cedar forest at golden hour",
+    src: "/brand/hero/home-hero-3-woman-arches.webp",
+    alt: "Model with cognac duffle in a Marrakech arched gallery at golden hour",
   },
   {
     src: "/brand/hero/home-hero-colonnade.webp",
     alt: "Model walking through a sun-washed limestone colonnade",
   },
   {
-    src: "/brand/hero/home-hero-paris-quay.webp",
-    alt: "Cognac duffle on a Paris quay at night, Notre Dame in the distance",
+    src: "/brand/hero/home-hero-5-courtyard-walk.webp",
+    alt: "Model walking through a riad courtyard at warm late-afternoon light",
   },
   {
-    src: "/brand/hero/home-hero-coastal-sunset.webp",
-    alt: "Cognac satchel on a Mediterranean coastal cliff at sunset",
+    src: "/brand/hero/home-hero-cedar-forest.webp",
+    alt: "Cognac duffle in the Atlas cedar forest at golden hour",
   },
 ];
 
@@ -127,13 +128,13 @@ export default function Hero() {
           <p
             className="mt-8 leading-relaxed"
             style={{
-              color: "rgba(255,255,255,0.78)",
-              fontSize: "15px",
-              letterSpacing: "-0.01em",
-              maxWidth: "62ch",
+              color: "rgba(255,255,255,0.85)",
+              fontSize: "16px",
+              letterSpacing: "-0.005em",
+              maxWidth: "52ch",
             }}
           >
-            Uncompromising leather architecture. Direct from the Medina artisans.
+            Hand-cut and saddle-stitched in a small Marrakech atelier. Numbered, signed, shipped worldwide.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-3">
