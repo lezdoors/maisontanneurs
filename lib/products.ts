@@ -596,16 +596,27 @@ export const STATIC_PRODUCTS: Product[] = [
   },
 ];
 
-// Merge a Supabase product list with STATIC_PRODUCTS: any STATIC entry whose
-// slug isn't already in the Supabase result gets appended. Lets the new
-// Drop 02 SKUs surface on the live site immediately, even before the
-// Supabase migration runs. Drops STATIC entries that aren't available.
+// Merge a Supabase product list with STATIC_PRODUCTS:
+//   1. For each Supabase row whose slug also exists in STATIC, overlay STATIC's
+//      category if Supabase's is the legacy "Leather Goods" value. Keeps
+//      Supabase's descriptions / prices / images but fixes category routing
+//      before the recategorize SQL migration is applied.
+//   2. Append any STATIC entry whose slug isn't in Supabase at all (Drop 02).
+// Drops STATIC entries that aren't available.
 export function mergeWithStatic(supabaseProducts: Product[]): Product[] {
+  const staticBySlug = new Map(STATIC_PRODUCTS.map((p) => [p.slug, p]));
+  const overlaid = supabaseProducts.map((p) => {
+    const s = staticBySlug.get(p.slug);
+    if (s && p.category === "Leather Goods" && s.category !== "Leather Goods") {
+      return { ...p, category: s.category };
+    }
+    return p;
+  });
   const seen = new Set(supabaseProducts.map((p) => p.slug));
   const supplement = STATIC_PRODUCTS.filter(
     (p) => !seen.has(p.slug) && p.status === "available",
   );
-  return [...supabaseProducts, ...supplement];
+  return [...overlaid, ...supplement];
 }
 
 export const CATEGORIES = ["All", "Backpack", "Crossbody", "Tote", "Weekender", "Satchel"] as const;
