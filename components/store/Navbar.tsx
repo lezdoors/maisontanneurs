@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/components/store/CartProvider";
@@ -17,7 +17,9 @@ export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [drawer, setDrawer] = useState(false);
+  const [cartPulse, setCartPulse] = useState(false);
   const cartCount = items.reduce((s, i) => s + i.quantity, 0);
+  const prevCartCountRef = useRef(cartCount);
 
   useEffect(() => {
     if (!drawer) return;
@@ -27,6 +29,18 @@ export default function Navbar() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [drawer]);
+
+  useEffect(() => {
+    if (cartCount <= prevCartCountRef.current) {
+      prevCartCountRef.current = cartCount;
+      return;
+    }
+
+    setCartPulse(true);
+    const timer = window.setTimeout(() => setCartPulse(false), 350);
+    prevCartCountRef.current = cartCount;
+    return () => window.clearTimeout(timer);
+  }, [cartCount]);
 
   function submitSearch(e: React.FormEvent) {
     e.preventDefault();
@@ -115,9 +129,16 @@ export default function Navbar() {
             type="button"
             onClick={openCart}
             aria-label="Bag"
-            className="tech-label hover:opacity-60"
+            className="tech-label inline-flex items-center gap-2 hover:opacity-60"
           >
-            Bag&nbsp;({cartCount})
+            <span>Bag</span>
+            <span
+              className={`inline-flex min-w-5 h-5 px-1.5 items-center justify-center rounded-full border border-[#0f0f0f]/15 text-[10px] leading-none transition-transform duration-200 ${
+                cartPulse ? "scale-110" : "scale-100"
+              } ${cartCount > 0 ? "bg-[#0f0f0f] text-white" : "bg-white text-[#0f0f0f]"}`}
+            >
+              {cartCount}
+            </span>
           </button>
         </div>
       </div>
