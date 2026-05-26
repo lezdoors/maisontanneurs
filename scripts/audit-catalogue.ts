@@ -62,6 +62,14 @@ const AWAITING_SCALE_SHOTS = new Set<string>([
   // -scale.webp yet. Lifestyle gens pending in HF pipeline.
   "atlas-kilim-duffle",
   "medina-crossbody-envelope",
+  // Added 2026-05-26 — Drop 03 SKUs from storyboard renames. Same pattern:
+  // curated pdp-white + 8 gallery shots, lifestyle scale shoot is next batch.
+  "expedition-rolltop-cognac",
+  "expedition-rolltop-noir",
+  "oasis-weekender-oxblood",
+  "atlas-weekender-cognac",
+  "medina-saddlebag-tooled-cognac",
+  "medina-rucksack-flap-chocolate",
 ]);
 
 // Shared hidden-SKU list — also used by the storefront loaders.
