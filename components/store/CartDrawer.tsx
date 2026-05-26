@@ -39,10 +39,11 @@ export default function CartDrawer() {
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-stone/30">
           <h3 className="text-[11px] font-sans font-normal tracking-[0.22em] uppercase text-ink">
-            Your Selection
+            Cart
           </h3>
           <button
             onClick={() => closeCart()}
+            aria-label="Close cart"
             className="text-[11px] font-sans tracking-[0.22em] uppercase text-graphite hover:text-ink transition-colors"
           >
             Close
@@ -52,9 +53,18 @@ export default function CartDrawer() {
         {/* Items */}
         <div className="flex-1 overflow-y-auto px-6 py-6">
           {items.length === 0 ? (
-            <p className="font-serif italic text-mineral text-[15px] mt-6">
-              Nothing chosen yet. Your selection rests here.
-            </p>
+            <div className="mt-6 space-y-4">
+              <p className="font-serif italic text-mineral text-[15px]">
+                Your cart is empty.
+              </p>
+              <button
+                onClick={() => closeCart()}
+                className="rb-cta-outline"
+                style={{ fontSize: 11, fontWeight: 500, letterSpacing: "0.14em", padding: "12px 16px" }}
+              >
+                Continue Shopping
+              </button>
+            </div>
           ) : (
             <div className="space-y-6">
               {items.map((item) => (

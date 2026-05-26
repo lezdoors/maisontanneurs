@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { formatPrice } from "@/lib/utils";
 import { useCart } from "@/components/store/CartProvider";
@@ -14,7 +14,8 @@ interface ProductDetailsProps {
 }
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
-  const { addItem } = useCart();
+  const { addItem, openCart } = useCart();
+  const [justAdded, setJustAdded] = useState(false);
 
   // GA4 + Pixel: view_item / ViewContent on PDP mount
   useEffect(() => {
@@ -42,8 +43,15 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
     });
   }, [product.slug, product.title, product.price, product.category]);
 
+  useEffect(() => {
+    if (!justAdded) return;
+    const timer = window.setTimeout(() => setJustAdded(false), 2500);
+    return () => window.clearTimeout(timer);
+  }, [justAdded]);
+
   function handleAddToCart() {
     addItem(productToCartItem(product));
+    setJustAdded(true);
     const price = product.price / 100;
     trackGA4Event("add_to_cart", {
       currency: "USD",
@@ -154,13 +162,33 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             )}
 
           {/* Add to Cart */}
-          <button
-            onClick={handleAddToCart}
-            className="rb-cta w-full"
-            style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.18em", padding: "18px 28px" }}
-          >
-            Add to Cart
-          </button>
+          <div className="space-y-3">
+            <button
+              onClick={handleAddToCart}
+              className="rb-cta w-full"
+              style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.18em", padding: "18px 28px" }}
+            >
+              Add to Cart
+            </button>
+            <div className="min-h-5">
+              {justAdded && (
+                <button
+                  type="button"
+                  onClick={openCart}
+                  className="font-mono text-[10px] tracking-[0.14em] uppercase text-graphite hover:text-ink transition-colors"
+                >
+                  Added to bag — view selection
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Trust strip */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 border-y border-stone/40 py-4">
+            <span className="font-mono text-[10px] tracking-[0.14em] uppercase text-graphite">Secure Checkout</span>
+            <span className="font-mono text-[10px] tracking-[0.14em] uppercase text-graphite">30-Day Returns</span>
+            <span className="font-mono text-[10px] tracking-[0.14em] uppercase text-graphite">Worldwide Shipping</span>
+          </div>
 
           {/* Shipping + care note */}
           <p className="font-serif italic text-[14px] text-mineral leading-[1.6]">
