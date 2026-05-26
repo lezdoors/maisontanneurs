@@ -18,7 +18,7 @@ export const STATIC_PRODUCTS: Product[] = [
     slug: "heritage-rucksack",
     price: 32500,
     images: [
-      "/assets/heritage-rucksack/heritage-rucksack.webp",
+      "/products/heritage-rucksack/heritage-rucksack-pdp-white.webp",
       `${STORAGE}/heritage-rucksack-scale.webp`,
       `${STORAGE}/heritage-rucksack-archive-1.webp`,
     ],
@@ -181,7 +181,7 @@ export const STATIC_PRODUCTS: Product[] = [
     slug: "atlas-kilim-duffle",
     price: 44500,
     images: [
-      "/assets/atlas-kilim-duffle/atlas-kilim-duffle.webp",
+      "/products/atlas-kilim-duffle/atlas-kilim-duffle-pdp-white.webp",
     ],
     category: "Weekender",
     status: "available",
@@ -207,7 +207,7 @@ export const STATIC_PRODUCTS: Product[] = [
     slug: "explorer-rolltop-cognac",
     price: 28500,
     images: [
-      "/assets/explorer-rolltop-cognac/explorer-rolltop-cognac.webp",
+      "/products/explorer-rolltop-cognac/explorer-rolltop-cognac-pdp-white.webp",
     ],
     category: "Backpack",
     status: "available",
@@ -234,7 +234,7 @@ export const STATIC_PRODUCTS: Product[] = [
     slug: "medina-crossbody-envelope",
     price: 18500,
     images: [
-      "/assets/medina-crossbody-envelope/medina-crossbody-envelope.webp",
+      "/products/medina-crossbody-envelope/medina-crossbody-envelope-pdp-white.webp",
     ],
     category: "Crossbody",
     status: "available",
@@ -260,7 +260,7 @@ export const STATIC_PRODUCTS: Product[] = [
     slug: "medina-rucksack-drawstring",
     price: 25500,
     images: [
-      "/assets/medina-rucksack-drawstring/medina-rucksack-drawstring.webp",
+      "/products/medina-rucksack-drawstring/medina-rucksack-drawstring-pdp-white.webp",
     ],
     category: "Backpack",
     status: "available",

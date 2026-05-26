@@ -23,6 +23,9 @@
 import { createClient } from "@supabase/supabase-js";
 import * as dotenv from "dotenv";
 import { STATIC_PRODUCTS } from "../lib/products";
+import { access } from "node:fs/promises";
+import { constants as fsConstants } from "node:fs";
+import { join } from "node:path";
 
 dotenv.config({ path: ".env.local" });
 
@@ -70,6 +73,19 @@ const AWAITING_SCALE_SHOTS = new Set<string>([
   "atlas-weekender-cognac",
   "medina-saddlebag-tooled-cognac",
   "medina-rucksack-flap-chocolate",
+  "explorer-rolltop-cognac",
+  "medina-rucksack-drawstring",
+  // Added 2026-05-26 — Drop 02 canonical still-image sets. Keep as warn until
+  // dedicated lifestyle scale shots are generated.
+  "saharienne-saddle-cognac",
+  "medersa-rucksack-cognac",
+  "babouche-crossbody-cognac",
+  "kilim-duffle-polychrome",
+  "kilim-duffle-amber",
+  "cedre-crossbody-chocolate",
+  "tadelakt-rucksack-cognac",
+  "safran-tote-cognac",
+  "rif-rucksack-tan",
 ]);
 
 // Shared hidden-SKU list — also used by the storefront loaders.
@@ -97,6 +113,19 @@ async function head(url: string): Promise<number> {
   } catch {
     return 0;
   }
+}
+
+async function checkImageReachability(url: string): Promise<number> {
+  if (url.startsWith("/")) {
+    const localPath = join(process.cwd(), "public", url.replace(/^\//, ""));
+    try {
+      await access(localPath, fsConstants.F_OK);
+      return 200;
+    } catch {
+      return 0;
+    }
+  }
+  return head(url);
 }
 
 async function loadProducts(): Promise<{ products: Product[]; source: string }> {
@@ -226,7 +255,7 @@ async function audit(): Promise<void> {
       }
 
       const unique = [...new Set(imgs)];
-      const codes = await Promise.all(unique.map(head));
+      const codes = await Promise.all(unique.map(checkImageReachability));
       unique.forEach((u, i) => {
         if (codes[i] !== 200) {
           issues.push({
