@@ -47,8 +47,21 @@ function deriveFamily(slug: string): string {
     "walnut",
   ];
   const trimmed = stem.filter((s) => !colors.includes(s));
-  // Pick the silhouette word (usually last or second-to-last)
-  const silhouette = trimmed[trimmed.length - 1] || trimmed[0] || parts[0];
+  // Prefer a true bag silhouette over finish/closure modifiers.
+  const silhouettes = [
+    "backpack",
+    "briefcase",
+    "crossbody",
+    "duffle",
+    "messenger",
+    "rolltop",
+    "rucksack",
+    "saddlebag",
+    "satchel",
+    "tote",
+    "weekender",
+  ];
+  const silhouette = trimmed.find((s) => silhouettes.includes(s)) || trimmed[trimmed.length - 1] || trimmed[0] || parts[0];
   return silhouette.replace(/-/g, " ").toUpperCase();
 }
 
