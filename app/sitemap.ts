@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { createServerSupabase } from "@/lib/supabase/server";
+import { HIDDEN_SKUS, HIDDEN_SKUS_ARRAY } from "@/lib/hidden-skus";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.maisontanneurs.com";
 
@@ -23,17 +24,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const supabase = await createServerSupabase();
     if (supabase) {
+      const hiddenList = `(${HIDDEN_SKUS_ARRAY.join(",")})`;
       const { data } = await supabase
         .from("products")
         .select("slug, updated_at")
-        .eq("status", "available");
+        .eq("status", "available")
+        .not("slug", "in", hiddenList);
       if (data) {
-        productPaths = data.map((p: { slug: string; updated_at: string | null }) => ({
-          url: `${SITE}/products/${p.slug}`,
-          lastModified: p.updated_at ? new Date(p.updated_at) : undefined,
-          changeFrequency: "weekly" as const,
-          priority: 0.8,
-        }));
+        productPaths = data
+          .filter((p: { slug: string }) => !HIDDEN_SKUS.has(p.slug))
+          .map((p: { slug: string; updated_at: string | null }) => ({
+            url: `${SITE}/products/${p.slug}`,
+            lastModified: p.updated_at ? new Date(p.updated_at) : undefined,
+            changeFrequency: "weekly" as const,
+            priority: 0.8,
+          }));
       }
     }
   } catch {

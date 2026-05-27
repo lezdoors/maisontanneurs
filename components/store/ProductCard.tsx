@@ -60,7 +60,7 @@ export default function ProductCard({
           alt={title}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover mt-product-img-trim transition-transform duration-[1200ms] ease-out group-hover:scale-[1.025]"
+          className="object-contain p-[7%] mt-product-img-trim transition-transform duration-[1200ms] ease-out group-hover:scale-[1.025]"
         />
         <div className="pointer-events-none absolute inset-0 ring-1 ring-[color:var(--color-plate)]" />
       </div>

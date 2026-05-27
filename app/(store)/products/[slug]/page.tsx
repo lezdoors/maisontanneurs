@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { createServerSupabase } from "@/lib/supabase/server";
 import { Product } from "@/lib/supabase/types";
 import { STATIC_PRODUCTS } from "@/lib/products";
+import { HIDDEN_SKUS, HIDDEN_SKUS_ARRAY } from "@/lib/hidden-skus";
 import { formatPrice } from "@/lib/utils";
 import ProductGallery from "@/components/product/ProductGallery";
 import ProductDetails from "@/components/product/ProductDetails";
@@ -11,6 +12,8 @@ import CraftStory from "@/components/product/CraftStory";
 import ProductCard from "@/components/store/ProductCard";
 
 async function getProduct(slug: string): Promise<Product | null> {
+  if (HIDDEN_SKUS.has(slug)) return null;
+
   try {
     const supabase = await createServerSupabase();
 
@@ -19,6 +22,7 @@ async function getProduct(slug: string): Promise<Product | null> {
         .from("products")
         .select("*, craftsmen(*)")
         .eq("slug", slug)
+        .eq("status", "available")
         .single();
 
       if (!error && data) return data as Product;
@@ -28,7 +32,11 @@ async function getProduct(slug: string): Promise<Product | null> {
   }
 
   // Fallback to static
-  return STATIC_PRODUCTS.find((p) => p.slug === slug) || null;
+  return (
+    STATIC_PRODUCTS.find(
+      (p) => p.slug === slug && p.status === "available" && !HIDDEN_SKUS.has(p.slug),
+    ) || null
+  );
 }
 
 async function getRelatedProducts(
@@ -39,12 +47,14 @@ async function getRelatedProducts(
     const supabase = await createServerSupabase();
 
     if (supabase) {
+      const hiddenList = `(${HIDDEN_SKUS_ARRAY.join(",")})`;
       const { data, error } = await supabase
         .from("products")
         .select("*")
         .eq("status", "available")
         .eq("category", category)
         .neq("slug", excludeSlug)
+        .not("slug", "in", hiddenList)
         .order("created_at", { ascending: false })
         .limit(3);
 
@@ -56,7 +66,11 @@ async function getRelatedProducts(
 
   // Fallback to static
   return STATIC_PRODUCTS.filter(
-    (p) => p.category === category && p.slug !== excludeSlug,
+    (p) =>
+      p.category === category &&
+      p.slug !== excludeSlug &&
+      p.status === "available" &&
+      !HIDDEN_SKUS.has(p.slug),
   ).slice(0, 3);
 }
 
@@ -86,7 +100,9 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  return STATIC_PRODUCTS.map((p) => ({ slug: p.slug }));
+  return STATIC_PRODUCTS.filter(
+    (p) => p.status === "available" && !HIDDEN_SKUS.has(p.slug),
+  ).map((p) => ({ slug: p.slug }));
 }
 
 export default async function ProductPage({

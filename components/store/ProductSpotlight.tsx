@@ -3,27 +3,38 @@ import Link from "next/link";
 import { createServerSupabase } from "@/lib/supabase/server";
 import { Product } from "@/lib/supabase/types";
 import { STATIC_PRODUCTS } from "@/lib/products";
+import { HIDDEN_SKUS, HIDDEN_SKUS_ARRAY } from "@/lib/hidden-skus";
 import { formatPrice } from "@/lib/utils";
 
 async function getFeatured(): Promise<Product[]> {
   try {
     const supabase = await createServerSupabase();
     if (supabase) {
+      const hiddenList = `(${HIDDEN_SKUS_ARRAY.join(",")})`;
       const { data, error } = await supabase
         .from("products")
         .select("*")
         .eq("status", "available")
         .eq("featured", true)
+        .not("slug", "in", hiddenList)
         .order("created_at", { ascending: false })
         .limit(12);
       if (!error && data && data.length > 0) {
-        return (data as Product[]).filter((p) => Array.isArray(p.images) && p.images.length >= 2);
+        return (data as Product[]).filter(
+          (p) => !HIDDEN_SKUS.has(p.slug) && Array.isArray(p.images) && p.images.length >= 2,
+        );
       }
     }
   } catch {
     // fall through
   }
-  return STATIC_PRODUCTS.filter((p) => p.featured && p.images.length >= 2) as unknown as Product[];
+  return STATIC_PRODUCTS.filter(
+    (p) =>
+      p.featured &&
+      p.status === "available" &&
+      !HIDDEN_SKUS.has(p.slug) &&
+      p.images.length >= 2,
+  ) as unknown as Product[];
 }
 
 export default async function ProductSpotlight() {

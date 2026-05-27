@@ -1,10 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { STATIC_PRODUCTS } from "@/lib/products";
+import { HIDDEN_SKUS } from "@/lib/hidden-skus";
 import { formatPrice } from "@/lib/utils";
 
 export default function DropGrid() {
-  const pieces = STATIC_PRODUCTS.filter((p) => p.featured);
+  const pieces = STATIC_PRODUCTS.filter(
+    (p) => p.featured && p.status === "available" && !HIDDEN_SKUS.has(p.slug),
+  );
 
   return (
     <section id="drop" className="rb-section bg-[var(--color-bg)]">

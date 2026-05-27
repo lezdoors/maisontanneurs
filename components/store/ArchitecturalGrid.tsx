@@ -40,7 +40,7 @@ async function loadCurrentEdition(): Promise<Product[]> {
         .slice(1, FETCH_LIMIT);
     }
     const merged = mergeWithStatic(data as Product[]).filter(
-      (p) => !HIDDEN_SKUS.has(p.slug),
+      (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available",
     );
     // Drop slot 0 (= the ObjectOfTheEdition feature), keep next GRID_LIMIT.
     return merged.slice(1, FETCH_LIMIT);
@@ -171,7 +171,7 @@ function ProductCell({ product, index }: { product: Product; index: number }) {
             alt={product.title}
             fill
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-            className="object-cover transition-transform duration-[1200ms]"
+            className="object-contain p-[7%] mt-product-img-trim transition-transform duration-[1200ms]"
             style={{
               transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
             }}

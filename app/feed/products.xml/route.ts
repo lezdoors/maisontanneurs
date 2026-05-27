@@ -9,6 +9,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { STATIC_PRODUCTS } from "@/lib/products";
+import { HIDDEN_SKUS, HIDDEN_SKUS_ARRAY } from "@/lib/hidden-skus";
 
 export const revalidate = 3600; // 1 hour
 export const dynamic = "force-dynamic";
@@ -61,31 +62,38 @@ export async function GET() {
   let products: ProductRow[] = [];
 
   if (supabase) {
+    const hiddenList = `(${HIDDEN_SKUS_ARRAY.join(",")})`;
     const { data, error } = await supabase
       .from("products")
       .select(
         "id, title, slug, description, price, images, category, available_quantity, status, materials, weight_lbs",
       )
       .eq("status", "available")
+      .not("slug", "in", hiddenList)
       .order("created_at", { ascending: false });
 
     if (error) {
       // Don't 500 — fall through to STATIC_PRODUCTS so Meta ingest still has
       // something valid to parse. Log the error in the XML as a comment.
+      const fallbackProducts = (STATIC_PRODUCTS as unknown as ProductRow[]).filter(
+        (p) => p.status === "available" && !HIDDEN_SKUS.has(p.slug),
+      );
       const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <!-- supabase error: ${xmlEscape(error.message)} — falling back to static -->
-${renderFeed(STATIC_PRODUCTS as unknown as ProductRow[])}`;
+${renderFeed(fallbackProducts)}`;
       return new NextResponse(xml, {
         status: 200,
         headers: { "Content-Type": "application/xml; charset=utf-8" },
       });
     }
-    products = data || [];
+    products = (data || []).filter((p) => !HIDDEN_SKUS.has(p.slug));
   } else {
     // No Supabase configured (e.g., env vars missing on Vercel) — serve the
     // static catalogue. Maison Tanneurs Drop 01 lives in lib/products.ts so
     // the feed always returns the 2 leather SKUs regardless of DB state.
-    products = STATIC_PRODUCTS as unknown as ProductRow[];
+    products = (STATIC_PRODUCTS as unknown as ProductRow[]).filter(
+      (p) => p.status === "available" && !HIDDEN_SKUS.has(p.slug),
+    );
   }
 
   return renderResponse(renderFeed(products));

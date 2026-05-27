@@ -4,12 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useScrollReveal } from "@/lib/useScrollReveal";
 import { STATIC_PRODUCTS } from "@/lib/products";
+import { HIDDEN_SKUS } from "@/lib/hidden-skus";
 import { formatPrice } from "@/lib/utils";
 
 export default function FeaturedProducts() {
   useScrollReveal();
 
-  const featured = STATIC_PRODUCTS.filter((p) => p.featured);
+  const featured = STATIC_PRODUCTS.filter(
+    (p) => p.featured && p.status === "available" && !HIDDEN_SKUS.has(p.slug),
+  );
 
   return (
     <section className="section-pad bg-[var(--color-umber)] text-[var(--color-bone)]">

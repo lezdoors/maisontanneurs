@@ -12,7 +12,7 @@ import type { Product } from "@/lib/supabase/types";
 
 function firstVisibleStatic(): Product | null {
   for (const p of STATIC_PRODUCTS as Product[]) {
-    if (!HIDDEN_SKUS.has(p.slug)) return p;
+    if (!HIDDEN_SKUS.has(p.slug) && p.status === "available") return p;
   }
   return null;
 }
@@ -73,7 +73,7 @@ export default async function ObjectOfTheEdition() {
               fill
               priority
               sizes="(min-width: 768px) 58vw, 100vw"
-              className="object-cover transition-transform duration-[1200ms]"
+              className="object-contain p-[7%] mt-product-img-trim transition-transform duration-[1200ms]"
               style={{
                 transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
               }}
