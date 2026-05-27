@@ -31,7 +31,21 @@ function deriveFamily(slug: string): string {
   const brandPrefixes = ["medina", "marrakech", "praticien", "explorer", "atlas"];
   const stem = brandPrefixes.includes(parts[0]) ? parts.slice(1) : parts;
   // Drop trailing color names
-  const colors = ["cognac", "noir", "bordeaux", "jade", "black", "burgundy", "teal"];
+  const colors = [
+    "amber",
+    "black",
+    "bordeaux",
+    "burgundy",
+    "chocolate",
+    "cognac",
+    "jade",
+    "noir",
+    "oxblood",
+    "polychrome",
+    "tan",
+    "teal",
+    "walnut",
+  ];
   const trimmed = stem.filter((s) => !colors.includes(s));
   // Pick the silhouette word (usually last or second-to-last)
   const silhouette = trimmed[trimmed.length - 1] || trimmed[0] || parts[0];
@@ -98,16 +112,16 @@ export default function ProductCard({
 
         {/* Price OR "View details" — depends on category */}
         <div
-          className="text-[11px] tracking-[0.18em] uppercase mt-1"
+          className="text-[11px] tracking-[0.16em] uppercase mt-1"
           style={{
             fontFamily: "var(--font-mono)",
-            color: "var(--color-ink-soft)",
+            color: "var(--color-ink)",
           }}
         >
           {showPrice ? (
             <span>{formatPrice(price)}</span>
           ) : (
-            <span className="opacity-70 group-hover:opacity-100 transition-opacity">
+            <span className="opacity-85 group-hover:opacity-100 transition-opacity">
               View Specifications →
             </span>
           )}

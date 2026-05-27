@@ -87,8 +87,8 @@ export default function AboutPage() {
             the person who signed the lining.
           </p>
           <p className="text-[15px] font-sans font-light leading-[1.75] text-[var(--color-ink-soft)]">
-            Drop 01 lands June 2026 — a tight edition of bags and small
-            leather goods, restocked only when the leather is right.
+            The current edition is live now — a tight run of leather bags,
+            restocked only when the leather is right.
           </p>
         </div>
       </section>
@@ -145,15 +145,15 @@ export default function AboutPage() {
             See the first drop.
           </h2>
           <p className="text-[15px] font-sans font-light leading-[1.7] text-[var(--color-ink-soft)] mb-10 max-w-[44ch] mx-auto">
-            A tight edition of bags and small leather goods,
-            hand-stitched in Marrakech. Shipping June 2026.
+            A tight edition of leather bags, hand-stitched in Marrakech and
+            shipped direct from the atelier.
           </p>
           <Link
             href="/products"
             className="inline-flex items-center bg-[var(--color-ink)] text-[var(--color-bg)] px-8 py-4 uppercase font-medium hover:opacity-90 transition-opacity"
-            style={{ fontSize: "11px", letterSpacing: "0.22em" }}
+            style={{ color: "#ffffff", fontSize: "11px", letterSpacing: "0.22em" }}
           >
-            Shop Drop 01
+            Shop the Collection
           </Link>
         </div>
       </section>

@@ -15,6 +15,9 @@
 // -pdp-white.webp hero AND a clean build confirms the audit re-evaluates it.
 
 export const HIDDEN_SKUS: ReadonlySet<string> = new Set([
+  // Internal QA row; never list or index publicly.
+  "test-e2e",
+
   // Kept hidden because Storage has no canonical hero (pdp-white / scale /
   // pdp-hero / scale-hero). To bring online: generate HF Shots, upload to
   // drop-02/<slug>-pdp-white.webp, re-run the manifest builder

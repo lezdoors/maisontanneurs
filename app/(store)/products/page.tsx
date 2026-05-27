@@ -41,7 +41,7 @@ async function getProducts(category?: string, q?: string): Promise<Product[]> {
     // If Supabase not configured, use static products
     if (!supabase) {
       let products = STATIC_PRODUCTS.filter(
-        (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available",
+        (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available" && p.featured,
       );
       if (category && category !== "all") {
         const r = resolveCategoryFilter(category);
@@ -72,7 +72,7 @@ async function getProducts(category?: string, q?: string): Promise<Product[]> {
     if (error || !data) {
       // Fall back to static products only if Supabase truly errored.
       let products = STATIC_PRODUCTS.filter(
-        (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available",
+        (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available" && p.featured,
       );
       if (category && category !== "all") {
         const r = resolveCategoryFilter(category);
@@ -91,7 +91,7 @@ async function getProducts(category?: string, q?: string): Promise<Product[]> {
     // in Supabase). Then re-apply category/query filters to the merged set
     // so STATIC entries with correct categories surface.
     let products = mergeWithStatic(data as Product[]).filter(
-      (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available",
+      (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available" && p.featured,
     );
     if (category && category !== "all") {
       const r = resolveCategoryFilter(category);
@@ -106,7 +106,7 @@ async function getProducts(category?: string, q?: string): Promise<Product[]> {
     return products;
   } catch {
     let products = STATIC_PRODUCTS.filter(
-      (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available",
+      (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available" && p.featured,
     );
     if (category && category !== "all") {
       const r = resolveCategoryFilter(category);

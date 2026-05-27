@@ -8,7 +8,7 @@ import { useCart } from "@/components/store/CartProvider";
 const NAV_LEFT = [
   { label: "Collection", href: "/products" },
   { label: "Atelier", href: "/about" },
-  { label: "Journal", href: "/feed" },
+  { label: "Care", href: "/legal/care" },
 ];
 
 export default function Navbar() {

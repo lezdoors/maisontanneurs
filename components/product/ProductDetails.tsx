@@ -82,8 +82,8 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   return (
     <>
       <div className="lg:sticky lg:top-0 lg:self-start lg:max-h-screen lg:overflow-y-auto">
-        <div className="px-5 sm:px-8 lg:px-[40px] pt-8 sm:pt-10 lg:pt-[clamp(48px,8vw,96px)] pb-32 sm:pb-20 lg:pb-[120px]">
-          <div className="flex flex-col gap-7 sm:gap-8 lg:gap-10">
+        <div className="px-5 sm:px-8 lg:px-[40px] pt-8 sm:pt-10 lg:pt-8 pb-32 sm:pb-20 lg:pb-[120px]">
+          <div className="flex flex-col gap-6 sm:gap-7 lg:gap-6">
           {/* Breadcrumbs */}
           <nav className="font-mono text-[10px] tracking-[0.16em] uppercase text-mineral">
             <Link href="/" className="hover:text-graphite transition-colors">
@@ -119,6 +119,31 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           {product.description && (
             <p className="body-copy text-[15px] leading-[1.75] sm:text-base sm:leading-[1.8]">{product.description}</p>
           )}
+
+          {/* Add to Cart — keep the commerce action above specs on desktop */}
+          <div className="space-y-3 pt-1 sm:pt-2 hidden md:block">
+            <button
+              onClick={handleAddToCart}
+              className="rb-cta w-full"
+              style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.18em", padding: "17px 24px" }}
+            >
+              Add to Cart
+            </button>
+            <p className="text-[11px] font-sans text-mineral leading-relaxed">
+              Complimentary delivery in 3–5 days. 30-day returns.
+            </p>
+            <div className="min-h-5">
+              {justAdded && (
+                <button
+                  type="button"
+                  onClick={openCart}
+                  className="font-mono text-[10px] tracking-[0.14em] uppercase text-graphite hover:text-ink transition-colors"
+                >
+                  Added to bag — view selection
+                </button>
+              )}
+            </div>
+          </div>
 
           {/* Materials */}
           {product.materials.length > 0 && (
@@ -162,31 +187,6 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                 </table>
               </div>
             )}
-
-          {/* Add to Cart */}
-          <div className="space-y-3 pt-1 sm:pt-2 hidden md:block">
-            <button
-              onClick={handleAddToCart}
-              className="rb-cta w-full"
-              style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.18em", padding: "17px 24px" }}
-            >
-              Add to Cart
-            </button>
-            <p className="text-[11px] font-sans text-mineral leading-relaxed">
-              Complimentary delivery in 3–5 days. 30-day returns.
-            </p>
-            <div className="min-h-5">
-              {justAdded && (
-                <button
-                  type="button"
-                  onClick={openCart}
-                  className="font-mono text-[10px] tracking-[0.14em] uppercase text-graphite hover:text-ink transition-colors"
-                >
-                  Added to bag — view selection
-                </button>
-              )}
-            </div>
-          </div>
 
           {/* Trust strip */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 border-y border-stone/40 py-4">

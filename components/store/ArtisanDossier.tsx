@@ -132,6 +132,7 @@ export default function ArtisanDossier() {
                 href="mailto:hello@maisontanneurs.com?subject=Dossier%20Request"
                 className="inline-flex h-12 items-center bg-[#0f0f0f] px-7 text-white hover:opacity-80"
                 style={{
+                  color: "#ffffff",
                   fontSize: "12px",
                   fontWeight: 500,
                   letterSpacing: "0.22em",

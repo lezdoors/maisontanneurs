@@ -70,6 +70,7 @@ async function getRelatedProducts(
       p.category === category &&
       p.slug !== excludeSlug &&
       p.status === "available" &&
+      p.featured &&
       !HIDDEN_SKUS.has(p.slug),
   ).slice(0, 3);
 }
@@ -101,7 +102,7 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
   return STATIC_PRODUCTS.filter(
-    (p) => p.status === "available" && !HIDDEN_SKUS.has(p.slug),
+    (p) => p.status === "available" && p.featured && !HIDDEN_SKUS.has(p.slug),
   ).map((p) => ({ slug: p.slug }));
 }
 

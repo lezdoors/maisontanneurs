@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 // Consent state shape:
 //   "all"  — analytics + marketing pixels enabled
@@ -25,6 +26,8 @@ function setConsent(choice: ConsentChoice) {
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false);
+  const pathname = usePathname();
+  const pinLeft = pathname.startsWith("/products/");
 
   useEffect(() => {
     // Defer to avoid SSR mismatch
@@ -55,17 +58,19 @@ export default function CookieBanner() {
     <div
       role="dialog"
       aria-label="Cookie consent"
+      className="cookie-banner"
       style={{
         position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
+        bottom: 24,
+        left: pinLeft ? 24 : "auto",
+        right: pinLeft ? "auto" : 24,
         zIndex: 100,
+        width: "min(420px, calc(100vw - 48px))",
         background: "var(--color-near-black, #0a0a0a)",
         color: "var(--color-ivory, #f5efe6)",
-        borderTop: "1px solid var(--color-rule)",
-        padding: "20px clamp(16px, 4vw, 32px)",
-        boxShadow: "0 -4px 24px rgba(0,0,0,0.2)",
+        border: "1px solid rgba(245, 239, 230, 0.18)",
+        padding: "18px 20px",
+        boxShadow: "0 18px 48px rgba(0,0,0,0.28)",
       }}
     >
       <div
@@ -159,12 +164,23 @@ export default function CookieBanner() {
         </div>
       </div>
       <style>{`
+        @media (max-width: 767px) {
+          .cookie-banner {
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: auto !important;
+            border-left: 0 !important;
+            border-right: 0 !important;
+            border-bottom: 0 !important;
+          }
+        }
         @media (min-width: 768px) {
           .cookie-banner-inner {
-            flex-direction: row !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            gap: 32px !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
+            gap: 14px !important;
           }
         }
       `}</style>

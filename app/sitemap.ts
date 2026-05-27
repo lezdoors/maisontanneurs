@@ -29,6 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         .from("products")
         .select("slug, updated_at")
         .eq("status", "available")
+        .eq("featured", true)
         .not("slug", "in", hiddenList);
       if (data) {
         productPaths = data
