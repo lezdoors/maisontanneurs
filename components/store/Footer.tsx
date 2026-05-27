@@ -65,11 +65,11 @@ export default function Footer() {
 
       <div className="px-6 pb-2 overflow-hidden" aria-hidden>
         <div
-          className="font-semibold leading-[0.85] select-none"
+          className="font-semibold leading-[0.85] select-none whitespace-nowrap"
           style={{
             fontFamily: "var(--font-sans)",
             letterSpacing: "-0.05em",
-            fontSize: "clamp(80px, 17.2vw, 360px)",
+            fontSize: "clamp(29px, 9.3vw, 210px)",
           }}
         >
           MAISON TANNEURS
