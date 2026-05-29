@@ -21,6 +21,11 @@ type CartItem = {
   image?: string;
 };
 
+type MetaTrackingParams = {
+  fbp?: string;
+  fbc?: string;
+};
+
 type ValidatedCartItem = {
   product_id: string;
   slug: string;
@@ -106,7 +111,7 @@ async function validateCart(items: CartItem[]): Promise<ValidatedCartItem[]> {
 }
 
 export async function POST(request: NextRequest) {
-  let body: { items?: CartItem[] };
+  let body: { items?: CartItem[]; tracking?: MetaTrackingParams };
   try {
     body = (await request.json()) as { items?: CartItem[] };
   } catch {
@@ -153,6 +158,8 @@ export async function POST(request: NextRequest) {
       item_count: String(convertedItems.length),
       display_currency: currency,
     };
+    if (body.tracking?.fbp) itemMetadata.meta_fbp = body.tracking.fbp;
+    if (body.tracking?.fbc) itemMetadata.meta_fbc = body.tracking.fbc;
     convertedItems.forEach((i, idx) => {
       itemMetadata[`item_${idx}`] = JSON.stringify({
         product_id: i.product_id,

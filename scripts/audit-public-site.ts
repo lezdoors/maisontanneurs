@@ -1,5 +1,7 @@
 const SITE = process.env.SITE_URL || "https://maisontanneurs.com";
 
+export {};
+
 const ROUTES = [
   "/",
   "/products",

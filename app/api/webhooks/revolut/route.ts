@@ -30,11 +30,23 @@ function getSupabase() {
 
 type CartItem = {
   product_id: string;
+  slug?: string;
   title: string;
   price: number;
+  usd_price?: number;
   quantity: number;
   image?: string;
 };
+
+function getMetaAttributionFromMetadata(
+  metadata: Record<string, string> | undefined,
+): { fbp?: string; fbc?: string } {
+  if (!metadata) return {};
+  return {
+    fbp: metadata.meta_fbp || undefined,
+    fbc: metadata.meta_fbc || undefined,
+  };
+}
 
 function parseItemsFromMetadata(
   metadata: Record<string, string> | undefined,
@@ -112,6 +124,7 @@ export async function POST(request: NextRequest) {
   }
 
   const items = parseItemsFromMetadata(order.metadata);
+  const metaAttribution = getMetaAttributionFromMetadata(order.metadata);
   const customerEmail = order.customer?.email || "";
   const customerName = order.customer?.full_name || "";
   const shippingAddress = order.shipping_address
@@ -138,6 +151,7 @@ export async function POST(request: NextRequest) {
     total,
     currency,
     eventSourcePath: `/checkout/success?revolut_order_id=${order.id}`,
+    metaAttribution,
   });
 
   return NextResponse.json({ received: true });
@@ -154,6 +168,7 @@ interface PersistArgs {
   total: number;
   currency: string;
   eventSourcePath: string;
+  metaAttribution: { fbp?: string; fbc?: string };
 }
 
 async function persistOrder(args: PersistArgs) {
@@ -168,45 +183,46 @@ async function persistOrder(args: PersistArgs) {
     total,
     currency,
     eventSourcePath,
+    metaAttribution,
   } = args;
 
   const supabase = getSupabase();
+  let orderNumber = revolutOrderId;
   if (!supabase) {
     console.warn("Supabase not configured — skipping order persistence");
-    return;
-  }
+  } else {
+    // Idempotency by Revolut order id
+    const { data: existing } = await supabase
+      .from("orders")
+      .select("order_number")
+      .eq("revolut_order_id", revolutOrderId)
+      .maybeSingle();
 
-  // Idempotency by Revolut order id
-  const { data: existing } = await supabase
-    .from("orders")
-    .select("order_number")
-    .eq("revolut_order_id", revolutOrderId)
-    .maybeSingle();
+    orderNumber = (existing?.order_number as string | undefined) || "";
+    if (!orderNumber) {
+      orderNumber = generateOrderNumber();
+      const { error } = await supabase.from("orders").insert({
+        order_number: orderNumber,
+        sales_channel: "direct",
+        revolut_order_id: revolutOrderId,
+        customer_email: customerEmail,
+        customer_name: customerName,
+        shipping_address: shippingAddress,
+        items,
+        subtotal,
+        shipping_cost: shippingCost,
+        total,
+        currency,
+        status: "paid",
+      });
+      if (error) console.error("Failed to create order:", error);
 
-  let orderNumber = existing?.order_number as string | undefined;
-  if (!orderNumber) {
-    orderNumber = generateOrderNumber();
-    const { error } = await supabase.from("orders").insert({
-      order_number: orderNumber,
-      sales_channel: "direct",
-      revolut_order_id: revolutOrderId,
-      customer_email: customerEmail,
-      customer_name: customerName,
-      shipping_address: shippingAddress,
-      items,
-      subtotal,
-      shipping_cost: shippingCost,
-      total,
-      currency,
-      status: "paid",
-    });
-    if (error) console.error("Failed to create order:", error);
-
-    for (const item of items) {
-      await supabase
-        .from("products")
-        .update({ status: "sold", available_quantity: 0 })
-        .eq("id", item.product_id);
+      for (const item of items) {
+        await supabase
+          .from("products")
+          .update({ status: "sold", available_quantity: 0 })
+          .eq("id", item.product_id);
+      }
     }
   }
 
@@ -214,14 +230,14 @@ async function persistOrder(args: PersistArgs) {
   try {
     await sendOrderConfirmation({
       to: customerEmail,
-      orderNumber,
+      orderNumber: revolutOrderId,
       customerName,
       items,
       total,
       currency,
     });
     await sendAdminNotification({
-      orderNumber,
+      orderNumber: revolutOrderId,
       customerName,
       customerEmail,
       items,
@@ -233,9 +249,9 @@ async function persistOrder(args: PersistArgs) {
     console.error("Failed to send emails:", emailErr);
   }
 
-  // Meta CAPI Purchase event — non-blocking
-  // Same shared event_id pattern as the Izem Stripe webhook so Meta dedupes
-  // against the browser-side Pixel Purchase that fires on /checkout/success.
+  // Meta CAPI Purchase event — non-blocking. Use the Revolut order id as
+  // Meta event_id because the browser success page can fire before Supabase
+  // has the internal order_number persisted by this webhook.
   try {
     const [firstName, ...rest] = (customerName || "").split(" ");
     const lastName = rest.join(" ");
@@ -251,10 +267,12 @@ async function persistOrder(args: PersistArgs) {
       currency,
       orderNumber,
       items: items.map((i) => ({
-        id: i.product_id,
+        id: i.slug || i.product_id,
         quantity: i.quantity,
         price: i.price / 100,
       })),
+      fbp: metaAttribution.fbp,
+      fbc: metaAttribution.fbc,
       eventSourceUrl: `${process.env.NEXT_PUBLIC_SITE_URL || "https://www.maisontanneurs.com"}${eventSourcePath}`,
     });
   } catch (capiErr) {

@@ -5,11 +5,10 @@
 //
 // Env vars:
 //   REVOLUT_SECRET_KEY        sk_m...           — Bearer auth for all calls
-//   REVOLUT_API_BASE          https://merchant.revolut.com/api  (or sandbox)
+//   REVOLUT_API_BASE          https://merchant.revolut.com/api
+//                            or sandbox endpoint for preview/test runs
 //   REVOLUT_WEBHOOK_SECRET    populated post-registration via register-revolut-webhook.ts
-//
-// Sandbox is broken on Revolut's side as of 2026-05-21 — we test against
-// production with £0.30-£1 refundable transactions.
+//   NEXT_PUBLIC_REVOLUT_MODE  prod | sandbox — must match the API key/env used
 
 import crypto from "node:crypto";
 

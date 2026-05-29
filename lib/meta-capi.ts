@@ -6,8 +6,7 @@
 // so Meta deduplicates and gets the event either way.
 //
 // We currently send only the Purchase event (highest signal value, fires from
-// the Stripe webhook on checkout.session.completed). Add more events here as
-// needed.
+// the Revolut webhook after completed payment). Add more events here as needed.
 //
 // Env vars (both required for CAPI to fire):
 //   META_PIXEL_ID          — same numeric ID as NEXT_PUBLIC_META_PIXEL_ID
@@ -42,6 +41,8 @@ interface PurchaseEvent {
   currency: string; // "USD"
   orderNumber: string; // for event_id (Meta dedup with client Pixel)
   items: Array<{ id: string; quantity: number; price: number }>;
+  fbp?: string;
+  fbc?: string;
   clientIp?: string;
   clientUserAgent?: string;
   eventSourceUrl?: string;
@@ -62,6 +63,8 @@ export async function sendPurchaseToCAPI(params: PurchaseEvent): Promise<void> {
   if (params.state) userData.st = sha256(params.state);
   if (params.zip) userData.zp = sha256(params.zip);
   if (params.country) userData.country = sha256(params.country);
+  if (params.fbp) userData.fbp = params.fbp;
+  if (params.fbc) userData.fbc = params.fbc;
   if (params.clientIp) userData.client_ip_address = params.clientIp;
   if (params.clientUserAgent) userData.client_user_agent = params.clientUserAgent;
 

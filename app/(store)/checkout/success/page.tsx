@@ -15,7 +15,14 @@ function getSupabase() {
   return createClient(url, key);
 }
 
-type CartItem = { title: string; price: number; quantity: number };
+type CartItem = {
+  product_id?: string;
+  slug?: string;
+  title: string;
+  price: number;
+  usd_price?: number;
+  quantity: number;
+};
 
 function parseItemsFromMetadata(
   metadata: Record<string, string> | undefined,
@@ -66,6 +73,15 @@ export default async function CheckoutSuccessPage({
     );
   }
 
+  if (order.state !== "COMPLETED") {
+    return (
+      <SuccessErrorState
+        title="Payment Pending"
+        body="We haven't received payment confirmation for this order yet. If your card was charged, email us with your payment reference and we'll verify it."
+      />
+    );
+  }
+
   const items = parseItemsFromMetadata(order.metadata);
   let customerName = order.customer?.full_name || "";
   let customerEmail = order.customer?.email || "";
@@ -95,11 +111,12 @@ export default async function CheckoutSuccessPage({
   return (
     <main className="min-h-screen px-6 py-16 md:py-24">
       <ClearCart />
+      {/* Keep Meta eventID aligned with server CAPI, which also uses the Revolut order id. */}
       <PurchaseTracking
-        orderId={orderNumber || revolutOrderId}
+        orderId={revolutOrderId}
         total={total}
         items={items.map((i) => ({
-          slug: undefined,
+          slug: i.slug || i.product_id,
           title: i.title,
           price: i.price,
           quantity: i.quantity,

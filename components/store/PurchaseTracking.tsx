@@ -18,9 +18,8 @@ interface PurchaseTrackingProps {
   items?: PurchaseItem[];
 }
 
-// Fires GA4 purchase + Pixel Purchase on the checkout/success page.
-// Server-side CAPI in lib/meta-capi.ts already sends Purchase from the Stripe
-// webhook with the same event_id — Meta dedupes the two.
+// Fires GA4 purchase + Pixel Purchase on the checkout/success page, then asks
+// our server to send the matching CAPI Purchase after it re-checks Revolut.
 export default function PurchaseTracking({
   orderId,
   total,
@@ -45,13 +44,35 @@ export default function PurchaseTracking({
       items: gaItems,
     });
 
-    trackPixelEvent("Purchase", {
-      value,
-      currency,
-      content_ids: items.filter((i) => i.slug).map((i) => i.slug),
-      content_type: "product",
-      num_items: items.reduce((s, i) => s + (i.quantity ?? 1), 0),
-    });
+    trackPixelEvent(
+      "Purchase",
+      {
+        value,
+        currency,
+        content_ids: items.filter((i) => i.slug).map((i) => i.slug),
+        content_type: "product",
+        num_items: items.reduce((s, i) => s + (i.quantity ?? 1), 0),
+      },
+      { eventID: orderId },
+    );
+
+    const storageKey = `mt-purchase-capi:${orderId}`;
+    if (window.localStorage.getItem(storageKey)) return;
+    window.localStorage.setItem(storageKey, "pending");
+    fetch("/api/checkout/purchase-event", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ orderId }),
+      keepalive: true,
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`purchase-event ${res.status}`);
+        window.localStorage.setItem(storageKey, "sent");
+      })
+      .catch((err) => {
+        window.localStorage.removeItem(storageKey);
+        console.error("Failed to send server Purchase event:", err);
+      });
   }, [orderId, total, currency, items]);
 
   return null;

@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/components/store/CartProvider";
+import { trackGA4Event } from "@/components/store/GA4";
+import { trackPixelEvent } from "@/components/store/MetaPixel";
 import OrderSummary from "./OrderSummary";
 
 type Status = "loading" | "ready" | "empty" | "error" | "missing-key";
+type RevolutMode = "prod" | "sandbox";
 
 // Revolut Pay JS widget — loaded once per page lifecycle from the merchant
 // CDN. The global `RevolutCheckout` factory is exposed on window.
@@ -66,6 +69,31 @@ function loadRevolutEmbed(): Promise<void> {
   });
 }
 
+function getCookieValue(name: string): string | undefined {
+  if (typeof document === "undefined") return undefined;
+  const prefix = `${name}=`;
+  const cookie = document.cookie
+    .split(";")
+    .map((part) => part.trim())
+    .find((part) => part.startsWith(prefix));
+  return cookie ? decodeURIComponent(cookie.slice(prefix.length)) : undefined;
+}
+
+function getMetaTrackingParams() {
+  const tracking: { fbp?: string; fbc?: string } = {};
+  const fbp = getCookieValue("_fbp");
+  const fbc =
+    getCookieValue("_fbc") ||
+    (() => {
+      if (typeof window === "undefined") return undefined;
+      const fbclid = new URLSearchParams(window.location.search).get("fbclid");
+      return fbclid ? `fb.1.${Date.now()}.${fbclid}` : undefined;
+    })();
+  if (fbp) tracking.fbp = fbp;
+  if (fbc) tracking.fbc = fbc;
+  return Object.keys(tracking).length > 0 ? tracking : undefined;
+}
+
 export default function CheckoutShell() {
   const { items, subtotal } = useCart();
   const router = useRouter();
@@ -76,8 +104,31 @@ export default function CheckoutShell() {
   const [name, setName] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const initiatedCheckoutOrderRef = useRef<string | null>(null);
+  const addPaymentInfoOrderRef = useRef<string | null>(null);
 
   const publicKey = process.env.NEXT_PUBLIC_REVOLUT_PUBLIC_KEY;
+  const revolutMode: RevolutMode =
+    process.env.NEXT_PUBLIC_REVOLUT_MODE === "sandbox" ? "sandbox" : "prod";
+  const trackingItems = useMemo(
+    () =>
+      items.map((item) => ({
+        item_id: item.slug,
+        item_name: item.title,
+        price: item.price / 100,
+        quantity: item.quantity,
+      })),
+    [items],
+  );
+  const pixelContents = useMemo(
+    () =>
+      items.map((item) => ({
+        id: item.slug,
+        quantity: item.quantity,
+        item_price: item.price / 100,
+      })),
+    [items],
+  );
 
   useEffect(() => {
     if (items.length === 0) {
@@ -96,7 +147,7 @@ export default function CheckoutShell() {
         const res = await fetch("/api/checkout/session", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ items }),
+          body: JSON.stringify({ items, tracking: getMetaTrackingParams() }),
         });
         if (!res.ok) throw new Error("Failed to create checkout order");
         const data = (await res.json()) as { token: string; orderId: string };
@@ -117,17 +168,57 @@ export default function CheckoutShell() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items.length === 0, publicKey, subtotal]);
 
+  useEffect(() => {
+    if (status !== "ready" || !orderId || initiatedCheckoutOrderRef.current === orderId) {
+      return;
+    }
+
+    initiatedCheckoutOrderRef.current = orderId;
+    const value = subtotal / 100;
+    trackGA4Event("begin_checkout", {
+      currency: "USD",
+      value,
+      items: trackingItems,
+    });
+    trackPixelEvent("InitiateCheckout", {
+      value,
+      currency: "USD",
+      content_ids: items.map((item) => item.slug),
+      content_type: "product",
+      contents: pixelContents,
+      num_items: items.reduce((sum, item) => sum + item.quantity, 0),
+    });
+  }, [items, orderId, pixelContents, status, subtotal, trackingItems]);
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!token || !orderId || !window.RevolutCheckout) return;
     setSubmitting(true);
     setErrorMessage(null);
     try {
-      const RC = await window.RevolutCheckout(token, "prod");
+      if (addPaymentInfoOrderRef.current !== orderId) {
+        addPaymentInfoOrderRef.current = orderId;
+        const value = subtotal / 100;
+        trackGA4Event("add_payment_info", {
+          currency: "USD",
+          value,
+          payment_type: "Revolut",
+          items: trackingItems,
+        });
+        trackPixelEvent("AddPaymentInfo", {
+          value,
+          currency: "USD",
+          content_ids: items.map((item) => item.slug),
+          content_type: "product",
+          contents: pixelContents,
+          num_items: items.reduce((sum, item) => sum + item.quantity, 0),
+        });
+      }
+
+      const RC = await window.RevolutCheckout(token, revolutMode);
       RC.payWithPopup({
         email,
         name,
-        savePaymentMethodFor: "merchant",
         onSuccess: () => {
           router.push(`/checkout/success?revolut_order_id=${orderId}`);
         },

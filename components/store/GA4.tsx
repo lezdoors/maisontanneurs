@@ -74,6 +74,7 @@ export function trackGA4Event(
     | "remove_from_cart"
     | "view_cart"
     | "begin_checkout"
+    | "add_payment_info"
     | "purchase"
     | "search",
   params?: Record<string, unknown>,

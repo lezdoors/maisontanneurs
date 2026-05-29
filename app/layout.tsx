@@ -74,6 +74,9 @@ export const metadata: Metadata = {
       "x-default": "/",
     },
   },
+  other: {
+    "facebook-domain-verification": "l5rwxlj1ubuvwihf4omg2hpxip51ck",
+  },
 };
 
 const ORGANIZATION_LD = {
