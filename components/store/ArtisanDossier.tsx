@@ -66,15 +66,15 @@ export default function ArtisanDossier() {
 
             <div className="mt-10 border-t border-[#e5e5e5] pt-6">
               <div
-                className="relative bg-[#f9f9f9] overflow-hidden"
+                className="relative bg-black overflow-hidden"
                 style={{ aspectRatio: "4 / 3" }}
               >
                 <Image
                   src={PLATE_SRC}
-                  alt="A master tanner saddle-stitching in the Marrakech atelier"
+                  alt="A master artisan saddle-stitching full-grain leather in the Marrakech atelier"
                   fill
                   sizes="(min-width: 768px) 41vw, 100vw"
-                  className="object-cover"
+                  className="object-cover object-left"
                 />
               </div>
               <p className="mt-3 tech-meta opacity-60">
