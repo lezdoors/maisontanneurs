@@ -4,6 +4,9 @@ import { createServerSupabase } from "@/lib/supabase/server";
 import { STATIC_PRODUCTS } from "@/lib/products";
 import { HIDDEN_SKUS } from "@/lib/hidden-skus";
 import type { Product } from "@/lib/supabase/types";
+import { getRequestCurrency } from "@/lib/i18n-server";
+import { getRates, convertUSDCents } from "@/lib/fx";
+import { type Currency } from "@/lib/currency";
 
 // Creates a Revolut Acquiring order and returns the public token for the
 // embedded payment widget. Webhook fires ORDER_COMPLETED on success →
@@ -120,29 +123,50 @@ export async function POST(request: NextRequest) {
 
   try {
     const validatedItems = await validateCart(items);
-    const totalMinor = validatedItems.reduce(
-      (acc, i) => acc + i.price * i.quantity,
+
+    // Resolve the customer's display currency from the cookie-driven proxy
+    // header, then fetch the daily-cached FX rates and convert USD-canonical
+    // line items to the charge currency. Revolut sees the same number the
+    // user saw on the PDP.
+    const currency: Currency = await getRequestCurrency();
+    const rates = await getRates();
+    const linePriceMinor = (usdCents: number) =>
+      convertUSDCents(usdCents, currency, rates);
+
+    const convertedItems = validatedItems.map((i) => ({
+      ...i,
+      unitMinor: linePriceMinor(i.price),
+      totalMinor: linePriceMinor(i.price * i.quantity),
+    }));
+
+    const totalMinor = convertedItems.reduce(
+      (acc, i) => acc + i.totalMinor,
       0,
     );
 
     // Revolut metadata values are limited per field. Mirror the Stripe-era
     // approach: store item_count + item_N to reconstruct the cart later.
+    // Keep USD-canonical price in metadata so post-hoc analytics aren't
+    // FX-dependent. Revolut's order.currency is the source of truth for what
+    // we actually charged.
     const itemMetadata: Record<string, string> = {
-      item_count: String(validatedItems.length),
+      item_count: String(convertedItems.length),
+      display_currency: currency,
     };
-    validatedItems.forEach((i, idx) => {
+    convertedItems.forEach((i, idx) => {
       itemMetadata[`item_${idx}`] = JSON.stringify({
         product_id: i.product_id,
         slug: i.slug,
         title: i.title.slice(0, 80),
-        price: i.price,
+        price: i.unitMinor,
+        usd_price: i.price,
         quantity: i.quantity,
       });
     });
 
     const order = await createOrder({
       amount: totalMinor,
-      currency: "USD",
+      currency,
       capture_mode: "automatic",
       // Static redirect_url — Revolut does NOT substitute template
       // placeholders like {ORDER_ID}. The embedded popup is the primary
@@ -150,14 +174,14 @@ export async function POST(request: NextRequest) {
       // /checkout/success?revolut_order_id=<actual id> from JS.
       // The static URL below is only the hosted-checkout fallback.
       redirect_url: `${siteUrl}/checkout/success`,
-      description: `Maison Tanneurs · ${validatedItems.length} item${validatedItems.length > 1 ? "s" : ""}`,
+      description: `Maison Tanneurs · ${convertedItems.length} item${convertedItems.length > 1 ? "s" : ""}`,
       metadata: itemMetadata,
-      line_items: validatedItems.map((i) => ({
+      line_items: convertedItems.map((i) => ({
         name: i.title,
         type: "physical",
         quantity: { value: i.quantity, unit: "piece" },
-        unit_price_amount: i.price,
-        total_amount: i.price * i.quantity,
+        unit_price_amount: i.unitMinor,
+        total_amount: i.totalMinor,
         external_id: i.product_id,
         image_urls: i.image
           ? [i.image.startsWith("http") ? i.image : `${siteUrl}${i.image}`]

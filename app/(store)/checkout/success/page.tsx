@@ -2,6 +2,7 @@ import Link from "next/link";
 import { createClient } from "@supabase/supabase-js";
 import { getOrder, type RevolutOrder } from "@/lib/revolut";
 import { formatPrice } from "@/lib/utils";
+import { isCurrency } from "@/lib/currency";
 import { ClearCart } from "@/components/store/ClearCart";
 import PurchaseTracking from "@/components/store/PurchaseTracking";
 
@@ -69,6 +70,9 @@ export default async function CheckoutSuccessPage({
   let customerName = order.customer?.full_name || "";
   let customerEmail = order.customer?.email || "";
   const total = order.amount;
+  const orderCurrency = isCurrency(order.currency.toUpperCase())
+    ? (order.currency.toUpperCase() as "USD" | "EUR" | "GBP")
+    : "USD";
 
   // Cross-reference with our orders table — the webhook persists order_number
   // here. May not exist yet if the customer beats the webhook to /success,
@@ -166,7 +170,7 @@ export default async function CheckoutSuccessPage({
                     )}
                   </span>
                   <span className="font-serif text-[16px] italic shrink-0">
-                    {formatPrice(item.price * item.quantity)}
+                    {formatPrice(item.price * item.quantity, orderCurrency)}
                   </span>
                 </li>
               ))}
@@ -180,7 +184,7 @@ export default async function CheckoutSuccessPage({
             className="font-display text-[28px] tracking-[-0.01em]"
             style={{ color: "var(--color-ink)" }}
           >
-            {formatPrice(total)}
+            {formatPrice(total, orderCurrency)}
           </span>
         </div>
 

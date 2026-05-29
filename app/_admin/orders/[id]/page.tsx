@@ -2,6 +2,10 @@ import { redirect, notFound } from "next/navigation";
 import AdminShell from "@/components/admin/AdminShell";
 import { getAdminSupabase } from "@/lib/admin-auth";
 import { formatPrice } from "@/lib/utils";
+import { isCurrency, type Currency } from "@/lib/currency";
+
+const asCurrency = (v?: string): Currency =>
+  isCurrency(v) ? v : "USD";
 import { sendShippingNotification } from "@/lib/email";
 import type { Order } from "@/lib/supabase/types";
 
@@ -166,7 +170,7 @@ export default async function OrderDetailPage({
                     </div>
                   </td>
                   <td className="px-5 py-3 text-right font-mono text-sm text-ink">
-                    {formatPrice(item.price * item.quantity)}
+                    {formatPrice(item.price * item.quantity, asCurrency(order.currency))}
                   </td>
                 </tr>
               ))}
@@ -179,7 +183,7 @@ export default async function OrderDetailPage({
                       Subtotal
                     </td>
                     <td className="px-5 py-2 text-right font-mono text-sm text-muted">
-                      {formatPrice(order.subtotal)}
+                      {formatPrice(order.subtotal, asCurrency(order.currency))}
                     </td>
                   </tr>
                   <tr>
@@ -187,7 +191,7 @@ export default async function OrderDetailPage({
                       Shipping
                     </td>
                     <td className="px-5 py-2 text-right font-mono text-sm text-muted">
-                      {formatPrice(order.shipping_cost)}
+                      {formatPrice(order.shipping_cost, asCurrency(order.currency))}
                     </td>
                   </tr>
                 </>
@@ -197,7 +201,7 @@ export default async function OrderDetailPage({
                   Total
                 </td>
                 <td className="px-5 py-3 text-right font-serif text-lg text-ink italic">
-                  {formatPrice(order.total)}
+                  {formatPrice(order.total, asCurrency(order.currency))}
                 </td>
               </tr>
             </tfoot>

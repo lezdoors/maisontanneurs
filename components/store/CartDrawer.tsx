@@ -4,10 +4,11 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/components/store/CartProvider";
 import { useLocalizedHref, useT } from "@/lib/i18n-client";
-import { formatPrice } from "@/lib/utils";
+import { useCurrency } from "@/components/store/CurrencyProvider";
 
 export default function CartDrawer() {
   const { items, isOpen, closeCart, removeItem, updateQuantity } = useCart();
+  const { format } = useCurrency();
   const t = useT();
   const href = useLocalizedHref();
   const router = useRouter();
@@ -98,7 +99,7 @@ export default function CartDrawer() {
                       </div>
                     </div>
 
-                    <div className="text-[13px] font-sans text-ink">{formatPrice(item.price * item.quantity)}</div>
+                    <div className="text-[13px] font-sans text-ink">{format(item.price * item.quantity)}</div>
                   </div>
                 ))}
               </div>
@@ -111,7 +112,7 @@ export default function CartDrawer() {
                 <span className="text-[11px] font-sans tracking-[0.2em] uppercase text-graphite">
                   {t("cart.subtotal")}
                 </span>
-                <span className="text-[15px] font-sans text-ink">{formatPrice(total)}</span>
+                <span className="text-[15px] font-sans text-ink">{format(total)}</span>
               </div>
               <p className="text-[11px] font-sans font-light text-mineral leading-relaxed mb-4">
                 {t("cart.note")}

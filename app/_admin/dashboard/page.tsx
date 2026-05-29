@@ -3,6 +3,10 @@ import { getAdminSupabase } from "@/lib/admin-auth";
 import { formatPrice } from "@/lib/utils";
 import Link from "next/link";
 import type { Order } from "@/lib/supabase/types";
+import { isCurrency, type Currency } from "@/lib/currency";
+
+const asCurrency = (v?: string): Currency =>
+  isCurrency(v) ? v : "USD";
 
 export default async function DashboardPage() {
   const supabase = getAdminSupabase();
@@ -12,7 +16,7 @@ export default async function DashboardPage() {
   const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
 
   const [ordersRes, productsRes, recentOrdersRes] = await Promise.all([
-    supabase.from("orders").select("total, status, created_at"),
+    supabase.from("orders").select("total, currency, status, created_at"),
     supabase
       .from("products")
       .select("id", { count: "exact", head: true })
@@ -26,6 +30,7 @@ export default async function DashboardPage() {
 
   const allOrders = (ordersRes.data || []) as {
     total: number;
+    currency?: string;
     status: string;
     created_at: string;
   }[];
@@ -33,7 +38,20 @@ export default async function DashboardPage() {
   const paidOrders = allOrders.filter(
     (o) => o.status === "paid" || o.status === "shipped" || o.status === "delivered"
   );
-  const totalRevenue = paidOrders.reduce((sum, o) => sum + o.total, 0);
+
+  // Mixed-currency revenue: bucket each currency separately, render the
+  // top-line value as a stacked "$X · €Y · £Z" string when more than one
+  // currency has activity. Simpler than wiring server-side FX into the
+  // dashboard, and lossless for the back-office.
+  const revenueByCurrency = paidOrders.reduce<Record<string, number>>(
+    (acc, o) => {
+      const cur = (o.currency || "USD").toUpperCase();
+      acc[cur] = (acc[cur] ?? 0) + o.total;
+      return acc;
+    },
+    {},
+  );
+  const totalRevenue = revenueByCurrency.USD ?? 0;
 
   const monthOrders = allOrders.filter(
     (o) => o.created_at >= monthStart
@@ -45,7 +63,10 @@ export default async function DashboardPage() {
   const stats = [
     {
       label: "Total Revenue",
-      value: formatPrice(totalRevenue),
+      value: Object.entries(revenueByCurrency)
+        .filter(([, v]) => v > 0)
+        .map(([cur, v]) => formatPrice(v, asCurrency(cur)))
+        .join(" · ") || formatPrice(0, "USD"),
     },
     {
       label: "Orders This Month",
@@ -150,7 +171,7 @@ export default async function DashboardPage() {
                         <ChannelBadge channel={order.sales_channel} />
                       </td>
                       <td className="px-4 py-3 text-sm text-ink text-right font-mono">
-                        {formatPrice(order.total)}
+                        {formatPrice(order.total, asCurrency(order.currency))}
                       </td>
                       <td className="px-4 py-3">
                         <StatusBadge status={order.status} />

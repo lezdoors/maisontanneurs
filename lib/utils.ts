@@ -1,7 +1,21 @@
-export function formatPrice(cents: number): string {
-  return new Intl.NumberFormat("en-US", {
+import type { Currency } from "./currency";
+
+// Locale strings for Intl currency formatting. Keep separate from the app's
+// Locale (en/fr/ar) so we can format EUR as "1 234,56 €" on a French page
+// without affecting site copy locale.
+const CURRENCY_INTL_LOCALE: Record<Currency, string> = {
+  USD: "en-US",
+  EUR: "fr-FR",
+  GBP: "en-GB",
+};
+
+export function formatPrice(
+  cents: number,
+  currency: Currency = "USD",
+): string {
+  return new Intl.NumberFormat(CURRENCY_INTL_LOCALE[currency], {
     style: "currency",
-    currency: "USD",
+    currency,
   }).format(cents / 100);
 }
 

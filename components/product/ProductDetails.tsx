@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { formatPrice } from "@/lib/utils";
+import { useCurrency } from "@/components/store/CurrencyProvider";
 import { useCart } from "@/components/store/CartProvider";
 import { useLocalizedHref, useT } from "@/lib/i18n-client";
 import { productToCartItem } from "@/lib/cart";
@@ -16,6 +16,7 @@ interface ProductDetailsProps {
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
   const { addItem, openCart } = useCart();
+  const { format } = useCurrency();
   const t = useT();
   const href = useLocalizedHref();
   const [justAdded, setJustAdded] = useState(false);
@@ -80,7 +81,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   }
 
   const sku = `MT-${product.id.slice(0, 6).toUpperCase().padStart(6, "0")}`;
-  const displayPrice = formatPrice(product.price);
+  const displayPrice = format(product.price);
 
   return (
     <>
@@ -111,7 +112,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           {/* Price + SKU */}
           <div className="flex items-baseline justify-between border-b border-stone pb-5 sm:pb-6">
             <span className="font-serif italic text-[24px] sm:text-[28px] text-ink">
-              {formatPrice(product.price)}
+              {format(product.price)}
             </span>
             <span className="font-mono text-[10px] tracking-[0.16em] uppercase text-mineral">
               {sku}

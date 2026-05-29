@@ -1,5 +1,10 @@
 import { Resend } from "resend";
 import { formatPrice } from "./utils";
+import { isCurrency, type Currency } from "./currency";
+
+function asCurrency(value: string | undefined): Currency {
+  return isCurrency(value) ? value : "USD";
+}
 
 // Lazy-init: don't instantiate Resend at module load (would crash builds when RESEND_API_KEY isn't set,
 // e.g. during Vercel page-data collection). Only construct it when actually sending.
@@ -21,13 +26,15 @@ interface OrderEmailData {
   customerName: string;
   items: { title: string; price: number; quantity: number }[];
   total: number;
+  currency?: string;
 }
 
 export async function sendOrderConfirmation(data: OrderEmailData) {
+  const cur = asCurrency(data.currency);
   const itemsHtml = data.items
     .map(
       (i) =>
-        `<tr><td style="padding:8px 0;border-bottom:1px solid #e4dcc8;font-family:Georgia,serif;">${i.title}</td><td style="padding:8px 0;border-bottom:1px solid #e4dcc8;text-align:center;font-family:monospace;font-size:12px;">${i.quantity}</td><td style="padding:8px 0;border-bottom:1px solid #e4dcc8;text-align:right;font-family:Georgia,serif;font-style:italic;">${formatPrice(i.price * i.quantity)}</td></tr>`,
+        `<tr><td style="padding:8px 0;border-bottom:1px solid #e4dcc8;font-family:Georgia,serif;">${i.title}</td><td style="padding:8px 0;border-bottom:1px solid #e4dcc8;text-align:center;font-family:monospace;font-size:12px;">${i.quantity}</td><td style="padding:8px 0;border-bottom:1px solid #e4dcc8;text-align:right;font-family:Georgia,serif;font-style:italic;">${formatPrice(i.price * i.quantity, cur)}</td></tr>`,
     )
     .join("");
 
@@ -52,7 +59,7 @@ export async function sendOrderConfirmation(data: OrderEmailData) {
           </table>
           <div style="display:flex;justify-content:space-between;margin-top:16px;padding-top:16px;">
             <span style="font-family:monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#7a6f5c;">Total</span>
-            <span style="font-family:Georgia,serif;font-size:22px;font-style:italic;">${formatPrice(data.total)}</span>
+            <span style="font-family:Georgia,serif;font-size:22px;font-style:italic;">${formatPrice(data.total, cur)}</span>
           </div>
         </div>
         <div style="background:#ebe3d1;padding:24px;margin:32px 0;">
@@ -78,14 +85,16 @@ interface AdminNotificationData {
     product_id?: string;
   }[];
   total: number;
+  currency?: string;
   shippingAddress: Record<string, any>;
 }
 
 export async function sendAdminNotification(data: AdminNotificationData) {
+  const cur = asCurrency(data.currency);
   const itemsList = data.items
     .map(
       (i) =>
-        `- ${i.title} (${i.quantity}x) — ${formatPrice(i.price * i.quantity)}`,
+        `- ${i.title} (${i.quantity}x) — ${formatPrice(i.price * i.quantity, cur)}`,
     )
     .join("\n");
   const addr = data.shippingAddress;
@@ -101,12 +110,12 @@ export async function sendAdminNotification(data: AdminNotificationData) {
   await getResend().emails.send({
     from: FROM_EMAIL,
     to: ADMIN_EMAIL,
-    subject: `New Maison Tanneurs Order · ${data.orderNumber} · ${formatPrice(data.total)}`,
+    subject: `New Maison Tanneurs Order · ${data.orderNumber} · ${formatPrice(data.total, cur)}`,
     html: `
       <div style="font-family:monospace;font-size:13px;line-height:1.8;color:#1f1b16;max-width:600px;">
         <h2 style="font-family:Georgia,serif;font-size:24px;font-weight:normal;">New Order: ${data.orderNumber}</h2>
         <p><strong>Customer:</strong> ${data.customerName} (${data.customerEmail})</p>
-        <p><strong>Total:</strong> ${formatPrice(data.total)}</p>
+        <p><strong>Total:</strong> ${formatPrice(data.total, cur)}</p>
         <p><strong>Items:</strong></p>
         <pre style="background:#f5efe3;padding:16px;white-space:pre-wrap;">${itemsList}</pre>
         <p><strong>Ship to:</strong></p>

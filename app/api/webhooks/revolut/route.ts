@@ -197,6 +197,7 @@ async function persistOrder(args: PersistArgs) {
       subtotal,
       shipping_cost: shippingCost,
       total,
+      currency,
       status: "paid",
     });
     if (error) console.error("Failed to create order:", error);
@@ -217,6 +218,7 @@ async function persistOrder(args: PersistArgs) {
       customerName,
       items,
       total,
+      currency,
     });
     await sendAdminNotification({
       orderNumber,
@@ -224,6 +226,7 @@ async function persistOrder(args: PersistArgs) {
       customerEmail,
       items,
       total,
+      currency,
       shippingAddress,
     });
   } catch (emailErr) {

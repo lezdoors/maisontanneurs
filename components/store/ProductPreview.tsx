@@ -2,9 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { STATIC_PRODUCTS } from "@/lib/products";
 import { HIDDEN_SKUS } from "@/lib/hidden-skus";
-import { formatPrice } from "@/lib/utils";
+import { getServerPriceFormatter } from "@/lib/price-server";
 
-export default function ProductPreview() {
+export default async function ProductPreview() {
+  const { format } = await getServerPriceFormatter();
   const pieces = STATIC_PRODUCTS.filter(
     (p) => p.featured && p.status === "available" && !HIDDEN_SKUS.has(p.slug),
   ).slice(0, 3);
@@ -47,7 +48,7 @@ export default function ProductPreview() {
                   <div className="ed-meta mt-1.5 text-[var(--color-mineral)]">
                     {p.category}
                   </div>
-                  <div className="ed-price mt-3">{formatPrice(p.price)}</div>
+                  <div className="ed-price mt-3">{format(p.price)}</div>
                 </div>
               </Link>
             );

@@ -1,6 +1,10 @@
 import AdminShell from "@/components/admin/AdminShell";
 import { getAdminSupabase } from "@/lib/admin-auth";
 import { formatPrice } from "@/lib/utils";
+import { isCurrency, type Currency } from "@/lib/currency";
+
+const asCurrency = (v?: string): Currency =>
+  isCurrency(v) ? v : "USD";
 import Link from "next/link";
 import type { Order } from "@/lib/supabase/types";
 
@@ -123,7 +127,7 @@ export default async function OrdersPage({
                       </span>
                     </td>
                     <td className="px-4 py-3 text-sm text-ink text-right font-mono">
-                      {formatPrice(order.total)}
+                      {formatPrice(order.total, asCurrency(order.currency))}
                     </td>
                     <td className="px-4 py-3">
                       <StatusBadge status={order.status} />

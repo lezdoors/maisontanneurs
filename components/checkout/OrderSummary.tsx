@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import { useCart } from "@/components/store/CartProvider";
-import { formatPrice } from "@/lib/utils";
+import { useCurrency } from "@/components/store/CurrencyProvider";
 
 export default function OrderSummary() {
   const { items, subtotal } = useCart();
+  const { format } = useCurrency();
 
   return (
     <aside className="bg-pearl/40 border border-stone/30 p-7 md:p-9">
@@ -36,14 +37,14 @@ export default function OrderSummary() {
               </p>
             </div>
             <p className="text-[13px] font-sans text-ink shrink-0">
-              {formatPrice(item.price * item.quantity)}
+              {format(item.price * item.quantity)}
             </p>
           </li>
         ))}
       </ul>
 
       <div className="space-y-3 pt-1 border-t border-stone/40">
-        <Row label="Subtotal" value={formatPrice(subtotal)} />
+        <Row label="Subtotal" value={format(subtotal)} />
         <Row label="Shipping" value="Free worldwide" italic />
         <Row label="Duties &amp; taxes" value="Shown where applicable" italic />
       </div>
@@ -54,7 +55,7 @@ export default function OrderSummary() {
           className="font-display text-[26px] tracking-[-0.01em]"
           style={{ color: "var(--color-ink)" }}
         >
-          {formatPrice(subtotal)}
+          {format(subtotal)}
         </span>
       </div>
 

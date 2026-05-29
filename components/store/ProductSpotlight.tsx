@@ -4,7 +4,7 @@ import { createServerSupabase } from "@/lib/supabase/server";
 import { Product } from "@/lib/supabase/types";
 import { STATIC_PRODUCTS } from "@/lib/products";
 import { HIDDEN_SKUS, HIDDEN_SKUS_ARRAY } from "@/lib/hidden-skus";
-import { formatPrice } from "@/lib/utils";
+import { getServerPriceFormatter } from "@/lib/price-server";
 
 async function getFeatured(): Promise<Product[]> {
   try {
@@ -40,6 +40,7 @@ async function getFeatured(): Promise<Product[]> {
 export default async function ProductSpotlight() {
   const featured = await getFeatured();
   if (featured.length === 0) return null;
+  const { format } = await getServerPriceFormatter();
 
   return (
     <section className="bg-[var(--rb-card-bg-alt)]">
@@ -90,7 +91,7 @@ export default async function ProductSpotlight() {
                         {p.title}
                       </div>
                       <div className="flex items-baseline gap-2 mt-2">
-                        <span className="text-[15px] font-medium text-[var(--color-ink)]">{formatPrice(p.price)}</span>
+                        <span className="text-[15px] font-medium text-[var(--color-ink)]">{format(p.price)}</span>
                       </div>
                     </div>
                     <div className="flex flex-col items-start md:items-end gap-1.5">

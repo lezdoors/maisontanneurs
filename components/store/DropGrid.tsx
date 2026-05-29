@@ -2,9 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { STATIC_PRODUCTS } from "@/lib/products";
 import { HIDDEN_SKUS } from "@/lib/hidden-skus";
-import { formatPrice } from "@/lib/utils";
+import { getServerPriceFormatter } from "@/lib/price-server";
 
-export default function DropGrid() {
+export default async function DropGrid() {
+  const { format } = await getServerPriceFormatter();
   const pieces = STATIC_PRODUCTS.filter(
     (p) => p.featured && p.status === "available" && !HIDDEN_SKUS.has(p.slug),
   );
@@ -45,7 +46,7 @@ export default function DropGrid() {
                   <div className="rb-meta mt-1 text-[var(--color-mineral)]">
                     {p.category}
                   </div>
-                  <div className="rb-price mt-3">{formatPrice(p.price)}</div>
+                  <div className="rb-price mt-3">{format(p.price)}</div>
                 </div>
               </Link>
             );

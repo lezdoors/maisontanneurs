@@ -5,10 +5,11 @@ import Link from "next/link";
 import { useScrollReveal } from "@/lib/useScrollReveal";
 import { STATIC_PRODUCTS } from "@/lib/products";
 import { HIDDEN_SKUS } from "@/lib/hidden-skus";
-import { formatPrice } from "@/lib/utils";
+import { useCurrency } from "@/components/store/CurrencyProvider";
 
 export default function FeaturedProducts() {
   useScrollReveal();
+  const { format } = useCurrency();
 
   const featured = STATIC_PRODUCTS.filter(
     (p) => p.featured && p.status === "available" && !HIDDEN_SKUS.has(p.slug),
@@ -92,7 +93,7 @@ export default function FeaturedProducts() {
                   {product.title}
                 </div>
                 <div className="text-[12px] font-mono tracking-wider text-white/60 mt-0.5">
-                  {formatPrice(product.price)}
+                  {format(product.price)}
                 </div>
               </div>
             </Link>

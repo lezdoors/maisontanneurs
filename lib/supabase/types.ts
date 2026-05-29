@@ -32,6 +32,7 @@ export interface Order {
   subtotal: number;
   shipping_cost: number;
   total: number;
+  currency: string; // ISO 4217 — the currency the customer was charged in
   status: "pending" | "paid" | "shipped" | "delivered";
   tracking_number: string | null;
   notes: string | null;

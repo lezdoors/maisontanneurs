@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { formatPrice } from "@/lib/utils";
+import { useCurrency } from "@/components/store/CurrencyProvider";
 import { bust } from "@/lib/image-url";
 import { productImageClass } from "@/lib/product-image-presentation";
 import { useLocalizedHref, useT } from "@/lib/i18n-client";
@@ -80,6 +80,7 @@ export default function ProductCard({
 }: ProductCardProps) {
   const t = useT();
   const href = useLocalizedHref();
+  const { format } = useCurrency();
   const showPrice = category ? SHOW_PRICE_CATEGORIES.has(category) : false;
   const family = deriveFamily(slug);
 
@@ -135,7 +136,7 @@ export default function ProductCard({
           }}
         >
           {showPrice ? (
-            <span>{formatPrice(price)}</span>
+            <span>{format(price)}</span>
           ) : (
             <span className="opacity-85 group-hover:opacity-100 transition-opacity">
               {t("product.viewSpecs")}

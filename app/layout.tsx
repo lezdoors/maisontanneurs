@@ -6,7 +6,9 @@ import CookieBanner from "@/components/store/CookieBanner";
 import ConsentedClarity from "@/components/store/ConsentedClarity";
 import MetaPixel from "@/components/store/MetaPixel";
 import GA4 from "@/components/store/GA4";
-import { getRequestDir, getRequestLocale } from "@/lib/i18n-server";
+import { getRequestCurrency, getRequestDir, getRequestLocale } from "@/lib/i18n-server";
+import { getRates } from "@/lib/fx";
+import { CurrencyProvider } from "@/components/store/CurrencyProvider";
 
 const mono = JetBrains_Mono({
   subsets: ["latin"],
@@ -95,6 +97,8 @@ export default async function RootLayout({
 }) {
   const locale = await getRequestLocale();
   const dir = await getRequestDir();
+  const currency = await getRequestCurrency();
+  const rates = await getRates();
   return (
     <html lang={locale} dir={dir} className={`${mono.variable} ${playfair.variable} ${arabic.variable}`}>
       <body>
@@ -111,7 +115,9 @@ export default async function RootLayout({
         <ConsentedClarity />
         <MetaPixel />
         <GA4 />
-        {children}
+        <CurrencyProvider initialCurrency={currency} rates={rates}>
+          {children}
+        </CurrencyProvider>
         <CookieBanner />
       </body>
     </html>

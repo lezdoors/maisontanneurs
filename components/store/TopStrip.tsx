@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import CurrencySwitcher from "@/components/store/CurrencySwitcher";
 
 // Aether-pattern announcement strip — sticks at top above the main nav.
 // Three columns: brand voice left · pill announcement center · Marrakech time right.
@@ -64,22 +65,25 @@ export default function TopStrip() {
           Insider 15% off first order
         </a>
 
-        {/* RIGHT — Marrakech time */}
-        <span
-          className="hidden md:inline-flex items-center gap-2 whitespace-nowrap tabular-nums"
-          style={{ color: "#0F0F0F" }}
-        >
-          <span>Marrakech</span>
-          <span aria-live="polite">{time || "--:--"}</span>
-          <span style={{ opacity: 0.55 }}>GMT+1</span>
-        </span>
-        <span
-          className="md:hidden inline-flex items-center gap-1.5 whitespace-nowrap tabular-nums"
-          style={{ color: "#0F0F0F" }}
-        >
-          <span aria-live="polite">{time || "--:--"}</span>
-          <span style={{ opacity: 0.55 }}>GMT+1</span>
-        </span>
+        {/* RIGHT — currency switcher + Marrakech time */}
+        <div className="flex items-center gap-4 md:gap-6">
+          <CurrencySwitcher variant="light" />
+          <span
+            className="hidden md:inline-flex items-center gap-2 whitespace-nowrap tabular-nums"
+            style={{ color: "#0F0F0F" }}
+          >
+            <span>Marrakech</span>
+            <span aria-live="polite">{time || "--:--"}</span>
+            <span style={{ opacity: 0.55 }}>GMT+1</span>
+          </span>
+          <span
+            className="md:hidden inline-flex items-center gap-1.5 whitespace-nowrap tabular-nums"
+            style={{ color: "#0F0F0F" }}
+          >
+            <span aria-live="polite">{time || "--:--"}</span>
+            <span style={{ opacity: 0.55 }}>GMT+1</span>
+          </span>
+        </div>
       </div>
     </div>
   );
