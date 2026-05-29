@@ -76,6 +76,11 @@ const AWAITING_SCALE_SHOTS = new Set<string>([
   "medina-rucksack-flap-chocolate",
   "explorer-rolltop-cognac",
   "medina-rucksack-drawstring",
+  // Added 2026-05-28 — Drive 9-shot sets wired for launch; still no separate
+  // scale lifestyle shot, same accepted launch state as the rest of Drop 02.
+  "atlas-briefcase-vintage",
+  "medina-crossbody-cognac",
+  "vintage-satchel-light-brown",
   // Added 2026-05-26 — Drop 02 canonical still-image sets. Keep as warn until
   // dedicated lifestyle scale shots are generated.
   "saharienne-saddle-cognac",
