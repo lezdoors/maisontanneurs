@@ -223,8 +223,8 @@ export const STATIC_PRODUCTS: Product[] = [
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/black-stitched-backpack-archive-4.webp"
     ],
     "category": "Backpack",
-    "status": "available",
-    "featured": true,
+    "status": "reserved",
+    "featured": false,
     "materials": [
       "Full-grain Moroccan leather",
       "Solid brass hardware",

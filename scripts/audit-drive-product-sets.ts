@@ -20,9 +20,7 @@ const NEEDS_FINISHED_HF_EXPORT = new Set([
   "vintage-satchel-light-brown",
 ]);
 
-const LIVE_GALLERY_ACCEPTABLE = new Set([
-  "black-stitched-backpack",
-]);
+const LIVE_GALLERY_ACCEPTABLE = new Set<string>();
 
 type FolderEvidence = {
   folder: string;

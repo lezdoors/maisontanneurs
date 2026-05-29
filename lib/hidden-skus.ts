@@ -32,6 +32,9 @@ export const HIDDEN_SKUS: ReadonlySet<string> = new Set([
   // Duplicate/scope suppression: the patterned leather + textile duffle belongs
   // to the Kilim family, so keep this duplicate commercial SKU off launch.
   "medina-duffle",
+  // Duplicate/scope suppression: Expedition Rolltop Noir is the only black bag
+  // in the launch set. Keep this older black backpack SKU off the storefront.
+  "black-stitched-backpack",
 
   // Group B — only macro shots in Storage, no canonical hero. Macros are
   // gallery-only per Turbo's convention; audit rejects them as images[0].

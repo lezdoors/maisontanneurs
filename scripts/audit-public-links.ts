@@ -14,7 +14,12 @@ const START_ROUTES = [
   "/checkout/pay",
 ];
 
-const ALLOWED_EXTERNAL_HOSTS = new Set(["instagram.com", "www.instagram.com"]);
+const ALLOWED_EXTERNAL_HOSTS = new Set([
+  "instagram.com",
+  "www.instagram.com",
+  "maisontanneurs.com",
+  "www.maisontanneurs.com",
+]);
 const IGNORED_PROTOCOLS = ["mailto:", "tel:", "sms:"];
 
 type LinkRecord = {
