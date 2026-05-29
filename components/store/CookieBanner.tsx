@@ -67,29 +67,28 @@ export default function CookieBanner() {
       className={`cookie-banner ${isProductPage ? "cookie-banner-pdp" : ""}`}
       style={{
         position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
+        bottom: isProductPage ? 18 : 22,
+        left: 22,
+        right: "auto",
         zIndex: 100,
-        width: "auto",
-        background: "var(--color-near-black, #0a0a0a)",
-        color: "var(--color-ivory, #f5efe6)",
-        border: "1px solid rgba(245, 239, 230, 0.18)",
-        borderLeft: 0,
-        borderRight: 0,
-        borderBottom: 0,
-        padding: "8px 24px",
+        width: "min(440px, calc(100vw - 44px))",
+        background: "rgba(255, 255, 255, 0.96)",
+        color: "var(--color-ink, #2c2a28)",
+        border: "1px solid rgba(20, 18, 16, 0.18)",
+        boxShadow: "0 18px 60px rgba(20, 18, 16, 0.12)",
+        backdropFilter: "blur(10px)",
+        padding: "16px",
       }}
     >
       <div
         style={{
-          maxWidth: 1280,
-          margin: "0 auto",
+          maxWidth: "none",
+          margin: 0,
           display: "flex",
-          flexDirection: "row",
-          gap: 16,
-          alignItems: "center",
-          justifyContent: "space-between",
+          flexDirection: "column",
+          gap: 14,
+          alignItems: "stretch",
+          justifyContent: "flex-start",
         }}
         className="cookie-banner-inner"
       >
@@ -98,7 +97,7 @@ export default function CookieBanner() {
             fontFamily: "var(--font-sans, Inter)",
             fontSize: 11,
             lineHeight: 1.35,
-            color: "rgba(245, 239, 230, 0.85)",
+            color: "rgba(44, 42, 40, 0.78)",
             margin: 0,
             maxWidth: 760,
           }}
@@ -107,7 +106,7 @@ export default function CookieBanner() {
           <a
             href={href("/legal/privacy")}
             style={{
-              color: "var(--color-ivory, #f5efe6)",
+              color: "var(--color-ink, #2c2a28)",
               textDecoration: "underline",
               textUnderlineOffset: 4,
             }}
@@ -116,7 +115,7 @@ export default function CookieBanner() {
           </a>
           .
         </p>
-        <div className="cookie-banner-actions" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+        <div className="cookie-banner-actions" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
           <button
             onClick={reject}
             style={{
@@ -127,17 +126,17 @@ export default function CookieBanner() {
               textTransform: "uppercase",
               padding: "8px 18px",
               background: "transparent",
-              color: "var(--color-ivory, #f5efe6)",
-              border: "1px solid rgba(245, 239, 230, 0.55)",
+              color: "var(--color-ink, #2c2a28)",
+              border: "1px solid rgba(20, 18, 16, 0.35)",
               cursor: "pointer",
               transition: "background .2s ease, border-color .2s ease",
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.borderColor = "#f5efe6";
+              (e.currentTarget as HTMLButtonElement).style.borderColor = "#2c2a28";
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLButtonElement).style.borderColor =
-                "rgba(245, 239, 230, 0.55)";
+                "rgba(20, 18, 16, 0.35)";
             }}
           >
             {t("cookie.decline")}
@@ -151,19 +150,19 @@ export default function CookieBanner() {
               letterSpacing: "0.18em",
               textTransform: "uppercase",
               padding: "8px 18px",
-              background: "var(--color-ivory, #f5efe6)",
-              color: "var(--color-warm-black, #141210)",
-              border: "1px solid var(--color-ivory, #f5efe6)",
+              background: "var(--color-warm-black, #141210)",
+              color: "#ffffff",
+              border: "1px solid var(--color-warm-black, #141210)",
               cursor: "pointer",
               transition: "background .2s ease, color .2s ease",
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = "transparent";
-              (e.currentTarget as HTMLButtonElement).style.color = "#f5efe6";
+              (e.currentTarget as HTMLButtonElement).style.background = "#2c2a28";
+              (e.currentTarget as HTMLButtonElement).style.color = "#ffffff";
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.background = "#f5efe6";
-              (e.currentTarget as HTMLButtonElement).style.color = "#141210";
+              (e.currentTarget as HTMLButtonElement).style.background = "#141210";
+              (e.currentTarget as HTMLButtonElement).style.color = "#ffffff";
             }}
           >
             {t("cookie.accept")}
@@ -173,19 +172,16 @@ export default function CookieBanner() {
       <style>{`
         @media (max-width: 767px) {
           .cookie-banner {
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
+            left: 14px !important;
+            right: 14px !important;
+            bottom: 14px !important;
             width: auto !important;
-            border-left: 0 !important;
-            border-right: 0 !important;
-            border-bottom: 0 !important;
-            padding: 8px 14px !important;
+            padding: 14px !important;
           }
           .cookie-banner-inner {
             flex-direction: column !important;
             align-items: stretch !important;
-            gap: 8px !important;
+            gap: 10px !important;
           }
           .cookie-banner p {
             font-size: 10.5px !important;
@@ -206,19 +202,7 @@ export default function CookieBanner() {
             letter-spacing: 0.14em !important;
           }
           .cookie-banner-pdp {
-            bottom: 0 !important;
-          }
-        }
-        @media (min-width: 768px) {
-          .cookie-banner-inner {
-            flex-direction: row !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            gap: 18px !important;
-          }
-          .cookie-banner-actions {
-            flex: 0 0 auto !important;
-            flex-wrap: nowrap !important;
+            bottom: 14px !important;
           }
         }
       `}</style>

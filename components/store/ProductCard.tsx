@@ -87,9 +87,13 @@ export default function ProductCard({
   return (
     <Link
       href={href(`/products/${slug}`)}
-      className="group block bg-[color:var(--color-paper)]"
+      className="group block bg-[color:var(--color-paper)] mt-product-card"
     >
       <div className="mt-product-frame relative aspect-[4/5]">
+        <span className="mt-product-frame-line mt-product-frame-line--top" aria-hidden />
+        <span className="mt-product-frame-line mt-product-frame-line--right" aria-hidden />
+        <span className="mt-product-frame-line mt-product-frame-line--bottom" aria-hidden />
+        <span className="mt-product-frame-line mt-product-frame-line--left" aria-hidden />
         <Image
           src={bust(image)}
           alt={title}
@@ -98,6 +102,11 @@ export default function ProductCard({
           loading={eager ? "eager" : "lazy"}
           className={productImageClass(image)}
         />
+        <div className="mt-product-dossier-strip" aria-hidden>
+          <span>{t("product.materialTag")}</span>
+          <span>{t("product.cutTag")}</span>
+          <span>{t("product.dossier")}</span>
+        </div>
       </div>
 
       <div
@@ -117,7 +126,7 @@ export default function ProductCard({
         </div>
 
         <h3
-          className="text-[15px] leading-tight"
+          className="mt-product-title text-[15px] leading-tight"
           style={{
             fontFamily: "var(--font-sans)",
             fontWeight: 500,

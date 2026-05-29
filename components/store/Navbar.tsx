@@ -82,7 +82,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full border-b transition-colors duration-500 ${
+      className={`mt-nav-reveal fixed top-0 z-50 w-full border-b transition-colors duration-500 ${
         onHero ? "bg-transparent text-white border-white/20" : "bg-white/95 text-[#0f0f0f] border-[#e5e5e5] backdrop-blur"
       }`}
     >

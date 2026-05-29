@@ -103,7 +103,7 @@ export default function Hero() {
         {SLIDES.map((s, i) => (
           <div
             key={s.src}
-            className="absolute inset-0 transition-opacity"
+            className={`absolute inset-0 transition-opacity ${i === 0 ? "mt-hero-media-reveal" : ""}`}
             style={{
               opacity: i === idx ? 1 : 0,
               transitionDuration: "1100ms",
@@ -139,7 +139,7 @@ export default function Hero() {
         ))}
         <div
           aria-hidden
-          className="absolute inset-0 pointer-events-none"
+          className="mt-hero-overlay-reveal absolute inset-0 pointer-events-none"
           style={{
             background:
               "linear-gradient(to top, rgba(20,18,16,0.55) 0%, rgba(20,18,16,0.15) 38%, rgba(20,18,16,0) 65%)",
@@ -151,7 +151,7 @@ export default function Hero() {
       <div className="relative z-10 flex min-h-[100svh] flex-col justify-end px-6 md:px-12 pb-36 sm:pb-28 md:pb-20">
         <div className="max-w-[1400px]">
           <p
-            className="mb-8"
+            className="mt-hero-copy-reveal mb-8"
             style={{
               color: "rgba(255,255,255,0.78)",
               fontFamily: "var(--font-sans)",
@@ -164,6 +164,7 @@ export default function Hero() {
           </p>
 
           <h1
+            className="mt-hero-title-reveal"
             style={{
               color: "#ffffff",
               fontFamily: "var(--font-display)",
@@ -182,7 +183,7 @@ export default function Hero() {
           </h1>
 
           <p
-            className="mt-8"
+            className="mt-hero-copy-reveal mt-8"
             style={{
               color: "rgba(255,255,255,0.88)",
               fontFamily: "var(--font-display)",
@@ -196,7 +197,7 @@ export default function Hero() {
             {t("hero.copy")}
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-3">
+          <div className="mt-hero-cta-reveal mt-10 flex flex-wrap items-center gap-3">
             <Link
               href={href("/products")}
               className="inline-flex items-center gap-3 transition-opacity hover:opacity-85"
