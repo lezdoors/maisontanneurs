@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Shipping — Maison Tanneurs",
   description:
-    "How Maison Tanneurs ships leather goods worldwide. Three to five day delivery direct from Marrakech via DHL or FedEx.",
+    "How Maison Tanneurs ships leather goods worldwide. Free worldwide shipping in three to five days by tracked express courier. Duty-free to the US and EU.",
   alternates: {
     canonical: "/legal/shipping",
   },
@@ -20,15 +20,23 @@ export default function ShippingPage() {
       <p>
         Every Maison Tanneurs bag is finished by hand in our Marrakech atelier.
         When you place an order, the artisan checks the piece, packs it,
-        and hands it to DHL or FedEx — typically within 24 hours.
+        and hands it to a tracked express courier — typically within 24 hours.
+      </p>
+
+      <h2>Free worldwide shipping</h2>
+      <p>
+        Shipping is free on every order, to every destination. There is no
+        threshold and no surcharge for express service. You will see no
+        shipping line item at checkout because there is no shipping cost
+        to pay.
       </p>
 
       <h2>Delivery times</h2>
       <ul>
-        <li><strong>European Union, UK · 2–4 business days</strong> · DHL or FedEx Express direct from Marrakech.</li>
-        <li><strong>United States, Canada · 3–5 business days</strong> · DHL or FedEx International Priority.</li>
-        <li><strong>Australia, Japan, Singapore · 4–6 business days</strong> · DHL or FedEx International.</li>
-        <li><strong>Rest of world · 5–10 business days</strong> · DHL Express where available, tracked international service elsewhere.</li>
+        <li><strong>European Union, UK · 2–4 business days</strong> · tracked express courier direct from Marrakech.</li>
+        <li><strong>United States, Canada · 3–5 business days</strong> · tracked express courier, international priority service.</li>
+        <li><strong>Australia, Japan, Singapore · 4–6 business days</strong> · tracked express courier.</li>
+        <li><strong>Rest of world · 5–10 business days</strong> · tracked express service where available.</li>
       </ul>
       <p>
         If a bag is part of a limited edition or made-to-order custom run,
@@ -44,16 +52,23 @@ export default function ShippingPage() {
         up with the carrier on your behalf.
       </p>
 
-      <h2>Shipping cost</h2>
+      <h2>Customs and duties</h2>
       <p>
-        Shipping is included on orders over the threshold shown at
-        checkout. Below that threshold, a flat shipping fee is displayed
-        before you pay — varies by destination and bag weight.
+        Orders to the <strong>United States</strong> enter duty-free under
+        the United States–Morocco Free Trade Agreement (in force since
+        2006), which removed tariffs on Moroccan-origin leather goods.
       </p>
       <p>
-        Customs duties and import VAT on international orders are the
-        responsibility of the recipient. We declare the actual value of
-        the order on the customs form — we do not under-declare.
+        Orders to the <strong>European Union and the United Kingdom</strong>{" "}
+        enter duty-free under the EU–Morocco Association Agreement and the
+        UK–Morocco Association Agreement respectively. EU import VAT is
+        already collected at checkout where applicable, so there is
+        nothing for the carrier to bill on arrival.
+      </p>
+      <p>
+        For other destinations, any local import duty or tax is the
+        responsibility of the recipient. We declare the actual order
+        value on the customs form — we do not under-declare.
       </p>
 
       <h2>Lost or damaged packages</h2>

@@ -21,11 +21,11 @@ const FAQ = [
   },
   {
     q: "How long does shipping take?",
-    a: "Three to five business days from when you order, in most cases. Bags ship direct from Marrakech via DHL or FedEx with full tracking. International transit times vary by country (see Shipping).",
+    a: "Three to five business days from when you order, in most cases. Bags ship direct from Marrakech by tracked express courier with full tracking. International transit times vary by country (see Shipping).",
   },
   {
     q: "Do you offer free shipping?",
-    a: "Shipping is included on orders over the threshold shown at checkout. Below that threshold, a flat shipping fee is displayed before you pay.",
+    a: "Yes — free worldwide shipping on every order, with no minimum and no surcharge for express service. Orders to the US enter duty-free under the Morocco-US Free Trade Agreement; orders to the EU and UK enter duty-free under the EU-Morocco and UK-Morocco association agreements.",
   },
   {
     q: "What sizes do you carry?",

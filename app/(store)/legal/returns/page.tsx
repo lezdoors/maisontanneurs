@@ -39,14 +39,14 @@ export default function ReturnsPage() {
       <h2>How to return</h2>
       <ol style={{paddingLeft: "20px", marginBottom: "20px"}}>
         <li style={{marginBottom: "8px"}}>Write to <Link href="mailto:hello@maisontanneurs.com">hello@maisontanneurs.com</Link> within 30 days of delivery with your order number and the reason for the return.</li>
-        <li style={{marginBottom: "8px"}}>We will arrange a return shipping label via DHL or FedEx (EU and US orders) and email it to you within one working day.</li>
+        <li style={{marginBottom: "8px"}}>We will arrange a tracked return shipping label (EU and US orders) and email it to you within one working day.</li>
         <li style={{marginBottom: "8px"}}>Ship the bag back within 14 days of receiving the label.</li>
         <li style={{marginBottom: "8px"}}>Once we receive and inspect the return, we will refund the original payment method within 5 business days, or dispatch the exchange.</li>
       </ol>
 
       <h2>Return shipping cost</h2>
       <p>
-        EU and US returns are free — we arrange and pay for the DHL/FedEx
+        EU and US returns are free — we arrange and pay for the tracked
         return label. For other destinations, return shipping is shared
         case by case; write to us first and we will quote it.
       </p>

@@ -35,7 +35,7 @@ export default function PrivacyPage() {
 
       <h2>How we use it</h2>
       <ul>
-        <li>To fulfill your order — passing your name and shipping address to our Marrakech atelier and the courier (DHL/FedEx).</li>
+        <li>To fulfill your order — passing your name and shipping address to our Marrakech atelier and the express courier handling delivery.</li>
         <li>To send order confirmations, shipping updates, and post-delivery follow-ups.</li>
         <li>To respond to your questions and resolve any issues with your order.</li>
         <li>To improve the site and the product range based on aggregate analytics.</li>
@@ -49,7 +49,7 @@ export default function PrivacyPage() {
       <ul>
         <li><strong>Revolut</strong> — for payment processing.</li>
         <li><strong>Our Marrakech atelier</strong> — for finishing and dispatch.</li>
-        <li><strong>Our courier</strong> — for delivery.</li>
+        <li><strong>Our express courier</strong> — for delivery.</li>
         <li><strong>Resend</strong> — for transactional and newsletter email delivery.</li>
       </ul>
       <p>

@@ -37,6 +37,7 @@ const COLUMNS: ColumnDef[] = [
       { labelKey: "nav.careGuide", href: "/legal/care" },
       { labelKey: "footer.shipping", href: "/legal/shipping" },
       { labelKey: "footer.returns", href: "/legal/returns" },
+      { labelKey: "footer.repairGuarantee", href: "/legal/repair" },
       { labelKey: "footer.faq", href: "/legal/faq" },
       { labelKey: "footer.contact", href: "/contact" },
     ],
@@ -59,23 +60,10 @@ export default function Footer() {
     <footer className="w-full bg-white text-[#0f0f0f] border-t border-[#e5e5e5]">
       <NewsletterSignup />
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 px-6 pt-14 pb-10">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 px-6 pt-14 pb-14">
         {COLUMNS.map((c) => (
           <Column key={c.titleKey} {...c} />
         ))}
-      </div>
-
-      <div className="px-6 pb-2 overflow-hidden" aria-hidden>
-        <div
-          className="font-semibold leading-[0.85] select-none whitespace-nowrap"
-          style={{
-            fontFamily: "var(--font-sans)",
-            letterSpacing: "-0.05em",
-            fontSize: "clamp(29px, 9.3vw, 210px)",
-          }}
-        >
-          MAISON TANNEURS
-        </div>
       </div>
 
       <div className="border-t border-[#e5e5e5]">

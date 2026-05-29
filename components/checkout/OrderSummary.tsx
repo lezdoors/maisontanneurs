@@ -44,7 +44,7 @@ export default function OrderSummary() {
 
       <div className="space-y-3 pt-1 border-t border-stone/40">
         <Row label="Subtotal" value={formatPrice(subtotal)} />
-        <Row label="Shipping" value="DHL / FedEx" italic />
+        <Row label="Shipping" value="Free worldwide" italic />
         <Row label="Duties &amp; taxes" value="Shown where applicable" italic />
       </div>
 

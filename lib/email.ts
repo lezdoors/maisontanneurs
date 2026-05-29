@@ -57,7 +57,7 @@ export async function sendOrderConfirmation(data: OrderEmailData) {
         </div>
         <div style="background:#ebe3d1;padding:24px;margin:32px 0;">
           <div style="font-family:monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#7a6f5c;margin-bottom:8px;">Shipping</div>
-          <p style="font-family:Georgia,serif;font-style:italic;font-size:14px;color:#3a332a;margin:0;line-height:1.6;">Your pieces are finished and prepared in Marrakech, then shipped direct by DHL or FedEx. Most orders arrive in 3 to 5 business days. You will receive a tracking number once your parcel leaves the atelier.</p>
+          <p style="font-family:Georgia,serif;font-style:italic;font-size:14px;color:#3a332a;margin:0;line-height:1.6;">Your pieces are finished and prepared in Marrakech, then shipped direct — free worldwide — by tracked express courier. Most orders arrive in 3 to 5 business days, duty-free to the US and EU. You will receive a tracking number once your parcel leaves the atelier.</p>
         </div>
         <div style="text-align:center;margin-top:40px;padding-top:24px;border-top:1px solid #d9cfbb;">
           <div style="font-family:monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#7a6f5c;">Maison Tanneurs · Marrakech</div>

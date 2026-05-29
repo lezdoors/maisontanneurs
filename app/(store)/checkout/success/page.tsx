@@ -110,8 +110,8 @@ export default async function CheckoutSuccessPage({
 
         <p className="font-serif text-[clamp(17px,1.4vw,20px)] italic text-graphite text-center leading-relaxed mb-10">
           Your order has been placed. Each piece is hand-stitched in our
-          Marrakech atelier and shipped direct via DHL or FedEx — 3 to 5
-          business days to your door.
+          Marrakech atelier and shipped direct by tracked express courier —
+          free worldwide, 3 to 5 business days to your door.
         </p>
 
         {/* Order number — prominent */}
@@ -199,8 +199,8 @@ export default async function CheckoutSuccessPage({
             />
             <TimelineStep
               n="03"
-              title="Shipped via DHL / FedEx"
-              body="You'll receive a tracking number by email the moment the parcel leaves the atelier."
+              title="Shipped — free worldwide"
+              body="Tracked express courier, direct from Marrakech. You'll receive a tracking number by email the moment the parcel leaves the atelier. Duty-free to the US and EU."
             />
           </ol>
         </div>

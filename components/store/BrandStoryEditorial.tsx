@@ -37,7 +37,7 @@ export default function BrandStoryEditorial() {
             Maison Tanneurs is a small leather house working out of a Marrakech
             atelier. Each bag is cut, stitched, and finished by hand —
             full-grain leather, solid brass hardware, contrast saddle-stitch.
-            Shipped direct to you within three to five days via DHL or FedEx.
+            Shipped direct to you within three to five days by tracked express courier — free worldwide.
           </p>
           <p className="ed-body-lg mt-4 max-w-[44ch]">
             No middlemen. No inventory we didn&apos;t make. A leather house

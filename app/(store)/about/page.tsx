@@ -7,7 +7,7 @@ import InTheirHands from "@/components/store/InTheirHands";
 export const metadata: Metadata = {
   title: "About Maison Tanneurs",
   description:
-    "A small leather house working out of a Marrakech atelier. Full-grain leather, hand-stitched, solid brass hardware. Shipped direct in three to five days.",
+    "A small leather house working out of a Marrakech atelier. Full-grain leather, hand-stitched, solid brass hardware. Free worldwide shipping in three to five days, duty-free to the US and EU.",
   alternates: {
     canonical: "/about",
   },
@@ -78,15 +78,19 @@ export default function AboutPage() {
           </p>
           <p className="text-[15px] font-sans font-light leading-[1.75] text-[var(--color-ink-soft)] mb-5">
             Maison Tanneurs is a small leather house working out of a Marrakech
-            atelier. We make bags — full-grain leather, solid brass
-            hardware, contrast saddle-stitch — cut and finished by hand,
-            one piece at a time, by artisans who have been working leather
-            in the medina for generations.
+            atelier whose master artisans have been stitching full-grain
+            leather since 1962 — three generations, father to son, in the
+            same workshop in the medina. We design the silhouettes; they
+            cut, stitch, and finish each piece by hand, one at a time —
+            full-grain leather, solid brass hardware, contrast
+            saddle-stitch.
           </p>
           <p className="text-[15px] font-sans font-light leading-[1.75] text-[var(--color-ink-soft)] mb-5">
-            Every bag ships direct from the atelier via DHL or FedEx,
-            three to five days to your door. No middlemen, no warehouses,
-            no inventory we didn&apos;t make. What you carry was finished by
+            Every bag ships direct from the atelier by tracked express
+            courier — free worldwide, three to five days to your door, and
+            duty-free to the US and EU under the Morocco-US and EU-Morocco
+            free trade agreements. No middlemen, no warehouses, no
+            inventory we didn&apos;t make. What you carry was finished by
             the person who signed the lining.
           </p>
           <p className="text-[15px] font-sans font-light leading-[1.75] text-[var(--color-ink-soft)]">
@@ -123,7 +127,7 @@ export default function AboutPage() {
             },
             {
               label: "Shipping",
-              text: "Three to five business days direct from Marrakech via DHL or FedEx. Tracking included on every order. Returns within 30 days, no questions asked.",
+              text: "Free worldwide shipping by tracked express courier — three to five business days direct from Marrakech, duty-free to the US and EU. Tracking included on every order. Returns within 30 days, no questions asked.",
             },
           ].map((item) => (
             <div key={item.label}>

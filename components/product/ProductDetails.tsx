@@ -200,7 +200,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
           {/* Shipping + care note */}
           <p className="font-serif italic text-[14px] text-mineral leading-[1.6]">
-            Hand-stitched in Marrakech. Ships in 3–5 days via DHL or FedEx.
+            Hand-stitched in Marrakech. Free worldwide shipping by tracked express courier, 3–5 days.
           </p>
 
           {/* Care + sizing links */}

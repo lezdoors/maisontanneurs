@@ -30,14 +30,14 @@ function resolveCategoryFilter(raw: string): { in?: string[]; eq?: string } {
 export const metadata: Metadata = {
   title: "Collection",
   description:
-    "Hand-stitched leather goods sourced direct from a Marrakech atelier. Shipped worldwide in 3–5 days via DHL/FedEx.",
+    "Hand-stitched leather goods sourced direct from a Marrakech atelier. Free worldwide shipping in 3–5 days, duty-free to the US and EU.",
   alternates: {
     canonical: "/products",
   },
   openGraph: {
     title: "Maison Tanneurs Collection",
     description:
-      "Hand-stitched leather goods sourced direct from a Marrakech atelier. Shipped worldwide in 3–5 days via DHL/FedEx.",
+      "Hand-stitched leather goods sourced direct from a Marrakech atelier. Free worldwide shipping in 3–5 days, duty-free to the US and EU.",
     url: "/products",
   },
 };

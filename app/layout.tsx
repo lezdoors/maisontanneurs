@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     template: "%s | Maison Tanneurs",
   },
   description:
-    "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes, shipped worldwide in 3–5 days.",
+    "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes. Free worldwide shipping in 3–5 days — duty-free to the US and EU under the Morocco-US and EU-Morocco free trade agreements.",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://www.maisontanneurs.com",
   ),
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     siteName: "Maison Tanneurs",
     title: "Maison Tanneurs — Hand-stitched leather from Marrakech",
     description:
-      "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes, shipped worldwide in 3–5 days.",
+      "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes. Free worldwide shipping in 3–5 days — duty-free to the US and EU under the Morocco-US and EU-Morocco free trade agreements.",
     images: [
       {
         url: "/hero/hero-leather-campaign.webp",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Maison Tanneurs",
     description:
-      "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes, shipped worldwide in 3–5 days.",
+      "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes. Free worldwide shipping in 3–5 days — duty-free to the US and EU under the Morocco-US and EU-Morocco free trade agreements.",
     images: ["/hero/hero-leather-campaign.webp"],
   },
   alternates: {
