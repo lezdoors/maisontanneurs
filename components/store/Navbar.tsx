@@ -113,7 +113,7 @@ export default function Navbar() {
             onClick={() => setDrawer((v) => !v)}
             aria-label="Open menu"
             aria-expanded={drawer}
-            className={`md:hidden inline-flex items-center ${navInk}`}
+            className={`md:hidden inline-flex h-11 w-11 -ml-2 items-center justify-center ${navInk}`}
           >
             <svg
               width="22"
@@ -224,18 +224,28 @@ export default function Navbar() {
         <>
           <div
             onClick={() => setDrawer(false)}
-            className="md:hidden fixed inset-0 bg-[#0f0f0f]/45 z-40"
+            className="md:hidden fixed inset-0 bg-[#0f0f0f]/55 z-[70] backdrop-blur-sm"
             aria-hidden
           />
           <aside
-            className="md:hidden fixed left-0 top-0 bottom-0 w-[300px] z-50 bg-white border-r border-[#e5e5e5] overflow-y-auto"
+            className="md:hidden fixed left-0 top-0 bottom-0 w-[88vw] max-w-[380px] z-[71] bg-white overflow-y-auto"
+            style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
           >
-            <div className="flex items-center justify-between px-6 py-4 border-b border-[#e5e5e5]">
-              <span className="tech-label opacity-60">{t("nav.menu")}</span>
+            <div className="flex items-center justify-between px-6 py-5 border-b border-[#e5e5e5]">
+              <span
+                className="font-medium"
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "13px",
+                  letterSpacing: "0.28em",
+                }}
+              >
+                MAISON&nbsp;&nbsp;TANNEURS
+              </span>
               <button
                 onClick={() => setDrawer(false)}
                 aria-label={t("nav.closeMenu")}
-                className="text-[#0f0f0f]"
+                className="h-11 w-11 -mr-2 inline-flex items-center justify-center text-[#0f0f0f]"
               >
                 <svg
                   width="20"
@@ -250,39 +260,84 @@ export default function Navbar() {
                 </svg>
               </button>
             </div>
-            <nav className="px-6 py-8 flex flex-col gap-6">
+
+            <nav className="px-6 pt-10 pb-8 flex flex-col">
               {NAV_LEFT.map((l) => (
                 <Link
                   key={l.labelKey}
                   href={href(l.href)}
                   onClick={() => setDrawer(false)}
-                  className="tech-label text-[#0f0f0f] text-[13px]"
+                  className="py-4 border-b border-[#e5e5e5] text-[#0f0f0f]"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "26px",
+                    letterSpacing: "-0.01em",
+                    fontWeight: 400,
+                  }}
                 >
                   {t(l.labelKey)}
                 </Link>
               ))}
-              <div className="h-px bg-[#e5e5e5] my-2" />
-              <Link
-                href={href("/legal/care")}
-                onClick={() => setDrawer(false)}
-                className="tech-meta text-[#0f0f0f]/70"
+
+              <div className="mt-10 flex flex-col gap-5">
+                <Link
+                  href={href("/legal/care")}
+                  onClick={() => setDrawer(false)}
+                  className="tech-label opacity-70 text-[#0f0f0f]"
+                >
+                  {t("nav.careGuide")}
+                </Link>
+                <Link
+                  href={href("/legal/shipping")}
+                  onClick={() => setDrawer(false)}
+                  className="tech-label opacity-70 text-[#0f0f0f]"
+                >
+                  {t("footer.shipping")}
+                </Link>
+                <Link
+                  href={href("/legal/returns")}
+                  onClick={() => setDrawer(false)}
+                  className="tech-label opacity-70 text-[#0f0f0f]"
+                >
+                  {t("footer.returns")}
+                </Link>
+                <Link
+                  href={href("/legal/repair")}
+                  onClick={() => setDrawer(false)}
+                  className="tech-label opacity-70 text-[#0f0f0f]"
+                >
+                  {t("footer.repairGuarantee")}
+                </Link>
+              </div>
+
+              <div className="mt-10 pt-6 border-t border-[#e5e5e5] flex items-center gap-3">
+                {LOCALES.map((l, i) => (
+                  <span key={l} className="inline-flex items-center gap-3">
+                    {i > 0 && <span aria-hidden className="opacity-30">·</span>}
+                    <Link
+                      href={switchLocaleHref(l)}
+                      onClick={() => setDrawer(false)}
+                      hrefLang={l}
+                      className={`tech-label ${l === locale ? "text-[#0f0f0f]" : "text-[#0f0f0f]/45"}`}
+                      aria-current={l === locale ? "true" : undefined}
+                    >
+                      {LOCALE_LABELS[l]}
+                    </Link>
+                  </span>
+                ))}
+              </div>
+
+              <p
+                className="mt-10 text-[#0f0f0f]/55"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontStyle: "italic",
+                  fontSize: "14px",
+                  lineHeight: 1.5,
+                }}
               >
-                {t("nav.careGuide")}
-              </Link>
-              <Link
-                href={href("/legal/shipping")}
-                onClick={() => setDrawer(false)}
-                className="tech-meta text-[#0f0f0f]/70"
-              >
-                {t("footer.shipping")}
-              </Link>
-              <Link
-                href={href("/legal/returns")}
-                onClick={() => setDrawer(false)}
-                className="tech-meta text-[#0f0f0f]/70"
-              >
-                {t("footer.returns")}
-              </Link>
+                Marrakech atelier · stitching leather since 1962.
+              </p>
             </nav>
           </aside>
         </>
