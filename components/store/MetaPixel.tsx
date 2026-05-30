@@ -6,7 +6,7 @@ import { getConsent } from "./CookieBanner";
 // Meta Pixel loader — only fires after explicit user consent.
 //
 // Server-side companion: lib/meta-capi.ts (Conversions API for Purchase events,
-// fired from app/api/webhooks/stripe/route.ts on checkout.session.completed).
+// fired from the Revolut webhook after completed payment).
 //
 // Env var: NEXT_PUBLIC_META_PIXEL_ID
 // If unset, this component is a no-op.
@@ -86,10 +86,17 @@ export default function MetaPixel() {
 
 // Helper for components that fire standard events (ViewContent, AddToCart, etc.)
 export function trackPixelEvent(
-  event: "ViewContent" | "AddToCart" | "InitiateCheckout" | "Purchase" | "Search",
+  event:
+    | "ViewContent"
+    | "AddToCart"
+    | "InitiateCheckout"
+    | "AddPaymentInfo"
+    | "Purchase"
+    | "Search",
   params?: Record<string, unknown>,
+  options?: Record<string, unknown>,
 ) {
   if (typeof window === "undefined") return;
   if (!window.fbq) return; // not loaded yet (no consent or no pixel id)
-  window.fbq("track", event, params || {});
+  window.fbq("track", event, params || {}, options || {});
 }

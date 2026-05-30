@@ -14,6 +14,13 @@
     "audit:launch": "tsx scripts/audit-launch-readiness.ts",
     "audit:media": "tsx scripts/audit-media-sources.ts",
     "audit:drive-sets": "tsx scripts/audit-drive-product-sets.ts",
+    "verify:live-checkout": "tsx scripts/verify-live-checkout-runtime.ts",
+    "verify:live-feed": "tsx scripts/verify-live-feed.ts",
+    "verify:live-meta": "tsx scripts/verify-live-meta-surface.ts",
+    "verify:success-capi": "tsx scripts/verify-success-page-capi.ts",
+    "verify:launch-gate": "tsx scripts/verify-launch-gate.ts",
+    "verify:email": "tsx scripts/test-email.ts",
+    "verify:production-env": "tsx scripts/verify-production-launch-env.ts",
     "prebuild": "tsx scripts/audit-catalogue.ts"
   },
   "dependencies": {
