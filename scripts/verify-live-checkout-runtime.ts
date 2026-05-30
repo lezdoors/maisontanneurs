@@ -10,6 +10,45 @@ function mask(value: string | undefined): string {
   return `${value.slice(0, 8)}...${value.slice(-6)}`;
 }
 
+async function verifyPurchaseEventRoute() {
+  const res = await fetch(`${siteUrl}/api/checkout/purchase-event`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ orderId: "codex-invalid-live-route-check" }),
+  });
+  const text = await res.text();
+
+  if (res.status === 404 || !text.trim().startsWith("{")) {
+    throw new Error(
+      `Purchase event route missing or non-JSON: status=${res.status}; body=${text.slice(
+        0,
+        160,
+      )}`,
+    );
+  }
+
+  let json: Record<string, unknown> = {};
+  try {
+    json = JSON.parse(text) as Record<string, unknown>;
+  } catch {
+    throw new Error(
+      `Purchase event route returned invalid JSON: status=${res.status}; body=${text.slice(
+        0,
+        160,
+      )}`,
+    );
+  }
+
+  const error = typeof json.error === "string" ? json.error : "";
+  if (res.status !== 502 || error !== "Could not load order") {
+    throw new Error(
+      `Unexpected purchase event route response: status=${res.status}; body=${JSON.stringify(
+        json,
+      )}`,
+    );
+  }
+}
+
 async function main() {
   const res = await fetch(`${siteUrl}/api/checkout/session`, {
     method: "POST",
@@ -76,6 +115,8 @@ async function main() {
     throw new Error("Pending order rendered Order Confirmed");
   }
 
+  await verifyPurchaseEventRoute();
+
   console.log("Live checkout runtime verified");
   console.log(`site=${siteUrl}`);
   console.log(`orderId=${mask(orderId)}`);
@@ -83,6 +124,7 @@ async function main() {
   console.log(`checkoutUrlHost=${new URL(checkoutUrl).host}`);
   console.log(`publicKey=${mask(publicKey)}`);
   console.log("pendingSuccessGuard=Payment Pending");
+  console.log("purchaseEventRoute=present");
 }
 
 main().catch((err) => {
