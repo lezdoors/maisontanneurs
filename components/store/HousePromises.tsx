@@ -22,7 +22,7 @@ const PROMISES: Promise[] = [
     code: "P.03",
     k: "Repair",
     v: "Lifetime · Atelier",
-    note: "Re-stitch, edge-coat, re-line — performed at our own atelier, for as long as the object exists.",
+    note: "Re-stitch, edge-coat, re-line at our own atelier for as long as the object exists. Labour free; shipping at cost.",
   },
 ];
 

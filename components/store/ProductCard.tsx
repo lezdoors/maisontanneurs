@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCurrency } from "@/components/store/CurrencyProvider";
 import { bust } from "@/lib/image-url";
 import { productImageClass } from "@/lib/product-image-presentation";
-import { useLocalizedHref, useT } from "@/lib/i18n-client";
+import { useLocalizedHref } from "@/lib/i18n-client";
 
 interface ProductCardProps {
   title: string;
@@ -17,15 +17,6 @@ interface ProductCardProps {
   badge?: string;
   eager?: boolean;
 }
-
-// Categories where price IS shown on the grid (gateway products).
-// Leather Goods (bags, larger pieces) hide price on grid → click to PDP.
-const SHOW_PRICE_CATEGORIES = new Set([
-  "Wallets",
-  "Accessories",
-  "SLG",
-  "Small Leather Goods",
-]);
 
 function deriveFamily(slug: string): string {
   // Heuristic: take the silhouette stem from the slug.
@@ -75,13 +66,10 @@ export default function ProductCard({
   price,
   image,
   slug,
-  category,
   eager = false,
 }: ProductCardProps) {
-  const t = useT();
   const href = useLocalizedHref();
   const { format } = useCurrency();
-  const showPrice = category ? SHOW_PRICE_CATEGORIES.has(category) : false;
   const family = deriveFamily(slug);
 
   return (
@@ -135,13 +123,7 @@ export default function ProductCard({
             color: "var(--color-ink)",
           }}
         >
-          {showPrice ? (
-            <span>{format(price)}</span>
-          ) : (
-            <span className="opacity-85 group-hover:opacity-100 transition-opacity">
-              {t("product.viewSpecs")}
-            </span>
-          )}
+          <span>{format(price)}</span>
         </div>
       </div>
     </Link>

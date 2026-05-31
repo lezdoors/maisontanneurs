@@ -163,7 +163,7 @@ export default async function ObjectOfTheEdition() {
                 textTransform: "uppercase",
               }}
             >
-              Acquire →
+              See the piece →
             </Link>
             <Link
               href="/about"

@@ -45,6 +45,8 @@ async function getRelatedProducts(
   category: string,
   excludeSlug: string,
 ): Promise<Product[]> {
+  const TARGET = 3;
+
   try {
     const supabase = await createServerSupabase();
 
@@ -60,9 +62,10 @@ async function getRelatedProducts(
         .limit(24);
 
       if (!error && data && data.length > 0) {
-        return normalizeProductFamilies(data as Product[])
-          .filter((p) => p.category === category)
-          .slice(0, 3);
+        const all = normalizeProductFamilies(data as Product[]);
+        const sameCategory = all.filter((p) => p.category === category);
+        const otherCategory = all.filter((p) => p.category !== category);
+        return [...sameCategory, ...otherCategory].slice(0, TARGET);
       }
     }
   } catch {
@@ -70,14 +73,16 @@ async function getRelatedProducts(
   }
 
   // Fallback to static
-  return normalizeProductFamilies(STATIC_PRODUCTS as Product[]).filter(
+  const staticAll = normalizeProductFamilies(STATIC_PRODUCTS as Product[]).filter(
     (p) =>
-      p.category === category &&
       p.slug !== excludeSlug &&
       p.status === "available" &&
       p.featured &&
       !HIDDEN_SKUS.has(p.slug),
-  ).slice(0, 3);
+  );
+  const sameCategory = staticAll.filter((p) => p.category === category);
+  const otherCategory = staticAll.filter((p) => p.category !== category);
+  return [...sameCategory, ...otherCategory].slice(0, TARGET);
 }
 
 export async function generateMetadata({
