@@ -1,29 +1,33 @@
-// Airtable -> Supabase product sync (Phase 1 canary).
+// Airtable -> Supabase product sync.
 //
-// Reads ONE Airtable Products record, maps fields to the Supabase
-// `products` shape, diffs against the current row, and upserts only on
-// real change. Idempotent: re-running with no Airtable change writes
-// nothing. Always emits a JSONL audit line.
+// Reads one or more Airtable Products records, maps each to the Supabase
+// `products` shape, diffs against the current row, and writes only on real
+// change. Idempotent: re-runs with no Airtable change write nothing.
 //
-// Usage:
-//   pnpm tsx scripts/sync-airtable.ts --slug=vintage-buckle-backpack
-//   pnpm tsx scripts/sync-airtable.ts --slug=... --dry-run
+// Modes:
+//   --slug=<slug>          single SKU (canary / one-off)
+//   --slugs=a,b,c          explicit list
+//   --all                  every Airtable row that passes the launch gate
+//   --dry-run              prints the diff; writes nothing
+//
+// Launch gate (--all + --slugs): Site Status IN (Published, Ready for site)
+// AND Copy Status = Approved AND Image Status IN (Approved, Partial, blank)
+// AND Launch Ready = true. --slug=<single> bypasses the launch-ready
+// constraints so it can still be used as a canary tool for in-flight SKUs.
+//
+// Per-record JSONL line + a final session-summary line. Audit log at
+// scripts/.sync-airtable.jsonl. Each Airtable call is concurrency-bounded
+// at 3 because Airtable's per-PAT limit is 5 req/sec.
 //
 // Env (loaded from .env.local + ~/Downloads/airtable-hermes.env):
 //   SUPABASE_SERVICE_ROLE_KEY  required
-//   AIRTABLE_API_KEY           required (from airtable-hermes.env)
-//   AIRTABLE_BASE_ID           required (from airtable-hermes.env)
-//
-// Source-of-truth split: Airtable owns title, description, category,
-// materials, dimensions, slug, images, launch_priority, status, featured,
-// available_quantity, price. Supabase owns id, created_at, updated_at,
-// last_synced_at (written by this script).
+//   AIRTABLE_API_KEY           required
+//   AIRTABLE_BASE_ID           required
 
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import * as dotenv from "dotenv";
 import { appendFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
-import { existsSync } from "node:fs";
 import { homedir } from "node:os";
 
 dotenv.config({ path: ".env.local" });
@@ -35,12 +39,20 @@ const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY ?? "";
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID ?? "";
 const AIRTABLE_TABLE = "Products";
 
-const PUBLISHABLE_SITE_STATUSES = new Set(["Published", "Ready for site"]);
+const CONCURRENCY = 3;
 
-// Supabase `products.status` check constraint allows only these values.
-// Airtable `Status` field carries a wider legacy vocabulary (Active /
-// Inactive / Concept / ...). Anything not mappable is dropped from the
-// patch and surfaced in the JSONL log instead of failing the constraint.
+const PUBLISHABLE_SITE_STATUSES = new Set(["Published", "Ready for site"]);
+const PUBLISHABLE_IMAGE_STATUSES = new Set(["Approved", "Partial", ""]);
+
+// The launch-gate formula used in --all and --slugs modes. Bypassed for
+// single --slug runs so the canary tool still works on draft SKUs.
+const LAUNCH_GATE_FORMULA = `AND(
+  OR({Site Status}="Published",{Site Status}="Ready for site"),
+  {Copy Status}="Approved",
+  OR({Image Status}="Approved",{Image Status}="Partial",{Image Status}=""),
+  {Launch Ready}
+)`.replace(/\s+/g, " ");
+
 const STATUS_MAP: Record<string, "available" | "sold" | "reserved" | "draft"> = {
   available: "available",
   active: "available",
@@ -49,9 +61,6 @@ const STATUS_MAP: Record<string, "available" | "sold" | "reserved" | "draft"> = 
   draft: "draft",
 };
 
-// Airtable text fields sometimes carry placeholder copy
-// ("See product page", "TBD", "Coming soon"). These are clearly worse
-// than whatever Supabase already has for that field, so skip them.
 const PLACEHOLDER_PATTERNS = [
   /^see product page/i,
   /^tbd$/i,
@@ -70,7 +79,7 @@ const LOG_PATH = join(
 
 type SyncAction = "noop" | "synced" | "skipped" | "error";
 
-interface LogLine {
+interface PerSkuLog {
   ts: string;
   slug: string;
   action: SyncAction;
@@ -80,6 +89,19 @@ interface LogLine {
   reason?: string;
 }
 
+interface SessionLog {
+  ts: string;
+  kind: "session";
+  mode: string;
+  dry_run: boolean;
+  total: number;
+  synced: number;
+  noop: number;
+  skipped: number;
+  error: number;
+  duration_ms: number;
+}
+
 interface AirtableRecord {
   id: string;
   fields: Record<string, unknown>;
@@ -87,6 +109,7 @@ interface AirtableRecord {
 
 interface AirtableResponse {
   records: AirtableRecord[];
+  offset?: string;
 }
 
 interface ProductRow {
@@ -104,17 +127,42 @@ interface ProductRow {
   launch_priority?: string | null;
 }
 
-function parseArgs(argv: string[]): { slug: string; dryRun: boolean } {
+interface CliArgs {
+  mode: "single" | "list" | "all";
+  slugs: string[];
+  dryRun: boolean;
+}
+
+function parseArgs(argv: string[]): CliArgs {
   let slug = "";
+  let slugsCsv = "";
+  let all = false;
   let dryRun = false;
   for (const arg of argv.slice(2)) {
     if (arg === "--dry-run") dryRun = true;
+    else if (arg === "--all") all = true;
     else if (arg.startsWith("--slug=")) slug = arg.slice("--slug=".length);
+    else if (arg.startsWith("--slugs=")) slugsCsv = arg.slice("--slugs=".length);
   }
-  if (!slug) {
-    throw new Error("Missing required --slug=<canonical-slug> argument.");
+  const modes = [all, slug.length > 0, slugsCsv.length > 0].filter(Boolean).length;
+  if (modes === 0) {
+    throw new Error(
+      "Must pass one of --slug=<slug>, --slugs=a,b,c, or --all.",
+    );
   }
-  return { slug, dryRun };
+  if (modes > 1) {
+    throw new Error("Pass only one of --slug, --slugs, --all.");
+  }
+  if (all) return { mode: "all", slugs: [], dryRun };
+  if (slugsCsv) {
+    const list = slugsCsv
+      .split(",")
+      .map((s) => s.trim())
+      .filter((s) => s.length > 0);
+    if (list.length === 0) throw new Error("--slugs= was empty.");
+    return { mode: "list", slugs: list, dryRun };
+  }
+  return { mode: "single", slugs: [slug], dryRun };
 }
 
 function requireEnv(): void {
@@ -127,17 +175,44 @@ function requireEnv(): void {
   }
 }
 
-async function fetchAirtableRecord(slug: string): Promise<AirtableRecord | null> {
-  const formula = encodeURIComponent(`{Slug}="${slug}"`);
-  const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE}?filterByFormula=${formula}&maxRecords=1`;
+async function airtableGet(
+  params: Record<string, string>,
+): Promise<AirtableResponse> {
+  const qs = new URLSearchParams(params).toString();
+  const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(
+    AIRTABLE_TABLE,
+  )}?${qs}`;
   const res = await fetch(url, {
     headers: { Authorization: `Bearer ${AIRTABLE_API_KEY}` },
   });
   if (!res.ok) {
     throw new Error(`Airtable ${res.status}: ${await res.text()}`);
   }
-  const body = (await res.json()) as AirtableResponse;
+  return (await res.json()) as AirtableResponse;
+}
+
+async function fetchAirtableBySlug(slug: string): Promise<AirtableRecord | null> {
+  const body = await airtableGet({
+    filterByFormula: `{Slug}="${slug.replace(/"/g, '\\"')}"`,
+    maxRecords: "1",
+  });
   return body.records[0] ?? null;
+}
+
+async function fetchAirtableLaunchGated(): Promise<AirtableRecord[]> {
+  const out: AirtableRecord[] = [];
+  let offset: string | undefined;
+  do {
+    const params: Record<string, string> = {
+      filterByFormula: LAUNCH_GATE_FORMULA,
+      pageSize: "100",
+    };
+    if (offset) params.offset = offset;
+    const body = await airtableGet(params);
+    out.push(...body.records);
+    offset = body.offset;
+  } while (offset);
+  return out;
 }
 
 function splitLines(value: unknown): string[] {
@@ -162,8 +237,6 @@ function asBoolean(value: unknown): boolean | undefined {
   return typeof value === "boolean" ? value : undefined;
 }
 
-// Map Airtable fields -> partial Supabase row. Undefined values mean
-// "Airtable empty — don't touch Supabase".
 function mapAirtableToProduct(fields: Record<string, unknown>): ProductRow {
   const row: ProductRow = {};
 
@@ -211,8 +284,6 @@ function mapAirtableToProduct(fields: Record<string, unknown>): ProductRow {
   return row;
 }
 
-// Compare candidate value against current. Order matters for arrays
-// (images[]) — listing order is the storefront gallery order.
 function valuesEqual(a: unknown, b: unknown): boolean {
   if (a === b) return true;
   if (a === null || b === null) return a === b;
@@ -286,103 +357,185 @@ async function writeSupabaseRow(
   if (error) throw new Error(`Supabase insert failed: ${error.message}`);
 }
 
-async function writeLog(line: LogLine): Promise<void> {
+async function writeLog(line: PerSkuLog | SessionLog): Promise<void> {
   await appendFile(LOG_PATH, JSON.stringify(line) + "\n");
 }
 
-async function main(): Promise<void> {
-  const { slug, dryRun } = parseArgs(process.argv);
-  requireEnv();
+interface SyncContext {
+  supabase: SupabaseClient;
+  dryRun: boolean;
+  enforceLaunchGate: boolean;
+}
 
-  const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY, {
-    auth: { persistSession: false },
-  });
-
-  const log: LogLine = {
+async function syncOne(
+  ctx: SyncContext,
+  slug: string,
+  record: AirtableRecord | null,
+): Promise<PerSkuLog> {
+  const log: PerSkuLog = {
     ts: new Date().toISOString(),
     slug,
     action: "noop",
     fields_changed: [],
     errors: [],
-    dry_run: dryRun,
+    dry_run: ctx.dryRun,
   };
-
   try {
-    const record = await fetchAirtableRecord(slug);
     if (!record) {
       log.action = "skipped";
       log.reason = "airtable record not found";
       console.log(`[skip] ${slug}: not found in Airtable`);
-      await writeLog(log);
-      return;
+      return log;
     }
-
     const fields = record.fields;
     const siteStatus = asString(fields["Site Status"]);
-    if (!siteStatus || !PUBLISHABLE_SITE_STATUSES.has(siteStatus)) {
+    if (
+      ctx.enforceLaunchGate &&
+      (!siteStatus || !PUBLISHABLE_SITE_STATUSES.has(siteStatus))
+    ) {
       log.action = "skipped";
       log.reason = `site status '${siteStatus ?? "missing"}' not publishable`;
       console.log(`[skip] ${slug}: Site Status=${siteStatus ?? "(empty)"}`);
-      await writeLog(log);
-      return;
+      return log;
     }
-
     const candidate = mapAirtableToProduct(fields);
     if (candidate.slug && candidate.slug !== slug) {
       log.action = "error";
-      log.errors.push(
-        `slug mismatch: airtable=${candidate.slug} arg=${slug}`,
-      );
+      log.errors.push(`slug mismatch: airtable=${candidate.slug} arg=${slug}`);
       console.error(log.errors[0]);
-      await writeLog(log);
-      process.exitCode = 1;
-      return;
+      return log;
     }
-
-    const current = await readSupabaseRow(supabase, slug);
+    const current = await readSupabaseRow(ctx.supabase, slug);
     const changed = diffRows(candidate, current);
     log.fields_changed = changed;
-
     if (changed.length === 0) {
-      console.log(`[noop] ${slug}: no field changes`);
-      await writeLog(log);
-      return;
+      console.log(`[noop] ${slug}`);
+      return log;
     }
-
-    if (dryRun) {
+    if (ctx.dryRun) {
       log.action = "noop";
       log.reason = "dry-run";
       console.log(
-        `[dry-run] ${slug}: would write ${changed.length} field(s):`,
-        changed.join(", "),
+        `[dry-run] ${slug}: ${changed.length} field(s): ${changed.join(", ")}`,
       );
-      for (const k of changed) {
-        const next = (candidate as Record<string, unknown>)[k];
-        const prev = current ? current[k] : null;
-        console.log(`  ${k}: ${JSON.stringify(prev)} -> ${JSON.stringify(next)}`);
-      }
-      await writeLog(log);
-      return;
+      return log;
     }
-
     const patch: ProductRow = {};
     for (const k of changed) {
       (patch as Record<string, unknown>)[k] = (
         candidate as Record<string, unknown>
       )[k];
     }
-    await writeSupabaseRow(supabase, slug, patch, current !== null);
+    await writeSupabaseRow(ctx.supabase, slug, patch, current !== null);
     log.action = "synced";
-    console.log(`[synced] ${slug}: ${changed.length} field(s):`, changed.join(", "));
-    await writeLog(log);
+    console.log(
+      `[synced] ${slug}: ${changed.length} field(s): ${changed.join(", ")}`,
+    );
+    return log;
   } catch (err) {
-    const msg = err instanceof Error ? err.message : String(err);
     log.action = "error";
-    log.errors.push(msg);
-    console.error(`[error] ${slug}: ${msg}`);
-    await writeLog(log);
-    process.exitCode = 1;
+    log.errors.push(err instanceof Error ? err.message : String(err));
+    console.error(`[error] ${slug}: ${log.errors[0]}`);
+    return log;
   }
+}
+
+// Bounded-parallel map: at most `limit` promises in-flight.
+async function mapWithLimit<T, R>(
+  items: T[],
+  limit: number,
+  fn: (item: T, index: number) => Promise<R>,
+): Promise<R[]> {
+  const results: R[] = new Array(items.length);
+  let cursor = 0;
+  const workers = Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (true) {
+      const idx = cursor++;
+      if (idx >= items.length) return;
+      results[idx] = await fn(items[idx], idx);
+    }
+  });
+  await Promise.all(workers);
+  return results;
+}
+
+async function fetchListBySlugs(slugs: string[]): Promise<Map<string, AirtableRecord>> {
+  // Single filterByFormula(OR(...)) call so we only burn one quota.
+  const escaped = slugs.map((s) => `{Slug}="${s.replace(/"/g, '\\"')}"`);
+  const formula = `OR(${escaped.join(",")})`;
+  const out = new Map<string, AirtableRecord>();
+  let offset: string | undefined;
+  do {
+    const params: Record<string, string> = {
+      filterByFormula: formula,
+      pageSize: "100",
+    };
+    if (offset) params.offset = offset;
+    const body = await airtableGet(params);
+    for (const r of body.records) {
+      const s = asString(r.fields["Slug"]);
+      if (s) out.set(s, r);
+    }
+    offset = body.offset;
+  } while (offset);
+  return out;
+}
+
+async function main(): Promise<void> {
+  const args = parseArgs(process.argv);
+  requireEnv();
+  const startedAt = Date.now();
+
+  const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY, {
+    auth: { persistSession: false },
+  });
+
+  let records: { slug: string; record: AirtableRecord | null }[];
+  if (args.mode === "single") {
+    const r = await fetchAirtableBySlug(args.slugs[0]);
+    records = [{ slug: args.slugs[0], record: r }];
+  } else if (args.mode === "list") {
+    const map = await fetchListBySlugs(args.slugs);
+    records = args.slugs.map((s) => ({ slug: s, record: map.get(s) ?? null }));
+  } else {
+    const fetched = await fetchAirtableLaunchGated();
+    records = fetched
+      .map((r) => ({ slug: asString(r.fields["Slug"]) ?? "", record: r }))
+      .filter((x) => x.slug.length > 0)
+      .sort((a, b) => a.slug.localeCompare(b.slug));
+    console.log(`[--all] ${records.length} record(s) passed launch gate`);
+  }
+
+  const ctx: SyncContext = {
+    supabase,
+    dryRun: args.dryRun,
+    enforceLaunchGate: args.mode !== "single",
+  };
+
+  const perSku = await mapWithLimit(records, CONCURRENCY, ({ slug, record }) =>
+    syncOne(ctx, slug, record),
+  );
+
+  for (const log of perSku) await writeLog(log);
+
+  const session: SessionLog = {
+    ts: new Date().toISOString(),
+    kind: "session",
+    mode: args.mode,
+    dry_run: args.dryRun,
+    total: perSku.length,
+    synced: perSku.filter((l) => l.action === "synced").length,
+    noop: perSku.filter((l) => l.action === "noop").length,
+    skipped: perSku.filter((l) => l.action === "skipped").length,
+    error: perSku.filter((l) => l.action === "error").length,
+    duration_ms: Date.now() - startedAt,
+  };
+  await writeLog(session);
+  console.log(
+    `[session] mode=${session.mode} dry_run=${session.dry_run} total=${session.total} synced=${session.synced} noop=${session.noop} skipped=${session.skipped} error=${session.error} ${session.duration_ms}ms`,
+  );
+
+  if (session.error > 0) process.exitCode = 1;
 }
 
 main();
