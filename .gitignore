@@ -51,3 +51,6 @@ scripts/.sync-airtable.jsonl
 
 # audit JSON sidecars (huge, regenerated from MD)
 audits/*.json
+
+# compiled bundle for Mouha cron (rebuild via pnpm exec tsc -p scripts/tsconfig.build.json)
+scripts/dist/

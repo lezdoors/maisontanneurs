@@ -27,7 +27,7 @@
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import * as dotenv from "dotenv";
 import { appendFile } from "node:fs/promises";
-import { join, dirname } from "node:path";
+import { join } from "node:path";
 import { homedir } from "node:os";
 
 dotenv.config({ path: ".env.local" });
@@ -72,10 +72,12 @@ function isPlaceholder(value: string): boolean {
   return PLACEHOLDER_PATTERNS.some((p) => p.test(value));
 }
 
-const LOG_PATH = join(
-  dirname(new URL(import.meta.url).pathname),
-  ".sync-airtable.jsonl",
-);
+// JSONL audit log. Overridable via SYNC_AIRTABLE_LOG_PATH so the Mouha
+// cron can write to /root/mouha/logs/sync-airtable.jsonl while local
+// runs write next to the script.
+const LOG_PATH =
+  process.env.SYNC_AIRTABLE_LOG_PATH ??
+  join(process.cwd(), "scripts", ".sync-airtable.jsonl");
 
 type SyncAction = "noop" | "synced" | "skipped" | "error";
 
