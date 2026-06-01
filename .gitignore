@@ -48,3 +48,6 @@ next-env.d.ts
 scripts/.sync-airtable.jsonl
 .vercel/
 .env*.local
+
+# audit JSON sidecars (huge, regenerated from MD)
+audits/*.json
