@@ -5,7 +5,7 @@ const LANDING_FEATURED_ORDER = [
   "oasis-weekender-oxblood",
   "medina-saddlebag-tooled-cognac",
   "expedition-rolltop-noir",
-  "atlas-kilim-duffle",
+  "atlas-kilim-rucksack",
   "marrakech-tote-cognac",
 ];
 
@@ -19,7 +19,6 @@ const LIST_IMAGE_OVERRIDES: Record<string, string> = {
   "oasis-weekender-oxblood": "/products/landing/oasis-weekender-oxblood-landing.webp",
   "medina-saddlebag-tooled-cognac": "/products/landing/medina-saddlebag-tooled-cognac-landing.webp",
   "expedition-rolltop-noir": "/products/landing/expedition-rolltop-noir-landing.webp",
-  "atlas-kilim-duffle": "/products/landing/atlas-kilim-duffle-landing.webp",
   "marrakech-tote-cognac": "/products/landing/marrakech-tote-cognac-landing.webp",
   "expedition-rolltop-cognac": "expedition-rolltop-cognac-pdp-05.webp",
 };

@@ -29,6 +29,10 @@ export const HIDDEN_SKUS: ReadonlySet<string> = new Set([
   "marrakech-tote-bordeaux",
   "marrakech-tote-noir",
   "medina-crossbody-tassel",
+  // Duplicate/scope suppression: user confirmed the Kilim duffle should not
+  // launch because the Kilim Leather Duffle Bag and atlas-kilim-rucksack cover
+  // the same product family/color story.
+  "atlas-kilim-duffle",
   // Duplicate/scope suppression: the patterned leather + textile duffle belongs
   // to the Kilim family, so keep this duplicate commercial SKU off launch.
   "medina-duffle",

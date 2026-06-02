@@ -1,6 +1,6 @@
 # Maison Tanneurs — Launch Readiness
 
-Generated: 2026-06-02T12:40:05.853Z
+Generated: 2026-06-02T12:58:46.304Z
 
 ## Summary — 28 / 28 SKUs ready
 

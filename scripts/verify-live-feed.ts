@@ -5,7 +5,7 @@ export {};
 
 const PRIORITY_SKUS = [
   "atlas-weekender-cognac",
-  "atlas-kilim-duffle",
+  "atlas-kilim-rucksack",
   "medina-saddlebag-tooled-cognac",
   "oasis-weekender-oxblood",
   "expedition-rolltop-noir",

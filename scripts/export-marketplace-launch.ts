@@ -239,7 +239,9 @@ async function main() {
 
   const sbSlugs = new Set(realProducts.map((p) => p.slug));
   const atSlugs = new Set(atProducts.map((r) => str(r.fields.Slug)).filter(Boolean));
-  const launchGatedMissingInSb = [...launchGatedSlugs].filter((s) => !sbSlugs.has(s));
+  const launchGatedMissingInSb = [...launchGatedSlugs].filter(
+    (s) => !sbSlugs.has(s) && !HIDDEN_SKUS.has(s),
+  );
   const realSbMissingInAt = [...sbSlugs].filter((s) => !atSlugs.has(s));
   const realSbNotLaunchGated = [...sbSlugs].filter((s) => !launchGatedSlugs.has(s));
   for (const s of launchGatedMissingInSb) blockers.push(`Airtable launch-gated product missing from Supabase: ${s}`);
