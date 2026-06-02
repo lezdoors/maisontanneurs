@@ -42,6 +42,7 @@ interface AssetRec {
   fields: {
     "Asset URL"?: string;
     "Asset Type"?: string;
+    Usage?: string;
     "Product ID (cache)"?: string;
     Product?: string[];
   };
@@ -95,6 +96,20 @@ function rankImage(url: string, heroUrl: string | null): number {
   return 10; // PDP-NN / archive / everything else
 }
 
+function isHeroAsset(a: AssetRec): boolean {
+  const url = a.fields["Asset URL"]?.toLowerCase() ?? "";
+  const type = a.fields["Asset Type"]?.toLowerCase() ?? "";
+  const usage = a.fields.Usage?.toLowerCase() ?? "";
+  return (
+    /-pdp-white\.webp$/.test(url) ||
+    /-hero\.webp$/.test(url) ||
+    type === "pdp white" ||
+    type === "hero" ||
+    usage === "pdp white" ||
+    usage === "hero"
+  );
+}
+
 interface AlignAction {
   slug: string;
   productId: string | null;
@@ -140,14 +155,17 @@ async function main(): Promise<void> {
     `[fetched] ${approvedAssets.length} approved AT assets, ${products.length} AT products, ${sbProducts.size} SB rows`,
   );
 
-  // Per-product, pick the PDP-white-tier Approved asset URL as hero.
-  const heroByProductRec = new Map<string, string>();
+  // Per-product, pick the PDP-white-tier Approved asset URL as hero. Airtable
+  // API order is not a sorting contract, so do not rely on "first wins" unless
+  // we have no explicit hero/PDP-white candidate.
+  const assetsByProductRec = new Map<string, AssetRec[]>();
   for (const a of approvedAssets) {
     const link = a.fields.Product?.[0];
     const url = a.fields["Asset URL"];
     if (!link || !url) continue;
-    // Prefer "PDP white" / "PDP" / "Scale" / "Hero" — first wins per Approved set.
-    if (!heroByProductRec.has(link)) heroByProductRec.set(link, url);
+    const list = assetsByProductRec.get(link) ?? [];
+    list.push(a);
+    assetsByProductRec.set(link, list);
   }
 
   const productBySlug = new Map<string, ProductRec>();
@@ -157,7 +175,9 @@ async function main(): Promise<void> {
   for (const p of products) {
     const slug = p.fields.Slug ?? "?";
     const pid = p.fields["Product ID"] ?? null;
-    const heroUrl = heroByProductRec.get(p.id) ?? null;
+    const productAssets = assetsByProductRec.get(p.id) ?? [];
+    const explicitHero = productAssets.find(isHeroAsset);
+    const heroUrl = explicitHero?.fields["Asset URL"] ?? productAssets[0]?.fields["Asset URL"] ?? null;
     const sb = sbProducts.get(slug);
     if (!sb) {
       actions.push({

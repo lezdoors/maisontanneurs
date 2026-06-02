@@ -262,7 +262,7 @@ function mapAirtableToProduct(fields: Record<string, unknown>): ProductRow {
 
   const dimensionsText = asString(fields["Dimensions Text"]);
   if (dimensionsText && !isPlaceholder(dimensionsText)) {
-    row.dimensions = { size: dimensionsText };
+    row.dimensions = parseDimensionsText(dimensionsText);
   }
 
   const materials = splitLines(fields["Materials Text"]);
@@ -284,6 +284,20 @@ function mapAirtableToProduct(fields: Record<string, unknown>): ProductRow {
   if (priority) row.launch_priority = priority;
 
   return row;
+}
+
+function parseDimensionsText(value: string): Record<string, string> {
+  const parts = value
+    .split(/\s*\/\s*/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  const dimensions: Record<string, string> = {};
+  for (const part of parts) {
+    const match = part.match(/^([WHD])\s+(.+)$/i);
+    if (!match) continue;
+    dimensions[match[1].toUpperCase()] = match[2].trim();
+  }
+  return Object.keys(dimensions).length > 0 ? dimensions : { size: value };
 }
 
 function valuesEqual(a: unknown, b: unknown): boolean {
