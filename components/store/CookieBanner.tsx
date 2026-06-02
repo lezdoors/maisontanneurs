@@ -67,9 +67,9 @@ export default function CookieBanner() {
       className={`cookie-banner ${isProductPage ? "cookie-banner-pdp" : ""}`}
       style={{
         position: "fixed",
-        left: 18,
+        left: "auto",
         bottom: isProductPage ? 18 : 18,
-        right: "auto",
+        right: 18,
         zIndex: 100,
         width: "min(380px, calc(100vw - 36px))",
         background: "var(--color-near-black, #0a0a0a)",

@@ -57,7 +57,7 @@ export default function Footer() {
   const t = useT();
   const href = useLocalizedHref();
   return (
-    <footer className="w-full bg-[color:var(--color-paper)] text-[color:var(--color-ink)] border-t border-[color:var(--color-rule)]">
+    <footer className="w-full bg-white text-[#0f0f0f] border-t border-[#e5e5e5]">
       <NewsletterSignup />
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 px-6 pt-14 pb-14">
@@ -66,7 +66,7 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className="border-t border-[color:var(--color-rule)]">
+      <div className="border-t border-[#e5e5e5]">
         <div className="px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <span className="tech-meta opacity-70">{t("footer.tagline")}</span>
           <span className="tech-meta opacity-70">{t("footer.rights")}</span>

@@ -28,7 +28,7 @@ export default function CategoryFilter({ productCount }: CategoryFilterProps) {
   }
 
   return (
-    <div className="sticky top-[56px] md:top-[76px] z-30 bg-[color:var(--color-paper)]/95 backdrop-blur border-b border-[color:var(--color-rule)]">
+    <div className="sticky top-[56px] md:top-[76px] z-30 bg-white/95 backdrop-blur border-b border-[color:var(--color-rule)]">
       <div className="flex items-center justify-between px-[clamp(20px,4vw,72px)] py-4">
         {/* Filter chips */}
         <div className="flex min-w-0 flex-1 flex-nowrap items-center gap-4 overflow-x-auto pr-6 md:flex-wrap md:overflow-visible md:pr-0 lg:gap-x-5 lg:gap-y-3 2xl:gap-x-6">
@@ -43,7 +43,7 @@ export default function CategoryFilter({ productCount }: CategoryFilterProps) {
                 key={category}
                 onClick={() => handleClick(category)}
                 className={cn(
-                  "font-mono text-[10px] tracking-[0.22em] uppercase whitespace-nowrap pb-0.5 transition-colors duration-700 lg:text-[10.5px]",
+                  "font-mono text-[10.5px] tracking-[0.18em] uppercase whitespace-nowrap pb-0.5 transition-colors duration-200 lg:text-[11px]",
                   isActive
                     ? "text-[color:var(--color-ink)] border-b border-[color:var(--color-ink)]"
                     : "text-[color:var(--color-ink-muted)] hover:text-[color:var(--color-ink)]",

@@ -17,52 +17,53 @@ export default function BatchGuarantee() {
         initial="hidden"
         whileInView="shown"
         viewport={{ once: true, amount: 0.25 }}
-        transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         variants={fadeUp}
         className="grid grid-cols-1 md:grid-cols-2"
       >
         {/* THE BATCH */}
-        <article className="md:border-r border-[color:var(--color-rule)] border-b md:border-b-0 px-6 py-14 md:py-24">
+        <article className="md:border-r border-[#e5e5e5] border-b md:border-b-0 px-6 py-14 md:py-20">
           <div className="flex items-center gap-4 mb-8">
-            <span className="tech-label opacity-50">07A</span>
-            <span className="h-px w-10 bg-[color:var(--color-rule-strong)]" />
+            <span className="tech-label opacity-50">§07.A</span>
+            <span className="h-px w-10 bg-[#0f0f0f]/30" />
             <span className="tech-label">The Batch</span>
           </div>
           <h3
             className="display-xxl"
             style={{ fontSize: "clamp(36px, 4.4vw, 72px)" }}
           >
-            Seven hands.
+            07 hands.
             <br />
-            One table.
+            14 days.
             <br />
-            <span className="opacity-50">Small by design.</span>
+            <span className="opacity-50">No exceptions.</span>
           </h3>
           <p
-            className="mt-8 leading-relaxed text-[color:rgba(44,42,40,0.75)]"
+            className="mt-8 leading-relaxed text-[#0f0f0f]/75"
             style={{ fontSize: "14px", letterSpacing: "-0.01em", maxWidth: "52ch" }}
           >
-            Each Maison Tanneurs object passes through a fixed circle of seven
-            artisans in the Marrakech medina. Cutting, stitching, burnishing and
-            final inspection stay close to the same bench, so the edition remains
-            limited by hand time rather than inventory targets.
+            The Atelier runs on a single closed circuit of seven master artisans
+            in Marrakech — cutter, skiver, two stitchers, edge-coater, finisher,
+            dispatcher. Every object is hand-assembled, edge-burnished and
+            saddle-stitched at the same workbench, in the same fourteen-day
+            cycle. We do not subcontract the finish. We do not inflate the run.
           </p>
-          <ul className="mt-10 divide-y divide-[color:var(--color-rule)] border-y border-[color:var(--color-rule)]">
-            <Row k="Edition" v="Small Runs" />
-            <Row k="Atelier" v="Marrakech Medina" />
-            <Row k="Finish" v="By Hand" />
+          <ul className="mt-10 divide-y divide-[#e5e5e5] border-y border-[#e5e5e5]">
+            <Row k="Run Size" v="≤ 200 / Edition" />
+            <Row k="Cadence" v="04 Editions / Year" />
+            <Row k="Ceiling" v="560 Objects" />
           </ul>
         </article>
 
         {/* THE GUARANTEE */}
-        <article className="bg-[color:var(--color-warm-black)] text-[color:var(--color-ivory)] px-6 py-14 md:py-24">
-          <div className="flex items-center gap-4 mb-8 text-[color:rgba(244,240,232,0.7)]">
-            <span className="tech-label opacity-60">07B</span>
-            <span className="h-px w-10 bg-[color:rgba(244,240,232,0.3)]" />
+        <article className="bg-[#0f0f0f] text-white px-6 py-14 md:py-20">
+          <div className="flex items-center gap-4 mb-8 text-white/70">
+            <span className="tech-label opacity-60">§07.B</span>
+            <span className="h-px w-10 bg-white/30" />
             <span className="tech-label">The Guarantee</span>
           </div>
           <h3
-            className="display-xxl text-[color:var(--color-ivory)]"
+            className="display-xxl text-white"
             style={{ fontSize: "clamp(36px, 4.4vw, 72px)" }}
           >
             Lifetime
@@ -70,22 +71,24 @@ export default function BatchGuarantee() {
             Repair<span className="opacity-50">.</span>
           </h3>
           <p
-            className="mt-8 leading-relaxed text-[color:rgba(244,240,232,0.75)]"
+            className="mt-8 leading-relaxed text-white/75"
             style={{ fontSize: "14px", letterSpacing: "-0.01em", maxWidth: "52ch" }}
           >
-            Full-grain Moroccan leather is chosen for the way it records a life.
-            Edges darken, surfaces soften and the grain develops a patina that
-            belongs only to its carrier. If a strap, stitch or lining needs care,
-            the object can return to the atelier for repair.
+            Vegetable-tanned full-grain leather is engineered to age, not to wear
+            out. Edges darken, surfaces soften, the grain takes on the imprint of
+            its carrier. When time finally catches up — a worn shoulder strap,
+            a thread that has paid its debt — we re-stitch, re-line and re-edge
+            the object in our own atelier. For as long as the object exists,
+            the warranty stands.
           </p>
-          <ul className="mt-10 divide-y divide-[rgba(244,240,232,0.15)] border-y border-[color:rgba(244,240,232,0.15)]">
-            <Row k="Patina" v="Expected" dark />
-            <Row k="Repair" v="Lifetime" dark />
-            <Row k="Care" v="Atelier Led" dark />
+          <ul className="mt-10 divide-y divide-white/15 border-y border-white/15">
+            <Row k="Re-Stitch" v="Included" dark />
+            <Row k="Edge-Coat" v="Included" dark />
+            <Row k="Re-Line" v="Included" dark />
           </ul>
           <a
             href="mailto:repair@maisontanneurs.com?subject=Repair%20Request"
-            className="mt-10 inline-flex h-12 items-center border border-[color:rgba(244,240,232,0.4)] px-7 text-[color:var(--color-ivory)] hover:opacity-70 transition-opacity"
+            className="mt-10 inline-flex h-12 items-center border border-white/40 px-7 text-white hover:opacity-70 transition-opacity"
             style={{
               fontSize: "12px",
               fontWeight: 500,
@@ -93,7 +96,7 @@ export default function BatchGuarantee() {
               textTransform: "uppercase",
             }}
           >
-            Request Care
+            File a Repair Request
           </a>
         </article>
       </motion.div>
@@ -105,11 +108,11 @@ function Row({ k, v, dark = false }: { k: string; v: string; dark?: boolean }) {
   return (
     <li className="flex items-baseline justify-between py-3.5">
       <span
-        className={`tech-label ${dark ? "text-[color:rgba(244,240,232,0.55)]" : "opacity-60"}`}
+        className={`tech-label ${dark ? "text-white/55" : "opacity-60"}`}
       >
         {k}
       </span>
-      <span className={`tech-meta ${dark ? "text-[color:rgba(244,240,232,0.9)]" : ""}`}>{v}</span>
+      <span className={`tech-meta ${dark ? "text-white/90" : ""}`}>{v}</span>
     </li>
   );
 }

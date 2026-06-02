@@ -152,19 +152,10 @@ export default async function ProductsPage({
       {/* Collection Header */}
       <section className="pt-[clamp(112px,13vw,156px)] px-[clamp(24px,4vw,72px)] pb-0">
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-16 items-end pb-10 border-b border-[color:var(--color-rule)]">
-          <h1
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(72px,10vw,148px)",
-              fontWeight: 400,
-              letterSpacing: "-0.04em",
-              lineHeight: 0.88,
-              maxWidth: "9ch",
-            }}
-          >
+          <h1 className="disp text-[clamp(48px,7vw,96px)] max-w-[14ch]">
             {t(locale, "products.title")}
           </h1>
-          <p className="font-sans text-[14px] leading-[1.85] text-[color:var(--color-ink-soft)] max-w-[42ch]">
+          <p className="font-serif italic text-[17px] leading-[1.6] text-[color:var(--color-ink-soft)] max-w-[44ch]">
             {t(locale, "products.copy")}
           </p>
         </div>
@@ -173,7 +164,7 @@ export default async function ProductsPage({
       {/* Filter Toolbar -- wrapped in Suspense for useSearchParams */}
       <Suspense
         fallback={
-          <div className="sticky top-[56px] md:top-[76px] z-30 bg-[color:var(--color-paper)]/95 backdrop-blur border-b border-[color:var(--color-rule)]">
+          <div className="sticky top-[56px] md:top-[76px] z-30 bg-white/95 backdrop-blur border-b border-[color:var(--color-rule)]">
             <div className="flex items-center justify-between px-[clamp(24px,4vw,72px)] py-4">
               <div className="h-4 w-48 bg-pearl animate-pulse" />
               <div className="h-4 w-16 bg-pearl animate-pulse" />
@@ -203,7 +194,7 @@ export default async function ProductsPage({
           </div>
         ) : (
           <div className="text-center py-20">
-            <p className="font-sans text-[18px] text-graphite mb-4">
+            <p className="font-serif italic text-[22px] text-graphite mb-4">
               No pieces found in this category.
             </p>
             <p className="body-copy">

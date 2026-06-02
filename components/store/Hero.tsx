@@ -1,120 +1,257 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocalizedHref, useT } from "@/lib/i18n-client";
 
-const HERO_IMAGE = "/brand/hero/home-hero-bright-atelier-plinth.webp";
+// Mixed-media hero rotation. Photos hold for ~6s each, videos play in full.
+// Sequence opens cinematic, then moves through model-led editorial stills.
+
+type Photo = { kind: "photo"; src: string; alt: string; objectPos?: string };
+type Video = { kind: "video"; src: string; alt: string; poster: string };
+type Slide = Photo | Video;
+
+const SLIDES: Slide[] = [
+  {
+    kind: "photo",
+    src: "/brand/hero/home-hero-olive-field-bag.webp",
+    alt: "Woman in white linen with a cognac leather bag overlooking olive groves near Marrakech",
+    objectPos: "center 52%",
+  },
+  {
+    kind: "video",
+    src: "/videos/omni-model-desert-cropped.mp4",
+    poster: "/brand/hero/omni-model-desert-poster.jpg",
+    alt: "Model in white carrying a cognac leather bag through a restrained desert courtyard",
+  },
+  {
+    kind: "video",
+    src: "/videos/omni-atelier-stitch-tote-cropped.mp4",
+    poster: "/brand/hero/omni-atelier-stitch-tote-poster.jpg",
+    alt: "Close hand-stitching and a finished leather tote inside a Marrakech atelier",
+  },
+  {
+    kind: "photo",
+    src: "/brand/hero/home-hero-model-red-kilim.webp",
+    alt: "Model with red kilim leather bag, Maison Tanneurs signature",
+  },
+  {
+    kind: "photo",
+    src: "/brand/hero/home-hero-black-woman-caftan.webp",
+    alt: "Tall Black woman in cream caftan with cognac duffle, golden-hour Marrakech",
+  },
+  {
+    kind: "photo",
+    src: "/brand/hero/home-hero-black-man-leaning.webp",
+    alt: "Black man in tailored cream, noir-leather bag, editorial light",
+  },
+];
+
+const PHOTO_HOLD_MS = 6500;
 
 export default function Hero() {
   const t = useT();
   const href = useLocalizedHref();
+  const [idx, setIdx] = useState(0);
+  const [reducedMotion, setReducedMotion] = useState<boolean | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const timer = useRef<number | null>(null);
 
   useEffect(() => {
-    document.documentElement.dataset.heroTone = "light";
-    window.dispatchEvent(
-      new CustomEvent("mt:hero-tone", { detail: { tone: "light" } }),
-    );
-    return () => {
-      document.documentElement.removeAttribute("data-hero-tone");
-    };
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateReducedMotion = () => setReducedMotion(mediaQuery.matches);
+    updateReducedMotion();
+    mediaQuery.addEventListener("change", updateReducedMotion);
+    return () => mediaQuery.removeEventListener("change", updateReducedMotion);
   }, []);
+
+  // Advance based on slide type — photos use a timer, videos use 'ended'.
+  useEffect(() => {
+    if (reducedMotion !== false) return;
+    const slide = SLIDES[idx];
+    if (slide.kind === "photo") {
+      timer.current = window.setTimeout(
+        () => setIdx((i) => (i + 1) % SLIDES.length),
+        PHOTO_HOLD_MS,
+      );
+      return () => {
+        if (timer.current) window.clearTimeout(timer.current);
+      };
+    }
+    // Video: play, advance on ended.
+    const v = videoRefs.current[idx];
+    if (v) {
+      v.currentTime = 0;
+      v.muted = true;
+      v.playsInline = true;
+      v.play().catch(() => undefined);
+      const onEnd = () => setIdx((i) => (i + 1) % SLIDES.length);
+      v.addEventListener("ended", onEnd);
+      // Hard safety: if video stalls or doesn't fire 'ended', advance after 10s.
+      timer.current = window.setTimeout(() => onEnd(), 10_000);
+      return () => {
+        v.removeEventListener("ended", onEnd);
+        if (timer.current) window.clearTimeout(timer.current);
+      };
+    }
+  }, [idx, reducedMotion]);
 
   return (
     <section
       id="top"
-      className="relative w-full min-h-[100svh] overflow-hidden bg-[var(--color-paper)] text-[var(--color-ink)]"
+      className="relative w-full min-h-[100svh] overflow-hidden"
+      style={{ background: "var(--color-warm-black)", color: "#ffffff" }}
       aria-label="Maison Tanneurs — hand-stitched leather, Marrakech to Paris"
     >
-      <Image
-        src={HERO_IMAGE}
-        alt="Cognac leather bag staged on a pale stone plinth in a sunlit Moroccan interior"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-[58%_center] sm:object-center"
-      />
+      {/* Media stack — all slides mounted, only active opacity:1 */}
+      <div className="absolute inset-0">
+        {SLIDES.map((s, i) => (
+          <div
+            key={s.src}
+            className="absolute inset-0 transition-opacity"
+            style={{
+              opacity: i === idx ? 1 : 0,
+              transitionDuration: "1100ms",
+              transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+            }}
+            aria-hidden={i !== idx}
+          >
+            {s.kind === "photo" ? (
+              <Image
+                src={s.src}
+                alt={s.alt}
+                fill
+                priority={i === 0}
+                sizes="100vw"
+                className="object-cover"
+                style={{ objectPosition: s.objectPos ?? "center 46%" }}
+              />
+            ) : (
+              <video
+                ref={(el) => {
+                  videoRefs.current[i] = el;
+                }}
+                className="absolute inset-0 w-full h-full object-cover"
+                src={s.src}
+                preload={i === idx ? "metadata" : "none"}
+                poster={s.poster}
+                playsInline
+                muted
+                aria-hidden
+              />
+            )}
+          </div>
+        ))}
+        <div
+          aria-hidden
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(10,10,9,0.62) 0%, rgba(10,10,9,0.24) 40%, rgba(10,10,9,0.06) 72%), linear-gradient(90deg, rgba(10,10,9,0.30) 0%, rgba(10,10,9,0.08) 48%, rgba(10,10,9,0.24) 100%)",
+          }}
+        />
+      </div>
 
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(244,240,232,0.88) 0%, rgba(244,240,232,0.46) 34%, rgba(244,240,232,0.04) 76%), linear-gradient(to top, rgba(244,240,232,0.62) 0%, rgba(244,240,232,0.16) 42%, rgba(244,240,232,0) 72%)",
-        }}
-      />
-
-      <div className="relative z-10 flex min-h-[100svh] flex-col justify-end px-6 pb-[clamp(72px,10svh,112px)] md:px-12 md:pb-[8vh]">
-        <div className="max-w-[1320px] pl-0 md:pl-[clamp(0px,2vw,28px)]">
+      {/* Headline block — bottom-left */}
+      <div className="relative z-10 flex min-h-[100svh] flex-col justify-end px-6 md:px-12 pb-36 sm:pb-28 md:pb-20">
+        <div className="max-w-[1400px]">
           <p
-            className="mb-7 tech-meta"
-            style={{ color: "rgba(31,29,27,0.68)" }}
+            className="mb-8"
+            style={{
+              color: "rgba(255,255,255,0.78)",
+              fontFamily: "var(--font-sans)",
+              fontSize: "11px",
+              letterSpacing: "0.24em",
+              textTransform: "uppercase",
+            }}
           >
             {t("hero.kicker")}
           </p>
 
           <h1
             style={{
-              color: "var(--color-ink)",
+              color: "#ffffff",
               fontFamily: "var(--font-display)",
               fontWeight: 400,
-              fontSize: "clamp(62px, 12.4vw, 188px)",
-              letterSpacing: "-0.035em",
-              lineHeight: 0.84,
+              fontSize: "clamp(40px, 10.5vw, 160px)",
+              letterSpacing: "-0.02em",
+              lineHeight: 0.95,
               margin: 0,
-              maxWidth: "9.8ch",
               textWrap: "balance",
             }}
           >
             Maison
-            <br />
-            Tanneurs<span style={{ fontStyle: "italic", opacity: 0.48 }}>.</span>
+            <br className="sm:hidden" />
+            <span className="hidden sm:inline"> </span>
+            Tanneurs<span style={{ opacity: 0.45 }}>.</span>
           </h1>
 
           <p
-            className="mt-7"
+            className="mt-8"
             style={{
-              color: "rgba(31,29,27,0.76)",
-              fontFamily: "var(--font-sans)",
-              fontSize: "clamp(13px, 1.1vw, 16px)",
-              lineHeight: 1.7,
-              letterSpacing: "-0.005em",
-              maxWidth: "38ch",
+              color: "rgba(255,255,255,0.88)",
+              fontFamily: "var(--font-display)",
+              fontStyle: "italic",
+              fontSize: "clamp(16px, 1.4vw, 20px)",
+              lineHeight: 1.5,
+              letterSpacing: "0.005em",
+              maxWidth: "56ch",
             }}
           >
             {t("hero.copy")}
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-3">
+          <div className="mt-10 flex flex-wrap items-center gap-3">
             <Link
               href={href("/products")}
-              className="inline-flex items-center border-b border-current pb-1 transition-opacity hover:opacity-60"
+              className="inline-flex items-center gap-3 transition-opacity hover:opacity-85"
               style={{
+                background: "#ffffff",
                 color: "var(--color-ink)",
+                borderRadius: 0,
+                padding: "16px 32px",
                 fontFamily: "var(--font-sans)",
-                fontSize: "10.5px",
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
+                fontSize: "13px",
+                letterSpacing: "0.02em",
               }}
             >
-              View the Edition
+              {t("hero.primary")}
             </Link>
             <Link
               href={href("/about")}
-              className="inline-flex items-center border-b border-current pb-1 transition-opacity hover:opacity-60"
+              className="inline-flex items-center gap-3 transition-opacity hover:opacity-70"
               style={{
-                color: "rgba(31,29,27,0.72)",
+                color: "#ffffff",
                 fontFamily: "var(--font-sans)",
-                fontSize: "10.5px",
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
+                fontSize: "13px",
+                letterSpacing: "0.02em",
+                padding: "16px 20px",
+                borderBottom: "1px solid rgba(255,255,255,0.55)",
               }}
             >
-              Read the Dossier
+              {t("hero.secondary")}
             </Link>
           </div>
         </div>
+      </div>
+
+      {/* Slide indicators — bottom right, tiny bars */}
+      <div
+        className="absolute right-8 bottom-8 z-10 hidden md:flex items-center gap-1.5"
+        aria-hidden
+      >
+        {SLIDES.map((_, i) => (
+          <span
+            key={i}
+            className="block h-px transition-all"
+            style={{
+              width: i === idx ? "24px" : "12px",
+              background: i === idx ? "#ffffff" : "rgba(255,255,255,0.4)",
+              transitionDuration: "500ms",
+            }}
+          />
+        ))}
       </div>
     </section>
   );

@@ -26,15 +26,13 @@ export default function Navbar() {
   const [drawer, setDrawer] = useState(false);
   const [cartPulse, setCartPulse] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [heroTone, setHeroTone] = useState<"light" | "dark">("light");
   const cartCount = items.reduce((s, i) => s + i.quantity, 0);
   const prevCartCountRef = useRef(cartCount);
   const isHome = pathname === "/" || LOCALES.some((l) => pathname === `/${l}`);
   const onHero = isHome && !scrolled && !drawer && !searchOpen;
-  const heroIsDark = onHero && heroTone === "dark";
-  const navInk = heroIsDark ? "text-[color:var(--color-ivory)]" : "text-[color:var(--color-ink)]";
-  const navMuted = heroIsDark ? "text-[color:rgba(244,240,232,0.72)]" : "text-[color:rgba(44,42,40,0.7)]";
-  const navRule = heroIsDark ? "border-[color:rgba(244,240,232,0.2)]" : "border-[color:rgba(44,42,40,0.1)]";
+  const navInk = onHero ? "text-white" : "text-[#0f0f0f]";
+  const navMuted = onHero ? "text-white/72" : "text-[#0f0f0f]/70";
+  const navRule = onHero ? "border-white/20" : "border-[#e5e5e5]";
 
   useEffect(() => {
     if (!drawer) return;
@@ -63,17 +61,6 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const update = (event: Event) => {
-      const tone = (event as CustomEvent<{ tone?: "light" | "dark" }>).detail?.tone;
-      if (tone === "light" || tone === "dark") setHeroTone(tone);
-    };
-    const initial = document.documentElement.dataset.heroTone;
-    if (initial === "light" || initial === "dark") setHeroTone(initial);
-    window.addEventListener("mt:hero-tone", update);
-    return () => window.removeEventListener("mt:hero-tone", update);
-  }, []);
-
-  useEffect(() => {
     if (cartCount <= prevCartCountRef.current) {
       prevCartCountRef.current = cartCount;
       return;
@@ -96,9 +83,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 z-50 w-full border-b transition-colors duration-500 ${
-        onHero
-          ? `${heroIsDark ? "text-[color:var(--color-ivory)]" : "text-[color:var(--color-ink)]"} bg-transparent border-current/10`
-          : "bg-[color:var(--color-paper)]/95 text-[color:var(--color-ink)] border-[color:var(--color-rule)] backdrop-blur"
+        onHero ? "bg-transparent text-white border-white/20" : "bg-white/95 text-[#0f0f0f] border-[#e5e5e5] backdrop-blur"
       }`}
     >
       <div className={`hidden md:flex h-7 items-center justify-between px-6 border-b ${navRule} ${navMuted}`}>
@@ -152,7 +137,7 @@ export default function Navbar() {
               src="/brand/logos/mt-monogram.png"
               alt=""
               aria-hidden="true"
-              className={`h-8 w-8 object-contain transition-[filter] duration-500 ${heroIsDark ? "invert" : ""}`}
+              className={`h-8 w-8 object-contain transition-[filter] duration-500 ${onHero ? "invert" : ""}`}
               width={32}
               height={32}
             />
@@ -203,9 +188,9 @@ export default function Navbar() {
           >
             <span>{t("nav.bag")}</span>
             <span
-            className={`inline-flex min-w-5 h-5 px-1.5 items-center justify-center rounded-full border text-[10px] leading-none transition-transform duration-700 ${
+              className={`inline-flex min-w-5 h-5 px-1.5 items-center justify-center rounded-full border text-[10px] leading-none transition-transform duration-200 ${
                 cartPulse ? "scale-110" : "scale-100"
-              } ${cartCount > 0 ? "bg-[color:var(--color-warm-black)] text-[color:var(--color-ivory)] border-[color:var(--color-warm-black)]" : heroIsDark ? "bg-[color:rgba(244,240,232,0.1)] text-[color:var(--color-ivory)] border-[color:rgba(244,240,232,0.35)]" : "bg-[color:rgba(244,240,232,0.15)] text-[color:var(--color-ink)] border-[color:rgba(44,42,40,0.2)]"}`}
+              } ${cartCount > 0 ? "bg-[#0f0f0f] text-white border-[#0f0f0f]" : onHero ? "bg-white/10 text-white border-white/35" : "bg-white text-[#0f0f0f] border-[#0f0f0f]/15"}`}
             >
               {cartCount}
             </span>
@@ -214,10 +199,10 @@ export default function Navbar() {
       </div>
 
       {searchOpen && (
-        <div className="border-t border-[color:var(--color-rule)] bg-[color:var(--color-paper)] px-6 py-6">
+        <div className="border-t border-[#e5e5e5] bg-white px-6 py-6">
           <form
             onSubmit={submitSearch}
-            className="max-w-[640px] mx-auto flex items-stretch border-b border-[color:var(--color-ink)]"
+            className="max-w-[640px] mx-auto flex items-stretch border-b border-[#0f0f0f]"
           >
             <input
               autoFocus
@@ -225,10 +210,10 @@ export default function Navbar() {
               placeholder={t("search.placeholder")}
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
-              className="flex-1 py-3 text-[15px] bg-transparent outline-none text-[color:var(--color-ink)] placeholder:text-[color:var(--color-ink-muted)]"
+              className="flex-1 py-3 text-[15px] bg-transparent outline-none text-[#0f0f0f] placeholder:text-[#6b6b6b]"
               style={{ letterSpacing: "-0.01em" }}
             />
-            <button type="submit" className="tech-label px-4 text-[color:var(--color-ink)]">
+            <button type="submit" className="tech-label px-4 text-[#0f0f0f]">
               {t("nav.search")}
             </button>
           </form>
@@ -239,14 +224,14 @@ export default function Navbar() {
         <>
           <div
             onClick={() => setDrawer(false)}
-            className="md:hidden fixed inset-0 bg-[color:rgba(31,29,27,0.55)] z-[70] backdrop-blur-sm"
+            className="md:hidden fixed inset-0 bg-[#0f0f0f]/55 z-[70] backdrop-blur-sm"
             aria-hidden
           />
           <aside
-            className="md:hidden fixed left-0 top-0 bottom-0 w-[88vw] max-w-[380px] z-[71] bg-[color:var(--color-paper)] overflow-y-auto"
+            className="md:hidden fixed left-0 top-0 bottom-0 w-[88vw] max-w-[380px] z-[71] bg-white overflow-y-auto"
             style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
           >
-            <div className="flex items-center justify-between px-6 py-5 border-b border-[color:var(--color-rule)]">
+            <div className="flex items-center justify-between px-6 py-5 border-b border-[#e5e5e5]">
               <span
                 className="font-medium"
                 style={{
@@ -260,7 +245,7 @@ export default function Navbar() {
               <button
                 onClick={() => setDrawer(false)}
                 aria-label={t("nav.closeMenu")}
-                className="h-11 w-11 -mr-2 inline-flex items-center justify-center text-[color:var(--color-ink)]"
+                className="h-11 w-11 -mr-2 inline-flex items-center justify-center text-[#0f0f0f]"
               >
                 <svg
                   width="20"
@@ -282,7 +267,7 @@ export default function Navbar() {
                   key={l.labelKey}
                   href={href(l.href)}
                   onClick={() => setDrawer(false)}
-                  className="py-4 border-b border-[color:var(--color-rule)] text-[color:var(--color-ink)]"
+                  className="py-4 border-b border-[#e5e5e5] text-[#0f0f0f]"
                   style={{
                     fontFamily: "var(--font-display)",
                     fontSize: "26px",
@@ -298,34 +283,34 @@ export default function Navbar() {
                 <Link
                   href={href("/legal/care")}
                   onClick={() => setDrawer(false)}
-                  className="tech-label opacity-70 text-[color:var(--color-ink)]"
+                  className="tech-label opacity-70 text-[#0f0f0f]"
                 >
                   {t("nav.careGuide")}
                 </Link>
                 <Link
                   href={href("/legal/shipping")}
                   onClick={() => setDrawer(false)}
-                  className="tech-label opacity-70 text-[color:var(--color-ink)]"
+                  className="tech-label opacity-70 text-[#0f0f0f]"
                 >
                   {t("footer.shipping")}
                 </Link>
                 <Link
                   href={href("/legal/returns")}
                   onClick={() => setDrawer(false)}
-                  className="tech-label opacity-70 text-[color:var(--color-ink)]"
+                  className="tech-label opacity-70 text-[#0f0f0f]"
                 >
                   {t("footer.returns")}
                 </Link>
                 <Link
                   href={href("/legal/repair")}
                   onClick={() => setDrawer(false)}
-                  className="tech-label opacity-70 text-[color:var(--color-ink)]"
+                  className="tech-label opacity-70 text-[#0f0f0f]"
                 >
                   {t("footer.repairGuarantee")}
                 </Link>
               </div>
 
-              <div className="mt-10 pt-6 border-t border-[color:var(--color-rule)] flex items-center gap-3">
+              <div className="mt-10 pt-6 border-t border-[#e5e5e5] flex items-center gap-3">
                 {LOCALES.map((l, i) => (
                   <span key={l} className="inline-flex items-center gap-3">
                     {i > 0 && <span aria-hidden className="opacity-30">·</span>}
@@ -333,7 +318,7 @@ export default function Navbar() {
                       href={switchLocaleHref(l)}
                       onClick={() => setDrawer(false)}
                       hrefLang={l}
-                      className={`tech-label ${l === locale ? "text-[color:var(--color-ink)]" : "text-[color:rgba(44,42,40,0.45)]"}`}
+                      className={`tech-label ${l === locale ? "text-[#0f0f0f]" : "text-[#0f0f0f]/45"}`}
                       aria-current={l === locale ? "true" : undefined}
                     >
                       {LOCALE_LABELS[l]}
@@ -343,7 +328,7 @@ export default function Navbar() {
               </div>
 
               <p
-                className="mt-10 text-[color:rgba(44,42,40,0.55)]"
+                className="mt-10 text-[#0f0f0f]/55"
                 style={{
                   fontFamily: "var(--font-display)",
                   fontStyle: "italic",
