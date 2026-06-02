@@ -30,7 +30,7 @@
   --color-paper: #ffffff;          /* default page bg — Maison Tanneurs pure white */
   --color-paper-alt: #ebe9e4;      /* alt section bg, warm stone */
   --color-paper-soft: #e2dfd8;     /* subtle bands */
-  --color-plate: #f8f7f4;          /* product tile plate — quiet warm-white studio surface */
+  --color-plate: var(--color-paper); /* product tile plate — matches white page/product photo bg */
   --color-near-black: #2c2a28;     /* warm charcoal — primary type (never pure black) */
   --color-warm-black: #1f1d1b;     /* warm dark for hero zones + footer */
   --color-warm-black-soft: #2c2a28;
@@ -684,13 +684,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .rb-product-card:hover .rb-card-img { transform: scale(1.05); }
 
 /* Maison Tanneurs product-image contract:
-   every listing/PDP frame uses the same warm-white plate, inner breathing
-   room, and contain-first composition so raw source dimensions cannot make
-   the storefront feel accidental. */
+   listing/PDP frames should not introduce a second visible square color.
+   Product plates match the page/product-photo white so the object sits cleanly
+   without a forced cream mat around a white-background asset. */
 .mt-product-frame {
   position: relative;
   overflow: hidden;
-  background: #f8f8f6;
+  background: var(--color-plate);
   border: 0;
 }
 
@@ -699,7 +699,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 .mt-product-frame--hero {
-  background: #f8f8f6;
+  background: var(--color-plate);
 }
 
 .mt-product-img-standard {
