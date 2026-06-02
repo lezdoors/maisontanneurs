@@ -10,7 +10,7 @@
 // - PNG/JPG/WebP inputs are re-encoded to WebP before upload.
 // - A source filename beginning with Hero- is the human-curated primary image.
 //   It must become {slug}-pdp-white.webp and remain first everywhere.
-//   Remaining shots become {slug}-pdp-02.webp ... {slug}-pdp-09.webp.
+//   Remaining shots become {slug}-pdp-02.webp ... up to {slug}-pdp-11.webp.
 
 import { createClient } from "@supabase/supabase-js";
 import { mkdtemp, readdir, readFile, rm, stat, writeFile } from "node:fs/promises";
@@ -85,7 +85,7 @@ async function getSourceFiles(slug: string, source: string): Promise<string[]> {
     throw new Error(`No finished image files found in ${source}`);
   }
 
-  return files.slice(0, 9).map((file) => join(source, file));
+  return files.slice(0, 11).map((file) => join(source, file));
 }
 
 function destinationName(slug: string, index: number): string {

@@ -1,6 +1,6 @@
 # Maison Tanneurs Marketplace Launch Audit
 
-Generated: 2026-06-02T12:58:46.272Z
+Generated: 2026-06-02T13:21:23.275Z
 
 ## Product Count Validation
 
@@ -11,7 +11,7 @@ Generated: 2026-06-02T12:58:46.272Z
 - Supabase products omitted from exports: 0
 - Airtable Products total: 28
 - Airtable launch-gated Products: 26
-- Approved Airtable Product Assets: 60
+- Approved Airtable Product Assets: 70
 - Meta export rows: 26
 - Etsy prep rows: 26
 
