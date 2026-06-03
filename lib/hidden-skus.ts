@@ -25,10 +25,7 @@ export const HIDDEN_SKUS: ReadonlySet<string> = new Set([
   // (scripts/build-images-manifest.py), then remove the slug from this set.
   // See docs/PRODUCT-IMAGES-MANIFEST.md for canonical inventory.
 
-  // Still hidden because Storage has no canonical hero (pdp-white / scale).
-  "marrakech-tote-bordeaux",
-  "marrakech-tote-noir",
-  "medina-crossbody-tassel",
+
   // Duplicate/scope suppression: user confirmed the Kilim duffle should not
   // launch because the Kilim Leather Duffle Bag and atlas-kilim-rucksack cover
   // the same product family/color story.

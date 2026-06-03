@@ -14,14 +14,7 @@ const LANDING_PRESENTATION_HOLD = new Set([
   "expedition-rolltop-cognac",
 ]);
 
-const LIST_IMAGE_OVERRIDES: Record<string, string> = {
-  "atlas-weekender-cognac": "/products/landing/atlas-weekender-cognac-landing.webp",
-  "oasis-weekender-oxblood": "/products/landing/oasis-weekender-oxblood-landing.webp",
-  "medina-saddlebag-tooled-cognac": "/products/landing/medina-saddlebag-tooled-cognac-landing.webp",
-  "expedition-rolltop-noir": "/products/landing/expedition-rolltop-noir-landing.webp",
-  "marrakech-tote-cognac": "/products/landing/marrakech-tote-cognac-landing.webp",
-  "expedition-rolltop-cognac": "expedition-rolltop-cognac-pdp-05.webp",
-};
+const LIST_IMAGE_OVERRIDES: Record<string, string> = {};
 
 export function isLandingPresentationHold(slug: string): boolean {
   return LANDING_PRESENTATION_HOLD.has(slug);
