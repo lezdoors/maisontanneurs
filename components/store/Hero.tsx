@@ -15,15 +15,27 @@ type Slide = Photo | Video;
 const SLIDES: Slide[] = [
   {
     kind: "photo",
-    src: "/brand/hero/home-hero-olive-field-bag.webp",
-    alt: "Woman in white linen with a cognac leather bag overlooking olive groves near Marrakech",
-    objectPos: "center 52%",
+    src: "/brand/hero/home-hero-model-white-bag-dune.webp",
+    alt: "Woman in white linen carrying a cognac leather weekender across sunlit dunes",
+    objectPos: "center 50%",
   },
   {
     kind: "video",
-    src: "/videos/omni-model-desert-cropped.mp4",
-    poster: "/brand/hero/omni-model-desert-poster.jpg",
-    alt: "Model in white carrying a cognac leather bag through a restrained desert courtyard",
+    src: "/videos/model-tennis-leather-bag-cropped.mp4",
+    poster: "/brand/hero/model-tennis-leather-bag-poster.jpg",
+    alt: "Model seated on a clay tennis court with a leather kilim rucksack",
+  },
+  {
+    kind: "photo",
+    src: "/brand/hero/home-hero-model-field-horse.webp",
+    alt: "Woman in white linen walking through a pale field with a tan leather tote and white horse",
+    objectPos: "center 47%",
+  },
+  {
+    kind: "photo",
+    src: "/brand/hero/home-hero-olive-field-bag.webp",
+    alt: "Woman in white linen with a cognac leather bag overlooking olive groves near Marrakech",
+    objectPos: "center 52%",
   },
   {
     kind: "video",
@@ -35,16 +47,6 @@ const SLIDES: Slide[] = [
     kind: "photo",
     src: "/brand/hero/home-hero-model-red-kilim.webp",
     alt: "Model with red kilim leather bag, Maison Tanneurs signature",
-  },
-  {
-    kind: "photo",
-    src: "/brand/hero/home-hero-black-woman-caftan.webp",
-    alt: "Tall Black woman in cream caftan with cognac duffle, golden-hour Marrakech",
-  },
-  {
-    kind: "photo",
-    src: "/brand/hero/home-hero-black-man-leaning.webp",
-    alt: "Black man in tailored cream, noir-leather bag, editorial light",
   },
 ];
 
