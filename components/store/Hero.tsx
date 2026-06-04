@@ -1,50 +1,33 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocalizedHref, useT } from "@/lib/i18n-client";
 
-// Mixed-media hero rotation. Photos hold for ~6s each, videos play in full.
-// Sequence opens cinematic, then moves through model-led editorial stills.
+// Curated still hero rotation. Keep the opening read controlled: visible object,
+// Marrakech atmosphere, text-safe zones. Video moves lower on the page.
 
 type Photo = { kind: "photo"; src: string; alt: string; objectPos?: string };
-type Video = { kind: "video"; src: string; alt: string; poster: string };
-type Slide = Photo | Video;
+type Slide = Photo;
 
 const SLIDES: Slide[] = [
   {
     kind: "photo",
-    src: "/brand/hero/home-hero-bright-atelier-plinth.webp",
-    alt: "Cognac leather bag on a pale stone plinth in a bright Marrakech atelier",
-    objectPos: "center center",
-  },
-  {
-    kind: "video",
-    src: "/videos/hero-cinematic-1-dunes.mp4",
-    poster: "/brand/editorial/cinematic-bag-still.webp",
-    alt: "Cognac bag on Marrakech dunes, golden hour",
-  },
-  {
-    kind: "video",
-    src: "/videos/hero-cinematic-2-paris.mp4",
-    poster: "/brand/editorial/model-paris-night.webp",
-    alt: "Model with bag walking Parisian cobblestones at blue hour",
+    src: "/brand/hero/home-hero-2-couple-atelier.webp",
+    alt: "Cognac leather bag in a sunlit Marrakech atelier with artisans behind it",
+    objectPos: "center 48%",
   },
   {
     kind: "photo",
-    src: "/brand/hero/home-hero-model-red-kilim.webp",
-    alt: "Model with red kilim leather bag, Maison Tanneurs signature",
+    src: "/brand/hero/home-hero-4-pool-tote.webp",
+    alt: "Cognac leather tote beside still water in a restrained Marrakech courtyard",
+    objectPos: "center 52%",
   },
   {
     kind: "photo",
-    src: "/brand/hero/home-hero-black-woman-caftan.webp",
-    alt: "Tall Black woman in cream caftan with cognac duffle, golden-hour Marrakech",
-  },
-  {
-    kind: "photo",
-    src: "/brand/hero/home-hero-black-man-leaning.webp",
-    alt: "Black man in tailored cream, noir-leather bag, editorial light",
+    src: "/brand/hero/home-hero-5-courtyard-walk.webp",
+    alt: "Maison Tanneurs cognac bag on a pale courtyard plinth as a woman walks through arches",
   },
 ];
 
@@ -55,8 +38,6 @@ export default function Hero() {
   const href = useLocalizedHref();
   const [idx, setIdx] = useState(0);
   const [reducedMotion, setReducedMotion] = useState<boolean | null>(null);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-  const timer = useRef<number | null>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -66,35 +47,14 @@ export default function Hero() {
     return () => mediaQuery.removeEventListener("change", updateReducedMotion);
   }, []);
 
-  // Advance based on slide type — photos use a timer, videos use 'ended'.
+  // Advance the curated stills slowly. Reduced-motion users keep the opener.
   useEffect(() => {
     if (reducedMotion !== false) return;
-    const slide = SLIDES[idx];
-    if (slide.kind === "photo") {
-      timer.current = window.setTimeout(
-        () => setIdx((i) => (i + 1) % SLIDES.length),
-        PHOTO_HOLD_MS,
-      );
-      return () => {
-        if (timer.current) window.clearTimeout(timer.current);
-      };
-    }
-    // Video: play, advance on ended.
-    const v = videoRefs.current[idx];
-    if (v) {
-      v.currentTime = 0;
-      v.muted = true;
-      v.playsInline = true;
-      v.play().catch(() => undefined);
-      const onEnd = () => setIdx((i) => (i + 1) % SLIDES.length);
-      v.addEventListener("ended", onEnd);
-      // Hard safety: if video stalls or doesn't fire 'ended', advance after 10s.
-      timer.current = window.setTimeout(() => onEnd(), 10_000);
-      return () => {
-        v.removeEventListener("ended", onEnd);
-        if (timer.current) window.clearTimeout(timer.current);
-      };
-    }
+    const timer = window.setTimeout(
+      () => setIdx((i) => (i + 1) % SLIDES.length),
+      PHOTO_HOLD_MS,
+    );
+    return () => window.clearTimeout(timer);
   }, [idx, reducedMotion]);
 
   return (
@@ -102,7 +62,7 @@ export default function Hero() {
       id="top"
       className="relative w-full min-h-[100svh] overflow-hidden"
       style={{ background: "var(--color-warm-black)", color: "#ffffff" }}
-      aria-label="Maison Tanneurs — hand-stitched leather, Marrakech to Paris"
+      aria-label="Maison Tanneurs — hand-stitched leather from Marrakech"
     >
       {/* Media stack — all slides mounted, only active opacity:1 */}
       <div className="absolute inset-0">
@@ -117,30 +77,15 @@ export default function Hero() {
             }}
             aria-hidden={i !== idx}
           >
-            {s.kind === "photo" ? (
-              <Image
-                src={s.src}
-                alt={s.alt}
-                fill
-                priority={i === 0}
-                sizes="100vw"
-                className="object-cover"
-                style={{ objectPosition: s.objectPos ?? "center 46%" }}
-              />
-            ) : (
-              <video
-                ref={(el) => {
-                  videoRefs.current[i] = el;
-                }}
-                className="absolute inset-0 w-full h-full object-cover"
-                src={s.src}
-                preload={i === idx ? "metadata" : "none"}
-                poster={s.poster}
-                playsInline
-                muted
-                aria-hidden
-              />
-            )}
+            <Image
+              src={s.src}
+              alt={s.alt}
+              fill
+              priority={i === 0}
+              sizes="100vw"
+              className="object-cover"
+              style={{ objectPosition: s.objectPos ?? "center 46%" }}
+            />
           </div>
         ))}
         <div
@@ -148,7 +93,7 @@ export default function Hero() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to top, rgba(20,18,16,0.55) 0%, rgba(20,18,16,0.15) 38%, rgba(20,18,16,0) 65%)",
+              "linear-gradient(to bottom, rgba(20,18,16,0.36) 0%, rgba(20,18,16,0.08) 32%, rgba(20,18,16,0) 58%), linear-gradient(to top, rgba(20,18,16,0.62) 0%, rgba(20,18,16,0.18) 38%, rgba(20,18,16,0) 68%)",
           }}
         />
       </div>
@@ -174,17 +119,14 @@ export default function Hero() {
               color: "#ffffff",
               fontFamily: "var(--font-display)",
               fontWeight: 400,
-              fontSize: "clamp(40px, 10.5vw, 160px)",
+              fontSize: "clamp(46px, 10.8vw, 168px)",
               letterSpacing: "-0.02em",
               lineHeight: 0.95,
               margin: 0,
               textWrap: "balance",
             }}
           >
-            Maison
-            <br className="sm:hidden" />
-            <span className="hidden sm:inline"> </span>
-            Tanneurs<span style={{ opacity: 0.45 }}>.</span>
+            Maison Tanneurs<span style={{ opacity: 0.45 }}>.</span>
           </h1>
 
           <p

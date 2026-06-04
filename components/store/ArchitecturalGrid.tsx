@@ -6,6 +6,7 @@ import { HIDDEN_SKUS, HIDDEN_SKUS_ARRAY } from "@/lib/hidden-skus";
 import { bust } from "@/lib/image-url";
 import { productImageClass } from "@/lib/product-image-presentation";
 import { curateLandingProducts, productListImage } from "@/lib/landing-product-curation";
+import { formatPrice } from "@/lib/utils";
 import type { Product } from "@/lib/supabase/types";
 
 // Polène / Les-Tanneurs-v2 register: stripped product cells, no borders, no
@@ -69,7 +70,6 @@ function colorFor(p: Product): string {
 
 export default async function ArchitecturalGrid() {
   const products = await loadCurrentEdition();
-  const total = products.length;
 
   return (
     <section
@@ -78,7 +78,7 @@ export default async function ArchitecturalGrid() {
       aria-label="Current edition"
     >
       {/* LT2 .section-head — quiet eyebrow, large serif title, italic subhead */}
-      <div className="mx-auto max-w-[1400px] text-center pt-[clamp(80px,12vw,160px)] pb-[clamp(48px,7vw,96px)] px-[clamp(24px,6vw,80px)]">
+      <div className="mx-auto max-w-[1400px] text-center pt-[clamp(74px,10vw,130px)] pb-[clamp(44px,6vw,82px)] px-[clamp(24px,6vw,80px)]">
         <p
           style={{
             fontFamily: "var(--font-sans)",
@@ -102,7 +102,7 @@ export default async function ArchitecturalGrid() {
             color: "var(--color-ink)",
           }}
         >
-          A collection of <span style={{ fontStyle: "italic" }}>{numberWord(total)}.</span>
+          The first six objects.
         </h2>
         <p
           style={{
@@ -115,7 +115,7 @@ export default async function ArchitecturalGrid() {
             color: "var(--color-ink-soft)",
           }}
         >
-          Hand-cut and saddle-stitched in a small Marrakech atelier. Numbered, never restocked.
+          A sharper buying moment after the atelier story: price, material, availability, and a direct path into each dossier.
         </p>
       </div>
 
@@ -125,7 +125,7 @@ export default async function ArchitecturalGrid() {
         style={{
           padding: "40px clamp(24px,8vw,80px) clamp(120px,16vw,200px)",
           columnGap: "clamp(40px, 6vw, 90px)",
-          rowGap: "clamp(58px, 8vw, 96px)",
+          rowGap: "clamp(52px, 7vw, 84px)",
         }}
       >
         {products.map((p, i) => (
@@ -176,6 +176,7 @@ function ProductCell({ product, index }: { product: Product; index: number }) {
             src={bust(hero)}
             alt={product.title}
             fill
+            loading="eager"
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
             className={productImageClass(hero)}
             style={{
@@ -214,40 +215,43 @@ function ProductCell({ product, index }: { product: Product; index: number }) {
 
       {/* Meta — no border, generous gap, LT2 serif name + sans color */}
       <div className="mt-7 text-left">
-        <h3
-          style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 400,
-            fontSize: "22px",
-            letterSpacing: 0,
-            color: "var(--color-ink)",
-            margin: 0,
-          }}
-        >
-          {product.title}
-        </h3>
-        <p
-          style={{
-            marginTop: "8px",
-            fontFamily: "var(--font-sans)",
-            fontSize: "13px",
-            color: "var(--color-ink-soft)",
-            letterSpacing: "0.01em",
-          }}
-        >
-          {color}
-        </p>
+        <div className="flex items-start justify-between gap-5">
+          <h3
+            style={{
+              fontFamily: "var(--font-display)",
+              fontWeight: 400,
+              fontSize: "clamp(22px, 2vw, 30px)",
+              lineHeight: 1.08,
+              letterSpacing: 0,
+              color: "var(--color-ink)",
+              margin: 0,
+            }}
+          >
+            {product.title}
+          </h3>
+          <span className="pt-1 text-right tech-meta text-[var(--color-ink-muted)]">
+            {formatPrice(product.price)}
+          </span>
+        </div>
+        <div className="mt-4 flex items-center justify-between border-t border-[var(--color-rule)] pt-4">
+          <p
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: "12px",
+              color: "var(--color-ink-soft)",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+            }}
+          >
+            {color}
+          </p>
+          <p className="tech-meta text-[var(--color-ink-muted)]">
+            {product.available_quantity > 0
+              ? `${String(product.available_quantity).padStart(2, "0")} left`
+              : "On request"}
+          </p>
+        </div>
       </div>
     </Link>
   );
-}
-
-function numberWord(n: number): string {
-  const words: Record<number, string> = {
-    1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
-    6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
-    11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen",
-    15: "fifteen", 16: "sixteen", 18: "eighteen", 20: "twenty",
-  };
-  return words[n] ?? String(n);
 }

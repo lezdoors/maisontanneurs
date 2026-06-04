@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { createServerSupabase } from "@/lib/supabase/server";
 import { HIDDEN_SKUS, HIDDEN_SKUS_ARRAY } from "@/lib/hidden-skus";
 import { LOCALES, withLocale } from "@/lib/i18n";
+import { STATIC_PRODUCTS } from "@/lib/products";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.maisontanneurs.com";
 
@@ -43,7 +44,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         .from("products")
         .select("slug, updated_at")
         .eq("status", "available")
-        .eq("featured", true)
         .not("slug", "in", hiddenList);
       if (data) {
         productPaths = data
@@ -58,6 +58,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   } catch {
     // Fall back to static paths only if Supabase fails
+  }
+
+  if (productPaths.length === 0) {
+    productPaths = STATIC_PRODUCTS.filter(
+      (p) => p.status === "available" && !HIDDEN_SKUS.has(p.slug),
+    ).map((p) => ({
+      url: `${SITE}/products/${p.slug}`,
+      lastModified: p.updated_at ? new Date(p.updated_at) : undefined,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }));
   }
 
   return localizeEntries([...staticPaths, ...productPaths]);
