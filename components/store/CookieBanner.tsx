@@ -67,18 +67,15 @@ export default function CookieBanner() {
       className={`cookie-banner ${isProductPage ? "cookie-banner-pdp" : ""}`}
       style={{
         position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
+        bottom: 24,
+        left: "auto",
+        right: 24,
         zIndex: 100,
-        width: "auto",
+        width: "min(560px, calc(100vw - 48px))",
         background: "var(--color-near-black, #0a0a0a)",
         color: "var(--color-ivory, #f5efe6)",
         border: "1px solid rgba(245, 239, 230, 0.18)",
-        borderLeft: 0,
-        borderRight: 0,
-        borderBottom: 0,
-        padding: "8px 24px",
+        padding: "14px 16px",
       }}
     >
       <div
@@ -87,8 +84,8 @@ export default function CookieBanner() {
           margin: "0 auto",
           display: "flex",
           flexDirection: "row",
-          gap: 16,
-          alignItems: "center",
+          gap: 14,
+          alignItems: "flex-end",
           justifyContent: "space-between",
         }}
         className="cookie-banner-inner"
@@ -100,7 +97,7 @@ export default function CookieBanner() {
             lineHeight: 1.35,
             color: "rgba(245, 239, 230, 0.85)",
             margin: 0,
-            maxWidth: 760,
+            maxWidth: 330,
           }}
         >
           {t("cookie.copy")}{" "}

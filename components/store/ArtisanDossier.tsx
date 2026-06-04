@@ -73,6 +73,7 @@ export default function ArtisanDossier() {
                   src={PLATE_SRC}
                   alt="A master artisan saddle-stitching full-grain leather in the Marrakech atelier"
                   fill
+                  loading="eager"
                   sizes="(min-width: 768px) 41vw, 100vw"
                   className="object-cover object-left"
                 />
