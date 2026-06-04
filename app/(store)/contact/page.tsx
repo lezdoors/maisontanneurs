@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ContactForm from "@/components/store/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -22,6 +23,13 @@ export default function ContactPage() {
         </p>
 
         <div className="mt-14 flex flex-col gap-10">
+          <section>
+            <div className="ed-eyebrow text-[var(--color-mineral)] mb-3">
+              Send a message
+            </div>
+            <ContactForm />
+          </section>
+
           <div>
             <div className="ed-eyebrow text-[var(--color-mineral)] mb-3">
               General &amp; orders

@@ -187,7 +187,7 @@ async function main() {
 
   const sbProducts = (productsRes.data ?? []) as SbProduct[];
   const realProducts = sbProducts.filter(
-    (p) => p.status === "available" && !HIDDEN_SKUS.has(p.slug),
+    (p) => p.status === "available" && p.featured !== false && !HIDDEN_SKUS.has(p.slug),
   );
   const hiddenAvailableProducts = sbProducts.filter(
     (p) => p.status === "available" && p.featured !== false && HIDDEN_SKUS.has(p.slug),

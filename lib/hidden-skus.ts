@@ -37,6 +37,12 @@ export const HIDDEN_SKUS: ReadonlySet<string> = new Set([
   // in the launch set. Keep this older black backpack SKU off the storefront.
   "black-stitched-backpack",
 
+  // Thin-gallery/non-Airtable launch rows. Keep out of storefront, feed, Meta,
+  // and Etsy until each has a 5+ shot approved gallery and Airtable Product.
+  "marrakech-tote-bordeaux",
+  "marrakech-tote-noir",
+  "medina-crossbody-tassel",
+
   // Group B — only macro shots in Storage, no canonical hero. Macros are
   // gallery-only per Turbo's convention; audit rejects them as images[0].
   // Stay hidden until a pdp-white or scale shot lands.
