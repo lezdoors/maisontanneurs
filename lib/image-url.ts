@@ -6,9 +6,9 @@
 // as new and re-optimize from origin.
 //
 // Bump CACHE_BUSTER_VERSION any time we recrop / reprocess Storage files.
-// (Last bump: 2026-05-25 — Higgsfield black-bar source crop.)
+// (Last bump: 2026-06-01 — matte re-encode for framed product heroes.)
 
-const CACHE_BUSTER_VERSION = "2026-05-29-clean-heroes-r2";
+const CACHE_BUSTER_VERSION = "2026-06-01-framed-product-matte-r1";
 
 const SUPABASE_HOST = "xbtabpurfavngwmwtawc.supabase.co";
 

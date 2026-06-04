@@ -81,6 +81,11 @@ const AWAITING_SCALE_SHOTS = new Set<string>([
   "atlas-briefcase-vintage",
   "medina-crossbody-cognac",
   "vintage-satchel-light-brown",
+  // Added 2026-06-03 — renamed duplicate tote/crossbody SKUs now have
+  // canonical pdp-white product heroes, but lifestyle scale shots are pending.
+  "marrakech-tote-bordeaux",
+  "marrakech-tote-noir",
+  "medina-crossbody-tassel",
   // Added 2026-05-26 — Drop 02 canonical still-image sets. Keep as warn until
   // dedicated lifestyle scale shots are generated.
   "saharienne-saddle-cognac",

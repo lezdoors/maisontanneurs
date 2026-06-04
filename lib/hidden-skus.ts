@@ -25,16 +25,23 @@ export const HIDDEN_SKUS: ReadonlySet<string> = new Set([
   // (scripts/build-images-manifest.py), then remove the slug from this set.
   // See docs/PRODUCT-IMAGES-MANIFEST.md for canonical inventory.
 
-  // Still hidden because Storage has no canonical hero (pdp-white / scale).
-  "marrakech-tote-bordeaux",
-  "marrakech-tote-noir",
-  "medina-crossbody-tassel",
+
+  // Duplicate/scope suppression: user confirmed the Kilim duffle should not
+  // launch because the Kilim Leather Duffle Bag and atlas-kilim-rucksack cover
+  // the same product family/color story.
+  "atlas-kilim-duffle",
   // Duplicate/scope suppression: the patterned leather + textile duffle belongs
   // to the Kilim family, so keep this duplicate commercial SKU off launch.
   "medina-duffle",
   // Duplicate/scope suppression: Expedition Rolltop Noir is the only black bag
   // in the launch set. Keep this older black backpack SKU off the storefront.
   "black-stitched-backpack",
+
+  // Thin-gallery/non-Airtable launch rows. Keep out of storefront, feed, Meta,
+  // and Etsy until each has a 5+ shot approved gallery and Airtable Product.
+  "marrakech-tote-bordeaux",
+  "marrakech-tote-noir",
+  "medina-crossbody-tassel",
 
   // Group B — only macro shots in Storage, no canonical hero. Macros are
   // gallery-only per Turbo's convention; audit rejects them as images[0].

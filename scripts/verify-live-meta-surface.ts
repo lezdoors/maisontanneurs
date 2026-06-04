@@ -11,7 +11,7 @@ const DOMAIN_VERIFICATION = "l5rwxlj1ubuvwihf4omg2hpxip51ck";
 const ROUTES = [
   "/",
   "/products/atlas-weekender-cognac",
-  "/products/atlas-kilim-duffle",
+  "/products/atlas-kilim-rucksack",
   "/products/medina-saddlebag-tooled-cognac",
   "/products/oasis-weekender-oxblood",
   "/products/expedition-rolltop-noir",

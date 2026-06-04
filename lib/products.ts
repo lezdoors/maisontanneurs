@@ -449,6 +449,61 @@ export const STATIC_PRODUCTS: Product[] = [
     "updated_at": ""
   },
   {
+    "id": "static-marrakech-tote-bordeaux",
+    "title": "Marrakech Tote · Bordeaux",
+    "slug": "marrakech-tote-bordeaux",
+    "price": 29500,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/marrakech-tote-bordeaux-pdp-white.webp"
+    ],
+    "category": "Tote",
+    "status": "available",
+    "featured": true,
+    "materials": [
+      "Full-grain Moroccan leather",
+      "Solid antique brass hardware",
+      "Open-top with internal magnetic snap",
+      "Hand saddle-stitched in Marrakech"
+    ],
+    "dimensions": {
+      "size": "38cm × 34cm × 14cm · open top"
+    },
+    "description": "Structured open-top tote in rich bordeaux full-grain leather. Tall handles for shoulder carry, magnetic snap interior, brass-finished hardware. Deepens to a wine-cordovan tone with wear.",
+    "available_quantity": 18,
+    "weight_lbs": 2.5,
+    "craftsman_id": null,
+    "created_at": "",
+    "updated_at": ""
+  },
+  {
+    "id": "static-marrakech-tote-noir",
+    "title": "Marrakech Tote · Noir",
+    "slug": "marrakech-tote-noir",
+    "price": 29500,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/marrakech-tote-noir-pdp-white.webp"
+    ],
+    "category": "Tote",
+    "status": "available",
+    "featured": true,
+    "materials": [
+      "Full-grain Moroccan leather",
+      "Cream contrast zigzag stitching",
+      "Solid antique brass hardware",
+      "Open-top with internal magnetic snap",
+      "Hand saddle-stitched in Marrakech"
+    ],
+    "dimensions": {
+      "size": "38cm × 34cm × 14cm · open top, zigzag stitch"
+    },
+    "description": "Structured open-top tote in deep noir leather, framed by a cream zigzag stitch border. Tall handles for shoulder carry, magnetic snap interior, brass-finished hardware.",
+    "available_quantity": 18,
+    "weight_lbs": 2.5,
+    "craftsman_id": null,
+    "created_at": "",
+    "updated_at": ""
+  },
+  {
     "id": "static-14-medina-crossbody-cognac",
     "title": "Medina Crossbody · Cognac",
     "slug": "medina-crossbody-cognac",
@@ -471,6 +526,34 @@ export const STATIC_PRODUCTS: Product[] = [
     "description": "Clean flap crossbody in saddle cognac leather. Single brass turn-lock, adjustable shoulder strap, off-white contrast stitching. The medina line's daily silhouette.",
     "available_quantity": 10,
     "weight_lbs": null,
+    "craftsman_id": null,
+    "created_at": "",
+    "updated_at": ""
+  },
+  {
+    "id": "static-medina-crossbody-tassel",
+    "title": "Medina Crossbody · Tassel",
+    "slug": "medina-crossbody-tassel",
+    "price": 19500,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-tassel-pdp-white.webp"
+    ],
+    "category": "Crossbody",
+    "status": "available",
+    "featured": true,
+    "materials": [
+      "Full-grain Moroccan leather",
+      "Solid antique brass turn-lock",
+      "Hand-finished leather tassel",
+      "Adjustable shoulder strap",
+      "Hand saddle-stitched in Marrakech"
+    ],
+    "dimensions": {
+      "size": "22cm × 18cm × 6cm · tassel detail"
+    },
+    "description": "Flap crossbody in saddle cognac leather, finished with a hand-twisted leather tassel at the turn-lock. A small artisan flourish, brass-finished hardware, daily-carry sized.",
+    "available_quantity": 22,
+    "weight_lbs": 0.8,
     "craftsman_id": null,
     "created_at": "",
     "updated_at": ""

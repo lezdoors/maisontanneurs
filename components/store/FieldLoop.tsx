@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const VIDEO_SRC_MP4 = "/videos/hero-model-white-suit-bag.mp4";
+const VIDEO_SRC_MP4 = "/videos/omni-atelier-stitch-tote-cropped.mp4";
 const VIDEO_SRC_WEBM = "/videos/atelier-loop.webm"; // legacy fallback only
 
 export default function FieldLoop() {
@@ -65,7 +65,7 @@ export default function FieldLoop() {
             ref={ref}
             className="absolute inset-0 w-full h-full object-cover"
             preload="none"
-            poster="/brand/editorial/model-white-suit-salon.webp"
+            poster="/brand/hero/omni-atelier-stitch-tote-poster.jpg"
             aria-hidden
           >
             <source src={VIDEO_SRC_MP4} type="video/mp4" />

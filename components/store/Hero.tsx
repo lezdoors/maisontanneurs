@@ -15,36 +15,38 @@ type Slide = Photo | Video;
 const SLIDES: Slide[] = [
   {
     kind: "photo",
-    src: "/brand/hero/home-hero-bright-atelier-plinth.webp",
-    alt: "Cognac leather bag on a pale stone plinth in a bright Marrakech atelier",
-    objectPos: "center center",
+    src: "/brand/hero/home-hero-model-white-bag-dune.webp",
+    alt: "Woman in white linen carrying a cognac leather weekender across sunlit dunes",
+    objectPos: "center 50%",
   },
   {
     kind: "video",
-    src: "/videos/hero-cinematic-1-dunes.mp4",
-    poster: "/brand/editorial/cinematic-bag-still.webp",
-    alt: "Cognac bag on Marrakech dunes, golden hour",
+    src: "/videos/model-tennis-leather-bag-cropped.mp4",
+    poster: "/brand/hero/model-tennis-leather-bag-poster.jpg",
+    alt: "Model seated on a clay tennis court with a leather kilim rucksack",
+  },
+  {
+    kind: "photo",
+    src: "/brand/hero/home-hero-model-field-horse.webp",
+    alt: "Woman in white linen walking through a pale field with a tan leather tote and white horse",
+    objectPos: "center 47%",
+  },
+  {
+    kind: "photo",
+    src: "/brand/hero/home-hero-olive-field-bag.webp",
+    alt: "Woman in white linen with a cognac leather bag overlooking olive groves near Marrakech",
+    objectPos: "center 52%",
   },
   {
     kind: "video",
-    src: "/videos/hero-cinematic-2-paris.mp4",
-    poster: "/brand/editorial/model-paris-night.webp",
-    alt: "Model with bag walking Parisian cobblestones at blue hour",
+    src: "/videos/omni-atelier-stitch-tote-cropped.mp4",
+    poster: "/brand/hero/omni-atelier-stitch-tote-poster.jpg",
+    alt: "Close hand-stitching and a finished leather tote inside a Marrakech atelier",
   },
   {
     kind: "photo",
     src: "/brand/hero/home-hero-model-red-kilim.webp",
     alt: "Model with red kilim leather bag, Maison Tanneurs signature",
-  },
-  {
-    kind: "photo",
-    src: "/brand/hero/home-hero-black-woman-caftan.webp",
-    alt: "Tall Black woman in cream caftan with cognac duffle, golden-hour Marrakech",
-  },
-  {
-    kind: "photo",
-    src: "/brand/hero/home-hero-black-man-leaning.webp",
-    alt: "Black man in tailored cream, noir-leather bag, editorial light",
   },
 ];
 
@@ -148,7 +150,7 @@ export default function Hero() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to top, rgba(20,18,16,0.55) 0%, rgba(20,18,16,0.15) 38%, rgba(20,18,16,0) 65%)",
+              "linear-gradient(to top, rgba(10,10,9,0.62) 0%, rgba(10,10,9,0.24) 40%, rgba(10,10,9,0.06) 72%), linear-gradient(90deg, rgba(10,10,9,0.30) 0%, rgba(10,10,9,0.08) 48%, rgba(10,10,9,0.24) 100%)",
           }}
         />
       </div>

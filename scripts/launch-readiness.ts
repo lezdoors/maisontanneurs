@@ -24,6 +24,7 @@ import * as dotenv from "dotenv";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { homedir } from "node:os";
+import { HIDDEN_SKUS } from "../lib/hidden-skus";
 
 dotenv.config({ path: ".env.local" });
 dotenv.config({ path: join(homedir(), "Downloads", "airtable-hermes.env") });
@@ -87,7 +88,13 @@ interface AssetRec {
 
 interface ProductRec {
   id: string;
-  fields: { Slug?: string; "Product ID"?: string; "Product Name"?: string };
+  fields: {
+    Slug?: string;
+    "Product ID"?: string;
+    "Product Name"?: string;
+    "Site Status"?: string;
+    "Launch Ready"?: boolean;
+  };
 }
 
 interface Check { name: string; pass: boolean; detail?: string; gating: boolean }
@@ -279,7 +286,13 @@ async function main(): Promise<void> {
     readSbProducts(supabase),
   ]);
 
-  const reports = products
+  const suppressed = products.filter((p) => {
+    const slug = p.fields.Slug ?? "";
+    return HIDDEN_SKUS.has(slug) || p.fields["Site Status"] === "Hidden" || p.fields["Launch Ready"] !== true;
+  });
+  const launchProducts = products.filter((p) => !suppressed.includes(p));
+
+  const reports = launchProducts
     .map((p) => evaluate(p, sb.get(p.fields.Slug ?? ""), approvedAssets))
     .sort((a, b) => a.productId.localeCompare(b.productId));
 
@@ -292,6 +305,9 @@ async function main(): Promise<void> {
   lines.push(`Generated: ${new Date().toISOString()}`);
   lines.push("");
   lines.push(`## Summary — ${ready} / ${total} SKUs ready`);
+  lines.push("");
+  lines.push(`Launch-scope Airtable Products: ${launchProducts.length}`);
+  lines.push(`Suppressed/non-launch Airtable Products: ${suppressed.length}`);
   lines.push("");
   lines.push(`| Product ID | Slug | Status | Blockers | Warnings |`);
   lines.push(`|---|---|---|---|---|`);

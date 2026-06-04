@@ -8,8 +8,9 @@
 // Rules:
 // - Source folder must be a finished HF/Drive product set, not supplier/raw screenshots.
 // - PNG/JPG/WebP inputs are re-encoded to WebP before upload.
-// - First/hero image becomes {slug}-pdp-white.webp; remaining shots become
-//   {slug}-pdp-02.webp ... {slug}-pdp-09.webp.
+// - A source filename beginning with Hero- is the human-curated primary image.
+//   It must become {slug}-pdp-white.webp and remain first everywhere.
+//   Remaining shots become {slug}-pdp-02.webp ... up to {slug}-pdp-11.webp.
 
 import { createClient } from "@supabase/supabase-js";
 import { mkdtemp, readdir, readFile, rm, stat, writeFile } from "node:fs/promises";
@@ -53,14 +54,18 @@ function parseArgs(): Args {
 
 function sourcePriority(slug: string, filename: string): number {
   const lower = filename.toLowerCase();
-  if (lower.includes("hero") || lower.includes("white")) return 0;
+  // Human-curated product folders use Hero-* as the mandatory primary image.
+  // Do not let generic "white"/"hero" substrings outrank that explicit signal.
+  if (lower.startsWith("hero-")) return 0;
+  if (lower.includes("white")) return 1;
+  if (lower.includes("hero")) return 2;
 
   const escaped = slug.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const pdpMatch = lower.match(new RegExp(`${escaped}-pdp-(\\d+)\\.webp$`));
-  if (pdpMatch) return Number(pdpMatch[1]);
+  if (pdpMatch) return 10 + Number(pdpMatch[1]);
 
   const looseNumber = lower.match(/(?:^|[\s_-])(\d+)\.(png|jpe?g|webp)$/);
-  if (looseNumber) return Number(looseNumber[1]);
+  if (looseNumber) return 20 + Number(looseNumber[1]);
 
   return 999;
 }
@@ -80,7 +85,7 @@ async function getSourceFiles(slug: string, source: string): Promise<string[]> {
     throw new Error(`No finished image files found in ${source}`);
   }
 
-  return files.slice(0, 9).map((file) => join(source, file));
+  return files.slice(0, 11).map((file) => join(source, file));
 }
 
 function destinationName(slug: string, index: number): string {
