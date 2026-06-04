@@ -54,7 +54,7 @@ async function getProducts(category?: string, q?: string): Promise<Product[]> {
     // If Supabase not configured, use static products
     if (!supabase) {
       let products = normalizeProductFamilies(STATIC_PRODUCTS as Product[]).filter(
-        (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available" && p.featured,
+        (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available",
       );
       if (category && category !== "all") {
         const r = resolveCategoryFilter(category);
@@ -71,21 +71,20 @@ async function getProducts(category?: string, q?: string): Promise<Product[]> {
 
     // NOTE: don't filter by category at the DB level — Supabase legacy rows
     // have category="Leather Goods" and would be excluded before the overlay
-    // gets a chance to remap them. Fetch all available+featured, merge with
+    // gets a chance to remap them. Fetch all public available rows, merge with
     // STATIC (which fixes legacy categories), then filter client-side.
     const hiddenList = `(${HIDDEN_SKUS_ARRAY.join(",")})`;
     const { data, error } = await supabase
       .from("products")
       .select("*")
       .eq("status", "available")
-      .eq("featured", true)
       .not("slug", "in", hiddenList)
       .order("created_at", { ascending: false });
 
     if (error || !data) {
       // Fall back to static products only if Supabase truly errored.
       let products = normalizeProductFamilies(STATIC_PRODUCTS as Product[]).filter(
-        (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available" && p.featured,
+        (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available",
       );
       if (category && category !== "all") {
         const r = resolveCategoryFilter(category);
@@ -104,7 +103,7 @@ async function getProducts(category?: string, q?: string): Promise<Product[]> {
     // in Supabase). Then re-apply category/query filters to the merged set
     // so STATIC entries with correct categories surface.
     let products = normalizeProductFamilies(mergeWithStatic(data as Product[])).filter(
-      (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available" && p.featured,
+      (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available",
     );
     if (category && category !== "all") {
       const r = resolveCategoryFilter(category);
@@ -119,7 +118,7 @@ async function getProducts(category?: string, q?: string): Promise<Product[]> {
     return products;
   } catch {
     let products = normalizeProductFamilies(STATIC_PRODUCTS as Product[]).filter(
-      (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available" && p.featured,
+      (p) => !HIDDEN_SKUS.has(p.slug) && p.status === "available",
     );
     if (category && category !== "all") {
       const r = resolveCategoryFilter(category);
