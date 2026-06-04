@@ -81,6 +81,12 @@ const AWAITING_SCALE_SHOTS = new Set<string>([
   "atlas-briefcase-vintage",
   "medina-crossbody-cognac",
   "vintage-satchel-light-brown",
+  // Added 2026-06-04 — Airtable launch-gated Drive sets with approved
+  // pdp-white + multishot galleries; dedicated lifestyle scale shots pending.
+  "medina-cargo-rucksack-cognac",
+  "medina-crossbody-clasp-teal",
+  "medina-market-tote-cognac",
+  "medina-zigzag-tote-chocolate",
   // Added 2026-06-03 — renamed duplicate tote/crossbody SKUs now have
   // canonical pdp-white product heroes, but lifestyle scale shots are pending.
   "marrakech-tote-bordeaux",
