@@ -132,8 +132,8 @@ export default async function CheckoutSuccessPage({
 
         <p className="font-serif text-[clamp(17px,1.4vw,20px)] italic text-graphite text-center leading-relaxed mb-10">
           Your order has been placed. Each piece is hand-stitched in our
-          Marrakech atelier and shipped direct by tracked express courier —
-          free worldwide, 3 to 5 business days to your door.
+          Marrakech atelier and shipped worldwide via DHL Express —
+          most orders arrive in 5 to 10 business days.
         </p>
 
         {/* Order number — prominent */}
