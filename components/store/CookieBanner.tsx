@@ -6,7 +6,7 @@ import { useLocalizedHref, useT } from "@/lib/i18n-client";
 
 // Consent state shape:
 //   "all"  — analytics + marketing pixels enabled
-//   "none" — only essential cookies (Stripe session, cart, auth)
+//   "none" — only essential cookies (checkout session, cart, auth)
 //   null   — user has not made a choice yet → banner is shown
 const STORAGE_KEY = "mi-cookie-consent";
 
@@ -35,7 +35,7 @@ export default function CookieBanner() {
   useEffect(() => {
     const showTimer = window.setTimeout(() => {
       if (getConsent() === null) setVisible(true);
-    }, 0);
+    }, 2200);
 
     // Hide if another tab accepts/rejects
     const onChange = () => {
@@ -67,54 +67,67 @@ export default function CookieBanner() {
       className={`cookie-banner ${isProductPage ? "cookie-banner-pdp" : ""}`}
       style={{
         position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
+        left: "auto",
+        top: "auto",
+        bottom: 18,
+        right: 18,
         zIndex: 100,
-        width: "auto",
+        width: "min(330px, calc(100vw - 36px))",
         background: "var(--color-near-black, #0a0a0a)",
         color: "var(--color-ivory, #f5efe6)",
         border: "1px solid rgba(245, 239, 230, 0.18)",
-        borderLeft: 0,
-        borderRight: 0,
-        borderBottom: 0,
-        padding: "8px 24px",
+        padding: "12px 14px 14px",
+        boxShadow: "0 18px 50px rgba(0, 0, 0, 0.24)",
       }}
     >
       <div
         style={{
-          maxWidth: 1280,
-          margin: "0 auto",
           display: "flex",
-          flexDirection: "row",
-          gap: 16,
-          alignItems: "center",
-          justifyContent: "space-between",
+          flexDirection: "column",
+          gap: 12,
+          alignItems: "stretch",
         }}
         className="cookie-banner-inner"
       >
         <p
           style={{
             fontFamily: "var(--font-sans, Inter)",
-            fontSize: 11,
-            lineHeight: 1.35,
-            color: "rgba(245, 239, 230, 0.85)",
+            fontSize: 10.5,
+            lineHeight: 1.45,
+            letterSpacing: "0.01em",
+            color: "rgba(244, 240, 232, 0.82)",
             margin: 0,
-            maxWidth: 760,
+            maxWidth: 700,
           }}
         >
-          {t("cookie.copy")}{" "}
-          <a
-            href={href("/legal/privacy")}
-            style={{
-              color: "var(--color-ivory, #f5efe6)",
-              textDecoration: "underline",
-              textUnderlineOffset: 4,
-            }}
-          >
-            {t("cookie.privacy")}
-          </a>
-          .
+          <span className="cookie-copy-full">
+            {t("cookie.copy")}{" "}
+            <a
+              href={href("/legal/privacy")}
+              style={{
+                color: "var(--color-ivory, #f5efe6)",
+                textDecoration: "underline",
+                textUnderlineOffset: 4,
+              }}
+            >
+              {t("cookie.privacy")}
+            </a>
+            .
+          </span>
+          <span className="cookie-copy-mobile">
+            Cookies: essential only unless accepted.{" "}
+            <a
+              href={href("/legal/privacy")}
+              style={{
+                color: "var(--color-ivory, #f5efe6)",
+                textDecoration: "underline",
+                textUnderlineOffset: 3,
+              }}
+            >
+              Privacy
+            </a>
+            .
+          </span>
         </p>
         <div className="cookie-banner-actions" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
           <button
@@ -122,10 +135,10 @@ export default function CookieBanner() {
             style={{
               fontFamily: "var(--font-sans, Inter)",
               fontWeight: 500,
-              fontSize: 11,
-              letterSpacing: "0.18em",
+              fontSize: 10,
+              letterSpacing: "0.16em",
               textTransform: "uppercase",
-              padding: "8px 18px",
+              padding: "8px 16px",
               background: "transparent",
               color: "var(--color-ivory, #f5efe6)",
               border: "1px solid rgba(245, 239, 230, 0.55)",
@@ -147,10 +160,10 @@ export default function CookieBanner() {
             style={{
               fontFamily: "var(--font-sans, Inter)",
               fontWeight: 600,
-              fontSize: 11,
-              letterSpacing: "0.18em",
+              fontSize: 10,
+              letterSpacing: "0.16em",
               textTransform: "uppercase",
-              padding: "8px 18px",
+              padding: "8px 16px",
               background: "var(--color-ivory, #f5efe6)",
               color: "var(--color-warm-black, #141210)",
               border: "1px solid var(--color-ivory, #f5efe6)",
@@ -171,52 +184,70 @@ export default function CookieBanner() {
         </div>
       </div>
       <style>{`
+        .cookie-copy-mobile {
+          display: none;
+        }
         @media (max-width: 767px) {
           .cookie-banner {
             left: 0 !important;
             right: 0 !important;
-            bottom: 0 !important;
+            top: 76px !important;
+            bottom: auto !important;
             width: auto !important;
             border-left: 0 !important;
             border-right: 0 !important;
-            border-bottom: 0 !important;
-            padding: 8px 14px !important;
+            border-top: 1px solid rgba(245, 239, 230, 0.12) !important;
+            border-bottom: 1px solid rgba(245, 239, 230, 0.12) !important;
+            padding: 6px 10px calc(6px + env(safe-area-inset-bottom)) !important;
           }
           .cookie-banner-inner {
-            flex-direction: column !important;
-            align-items: stretch !important;
-            gap: 8px !important;
+            display: grid !important;
+            grid-template-columns: minmax(0, 1fr) auto !important;
+            align-items: center !important;
+            gap: 10px !important;
           }
           .cookie-banner p {
-            font-size: 10.5px !important;
-            line-height: 1.3 !important;
+            font-size: 9px !important;
+            line-height: 1.18 !important;
             max-width: 100% !important;
+          }
+          .cookie-copy-full {
+            display: none !important;
+          }
+          .cookie-copy-mobile {
+            display: inline !important;
           }
           .cookie-banner-actions {
             display: grid !important;
             grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-            gap: 8px !important;
-            width: 100% !important;
+            gap: 6px !important;
+            width: 184px !important;
           }
           .cookie-banner-actions button {
             width: 100% !important;
-            min-height: 34px !important;
-            padding: 8px 8px !important;
-            font-size: 10px !important;
-            letter-spacing: 0.14em !important;
+            min-height: 30px !important;
+            padding: 5px 7px !important;
+            font-size: 9px !important;
+            letter-spacing: 0.1em !important;
           }
           .cookie-banner-pdp {
-            bottom: 0 !important;
+            top: 76px !important;
+            bottom: auto !important;
+            border-bottom: 1px solid rgba(245, 239, 230, 0.12) !important;
+          }
+          @media (max-width: 360px) {
+            .cookie-banner-inner {
+              grid-template-columns: 1fr !important;
+              gap: 6px !important;
+            }
+            .cookie-banner-actions {
+              width: 100% !important;
+            }
           }
         }
         @media (min-width: 768px) {
-          .cookie-banner-inner {
-            flex-direction: row !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            gap: 18px !important;
-          }
           .cookie-banner-actions {
+            justify-content: flex-end !important;
             flex: 0 0 auto !important;
             flex-wrap: nowrap !important;
           }

@@ -29,12 +29,19 @@ export const HIDDEN_SKUS: ReadonlySet<string> = new Set([
   "marrakech-tote-bordeaux",
   "marrakech-tote-noir",
   "medina-crossbody-tassel",
+
   // Duplicate/scope suppression: the patterned leather + textile duffle belongs
   // to the Kilim family, so keep this duplicate commercial SKU off launch.
   "medina-duffle",
+
   // Duplicate/scope suppression: Expedition Rolltop Noir is the only black bag
   // in the launch set. Keep this older black backpack SKU off the storefront.
   "black-stitched-backpack",
+
+  // No exact matching folder/hero in Drive source of truth as of 2026-06-05.
+  // Keep hidden until the product identity is verified and a Drive-derived
+  // hero is mapped in lib/product-image-presentation.ts.
+  "medina-rucksack-flap-chocolate",
 
   // Group B — only macro shots in Storage, no canonical hero. Macros are
   // gallery-only per Turbo's convention; audit rejects them as images[0].

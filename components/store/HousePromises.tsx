@@ -9,8 +9,8 @@ const PROMISES: Promise[] = [
   {
     code: "P.01",
     k: "Express",
-    v: "Free · 3–5 Days",
-    note: "Free worldwide tracked dispatch from Marrakech. Duty-free entry to the US under the Morocco-US Free Trade Agreement, and to the EU under the EU-Morocco Association.",
+    v: "Free · DHL Express",
+    note: "Free worldwide shipping from Marrakech via DHL Express. Most orders arrive in 5 to 10 business days, with tracking included.",
   },
   {
     code: "P.02",

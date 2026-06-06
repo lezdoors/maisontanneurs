@@ -5,6 +5,7 @@ import { Product } from "@/lib/supabase/types";
 import { STATIC_PRODUCTS } from "@/lib/products";
 import { HIDDEN_SKUS, HIDDEN_SKUS_ARRAY } from "@/lib/hidden-skus";
 import { getServerPriceFormatter } from "@/lib/price-server";
+import { orderProductImages } from "@/lib/product-image-presentation";
 
 async function getFeatured(): Promise<Product[]> {
   try {
@@ -56,9 +57,10 @@ export default async function ProductSpotlight() {
 
         <div className="rb-scroll-x grid grid-flow-col auto-cols-[88vw] sm:auto-cols-[48vw] md:auto-cols-[32%] lg:auto-cols-[calc((100%-2rem)/3)] overflow-x-auto gap-4 snap-x snap-mandatory pb-2">
           {featured.map((p) => {
-            const primary = p.images[0];
-            const secondary = p.images[1] || p.images[0];
-            const angles = p.images.length;
+            const ordered = orderProductImages(p.images);
+            const primary = ordered[0] || "/products/product-04.png";
+            const secondary = ordered[1] || primary;
+            const angles = ordered.length;
             return (
               <Link
                 key={p.id}

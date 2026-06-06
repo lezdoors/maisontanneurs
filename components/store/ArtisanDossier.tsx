@@ -3,23 +3,23 @@ import Image from "next/image";
 type Spec = { k: string; v: string; note?: string };
 
 const SPECS: Spec[] = [
-  { k: "07", v: "Dedicated Artisans", note: "Master tanners & stitchers" },
-  { k: "Sourcing", v: "Morocco", note: "Fez tanning heritage · Marrakech atelier" },
-  { k: "Method", v: "Vegetable-Tanned", note: "Mimosa & oak bark, 21-day vats" },
-  { k: "Material", v: "100% Bovine", note: "Full-grain, single-origin hides" },
-  { k: "Cycle", v: "14 Days / Object", note: "From hide to final stitch" },
-  { k: "Output", v: "≤ 560 Objects / Year", note: "Numbered, never restocked" },
-  { k: "Warranty", v: "Lifetime", note: "Re-stitching, edge-coat, re-line" },
+  { k: "Leather", v: "Full-Grain", note: "Selected for structure, grain, and patina" },
+  { k: "Cut", v: "By Hand", note: "Panels are checked before assembly" },
+  { k: "Stitch", v: "Saddle-Finished", note: "Stress points reinforced at the bench" },
+  { k: "Hardware", v: "Solid Metal", note: "Buckles and closures inspected piece by piece" },
+  { k: "Batch", v: "Small Runs", note: "Made in limited atelier quantities" },
+  { k: "Proof", v: "Shape Test", note: "Packed, handled, and photographed before release" },
+  { k: "Care", v: "Repairable", note: "Edges, stitches, and lining can be serviced" },
 ];
 
-const PLATE_SRC = "/brand/section/atelier-bw-portrait.webp";
+const PLATE_SRC = "/brand/section/atelier-bw-clean.webp";
 
 export default function ArtisanDossier() {
   return (
     <section
       id="atelier"
-      className="w-full bg-[var(--color-paper)] text-[var(--color-ink)] py-[clamp(64px,10vw,140px)]"
-      aria-label="Production specifications"
+      className="w-full bg-[var(--color-paper-alt)] text-[var(--color-ink)] py-[clamp(64px,10vw,140px)]"
+      aria-label="Craftsmanship process"
     >
       <div className="border-y border-[#e5e5e5]">
         <div className="px-6 py-5 flex items-end justify-between">
@@ -32,11 +32,11 @@ export default function ArtisanDossier() {
                 letterSpacing: "-0.03em",
               }}
             >
-              Production Specifications
+              Craftsmanship Process
             </h2>
           </div>
           <span className="tech-meta opacity-70 hidden md:inline">
-            Dossier — Marrakech Atelier
+            Dossier — Material / Cut / Proof
           </span>
         </div>
       </div>
@@ -44,7 +44,7 @@ export default function ArtisanDossier() {
       <div className="grid grid-cols-12">
         <div className="col-span-12 md:col-span-5 border-r border-[#e5e5e5] px-6 py-10 md:py-14">
           <div className="md:sticky md:top-24">
-            <span className="tech-label opacity-60">Production Footprint</span>
+            <span className="tech-label opacity-60">Object Footprint</span>
             <h3
               className="mt-6 display-xxl"
               style={{ fontSize: "clamp(40px, 5.5vw, 86px)" }}
@@ -59,9 +59,10 @@ export default function ArtisanDossier() {
               className="mt-8 leading-relaxed text-[#0f0f0f]/75"
               style={{ fontSize: "14px", letterSpacing: "-0.01em", maxWidth: "62ch" }}
             >
-              Every object is the cumulative record of fourteen days, seven hands,
-              and one atelier. We do not scale the run. We do not outsource the
-              finish. We file the dossier, then we build.
+              Every object is the cumulative record of the hide, the cut line,
+              and the final hand check. We keep product plates clean for the
+              catalogue and use the film frames only where they add context.
+              The result should feel like a working dossier, not a showroom prop.
             </p>
 
             <div className="mt-10 border-t border-[#e5e5e5] pt-6">
@@ -78,7 +79,7 @@ export default function ArtisanDossier() {
                 />
               </div>
               <p className="mt-3 tech-meta opacity-60">
-                Plate 01 — Moroccan leatherwork, finished in Marrakech.
+                Plate 01 — Hand work, grain inspection, bench evidence.
               </p>
             </div>
           </div>
@@ -122,7 +123,7 @@ export default function ArtisanDossier() {
                 className="mt-3"
                 style={{ fontSize: "15px", letterSpacing: "-0.01em" }}
               >
-                Y. Berrada — Atelier Director
+                Maison Tanneurs — Atelier Desk
                 <br />
                 <span className="opacity-60">Marrakech, Morocco</span>
               </p>

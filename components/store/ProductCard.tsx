@@ -77,23 +77,21 @@ export default function ProductCard({
       href={href(`/products/${slug}`)}
       className="group block bg-[color:var(--color-paper)]"
     >
-      <div className="mt-product-frame relative aspect-[4/5]">
+      <div className="mt-product-frame mt-product-frame--catalogue mt-ratio-portrait relative aspect-[4/5]">
         <Image
           src={bust(image)}
           alt={title}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
-          loading={eager ? "eager" : "lazy"}
+          priority={eager}
+          loading={eager ? undefined : "lazy"}
           className={productImageClass(image)}
         />
       </div>
 
-      <div
-        className="px-0 pt-5 flex flex-col gap-2"
-        style={{ background: "var(--color-paper)" }}
-      >
+      <div className="px-0 pt-5" style={{ background: "var(--color-paper)" }}>
         <div
-          className="flex items-center gap-3 text-[10.5px] tracking-[0.14em] uppercase"
+          className="flex items-center gap-3 text-[10px] tracking-[0.18em] uppercase"
           style={{
             fontFamily: "var(--font-mono)",
             color: "var(--color-ink-muted)",
@@ -105,11 +103,11 @@ export default function ProductCard({
         </div>
 
         <h3
-          className="text-[15px] leading-tight"
+          className="mt-3 text-[clamp(20px,2vw,27px)] leading-[1.05]"
           style={{
-            fontFamily: "var(--font-sans)",
-            fontWeight: 500,
-            letterSpacing: "-0.005em",
+            fontFamily: "var(--font-display)",
+            fontWeight: 400,
+            letterSpacing: 0,
             color: "var(--color-ink)",
           }}
         >
@@ -117,13 +115,16 @@ export default function ProductCard({
         </h3>
 
         <div
-          className="text-[10.5px] tracking-[0.16em] uppercase mt-1"
+          className="mt-4 flex items-center justify-between border-t border-[var(--color-rule-soft)] pt-3 text-[10.5px] tracking-[0.16em] uppercase"
           style={{
             fontFamily: "var(--font-mono)",
             color: "var(--color-ink)",
           }}
         >
           <span>{format(price)}</span>
+          <span className="text-[var(--color-ink-muted)] transition-colors group-hover:text-[var(--color-ink)]">
+            Inspect
+          </span>
         </div>
       </div>
     </Link>

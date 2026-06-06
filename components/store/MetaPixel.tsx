@@ -30,7 +30,7 @@ function injectPixel(pixelId: string) {
   const w = window as any;
   const fbq: any = function (...args: unknown[]) {
     if (fbq.callMethod) {
-      fbq.callMethod.apply(fbq, args);
+      fbq.callMethod(...args);
     } else {
       fbq.queue.push(args);
     }

@@ -20,6 +20,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   const t = useT();
   const href = useLocalizedHref();
   const [justAdded, setJustAdded] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
 
   // GA4 + Pixel: view_item / ViewContent on PDP mount
   useEffect(() => {
@@ -52,6 +53,20 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
     const timer = window.setTimeout(() => setJustAdded(false), 2500);
     return () => window.clearTimeout(timer);
   }, [justAdded]);
+
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+    if (!footer) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setFooterVisible(Boolean(entry?.isIntersecting)),
+      {
+        rootMargin: "0px 0px -20% 0px",
+        threshold: 0.01,
+      },
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
 
   function handleAddToCart() {
     addItem(productToCartItem(product));
@@ -86,8 +101,18 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   return (
     <>
       <div className="lg:sticky lg:top-0 lg:self-start lg:max-h-screen lg:overflow-y-auto">
-        <div className="px-5 sm:px-8 lg:px-[40px] pt-8 sm:pt-10 lg:pt-8 pb-32 sm:pb-20 lg:pb-[120px]">
+        <div className="px-5 sm:px-8 lg:px-[46px] pt-8 sm:pt-10 lg:pt-8 pb-32 sm:pb-20 lg:pb-[120px]">
           <div className="flex flex-col gap-6 sm:gap-7 lg:gap-6">
+          <div className="grid grid-cols-3 border border-[var(--color-rule)]">
+            {["Made in Marrakech", "DHL Express", "Secure checkout"].map((item) => (
+              <span
+                key={item}
+                className="border-r border-[var(--color-rule)] px-2 py-2.5 text-center font-mono text-[8.5px] uppercase tracking-[0.12em] text-mineral last:border-r-0 sm:text-[9.5px]"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
           {/* Breadcrumbs */}
           <nav className="font-mono text-[10px] tracking-[0.16em] uppercase text-mineral">
             <Link href={href("/")} className="hover:text-graphite transition-colors">
@@ -105,13 +130,13 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           </nav>
 
           {/* Product name */}
-          <h1 className="disp leading-[1.03] text-[clamp(28px,7.6vw,48px)]">
+          <h1 className="font-display text-[clamp(42px,7vw,72px)] font-normal leading-[0.94] text-[var(--color-ink)]">
             {product.title}
           </h1>
 
           {/* Price + SKU */}
-          <div className="flex items-baseline justify-between border-b border-stone pb-5 sm:pb-6">
-            <span className="font-serif italic text-[24px] sm:text-[28px] text-ink">
+          <div className="flex items-baseline justify-between border-y border-stone py-5 sm:py-6">
+            <span className="font-display italic text-[28px] sm:text-[34px] text-ink">
               {format(product.price)}
             </span>
             <span className="font-mono text-[10px] tracking-[0.16em] uppercase text-mineral">
@@ -121,15 +146,15 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
           {/* Description */}
           {product.description && (
-            <p className="body-copy text-[15px] leading-[1.75] sm:text-base sm:leading-[1.8]">{product.description}</p>
+            <p className="max-w-[62ch] font-sans text-[15px] leading-[1.75] text-[var(--color-ink-soft)] sm:text-base sm:leading-[1.8]">{product.description}</p>
           )}
 
           {/* Add to Cart — keep the commerce action above specs on desktop */}
           <div className="space-y-3 pt-1 sm:pt-2 hidden md:block">
             <button
               onClick={handleAddToCart}
-              className="rb-cta w-full"
-              style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.18em", padding: "17px 24px" }}
+              className="mt-luxury-button w-full"
+              style={{ fontSize: 12, padding: "18px 24px" }}
             >
               {t("product.addToCart")}
             </button>
@@ -201,7 +226,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
           {/* Shipping + care note */}
           <p className="font-serif italic text-[14px] text-mineral leading-[1.6]">
-            Hand-stitched in Marrakech. Free worldwide shipping by tracked express courier, 3–5 days.
+            Hand-stitched in Marrakech. Free worldwide shipping via DHL Express; most orders arrive in 5 to 10 business days.
           </p>
 
           {/* Care + sizing links */}
@@ -232,7 +257,12 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
       </div>
     </div>
 
-      <div className="md:hidden fixed inset-x-0 bottom-0 z-[68] border-t border-stone/40 bg-white/95 backdrop-blur px-4 pt-2.5 pb-[max(10px,env(safe-area-inset-bottom))]">
+      <div
+        className={`md:hidden fixed inset-x-0 bottom-0 z-[68] border-t border-stone/40 bg-white/95 backdrop-blur px-4 pt-2.5 pb-[max(10px,env(safe-area-inset-bottom))] transition-transform duration-300 ${
+          footerVisible ? "translate-y-full" : "translate-y-0"
+        }`}
+        aria-hidden={footerVisible}
+      >
         <div className="flex items-center gap-3">
           <div className="min-w-0">
             <p className="font-mono text-[10px] tracking-[0.16em] uppercase text-mineral">Ready to order</p>
@@ -240,8 +270,8 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           </div>
           <button
             onClick={handleAddToCart}
-            className="rb-cta flex-1"
-            style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.16em", padding: "14px 16px" }}
+            className="mt-luxury-button flex-1"
+            style={{ fontSize: 11, padding: "14px 16px" }}
           >
             {t("product.addToCart")}
           </button>

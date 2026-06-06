@@ -57,20 +57,20 @@ export default function Footer() {
   const t = useT();
   const href = useLocalizedHref();
   return (
-    <footer className="w-full bg-white text-[#0f0f0f] border-t border-[#e5e5e5]">
+    <footer className="w-full bg-[var(--color-warm-black)] text-[var(--color-ivory)] border-t border-white/10">
       <NewsletterSignup />
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 px-6 pt-14 pb-14">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6 px-6 pt-14 pb-14 border-t border-white/10">
         {COLUMNS.map((c) => (
           <Column key={c.titleKey} {...c} />
         ))}
       </div>
 
-      <div className="border-t border-[#e5e5e5]">
+      <div className="border-t border-white/10">
         <div className="px-6 py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <span className="tech-meta opacity-70">{t("footer.tagline")}</span>
-          <span className="tech-meta opacity-70">{t("footer.rights")}</span>
-          <div className="flex items-center gap-6 tech-meta opacity-70">
+          <span className="tech-meta text-white/60">{t("footer.tagline")}</span>
+          <span className="tech-meta text-white/60">{t("footer.rights")}</span>
+          <div className="flex items-center gap-6 tech-meta text-white/60">
             <Link href={href("/legal/privacy")} className="hover:underline underline-offset-4">
               {t("footer.privacy")}
             </Link>
@@ -89,7 +89,7 @@ function Column({ titleKey, links }: ColumnDef) {
   const href = useLocalizedHref();
   return (
     <div>
-      <h4 className="font-medium" style={{ fontSize: "15px", letterSpacing: "-0.015em" }}>
+      <h4 className="font-medium text-white" style={{ fontSize: "15px", letterSpacing: "-0.015em" }}>
         {t(titleKey)}
       </h4>
       <ul className="mt-5 flex flex-col gap-2.5">
@@ -97,7 +97,7 @@ function Column({ titleKey, links }: ColumnDef) {
           <li key={l.labelKey}>
             <Link
               href={href(l.href)}
-              className="tech-meta opacity-75 hover:opacity-100 hover:underline underline-offset-4"
+              className="tech-meta text-white/62 hover:text-white hover:underline underline-offset-4"
             >
               {t(l.labelKey)}
             </Link>

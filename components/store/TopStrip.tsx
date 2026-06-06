@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import CurrencySwitcher from "@/components/store/CurrencySwitcher";
 
 // Aether-pattern announcement strip — sticks at top above the main nav.
@@ -52,7 +53,7 @@ export default function TopStrip() {
         </span>
 
         {/* CENTER — promo pill (Aether: solid black pill, white text) */}
-        <a
+        <Link
           href="/products?from=insider"
           className="inline-flex items-center rounded-full transition-opacity hover:opacity-85"
           style={{
@@ -63,7 +64,7 @@ export default function TopStrip() {
           }}
         >
           Insider 15% off first order
-        </a>
+        </Link>
 
         {/* RIGHT — currency switcher + Marrakech time */}
         <div className="flex items-center gap-4 md:gap-6">

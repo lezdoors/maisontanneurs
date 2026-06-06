@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import {
   Cormorant_Garamond,
   EB_Garamond,
@@ -90,7 +89,7 @@ export const metadata: Metadata = {
     template: "%s | Maison Tanneurs",
   },
   description:
-    "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes. Free worldwide shipping in 3–5 days — duty-free to the US and EU under the Morocco-US and EU-Morocco free trade agreements.",
+    "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes. Free worldwide shipping via DHL Express, with most orders arriving in 5 to 10 business days.",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://www.maisontanneurs.com",
   ),
@@ -100,7 +99,7 @@ export const metadata: Metadata = {
     siteName: "Maison Tanneurs",
     title: "Maison Tanneurs — Hand-stitched leather from Marrakech",
     description:
-      "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes. Free worldwide shipping in 3–5 days — duty-free to the US and EU under the Morocco-US and EU-Morocco free trade agreements.",
+      "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes. Free worldwide shipping via DHL Express, with most orders arriving in 5 to 10 business days.",
     images: [
       {
         url: "/hero/hero-leather-campaign.webp",
@@ -114,7 +113,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Maison Tanneurs",
     description:
-      "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes. Free worldwide shipping in 3–5 days — duty-free to the US and EU under the Morocco-US and EU-Morocco free trade agreements.",
+      "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes. Free worldwide shipping via DHL Express, with most orders arriving in 5 to 10 business days.",
     images: ["/hero/hero-leather-campaign.webp"],
   },
   alternates: {
@@ -130,20 +129,6 @@ export const metadata: Metadata = {
     "facebook-domain-verification": "l5rwxlj1ubuvwihf4omg2hpxip51ck",
   },
 };
-
-const ORGANIZATION_LD = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Maison Tanneurs",
-  url: "https://www.maisontanneurs.com",
-  logo: "https://www.maisontanneurs.com/brand/logos/mt-arched-badge.png",
-  description:
-    "Hand-stitched leather goods sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes.",
-  email: "hello@maisontanneurs.com",
-};
-
-const CLARITY_PROJECT_ID =
-  process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || "wrj9fbl8n9";
 
 export default async function RootLayout({
   children,
@@ -170,13 +155,6 @@ export default async function RootLayout({
       ].join(" ")}
     >
       <body>
-        <Script
-          id="organization-ld"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-        >
-          {JSON.stringify(ORGANIZATION_LD)}
-        </Script>
         {/* Tracking now gated behind cookie consent — Clarity + Meta Pixel only
             fire after the user accepts in CookieBanner. Replaces the previous
             unconditional Clarity script. */}

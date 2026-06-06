@@ -417,6 +417,49 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .ed-cta-light:hover { opacity: 0.85; }
 
 /* ============================================================
+   TEXT-LINK CTA · Cucinelli swipe underline
+   On hover, the visible line wipes out to the right, and a new line
+   wipes in from the left after a brief overlap. Symmetric on un-hover.
+   ============================================================ */
+.mt-cta-link {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: inherit;
+  padding: 16px 4px;
+}
+.mt-cta-link::before,
+.mt-cta-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  height: 1px;
+  background: currentColor;
+  pointer-events: none;
+}
+.mt-cta-link::before {
+  transform: scaleX(1);
+  transform-origin: right;
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.mt-cta-link::after {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1) 0.18s;
+}
+.mt-cta-link:hover::before { transform: scaleX(0); }
+.mt-cta-link:hover::after { transform: scaleX(1); }
+
+.mt-cta-link--light { color: #ffffff; }
+.mt-cta-link--light::before,
+.mt-cta-link--light::after { background: rgba(255, 255, 255, 0.78); }
+
+/* ============================================================
    HAIRLINE FRAME SYSTEM · Aether's structural lines
    Horizontal rules between sections, vertical rules dividing columns.
    ============================================================ */
@@ -692,6 +735,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   overflow: hidden;
   background: #f8f8f6;
   border: 0;
+  width: 100%;
+  contain: layout paint;
 }
 
 .mt-product-frame::after {
@@ -700,6 +745,24 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .mt-product-frame--hero {
   background: #f8f8f6;
+}
+
+.mt-ratio-square,
+.mt-ratio-portrait {
+  height: 0;
+}
+
+.mt-ratio-square {
+  padding-bottom: 100%;
+}
+
+.mt-ratio-portrait {
+  padding-bottom: 125%;
+}
+
+.mt-product-frame > img,
+.mt-product-frame > span {
+  max-width: none;
 }
 
 .mt-product-img-standard {
@@ -714,7 +777,85 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 .mt-product-img-edge-trim {
-  clip-path: inset(2px 10px 10px 2px);
+  clip-path: none;
+}
+
+/* Maison Tanneurs luxury commerce pass — scoped so checkout/admin keep their
+   existing behavior while storefront pages get a sharper editorial register. */
+.mt-luxury-button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-near-black);
+  border-radius: 0;
+  background: var(--color-near-black);
+  color: var(--color-paper);
+  padding: 14px 28px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: background-color 260ms var(--ease), color 260ms var(--ease), border-color 260ms var(--ease);
+}
+
+.mt-luxury-button:hover {
+  background: transparent;
+  color: var(--color-near-black);
+}
+
+.mt-luxury-button--light {
+  border-color: rgba(255, 255, 255, 0.82);
+  background: var(--color-ivory);
+  color: var(--color-near-black);
+}
+
+.mt-luxury-button--light:hover {
+  background: transparent;
+  color: var(--color-ivory);
+}
+
+.mt-luxury-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 6px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: opacity 240ms var(--ease);
+}
+
+.mt-luxury-link:hover {
+  opacity: 0.64;
+}
+
+.mt-product-frame--catalogue {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,1), rgba(248,247,243,0.98));
+}
+
+.mt-product-frame--catalogue::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(31, 29, 27, 0.08);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.mt-filter-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.mt-filter-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .rb-scroll-x { scrollbar-width: none; -ms-overflow-style: none; }

@@ -13,6 +13,7 @@
     "audit:links": "tsx scripts/audit-public-links.ts",
     "audit:launch": "tsx scripts/audit-launch-readiness.ts",
     "audit:media": "tsx scripts/audit-media-sources.ts",
+    "audit:hero": "tsx scripts/audit-hero-source-of-truth.ts",
     "audit:drive-sets": "tsx scripts/audit-drive-product-sets.ts",
     "verify:live-checkout": "tsx scripts/verify-live-checkout-runtime.ts",
     "verify:live-feed": "tsx scripts/verify-live-feed.ts",

@@ -15,8 +15,8 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
   const [active, setActive] = useState(0);
 
   return (
-    <div className="flex flex-col gap-3 px-[clamp(16px,3vw,40px)]">
-      <div className="mt-product-frame mt-product-frame--hero relative aspect-square">
+    <div className="flex flex-col gap-3 px-[clamp(16px,3vw,40px)] lg:pt-8">
+      <div className="mt-product-frame mt-product-frame--hero mt-product-frame--catalogue mt-ratio-square relative aspect-square">
         <Image
           src={bust(gallery[active])}
           alt={`${title}${gallery.length > 1 ? ` — view ${active + 1}` : ""}`}
@@ -39,7 +39,7 @@ export default function ProductGallery({ images, title }: ProductGalleryProps) {
                 onClick={() => setActive(i)}
                 aria-label={`View ${i + 1}`}
                 aria-current={isActive}
-                className={`mt-product-frame relative aspect-square transition-colors ${
+                className={`mt-product-frame mt-product-frame--catalogue mt-ratio-square relative aspect-square transition-colors ${
                   isActive
                     ? "border-[color:var(--color-ink)]"
                     : "border-transparent hover:border-[color:var(--color-ink)]/30"

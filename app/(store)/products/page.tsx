@@ -30,14 +30,14 @@ function resolveCategoryFilter(raw: string): { in?: string[]; eq?: string } {
 export const metadata: Metadata = {
   title: "Collection",
   description:
-    "Hand-stitched leather goods sourced direct from a Marrakech atelier. Free worldwide shipping in 3–5 days, duty-free to the US and EU.",
+    "Hand-stitched leather goods sourced direct from a Marrakech atelier. Free worldwide shipping via DHL Express, with most orders arriving in 5 to 10 business days.",
   alternates: {
     canonical: "/products",
   },
   openGraph: {
     title: "Maison Tanneurs Collection",
     description:
-      "Hand-stitched leather goods sourced direct from a Marrakech atelier. Free worldwide shipping in 3–5 days, duty-free to the US and EU.",
+      "Hand-stitched leather goods sourced direct from a Marrakech atelier. Free worldwide shipping via DHL Express, with most orders arriving in 5 to 10 business days.",
     url: "/products",
   },
 };
@@ -150,14 +150,29 @@ export default async function ProductsPage({
   return (
     <main>
       {/* Collection Header */}
-      <section className="pt-[clamp(112px,13vw,156px)] px-[clamp(24px,4vw,72px)] pb-0">
-        <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-16 items-end pb-10 border-b border-[color:var(--color-rule)]">
-          <h1 className="disp text-[clamp(48px,7vw,96px)] max-w-[14ch]">
-            {t(locale, "products.title")}
-          </h1>
-          <p className="font-serif italic text-[17px] leading-[1.6] text-[color:var(--color-ink-soft)] max-w-[44ch]">
+      <section className="pt-[clamp(96px,11vw,136px)] px-[clamp(20px,4vw,72px)] pb-0">
+        <div className="grid grid-cols-1 gap-8 border-b border-[color:var(--color-rule)] pb-8 lg:grid-cols-[1.4fr_0.8fr_0.55fr] lg:items-end lg:gap-14">
+          <div>
+            <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--color-bronze)]">
+              Marrakech atelier · Paris register
+            </p>
+            <h1 className="font-display text-[clamp(54px,8vw,108px)] font-normal leading-[0.92] text-[var(--color-ink)]">
+              Collection
+            </h1>
+          </div>
+          <p className="max-w-[46ch] font-display text-[clamp(17px,1.7vw,22px)] italic leading-[1.45] text-[color:var(--color-ink-soft)]">
             {t(locale, "products.copy")}
           </p>
+          <div className="grid grid-cols-3 border border-[var(--color-rule)] lg:block lg:border-0">
+            {["Verified heroes", "DHL Express", "Small batches"].map((item) => (
+              <div
+                key={item}
+                className="border-r border-[var(--color-rule)] px-3 py-3 text-center font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--color-ink-muted)] last:border-r-0 lg:border-r-0 lg:border-t lg:px-0 lg:text-left"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -176,7 +191,7 @@ export default async function ProductsPage({
       </Suspense>
 
       {/* Product Grid */}
-      <section className="px-[clamp(24px,4vw,72px)] py-[clamp(48px,7vw,84px)]">
+      <section className="px-[clamp(20px,4vw,72px)] py-[clamp(34px,5vw,64px)]">
         {products.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[clamp(28px,4vw,56px)] gap-y-[clamp(54px,7vw,84px)]">
             {products.map((product, index) => (
@@ -188,7 +203,7 @@ export default async function ProductsPage({
                 slug={product.slug}
                 category={product.category}
                 badge={product.featured ? "One of a Kind" : undefined}
-                eager={index === 0}
+                eager={index < 9}
               />
             ))}
           </div>

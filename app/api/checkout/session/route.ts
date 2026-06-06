@@ -7,6 +7,7 @@ import type { Product } from "@/lib/supabase/types";
 import { getRequestCurrency } from "@/lib/i18n-server";
 import { getRates, convertUSDCents } from "@/lib/fx";
 import { type Currency } from "@/lib/currency";
+import { selectProductHeroImage } from "@/lib/product-image-presentation";
 
 // Creates a Revolut Acquiring order and returns the public token for the
 // embedded payment widget. Webhook fires ORDER_COMPLETED on success →
@@ -105,7 +106,7 @@ async function validateCart(items: CartItem[]): Promise<ValidatedCartItem[]> {
       title: product.title,
       price: product.price,
       quantity,
-      image: Array.isArray(product.images) ? product.images[0] : undefined,
+      image: selectProductHeroImage(product),
     };
   });
 }

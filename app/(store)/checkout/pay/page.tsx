@@ -3,7 +3,7 @@ import CheckoutShell from "@/components/checkout/CheckoutShell";
 export const metadata = {
   title: "Checkout — Maison Tanneurs",
   description:
-    "Complete your Maison Tanneurs order. Hand-stitched in Marrakech and shipped within three to five business days.",
+    "Complete your Maison Tanneurs order. Hand-stitched in Marrakech and shipped worldwide via DHL Express.",
   alternates: {
     canonical: "/checkout/pay",
   },
@@ -24,8 +24,8 @@ export default function CheckoutPayPage() {
             Complete your order.
           </h1>
           <p className="font-serif italic text-graphite text-[clamp(15px,1.3vw,18px)] leading-relaxed mt-4 max-w-[640px]">
-            Made to order and shipped within three to five business days.
-            Tracking included. Returns within thirty days.
+            Made to order and shipped worldwide via DHL Express. Tracking
+            included. Returns within thirty days.
           </p>
         </div>
 

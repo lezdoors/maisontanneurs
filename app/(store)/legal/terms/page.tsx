@@ -57,7 +57,7 @@ export default function TermsPage() {
       <h2>Production and shipping</h2>
       <p>
         Each piece is hand-stitched in our Marrakech atelier and shipped
-        direct to you by tracked express courier. See the{" "}
+        direct to you by DHL Express. See the{" "}
         <Link href="/legal/shipping">Shipping page</Link> for delivery
         times and costs.
       </p>

@@ -1,4 +1,8 @@
+import * as dotenv from "dotenv";
+
 import { listWebhooks } from "@/lib/revolut";
+
+dotenv.config({ path: ".env.local" });
 
 const TARGET_WEBHOOK_URL = "https://www.maisontanneurs.com/api/webhooks/revolut";
 const REQUIRED_EVENTS = ["ORDER_COMPLETED"];

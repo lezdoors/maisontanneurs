@@ -1,4 +1,5 @@
 import type { Product } from "@/lib/supabase/types";
+import { selectProductHeroImage } from "@/lib/product-image-presentation";
 
 const LANDING_FEATURED_ORDER = [
   "atlas-weekender-cognac",
@@ -52,7 +53,7 @@ export function productListImage(product: Product): string | undefined {
   const overrideName = LIST_IMAGE_OVERRIDES[product.slug];
   if (overrideName) {
     if (overrideName.startsWith("/")) return overrideName;
-    return product.images?.find((image) => image.includes(overrideName)) ?? product.images?.[0];
+    return product.images?.find((image) => image.includes(overrideName)) ?? selectProductHeroImage(product);
   }
-  return product.images?.[0];
+  return selectProductHeroImage(product);
 }

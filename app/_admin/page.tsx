@@ -27,7 +27,7 @@ export default async function AdminLoginPage() {
         <div className="text-center mb-10">
           <p className="eyebrow mb-3">Administration</p>
           <h1 className="font-display text-3xl text-ink tracking-tight">
-            PERLE DE L'ATLAS
+            PERLE DE L&apos;ATLAS
           </h1>
         </div>
 

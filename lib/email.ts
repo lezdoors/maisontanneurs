@@ -86,7 +86,15 @@ interface AdminNotificationData {
   }[];
   total: number;
   currency?: string;
-  shippingAddress: Record<string, any>;
+  shippingAddress: {
+    line1?: string;
+    line2?: string;
+    city?: string;
+    state?: string;
+    postal_code?: string;
+    country?: string;
+    [key: string]: unknown;
+  };
 }
 
 export async function sendAdminNotification(data: AdminNotificationData) {

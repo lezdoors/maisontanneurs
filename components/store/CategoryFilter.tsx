@@ -28,10 +28,10 @@ export default function CategoryFilter({ productCount }: CategoryFilterProps) {
   }
 
   return (
-    <div className="sticky top-[56px] md:top-[76px] z-30 bg-white/95 backdrop-blur border-b border-[color:var(--color-rule)]">
-      <div className="flex items-center justify-between px-[clamp(20px,4vw,72px)] py-4">
+    <div className="sticky top-[56px] md:top-[76px] z-30 border-b border-[color:var(--color-rule)] bg-white/96 backdrop-blur">
+      <div className="flex items-center justify-between px-[clamp(16px,4vw,72px)] py-3.5">
         {/* Filter chips */}
-        <div className="flex min-w-0 flex-1 flex-nowrap items-center gap-4 overflow-x-auto pr-6 md:flex-wrap md:overflow-visible md:pr-0 lg:gap-x-5 lg:gap-y-3 2xl:gap-x-6">
+        <div className="mt-filter-scroll flex min-w-0 flex-1 flex-wrap items-center gap-x-1.5 gap-y-1.5 overflow-visible pr-0 md:gap-x-3 md:gap-y-2 lg:gap-x-5 lg:gap-y-3 2xl:gap-x-6">
           {PRODUCT_FILTERS.map((category) => {
             const isActive =
               category === "All"
@@ -43,10 +43,10 @@ export default function CategoryFilter({ productCount }: CategoryFilterProps) {
                 key={category}
                 onClick={() => handleClick(category)}
                 className={cn(
-                  "font-mono text-[10.5px] tracking-[0.18em] uppercase whitespace-nowrap pb-0.5 transition-colors duration-200 lg:text-[11px]",
+                  "font-mono text-[9.5px] tracking-[0.13em] uppercase whitespace-nowrap border border-transparent px-2.5 py-2 transition-colors duration-200 md:text-[10px] md:tracking-[0.16em] md:px-3 lg:text-[10.5px]",
                   isActive
-                    ? "text-[color:var(--color-ink)] border-b border-[color:var(--color-ink)]"
-                    : "text-[color:var(--color-ink-muted)] hover:text-[color:var(--color-ink)]",
+                    ? "border-[color:var(--color-ink)] text-[color:var(--color-ink)]"
+                    : "text-[color:var(--color-ink-muted)] hover:border-[color:var(--color-rule)] hover:text-[color:var(--color-ink)]",
                 )}
               >
                 {category === "All" ? t("products.all") : category}
@@ -56,7 +56,7 @@ export default function CategoryFilter({ productCount }: CategoryFilterProps) {
         </div>
 
         {/* Product count */}
-        <span className="hidden 2xl:inline font-mono text-[11px] tracking-[0.16em] text-[color:var(--color-ink-muted)] whitespace-nowrap ml-6">
+        <span className="hidden md:inline font-mono text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-ink-muted)] whitespace-nowrap ml-6">
           {productCount} {t("products.pieces")}
         </span>
       </div>

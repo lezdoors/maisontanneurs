@@ -43,7 +43,7 @@ export default function EditorialStrip() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
-          {ITEMS.map((item, idx) => (
+          {ITEMS.map((item) => (
             <Link
               key={item.title}
               href={item.href}

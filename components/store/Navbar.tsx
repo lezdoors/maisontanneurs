@@ -44,6 +44,24 @@ export default function Navbar() {
   }, [drawer]);
 
   useEffect(() => {
+    if (typeof document === "undefined") return;
+    if (drawer) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+  }, [drawer]);
+
+  useEffect(() => {
+    queueMicrotask(() => {
+      setDrawer(false);
+      setSearchOpen(false);
+    });
+  }, [pathname]);
+
+  useEffect(() => {
     const update = () => setScrolled(window.scrollY > 32 || window.location.hash.length > 0);
     update();
     const raf = window.requestAnimationFrame(update);
@@ -81,7 +99,8 @@ export default function Navbar() {
   }
 
   return (
-    <header
+    <>
+      <header
       className={`fixed top-0 z-50 w-full border-b transition-colors duration-500 ${
         onHero ? "bg-transparent text-white border-white/20" : "bg-white/95 text-[#0f0f0f] border-[#e5e5e5] backdrop-blur"
       }`}
@@ -113,7 +132,8 @@ export default function Navbar() {
             onClick={() => setDrawer((v) => !v)}
             aria-label="Open menu"
             aria-expanded={drawer}
-            className={`md:hidden inline-flex h-11 w-11 -ml-2 items-center justify-center ${navInk}`}
+            className={`md:hidden inline-flex h-11 w-11 -ml-2 items-center justify-center relative z-[60] ${navInk}`}
+            style={{ touchAction: "manipulation", WebkitTapHighlightColor: "transparent" }}
           >
             <svg
               width="22"
@@ -121,7 +141,7 @@ export default function Navbar() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1.5"
+              strokeWidth="1.75"
               aria-hidden
             >
               <path d="M3 6h18M3 12h18M3 18h18" />
@@ -219,8 +239,9 @@ export default function Navbar() {
           </form>
         </div>
       )}
+    </header>
 
-      {drawer && (
+    {drawer && (
         <>
           <div
             onClick={() => setDrawer(false)}
@@ -342,6 +363,6 @@ export default function Navbar() {
           </aside>
         </>
       )}
-    </header>
+    </>
   );
 }

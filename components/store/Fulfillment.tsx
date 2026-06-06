@@ -13,8 +13,8 @@ const PILLARS: Pillar[] = [
   },
   {
     eyebrow: "03",
-    title: "Ships in 3 — 5 days",
-    body: "Free worldwide shipping by tracked express courier, direct from the Marrakech atelier. Insured, with a tracking link in your inbox at every step.",
+    title: "DHL Express worldwide",
+    body: "Free worldwide shipping direct from the Marrakech atelier. Insured, with a tracking link in your inbox at every step.",
   },
   {
     eyebrow: "04",

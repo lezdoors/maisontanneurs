@@ -74,8 +74,10 @@ export default function CartDrawer() {
                       )}
                     </div>
 
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-[13px] font-sans font-normal text-ink truncate">{item.title}</h4>
+                    <div className="min-w-0 flex-1 pr-2">
+                      <h4 className="max-w-[18ch] text-[13px] font-sans font-normal leading-snug text-ink sm:max-w-none">
+                        {item.title}
+                      </h4>
                       <div className="flex items-center gap-3 mt-2">
                         <button
                           onClick={() =>
@@ -99,7 +101,9 @@ export default function CartDrawer() {
                       </div>
                     </div>
 
-                    <div className="text-[13px] font-sans text-ink">{format(item.price * item.quantity)}</div>
+                    <div className="shrink-0 text-[13px] font-sans text-ink">
+                      {format(item.price * item.quantity)}
+                    </div>
                   </div>
                 ))}
               </div>

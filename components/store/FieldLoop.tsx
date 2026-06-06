@@ -2,8 +2,9 @@
 
 import { useEffect, useRef } from "react";
 
-const VIDEO_SRC_MP4 = "/videos/hero-model-white-suit-bag.mp4";
+const VIDEO_SRC_MP4 = "/videos/maison-train-window-traveler-cropped.mp4";
 const VIDEO_SRC_WEBM = "/videos/atelier-loop.webm"; // legacy fallback only
+const POSTER = "/videos/maison-train-window-traveler-poster.jpg";
 
 export default function FieldLoop() {
   const ref = useRef<HTMLVideoElement | null>(null);
@@ -48,7 +49,7 @@ export default function FieldLoop() {
       <div className="flex items-center justify-between px-6 py-4 border-b border-white/15 text-white/70">
         <span className="tech-meta">§05 — Field Loop</span>
         <span className="tech-meta hidden md:inline">
-          PLATE 02 — MARRAKECH ATELIER · 14-DAY CYCLE
+          PLATE 02 — MARRAKECH TRAIN · PRODUCT IN TRANSIT
         </span>
         <span className="tech-meta">MUTED · LOOPED</span>
       </div>
@@ -65,7 +66,7 @@ export default function FieldLoop() {
             ref={ref}
             className="absolute inset-0 w-full h-full object-cover"
             preload="none"
-            poster="/brand/editorial/model-white-suit-salon.webp"
+            poster={POSTER}
             aria-hidden
           >
             <source src={VIDEO_SRC_MP4} type="video/mp4" />
@@ -76,13 +77,13 @@ export default function FieldLoop() {
 
       <div className="grid grid-cols-12 px-6 py-5 border-t border-white/15 text-white/70 gap-y-2">
         <span className="col-span-12 md:col-span-6 tech-meta">
-          Filmed Marrakech · Atelier Cut
+          Marrakech Train Window · Editorial Cut
         </span>
         <span className="col-span-12 md:col-span-3 tech-meta md:text-center">
           1080p · 24fps · No Audio
         </span>
         <span className="col-span-12 md:col-span-3 tech-meta md:text-right">
-          Director Cut · Y. Berrada
+          Cropped clean · No watermark
         </span>
       </div>
     </section>

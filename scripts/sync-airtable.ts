@@ -38,6 +38,7 @@ const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
 const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY ?? "";
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID ?? "";
 const AIRTABLE_TABLE = "Products";
+const PRODUCT_STORAGE_BASE = `${SUPABASE_URL}/storage/v1/object/public/products/drop-02`;
 
 const CONCURRENCY = 3;
 
@@ -239,6 +240,26 @@ function asBoolean(value: unknown): boolean | undefined {
   return typeof value === "boolean" ? value : undefined;
 }
 
+function canonicalHeroUrl(slug: string): string {
+  return `${PRODUCT_STORAGE_BASE}/${slug}-pdp-white.webp`;
+}
+
+function normalizeHeroFirst(slug: string, images: string[]): string[] {
+  const heroUrl = canonicalHeroUrl(slug);
+  if (!images.includes(heroUrl)) return images;
+  return [heroUrl, ...images.filter((url) => url !== heroUrl)];
+}
+
+function validateHeroFirst(slug: string, images: string[] | undefined): string | null {
+  if (!images || images.length === 0) return null;
+  const heroUrl = canonicalHeroUrl(slug);
+  if (images[0] === heroUrl) return null;
+  if (images.includes(heroUrl)) {
+    return `Hero invariant failed: ${heroUrl} is present but not first in Airtable Images`;
+  }
+  return `Hero invariant failed: Airtable Images is missing canonical hero URL ${heroUrl}`;
+}
+
 function mapAirtableToProduct(fields: Record<string, unknown>): ProductRow {
   const row: ProductRow = {};
 
@@ -255,7 +276,7 @@ function mapAirtableToProduct(fields: Record<string, unknown>): ProductRow {
   if (price !== undefined) row.price = price;
 
   const images = splitLines(fields["Images"]);
-  if (images.length > 0) row.images = images;
+  if (images.length > 0 && row.slug) row.images = normalizeHeroFirst(row.slug, images);
 
   const category = asString(fields["Category"]);
   if (category) row.category = category;
@@ -405,6 +426,13 @@ async function syncOne(
       log.action = "error";
       log.errors.push(`slug mismatch: airtable=${candidate.slug} arg=${slug}`);
       console.error(log.errors[0]);
+      return log;
+    }
+    const heroError = validateHeroFirst(slug, candidate.images);
+    if (heroError) {
+      log.action = "error";
+      log.errors.push(heroError);
+      console.error(`[error] ${slug}: ${heroError}`);
       return log;
     }
     const current = await readSupabaseRow(ctx.supabase, slug);

@@ -1,6 +1,6 @@
 const PILLARS = [
   "Hand-stitched in Marrakech",
-  "Ships in 3–5 days",
+  "DHL Express · 5–10 business days",
   "Free EU returns",
   "Full-grain leather · solid brass",
 ];

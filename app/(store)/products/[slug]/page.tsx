@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { notFound } from "next/navigation";
 import { createServerSupabase } from "@/lib/supabase/server";
 import { Product } from "@/lib/supabase/types";
@@ -11,6 +10,10 @@ import ProductGallery from "@/components/product/ProductGallery";
 import ProductDetails from "@/components/product/ProductDetails";
 import CraftStory from "@/components/product/CraftStory";
 import ProductCard from "@/components/store/ProductCard";
+import {
+  orderProductGalleryImages,
+  selectProductHeroImage,
+} from "@/lib/product-image-presentation";
 
 async function getProduct(slug: string): Promise<Product | null> {
   if (HIDDEN_SKUS.has(slug)) return null;
@@ -109,7 +112,7 @@ export async function generateMetadata({
       title: product.title,
       description: product.description || `${product.title}. Handcrafted in Marrakech.`,
       url: `/products/${product.slug}`,
-      images: product.images?.[0] ? [product.images[0]] : [],
+      images: selectProductHeroImage(product) ? [selectProductHeroImage(product)!] : [],
     },
   };
 }
@@ -131,6 +134,7 @@ export default async function ProductPage({
   if (!product) notFound();
 
   const related = await getRelatedProducts(product.category, product.slug);
+  const galleryImages = orderProductGalleryImages(product);
 
   const productLd = {
     "@context": "https://schema.org",
@@ -138,7 +142,7 @@ export default async function ProductPage({
     name: product.title,
     description:
       product.description || `${product.title}. Handcrafted in Marrakech.`,
-    image: product.images?.slice(0, 5) ?? [],
+    image: galleryImages.slice(0, 5),
     sku: product.slug,
     brand: { "@type": "Brand", name: "Maison Tanneurs" },
     category: product.category,
@@ -159,17 +163,17 @@ export default async function ProductPage({
 
   return (
     <main>
-      <Script
+      <script
         id={`product-ld-${product.slug}`}
         type="application/ld+json"
-        strategy="beforeInteractive"
-      >
-        {JSON.stringify(productLd)}
-      </Script>
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productLd).replace(/</g, "\\u003c"),
+        }}
+      />
       {/* Product layout: gallery + details */}
       <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] pt-[clamp(88px,10vw,116px)]">
         {/* Gallery — left */}
-        <ProductGallery images={product.images} title={product.title} />
+        <ProductGallery images={galleryImages} title={product.title} />
 
         {/* Details — right */}
         <ProductDetails product={product} />
@@ -196,7 +200,7 @@ export default async function ProductPage({
                 key={p.id}
                 title={p.title}
                 price={p.price}
-                image={p.images[0] || "/products/product-04.png"}
+                image={selectProductHeroImage(p) || "/products/product-04.png"}
                 slug={p.slug}
                 category={p.category}
               />

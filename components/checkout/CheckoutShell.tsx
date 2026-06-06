@@ -134,11 +134,11 @@ export default function CheckoutShell() {
 
   useEffect(() => {
     if (items.length === 0) {
-      setStatus("empty");
+      queueMicrotask(() => setStatus("empty"));
       return;
     }
     if (!publicKey) {
-      setStatus("missing-key");
+      queueMicrotask(() => setStatus("missing-key"));
       return;
     }
 

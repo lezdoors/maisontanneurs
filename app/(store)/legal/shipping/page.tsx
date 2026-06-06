@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Shipping — Maison Tanneurs",
   description:
-    "How Maison Tanneurs ships leather goods worldwide. Free worldwide shipping in three to five days by tracked express courier. Duty-free to the US and EU.",
+    "How Maison Tanneurs ships leather goods worldwide. Free worldwide shipping via DHL Express, with most orders arriving in 5 to 10 business days.",
   alternates: {
     canonical: "/legal/shipping",
   },
@@ -20,23 +20,21 @@ export default function ShippingPage() {
       <p>
         Every Maison Tanneurs bag is finished by hand in our Marrakech atelier.
         When you place an order, the artisan checks the piece, packs it,
-        and hands it to a tracked express courier — typically within 24 hours.
+        and hands it to DHL Express as soon as it is ready to leave the atelier.
       </p>
 
       <h2>Free worldwide shipping</h2>
       <p>
         Shipping is free on every order, to every destination. There is no
-        threshold and no surcharge for express service. You will see no
+        threshold and no surcharge for DHL Express service. You will see no
         shipping line item at checkout because there is no shipping cost
         to pay.
       </p>
 
       <h2>Delivery times</h2>
       <ul>
-        <li><strong>European Union, UK · 2–4 business days</strong> · tracked express courier direct from Marrakech.</li>
-        <li><strong>United States, Canada · 3–5 business days</strong> · tracked express courier, international priority service.</li>
-        <li><strong>Australia, Japan, Singapore · 4–6 business days</strong> · tracked express courier.</li>
-        <li><strong>Rest of world · 5–10 business days</strong> · tracked express service where available.</li>
+        <li><strong>Most destinations · 5–10 business days</strong> · DHL Express direct from Marrakech.</li>
+        <li><strong>Remote destinations</strong> · transit may take longer depending on local customs and carrier access.</li>
       </ul>
       <p>
         If a bag is part of a limited edition or made-to-order custom run,
@@ -54,16 +52,15 @@ export default function ShippingPage() {
 
       <h2>Customs and duties</h2>
       <p>
-        Orders to the <strong>United States</strong> enter duty-free under
-        the United States–Morocco Free Trade Agreement (in force since
-        2006), which removed tariffs on Moroccan-origin leather goods.
+        For the <strong>United States</strong>, Moroccan-origin leather goods
+        may qualify for preferential tariff treatment under the
+        United States–Morocco Free Trade Agreement.
       </p>
       <p>
-        Orders to the <strong>European Union and the United Kingdom</strong>{" "}
-        enter duty-free under the EU–Morocco Association Agreement and the
-        UK–Morocco Association Agreement respectively. EU import VAT is
-        already collected at checkout where applicable, so there is
-        nothing for the carrier to bill on arrival.
+        For the <strong>European Union and the United Kingdom</strong>, import
+        treatment depends on the destination and current customs rules. Where
+        applicable taxes are collected at checkout, your order summary will
+        show them before payment.
       </p>
       <p>
         For other destinations, any local import duty or tax is the

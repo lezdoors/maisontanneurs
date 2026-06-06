@@ -1,4 +1,5 @@
 import { Product } from "@/lib/supabase/types";
+import { selectProductHeroImage } from "@/lib/product-image-presentation";
 
 export interface CartItem {
   product_id: string;
@@ -30,7 +31,7 @@ export function productToCartItem(
   product: Product,
   quantity: number = 1,
 ): CartItem {
-  const primaryImage = Array.isArray(product.images) ? (product.images[0] ?? "") : "";
+  const primaryImage = selectProductHeroImage(product) ?? "";
 
   return {
     product_id: product.id,

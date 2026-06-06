@@ -51,8 +51,6 @@ export default async function DashboardPage() {
     },
     {},
   );
-  const totalRevenue = revenueByCurrency.USD ?? 0;
-
   const monthOrders = allOrders.filter(
     (o) => o.created_at >= monthStart
   );

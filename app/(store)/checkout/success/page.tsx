@@ -222,7 +222,7 @@ export default async function CheckoutSuccessPage({
             <TimelineStep
               n="03"
               title="Shipped — free worldwide"
-              body="Tracked express courier, direct from Marrakech. You'll receive a tracking number by email the moment the parcel leaves the atelier. Duty-free to the US and EU."
+              body="DHL Express, direct from Marrakech. You'll receive a tracking number by email the moment the parcel leaves the atelier. Most orders arrive in 5–10 business days."
             />
           </ol>
         </div>

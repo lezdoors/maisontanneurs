@@ -3,6 +3,7 @@ import Link from "next/link";
 import { STATIC_PRODUCTS } from "@/lib/products";
 import { HIDDEN_SKUS } from "@/lib/hidden-skus";
 import { getServerPriceFormatter } from "@/lib/price-server";
+import { selectProductHeroImage } from "@/lib/product-image-presentation";
 
 export default async function DropGrid() {
   const { format } = await getServerPriceFormatter();
@@ -25,7 +26,7 @@ export default async function DropGrid() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {pieces.map((p) => {
-            const primary = p.images[0];
+            const primary = selectProductHeroImage(p) || "/products/product-04.png";
             return (
               <Link
                 key={p.id}

@@ -8,7 +8,7 @@ import InTheirHands from "@/components/store/InTheirHands";
 export const metadata: Metadata = {
   title: "About Maison Tanneurs",
   description:
-    "A small leather house working out of a Marrakech atelier. Full-grain leather, hand-stitched, solid brass hardware. Free worldwide shipping in three to five days, duty-free to the US and EU.",
+    "A small leather house working out of a Marrakech atelier. Full-grain leather, hand-stitched, solid brass hardware. Free worldwide shipping via DHL Express.",
   alternates: {
     canonical: "/about",
   },
@@ -87,10 +87,9 @@ export default function AboutPage() {
             saddle-stitch.
           </p>
           <p className="text-[15px] font-sans font-light leading-[1.75] text-[var(--color-ink-soft)] mb-5">
-            Every bag ships direct from the atelier by tracked express
-            courier — free worldwide, three to five days to your door, and
-            duty-free to the US and EU under the Morocco-US and EU-Morocco
-            free trade agreements. No middlemen, no warehouses, no
+            Every bag ships direct from the atelier via DHL Express —
+            free worldwide, with most orders arriving in 5 to 10 business
+            days. No middlemen, no warehouses, no
             inventory we didn&apos;t make. What you carry was finished by
             the person who signed the lining.
           </p>
@@ -128,7 +127,7 @@ export default function AboutPage() {
             },
             {
               label: "Shipping",
-              text: "Free worldwide shipping by tracked express courier — three to five business days direct from Marrakech, duty-free to the US and EU. Tracking included on every order. Returns within 30 days, no questions asked.",
+              text: "Free worldwide shipping via DHL Express, direct from Marrakech. Most orders arrive in 5 to 10 business days, with tracking included on every order. Returns within 30 days, no questions asked.",
             },
           ].map((item) => (
             <div key={item.label}>

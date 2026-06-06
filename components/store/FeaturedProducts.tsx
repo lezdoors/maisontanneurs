@@ -6,6 +6,7 @@ import { useScrollReveal } from "@/lib/useScrollReveal";
 import { STATIC_PRODUCTS } from "@/lib/products";
 import { HIDDEN_SKUS } from "@/lib/hidden-skus";
 import { useCurrency } from "@/components/store/CurrencyProvider";
+import { selectProductHeroImage } from "@/lib/product-image-presentation";
 
 export default function FeaturedProducts() {
   useScrollReveal();
@@ -81,7 +82,7 @@ export default function FeaturedProducts() {
             >
               <div className={`relative w-full ${aspectClasses}`}>
                 <Image
-                  src={product.images[0]}
+                  src={selectProductHeroImage(product) || "/products/product-04.png"}
                   alt={product.title}
                   fill
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
