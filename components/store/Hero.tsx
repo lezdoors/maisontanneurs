@@ -6,8 +6,23 @@ import { useEffect, useRef, useState } from "react";
 import { useLocalizedHref, useT } from "@/lib/i18n-client";
 
 type Slide =
-  | { kind: "image"; src: string; alt: string; durationMs: number; objectPos: string }
-  | { kind: "video"; src: string; poster: string; alt: string; durationMs: number; objectPos: string };
+  | {
+      kind: "image";
+      src: string;
+      alt: string;
+      durationMs: number;
+      objectPos: string;
+      mobileObjectPos?: string;
+    }
+  | {
+      kind: "video";
+      src: string;
+      poster: string;
+      alt: string;
+      durationMs: number;
+      objectPos: string;
+      mobileObjectPos?: string;
+    };
 
 const SLIDES: Slide[] = [
   {
@@ -16,6 +31,7 @@ const SLIDES: Slide[] = [
     alt: "Atop the Marrakech Express — model with cognac shoulder bag against the Atlas sky",
     durationMs: 7000,
     objectPos: "50% 30%",
+    mobileObjectPos: "74% 42%",
   },
   {
     kind: "video",
@@ -71,11 +87,12 @@ export default function Hero() {
       <div className="absolute inset-0">
         {SLIDES.map((slide, i) => {
           const active = i === index;
-          const style: React.CSSProperties = {
+          const style = {
             opacity: active ? 1 : 0,
             transition: `opacity ${FADE_MS}ms cubic-bezier(0.4, 0, 0.2, 1)`,
-            objectPosition: slide.objectPos,
-          };
+            "--hero-object-position": slide.mobileObjectPos ?? slide.objectPos,
+            "--hero-object-position-desktop": slide.objectPos,
+          } as React.CSSProperties;
           if (slide.kind === "image") {
             return (
               <Image
@@ -86,7 +103,7 @@ export default function Hero() {
                 priority={i === 0}
                 loading={i === 0 ? "eager" : "lazy"}
                 sizes="100vw"
-                className="absolute inset-0 object-cover"
+                className="absolute inset-0 object-cover [object-position:var(--hero-object-position)] md:[object-position:var(--hero-object-position-desktop)]"
                 style={style}
               />
             );
@@ -95,7 +112,7 @@ export default function Hero() {
             <video
               key={slide.src}
               ref={videoRef}
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover [object-position:var(--hero-object-position)] md:[object-position:var(--hero-object-position-desktop)]"
               style={style}
               poster={slide.poster}
               preload="metadata"
