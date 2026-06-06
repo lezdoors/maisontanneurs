@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const ATELIER_IMAGE = "/brand/editorial/hands-handover-cognac.webp";
+const ATELIER_IMAGE = "/brand/editorial/atelier-bench-leather-tools.webp";
 const DETAIL_IMAGES = [
   {
-    src: "/brand/editorial/open-bag-passport.webp",
-    alt: "Open Maison Tanneurs leather bag with travel objects and passport on linen",
+    src: "/brand/editorial/atelier-cutting-table.webp",
+    alt: "Cutting table at the Marrakech atelier: leather, tools, and an artisan's hand cutting a panel",
   },
   {
-    src: "/brand/editorial/workbench-bag-gloves.webp",
-    alt: "Maison Tanneurs cognac leather bag inspected by hand on the atelier bench",
+    src: "/brand/editorial/atelier-hands-stitching.webp",
+    alt: "Weathered hands hand-finishing a cognac leather piece with a brass awl and waxed thread",
   },
 ];
 
@@ -24,7 +24,7 @@ export default function AtelierOrigin() {
         <div className="relative min-h-[52svh] overflow-hidden lg:col-span-7 lg:min-h-[92svh]">
           <Image
             src={ATELIER_IMAGE}
-            alt="A Maison Tanneurs cognac bag handed between atelier and client in warm window light"
+            alt="Patterns and cut panels of cognac leather spread across the Marrakech atelier bench with brass tools in raking window light"
             fill
             sizes="(min-width: 1024px) 58vw, 100vw"
             className="object-cover"
@@ -43,7 +43,7 @@ export default function AtelierOrigin() {
               Field note
             </p>
             <p className="mt-1 font-display text-[22px] leading-none text-[var(--color-ink)]">
-              Bench handover, Marrakech
+              Cutting bench, Marrakech
             </p>
           </div>
         </div>
