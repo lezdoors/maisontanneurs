@@ -43,6 +43,13 @@ export const HIDDEN_SKUS: ReadonlySet<string> = new Set([
   // hero is mapped in lib/product-image-presentation.ts.
   "medina-rucksack-flap-chocolate",
 
+  // Supabase-only rows currently marked featured but missing required scale
+  // lifestyle shots. Hide from storefront/feed until approved galleries exist.
+  "medina-cargo-rucksack-cognac",
+  "medina-crossbody-clasp-teal",
+  "medina-market-tote-cognac",
+  "medina-zigzag-tote-chocolate",
+
   // Group B — only macro shots in Storage, no canonical hero. Macros are
   // gallery-only per Turbo's convention; audit rejects them as images[0].
   // Stay hidden until a pdp-white or scale shot lands.
