@@ -2,13 +2,65 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { useLocalizedHref, useT } from "@/lib/i18n-client";
 
-const HERO_IMAGE = "/brand/hero/mt-hero-weekender-desert-product-first-16x9.webp";
+type Slide =
+  | { kind: "image"; src: string; alt: string; durationMs: number; objectPos: string }
+  | { kind: "video"; src: string; poster: string; alt: string; durationMs: number; objectPos: string };
+
+const SLIDES: Slide[] = [
+  {
+    kind: "image",
+    src: "/brand/hero/mt-hero-train.webp",
+    alt: "Atop the Marrakech Express — model with cognac shoulder bag against the Atlas sky",
+    durationMs: 7000,
+    objectPos: "50% 30%",
+  },
+  {
+    kind: "video",
+    src: "/videos/mt-hero-medina.mp4",
+    poster: "/videos/mt-hero-medina-poster.jpg",
+    alt: "Traveler in white linen walking the dunes with a cognac bag at golden hour",
+    durationMs: 8000,
+    objectPos: "50% 40%",
+  },
+  {
+    kind: "image",
+    src: "/brand/hero/mt-hero-berber.webp",
+    alt: "Berber traveler in indigo on the dune crest, cognac briefcase at sundown",
+    durationMs: 7000,
+    objectPos: "50% 50%",
+  },
+];
+
+const FADE_MS = 900;
 
 export default function Hero() {
   const t = useT();
   const href = useLocalizedHref();
+  const [index, setIndex] = useState(0);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const duration = SLIDES[index].durationMs;
+    const id = window.setTimeout(() => {
+      setIndex((i) => (i + 1) % SLIDES.length);
+    }, duration);
+    return () => window.clearTimeout(id);
+  }, [index]);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (SLIDES[index].kind === "video") {
+      v.currentTime = 0;
+      const p = v.play();
+      if (p && typeof p.catch === "function") p.catch(() => {});
+    } else {
+      v.pause();
+    }
+  }, [index]);
 
   return (
     <section
@@ -17,20 +69,51 @@ export default function Hero() {
       aria-label="Maison Tanneurs — hand-stitched leather, Marrakech to the road"
     >
       <div className="absolute inset-0">
-        <Image
-          src={HERO_IMAGE}
-          alt="Atlas Weekender duffle on Saharan flagstone, traveler in the distance"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[92%_45%] md:object-[62%_50%]"
-        />
+        {SLIDES.map((slide, i) => {
+          const active = i === index;
+          const style: React.CSSProperties = {
+            opacity: active ? 1 : 0,
+            transition: `opacity ${FADE_MS}ms cubic-bezier(0.4, 0, 0.2, 1)`,
+            objectPosition: slide.objectPos,
+          };
+          if (slide.kind === "image") {
+            return (
+              <Image
+                key={slide.src}
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                priority={i === 0}
+                loading={i === 0 ? "eager" : "lazy"}
+                sizes="100vw"
+                className="absolute inset-0 object-cover"
+                style={style}
+              />
+            );
+          }
+          return (
+            <video
+              key={slide.src}
+              ref={videoRef}
+              className="absolute inset-0 h-full w-full object-cover"
+              style={style}
+              poster={slide.poster}
+              preload="metadata"
+              muted
+              loop
+              playsInline
+              aria-label={slide.alt}
+            >
+              <source src={slide.src} type="video/mp4" />
+            </video>
+          );
+        })}
         <div
           aria-hidden
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to right, rgba(5,5,4,0.55) 0%, rgba(5,5,4,0.18) 38%, rgba(5,5,4,0) 62%), linear-gradient(to top, rgba(5,5,4,0.42) 0%, rgba(5,5,4,0.10) 42%, rgba(5,5,4,0) 72%)",
+              "linear-gradient(to right, rgba(5,5,4,0.55) 0%, rgba(5,5,4,0.18) 38%, rgba(5,5,4,0) 62%), linear-gradient(to top, rgba(5,5,4,0.48) 0%, rgba(5,5,4,0.14) 42%, rgba(5,5,4,0) 72%)",
           }}
         />
       </div>
@@ -57,7 +140,7 @@ export default function Hero() {
             <p
               className="mt-8 max-w-[44ch]"
               style={{
-                color: "rgba(255,255,255,0.86)",
+                color: "rgba(255,255,255,0.88)",
                 fontFamily: "var(--font-display)",
                 fontStyle: "italic",
                 fontSize: "clamp(17px, 1.45vw, 22px)",
