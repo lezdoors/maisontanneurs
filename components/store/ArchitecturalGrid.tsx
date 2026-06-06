@@ -216,6 +216,8 @@ function ProductCell({ product, index }: { product: Product; index: number }) {
             priority={index <= 3}
             className={productImageClass(hero)}
             style={{
+              padding: 0,
+              transform: "scale(1)",
               transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
             }}
           />
