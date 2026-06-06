@@ -33,9 +33,10 @@ export default function CookieBanner() {
   const isProductPage = pathname.startsWith("/products/");
 
   useEffect(() => {
+    const showDelay = isProductPage ? 8000 : 2200;
     const showTimer = window.setTimeout(() => {
       if (getConsent() === null) setVisible(true);
-    }, 2200);
+    }, showDelay);
 
     // Hide if another tab accepts/rejects
     const onChange = () => {
@@ -46,7 +47,7 @@ export default function CookieBanner() {
       window.clearTimeout(showTimer);
       window.removeEventListener("storage", onChange);
     };
-  }, []);
+  }, [isProductPage]);
 
   if (!visible) return null;
 
