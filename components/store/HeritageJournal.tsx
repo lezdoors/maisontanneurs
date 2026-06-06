@@ -5,12 +5,12 @@ const STORIES = [
   {
     kicker: "Travel",
     title: "The object should hold shape before it goes anywhere.",
-    image: "/brand/editorial/open-bag-passport.webp",
+    image: "/brand/editorial/world-rooftop-table.webp",
   },
   {
     kicker: "Bench",
     title: "A hand check tells more than a slogan.",
-    image: "/brand/editorial/workbench-bag-gloves.webp",
+    image: "/brand/editorial/proof-brass-clasp.webp",
   },
   {
     kicker: "Edition",
