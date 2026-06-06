@@ -30,10 +30,11 @@ export default function CookieBanner() {
   const pathname = usePathname();
   const t = useT();
   const href = useLocalizedHref();
+  const isCommercePage = pathname.startsWith("/products");
   const isProductPage = pathname.startsWith("/products/");
 
   useEffect(() => {
-    const showDelay = isProductPage ? 8000 : 2200;
+    const showDelay = isCommercePage ? 8000 : 2200;
     const showTimer = window.setTimeout(() => {
       if (getConsent() === null) setVisible(true);
     }, showDelay);
@@ -47,7 +48,7 @@ export default function CookieBanner() {
       window.clearTimeout(showTimer);
       window.removeEventListener("storage", onChange);
     };
-  }, [isProductPage]);
+  }, [isCommercePage]);
 
   if (!visible) return null;
 
