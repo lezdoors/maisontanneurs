@@ -12,7 +12,7 @@ const SPECS: Spec[] = [
   { k: "Care", v: "Repairable", note: "Edges, stitches, and lining can be serviced" },
 ];
 
-const PLATE_SRC = "/brand/section/atelier-bw-clean.webp";
+const PLATE_SRC = "/brand/section/atelier-bw-plate.webp";
 
 export default function ArtisanDossier() {
   return (
