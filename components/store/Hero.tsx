@@ -59,6 +59,8 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
     const duration = SLIDES[index].durationMs;
     const id = window.setTimeout(() => {
       setIndex((i) => (i + 1) % SLIDES.length);
@@ -69,7 +71,8 @@ export default function Hero() {
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    if (SLIDES[index].kind === "video") {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (SLIDES[index].kind === "video" && !reduceMotion) {
       v.currentTime = 0;
       const p = v.play();
       if (p && typeof p.catch === "function") p.catch(() => {});

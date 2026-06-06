@@ -80,7 +80,7 @@ const COLUMNS: Cell[][] = [
 export default function AtelierGallery() {
   return (
     <section
-      id="atelier"
+      id="atelier-gallery"
       aria-label="Atelier"
       className="w-full bg-[var(--color-bg)] text-[var(--color-ink)] border-t border-[#e5e5e5]"
     >
