@@ -191,14 +191,14 @@ export default function CookieBanner() {
           .cookie-banner {
             left: 0 !important;
             right: 0 !important;
-            top: 76px !important;
-            bottom: auto !important;
+            top: auto !important;
+            bottom: 0 !important;
             width: auto !important;
             border-left: 0 !important;
             border-right: 0 !important;
             border-top: 1px solid rgba(245, 239, 230, 0.12) !important;
-            border-bottom: 1px solid rgba(245, 239, 230, 0.12) !important;
-            padding: 6px 10px calc(6px + env(safe-area-inset-bottom)) !important;
+            border-bottom: 0 !important;
+            padding: 8px 12px calc(8px + env(safe-area-inset-bottom)) !important;
           }
           .cookie-banner-inner {
             display: grid !important;
@@ -231,8 +231,8 @@ export default function CookieBanner() {
             letter-spacing: 0.1em !important;
           }
           .cookie-banner-pdp {
-            top: 76px !important;
-            bottom: auto !important;
+            top: auto !important;
+            bottom: calc(86px + env(safe-area-inset-bottom)) !important;
             border-bottom: 1px solid rgba(245, 239, 230, 0.12) !important;
           }
           @media (max-width: 360px) {
