@@ -181,13 +181,14 @@ export default function Navbar() {
             className="flex flex-col items-center text-center select-none"
           >
             <span
-              className="leading-none"
+              className="leading-none whitespace-nowrap"
               style={{
                 fontFamily: "var(--font-wordmark)",
-                // Bodoni Moda SC is a small-caps face; sized slightly smaller
-                // than the prior Instrument Serif to avoid crowding the header.
-                fontSize: scrolled ? "clamp(18px, 2.1vw, 26px)" : "clamp(22px, 2.9vw, 34px)",
-                letterSpacing: "0.16em",
+                // Bodoni Moda SC is a small-caps face; clamp starts smaller
+                // and uses tighter letter-spacing at sub-400px so "BAG 0"
+                // stays comfortably inside the viewport on iPhone SE.
+                fontSize: scrolled ? "clamp(15px, 2vw, 26px)" : "clamp(18px, 2.7vw, 34px)",
+                letterSpacing: "clamp(0.10em, 0.18vw, 0.16em)",
                 fontWeight: 400,
                 transition: "font-size 500ms cubic-bezier(0.4,0,0.2,1)",
               }}

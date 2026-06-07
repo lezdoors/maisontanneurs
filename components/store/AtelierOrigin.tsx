@@ -20,29 +20,23 @@ export default function AtelierOrigin() {
       aria-label="Maison Tanneurs bags in real travel settings"
       className="w-full bg-[var(--color-paper)] text-[var(--color-ink)]"
     >
-      <div className="grid min-h-[92svh] grid-cols-1 lg:grid-cols-12">
-        <div className="relative min-h-[44svh] overflow-hidden lg:col-span-5 lg:min-h-[92svh]">
-          <Image
-            src={ATELIER_IMAGE}
-            alt="Pencil sketch of a structured Maison Tanneurs satchel handbag with buckled front straps"
-            fill
-            sizes="(min-width: 1024px) 58vw, 100vw"
-            className="object-cover"
-            style={{ objectPosition: "center center" }}
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(90deg, rgba(255,255,255,0.00), rgba(255,255,255,0.18)), linear-gradient(to top, rgba(10,10,9,0.22), rgba(10,10,9,0.00) 55%)",
-            }}
-          />
-          <div className="absolute bottom-5 left-5 hidden border border-white/45 bg-white/84 px-4 py-3 backdrop-blur-sm md:block">
+      <div className="grid grid-cols-1 lg:grid-cols-12 lg:min-h-[72svh]">
+        <div className="relative overflow-hidden bg-[var(--color-paper)] lg:col-span-5 px-6 py-10 sm:px-10 lg:px-10 lg:py-12">
+          <div className="relative h-[42svh] sm:h-[52svh] lg:h-full lg:min-h-[58svh]">
+            <Image
+              src={ATELIER_IMAGE}
+              alt="Pencil sketch of a structured Maison Tanneurs satchel handbag with buckled front straps"
+              fill
+              sizes="(min-width: 1024px) 42vw, 100vw"
+              className="object-contain"
+              style={{ objectPosition: "center center" }}
+            />
+          </div>
+          <div className="absolute bottom-6 left-6 hidden border border-[var(--color-ink)]/15 bg-white px-4 py-3 md:block">
             <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--color-ink-muted)]">
               Field note
             </p>
-            <p className="mt-1 font-display text-[22px] leading-none text-[var(--color-ink)]">
+            <p className="mt-1 font-display text-[18px] leading-none text-[var(--color-ink)]">
               Design sketch, Marrakech
             </p>
           </div>
