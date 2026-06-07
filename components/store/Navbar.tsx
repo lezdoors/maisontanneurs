@@ -7,11 +7,24 @@ import { useCart } from "@/components/store/CartProvider";
 import { LOCALES, LOCALE_LABELS } from "@/lib/i18n";
 import { useLocale, useLocalizedHref, useSwitchLocaleHref, useT } from "@/lib/i18n-client";
 
-const NAV_LEFT = [
+// Centered Létrange-pattern nav. Order is deliberate:
+// Collection (commerce) → Savoir-faire (story) → Boutique (visit) → Bespoke (custom) → Trade (B2B) → Contact (always last).
+const NAV_ITEMS = [
   { labelKey: "nav.collection", href: "/products" },
   { labelKey: "nav.savoirFaire", href: "/about#atelier" },
+  { labelKey: "nav.boutique", href: "/boutique" },
+  { labelKey: "nav.bespoke", href: "/bespoke" },
+  { labelKey: "nav.trade", href: "/trade" },
   { labelKey: "nav.contact", href: "/contact" },
 ];
+
+function isItemActive(itemHref: string, pathname: string, locale: string): boolean {
+  // Strip locale prefix from pathname for comparison
+  const stripped = pathname.replace(new RegExp(`^/(${LOCALES.join("|")})(?=/|$)`), "") || "/";
+  const base = itemHref.split("#")[0]!;
+  if (base === "/") return stripped === "/";
+  return stripped === base || stripped.startsWith(base + "/");
+}
 
 export default function Navbar() {
   const router = useRouter();
@@ -33,6 +46,7 @@ export default function Navbar() {
   const navInk = onHero ? "text-white" : "text-[#0f0f0f]";
   const navMuted = onHero ? "text-white/72" : "text-[#0f0f0f]/70";
   const navRule = onHero ? "border-white/20" : "border-[#e5e5e5]";
+  const underlineColor = onHero ? "rgba(255,255,255,0.85)" : "rgba(15,15,15,0.85)";
 
   useEffect(() => {
     if (!drawer) return;
@@ -83,7 +97,6 @@ export default function Navbar() {
       prevCartCountRef.current = cartCount;
       return;
     }
-
     setCartPulse(true);
     const timer = window.setTimeout(() => setCartPulse(false), 350);
     prevCartCountRef.current = cartCount;
@@ -101,147 +114,176 @@ export default function Navbar() {
   return (
     <>
       <header
-      className={`fixed top-0 z-50 w-full border-b transition-colors duration-500 ${
-        onHero ? "bg-transparent text-white border-white/20" : "bg-white/95 text-[#0f0f0f] border-[#e5e5e5] backdrop-blur"
-      }`}
-    >
-      <div className={`hidden md:flex h-7 items-center justify-between px-6 border-b ${navRule} ${navMuted}`}>
-        <span className="tech-meta">{t("nav.shipping")}</span>
-        <span className="tech-meta flex items-center gap-2" aria-label="Language selector">
-          {LOCALES.map((l, i) => (
-            <span key={l} className="inline-flex items-center gap-2">
-              {i > 0 && <span aria-hidden>·</span>}
-              <Link
-                href={switchLocaleHref(l)}
-                hrefLang={l}
-                className={l === locale ? navInk : "hover:opacity-70"}
-                aria-current={l === locale ? "true" : undefined}
-              >
-                {LOCALE_LABELS[l]}
-              </Link>
-            </span>
-          ))}
-        </span>
-        <span className="tech-meta">{t("nav.edition")}</span>
-      </div>
-
-      <div className={`grid grid-cols-3 items-center px-5 md:px-6 transition-[height] duration-500 ${scrolled ? "h-12" : "h-14"}`}>
-        <nav className="flex items-center gap-5 md:gap-8">
-          <button
-            type="button"
-            onClick={() => setDrawer((v) => !v)}
-            aria-label="Open menu"
-            aria-expanded={drawer}
-            className={`md:hidden inline-flex h-11 w-11 -ml-2 items-center justify-center relative z-[60] ${navInk}`}
-            style={{ touchAction: "manipulation", WebkitTapHighlightColor: "transparent" }}
-          >
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.75"
-              aria-hidden
-            >
-              <path d="M3 6h18M3 12h18M3 18h18" />
-            </svg>
-          </button>
-
-          <Link
-            href={href("/")}
-            aria-label="Maison Tanneurs"
-            className="hidden md:flex h-9 w-9 items-center justify-center"
-          >
-            <img
-              src="/brand/logos/mt-monogram.png"
-              alt=""
-              aria-hidden="true"
-              className={`h-8 w-8 object-contain transition-[filter] duration-500 ${onHero ? "invert" : ""}`}
-              width={32}
-              height={32}
-            />
-          </Link>
-
-          <div className="hidden md:flex items-center gap-8">
-            {NAV_LEFT.map((l) => (
-              <Link
-                key={l.labelKey}
-                href={href(l.href)}
-              className="tech-label hover:opacity-60"
-              >
-                {t(l.labelKey)}
-              </Link>
+        className={`fixed top-0 z-50 w-full border-b transition-colors duration-500 ${
+          onHero
+            ? "bg-transparent text-white border-white/15"
+            : "bg-white/95 text-[#0f0f0f] border-[#e5e5e5] backdrop-blur"
+        }`}
+        style={{ ["--mt-nav-underline" as string]: underlineColor }}
+      >
+        {/* Row 1 — thin announcement strip with language switcher */}
+        <div
+          className={`hidden md:flex h-7 items-center justify-between px-6 border-b ${navRule} ${navMuted}`}
+        >
+          <span className="tech-meta">{t("nav.shipping")}</span>
+          <span className="tech-meta flex items-center gap-2" aria-label="Language selector">
+            {LOCALES.map((l, i) => (
+              <span key={l} className="inline-flex items-center gap-2">
+                {i > 0 && <span aria-hidden>·</span>}
+                <Link
+                  href={switchLocaleHref(l)}
+                  hrefLang={l}
+                  className={l === locale ? navInk : "hover:opacity-70"}
+                  aria-current={l === locale ? "true" : undefined}
+                >
+                  {LOCALE_LABELS[l]}
+                </Link>
+              </span>
             ))}
-          </div>
-        </nav>
+          </span>
+          <span className="tech-meta">{t("nav.edition")}</span>
+        </div>
 
-        <div className="flex justify-center">
+        {/* Row 2 — wordmark + utilities */}
+        <div
+          className={`grid grid-cols-[1fr_auto_1fr] items-center px-5 md:px-6 transition-[padding,height] duration-500 ${
+            scrolled ? "py-2 md:py-3" : "py-4 md:py-6"
+          }`}
+        >
+          {/* Left: mobile hamburger only */}
+          <div className="flex items-center justify-start">
+            <button
+              type="button"
+              onClick={() => setDrawer((v) => !v)}
+              aria-label={t("nav.menu")}
+              aria-expanded={drawer}
+              className={`md:hidden inline-flex h-11 w-11 -ml-2 items-center justify-center relative z-[60] ${navInk}`}
+              style={{ touchAction: "manipulation", WebkitTapHighlightColor: "transparent" }}
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.75"
+                aria-hidden
+              >
+                <path d="M3 6h18M3 12h18M3 18h18" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Center: wordmark + subtitle */}
           <Link
             href={href("/")}
             aria-label="Maison Tanneurs home"
-            className="font-medium"
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "clamp(14px, 1.4vw, 18px)",
-              letterSpacing: "clamp(0.2em, 1vw, 0.34em)",
-            }}
+            className="flex flex-col items-center text-center select-none"
           >
-            MAISON&nbsp;&nbsp;TANNEURS
-          </Link>
-        </div>
-
-        <div className="flex items-center justify-end gap-5 md:gap-6">
-          <button
-            type="button"
-            onClick={() => setSearchOpen((v) => !v)}
-            aria-label={t("nav.search")}
-            className="hidden md:inline-flex tech-label hover:opacity-60"
-          >
-            {t("nav.search")}
-          </button>
-          <button
-            type="button"
-            onClick={openCart}
-            aria-label={t("nav.bag")}
-            className="tech-label inline-flex items-center gap-2 hover:opacity-60"
-          >
-            <span>{t("nav.bag")}</span>
             <span
-              className={`inline-flex min-w-5 h-5 px-1.5 items-center justify-center rounded-full border text-[10px] leading-none transition-transform duration-200 ${
-                cartPulse ? "scale-110" : "scale-100"
-              } ${cartCount > 0 ? "bg-[#0f0f0f] text-white border-[#0f0f0f]" : onHero ? "bg-white/10 text-white border-white/35" : "bg-white text-[#0f0f0f] border-[#0f0f0f]/15"}`}
+              className="font-medium leading-none"
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: scrolled ? "clamp(20px, 2.4vw, 28px)" : "clamp(24px, 3.2vw, 38px)",
+                letterSpacing: "0.18em",
+                fontWeight: 500,
+                transition: "font-size 500ms cubic-bezier(0.4,0,0.2,1)",
+              }}
             >
-              {cartCount}
+              MAISON&nbsp;&nbsp;TANNEURS
             </span>
-          </button>
-        </div>
-      </div>
+            <span
+              className={`tech-meta mt-1 ${navMuted}`}
+              style={{
+                fontSize: scrolled ? "8.5px" : "9.5px",
+                letterSpacing: "0.32em",
+                transition: "font-size 500ms cubic-bezier(0.4,0,0.2,1)",
+              }}
+            >
+              {t("nav.subtitle")}
+            </span>
+          </Link>
 
-      {searchOpen && (
-        <div className="border-t border-[#e5e5e5] bg-white px-6 py-6">
-          <form
-            onSubmit={submitSearch}
-            className="max-w-[640px] mx-auto flex items-stretch border-b border-[#0f0f0f]"
-          >
-            <input
-              autoFocus
-              type="search"
-              placeholder={t("search.placeholder")}
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              className="flex-1 py-3 text-[15px] bg-transparent outline-none text-[#0f0f0f] placeholder:text-[#6b6b6b]"
-              style={{ letterSpacing: "-0.01em" }}
-            />
-            <button type="submit" className="tech-label px-4 text-[#0f0f0f]">
+          {/* Right: utilities */}
+          <div className="flex items-center justify-end gap-5 md:gap-6">
+            <button
+              type="button"
+              onClick={() => setSearchOpen((v) => !v)}
+              aria-label={t("nav.search")}
+              className="hidden md:inline-flex tech-label hover:opacity-60"
+            >
               {t("nav.search")}
             </button>
-          </form>
+            <button
+              type="button"
+              onClick={openCart}
+              aria-label={t("nav.bag")}
+              className="tech-label inline-flex items-center gap-2 hover:opacity-60"
+            >
+              <span>{t("nav.bag")}</span>
+              <span
+                className={`inline-flex min-w-5 h-5 px-1.5 items-center justify-center rounded-full border text-[10px] leading-none transition-transform duration-200 ${
+                  cartPulse ? "scale-110" : "scale-100"
+                } ${cartCount > 0 ? "bg-[#0f0f0f] text-white border-[#0f0f0f]" : onHero ? "bg-white/10 text-white border-white/35" : "bg-white text-[#0f0f0f] border-[#0f0f0f]/15"}`}
+              >
+                {cartCount}
+              </span>
+            </button>
+          </div>
         </div>
-      )}
-    </header>
 
-    {drawer && (
+        {/* Row 3 — horizontal nav with sliding underline */}
+        <nav
+          className={`hidden md:flex justify-center items-center border-t ${navRule} transition-[height] duration-500 ${
+            scrolled ? "h-9" : "h-11"
+          }`}
+          aria-label="Primary"
+        >
+          <ul className="flex items-center gap-[clamp(28px,3.6vw,56px)]">
+            {NAV_ITEMS.map((item) => {
+              const active = isItemActive(item.href, pathname, locale);
+              return (
+                <li key={item.labelKey} className="relative">
+                  <Link
+                    href={href(item.href)}
+                    className={`mt-nav-link tech-label inline-block py-2 ${navInk}`}
+                    aria-current={active ? "page" : undefined}
+                    data-active={active ? "true" : undefined}
+                  >
+                    {t(item.labelKey)}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* Search overlay */}
+        {searchOpen && (
+          <div className="border-t border-[#e5e5e5] bg-white px-6 py-6">
+            <form
+              onSubmit={submitSearch}
+              className="max-w-[640px] mx-auto flex items-stretch border-b border-[#0f0f0f]"
+            >
+              <input
+                autoFocus
+                type="search"
+                placeholder={t("search.placeholder")}
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+                className="flex-1 py-3 text-[15px] bg-transparent outline-none text-[#0f0f0f] placeholder:text-[#6b6b6b]"
+                style={{ letterSpacing: "-0.01em" }}
+              />
+              <button type="submit" className="tech-label px-4 text-[#0f0f0f]">
+                {t("nav.search")}
+              </button>
+            </form>
+          </div>
+        )}
+      </header>
+
+      {/* Mobile drawer */}
+      {drawer && (
         <>
           <div
             onClick={() => setDrawer(false)}
@@ -256,9 +298,9 @@ export default function Navbar() {
               <span
                 className="font-medium"
                 style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: "13px",
-                  letterSpacing: "0.28em",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "18px",
+                  letterSpacing: "0.18em",
                 }}
               >
                 MAISON&nbsp;&nbsp;TANNEURS
@@ -283,10 +325,10 @@ export default function Navbar() {
             </div>
 
             <nav className="px-6 pt-10 pb-8 flex flex-col">
-              {NAV_LEFT.map((l) => (
+              {NAV_ITEMS.map((item) => (
                 <Link
-                  key={l.labelKey}
-                  href={href(l.href)}
+                  key={item.labelKey}
+                  href={href(item.href)}
                   onClick={() => setDrawer(false)}
                   className="py-4 border-b border-[#e5e5e5] text-[#0f0f0f]"
                   style={{
@@ -296,7 +338,7 @@ export default function Navbar() {
                     fontWeight: 400,
                   }}
                 >
-                  {t(l.labelKey)}
+                  {t(item.labelKey)}
                 </Link>
               ))}
 
@@ -357,7 +399,7 @@ export default function Navbar() {
                   lineHeight: 1.5,
                 }}
               >
-                Marrakech atelier · stitching leather since 1962.
+                {t("nav.subtitle")}
               </p>
             </nav>
           </aside>
