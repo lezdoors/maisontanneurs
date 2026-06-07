@@ -9,6 +9,7 @@ import {
   Newsreader,
   Noto_Naskh_Arabic,
 } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import CookieBanner from "@/components/store/CookieBanner";
 import ConsentedClarity from "@/components/store/ConsentedClarity";
@@ -83,6 +84,21 @@ const arabic = Noto_Naskh_Arabic({
   weight: ["400", "500", "600", "700"],
 });
 
+// Bodoni Moda SC — self-hosted variable font used as a restrained display
+// accent for the centered MAISON TANNEURS wordmark only (Navbar header,
+// mobile drawer header, navigation transition indicator). Body/UI/buttons
+// stay on Inter; editorial headings stay on Instrument Serif.
+const bodoniModaSC = localFont({
+  src: [
+    {
+      path: "../public/fonts/BodoniModaSC-VariableFont.ttf",
+      style: "normal",
+    },
+  ],
+  variable: "--font-bodoni-sc",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
     default: "Maison Tanneurs — Hand-stitched leather from Marrakech",
@@ -152,6 +168,7 @@ export default async function RootLayout({
         inter.variable,
         montserrat.variable,
         arabic.variable,
+        bodoniModaSC.variable,
       ].join(" ")}
     >
       <body>

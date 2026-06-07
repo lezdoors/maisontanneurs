@@ -176,10 +176,10 @@ function NavTransitionIndicatorInner() {
     >
       <span
         style={{
-          fontFamily: "var(--font-display)",
-          fontWeight: 500,
-          fontSize: "clamp(20px, 2.6vw, 30px)",
-          letterSpacing: "0.18em",
+          fontFamily: "var(--font-wordmark)",
+          fontWeight: 400,
+          fontSize: "clamp(18px, 2.3vw, 28px)",
+          letterSpacing: "0.16em",
           color: "var(--color-ink)",
           lineHeight: 1,
         }}

@@ -181,12 +181,14 @@ export default function Navbar() {
             className="flex flex-col items-center text-center select-none"
           >
             <span
-              className="font-medium leading-none"
+              className="leading-none"
               style={{
-                fontFamily: "var(--font-display)",
-                fontSize: scrolled ? "clamp(20px, 2.4vw, 28px)" : "clamp(24px, 3.2vw, 38px)",
-                letterSpacing: "0.18em",
-                fontWeight: 500,
+                fontFamily: "var(--font-wordmark)",
+                // Bodoni Moda SC is a small-caps face; sized slightly smaller
+                // than the prior Instrument Serif to avoid crowding the header.
+                fontSize: scrolled ? "clamp(18px, 2.1vw, 26px)" : "clamp(22px, 2.9vw, 34px)",
+                letterSpacing: "0.16em",
+                fontWeight: 400,
                 transition: "font-size 500ms cubic-bezier(0.4,0,0.2,1)",
               }}
             >
@@ -296,11 +298,11 @@ export default function Navbar() {
           >
             <div className="flex items-center justify-between px-6 py-5 border-b border-[#e5e5e5]">
               <span
-                className="font-medium"
                 style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "18px",
-                  letterSpacing: "0.18em",
+                  fontFamily: "var(--font-wordmark)",
+                  fontSize: "16px",
+                  letterSpacing: "0.16em",
+                  fontWeight: 400,
                 }}
               >
                 MAISON&nbsp;&nbsp;TANNEURS

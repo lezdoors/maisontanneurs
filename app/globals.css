@@ -127,6 +127,10 @@
   --font-sans:    var(--font-inter), "Helvetica Neue", Arial, sans-serif;
   --font-serif:   var(--font-display);
   --font-mono:    "SF Mono", ui-monospace, "Menlo", "Consolas", monospace;
+  /* Brand wordmark — restrained Bodoni Moda SC display only, used on the
+     centered Navbar wordmark and the navigation transition indicator.
+     Editorial body headings keep --font-display (Instrument Serif). */
+  --font-wordmark: var(--font-bodoni-sc), "Bodoni 72", "Didot", "Bodoni Moda", "Times New Roman", serif;
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0.05, 0.36, 1);
