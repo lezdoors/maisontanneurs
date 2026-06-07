@@ -104,8 +104,8 @@ export default function AboutPage() {
       <section className="px-6 md:px-10 pb-8 bg-[var(--color-bg)]">
         <div className="relative aspect-[21/9] overflow-hidden bg-[var(--color-bg-alt)] max-w-[1400px] mx-auto">
           <Image
-            src="https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/heritage-rucksack-scale.webp"
-            alt="Heritage Rucksack in cognac full-grain leather"
+            src="/brand/editorial/brand-bag-white-drape-plinth-hd.webp"
+            alt="Cognac Maison Tanneurs handbag on a pale stone plinth against a white draped atelier wall"
             fill
             className="object-cover"
             sizes="(min-width: 1024px) 1400px, 100vw"
