@@ -1,24 +1,21 @@
 // Phase D — Supabase Storage alignment.
 //
-// For each Airtable Product with at least one Approved + Quality-Approved
-// asset, ensure that:
-//   1. The asset Asset URL is reachable (HTTP 200) in Supabase Storage.
-//   2. The matching Supabase products.images[0] points at that URL
-//      (the canonical hero).
-//   3. images[] ordering follows the Tanneurs convention (closest
-//      analogue to feedback_image_array_ordering):
-//        position 0: AT-approved hero (typically *-pdp-white.webp)
+// For each Airtable Product, ensure that:
+//   1. The Drive Hero-derived canonical URL is reachable (HTTP 200) in
+//      Supabase Storage.
+//   2. Supabase products.images[0] points at that URL.
+//   3. images[] ordering follows the Tanneurs convention:
+//        position 0: Drive Hero-derived {slug}-pdp-white.webp
 //        position 1: -scale.webp if present
 //        position 2+: remaining PDP / archive shots, ordered by current
 //                     position in images[] (preserves Codex-curated ordering
 //                     beyond the hero slot)
 //   4. Every URL in the resulting images[] returns 200.
 //
-// Source-of-truth split is preserved: this script reads AT Approved
-// records but never uploads new Storage objects or renames anything. If
-// an approved file is 404 in Storage, we flag and skip (no clobber).
-// Storage rename to canonical filenames is deferred — would break
-// live PDPs that reference slug-named URLs.
+// Source-of-truth split is preserved: this script reads Airtable products
+// for coverage, but never lets Product Assets reorder a scale/gallery shot
+// ahead of the Drive Hero-derived canonical pdp-white object. If the
+// canonical object is missing from images[], we flag and skip (no clobber).
 //
 // Usage:
 //   pnpm tsx scripts/storage-align.ts --dry-run
@@ -36,6 +33,7 @@ const SUPABASE_URL = "https://xbtabpurfavngwmwtawc.supabase.co";
 const SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
 const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY ?? "";
 const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID ?? "";
+const STORAGE_BASE = `${SUPABASE_URL}/storage/v1/object/public/products/drop-02`;
 
 interface AssetRec {
   id: string;
@@ -95,6 +93,10 @@ function rankImage(url: string, heroUrl: string | null): number {
   return 10; // PDP-NN / archive / everything else
 }
 
+function canonicalHeroUrl(slug: string): string {
+  return `${STORAGE_BASE}/${slug}-pdp-white.webp`;
+}
+
 interface AlignAction {
   slug: string;
   productId: string | null;
@@ -107,14 +109,14 @@ interface AlignAction {
 
 async function readSbProducts(
   supabase: SupabaseClient,
-): Promise<Map<string, { images: string[] }>> {
+): Promise<Map<string, { images: string[]; status: string | null; featured: boolean | null }>> {
   const { data, error } = await supabase
     .from("products")
-    .select("slug,images");
+    .select("slug,images,status,featured");
   if (error) throw new Error(`SB read: ${error.message}`);
-  const map = new Map<string, { images: string[] }>();
-  for (const r of data as { slug: string; images: string[] | null }[]) {
-    map.set(r.slug, { images: r.images ?? [] });
+  const map = new Map<string, { images: string[]; status: string | null; featured: boolean | null }>();
+  for (const r of data as { slug: string; images: string[] | null; status: string | null; featured: boolean | null }[]) {
+    map.set(r.slug, { images: r.images ?? [], status: r.status ?? null, featured: r.featured ?? null });
   }
   return map;
 }
@@ -140,15 +142,8 @@ async function main(): Promise<void> {
     `[fetched] ${approvedAssets.length} approved AT assets, ${products.length} AT products, ${sbProducts.size} SB rows`,
   );
 
-  // Per-product, pick the PDP-white-tier Approved asset URL as hero.
-  const heroByProductRec = new Map<string, string>();
-  for (const a of approvedAssets) {
-    const link = a.fields.Product?.[0];
-    const url = a.fields["Asset URL"];
-    if (!link || !url) continue;
-    // Prefer "PDP white" / "PDP" / "Scale" / "Hero" — first wins per Approved set.
-    if (!heroByProductRec.has(link)) heroByProductRec.set(link, url);
-  }
+  // Product Assets are still fetched to prove Airtable coverage, but the
+  // canonical product hero is always the Drive Hero-derived pdp-white URL.
 
   const productBySlug = new Map<string, ProductRec>();
   for (const p of products) if (p.fields.Slug) productBySlug.set(p.fields.Slug, p);
@@ -157,7 +152,7 @@ async function main(): Promise<void> {
   for (const p of products) {
     const slug = p.fields.Slug ?? "?";
     const pid = p.fields["Product ID"] ?? null;
-    const heroUrl = heroByProductRec.get(p.id) ?? null;
+    const heroUrl = canonicalHeroUrl(slug);
     const sb = sbProducts.get(slug);
     if (!sb) {
       actions.push({
@@ -171,15 +166,15 @@ async function main(): Promise<void> {
       continue;
     }
     const before = sb.images;
-    if (!heroUrl) {
+    if (sb.status !== "available" || sb.featured !== true) {
       actions.push({
         slug,
         productId: pid,
         heroUrl,
         beforeImages: before,
         afterImages: before,
-        status: "skipped-no-hero",
-        reason: "no Approved+QualityApproved asset",
+        status: "noop",
+        reason: `not publishable in Supabase: status=${sb.status ?? ""} featured=${String(sb.featured)}`,
       });
       continue;
     }
@@ -198,7 +193,7 @@ async function main(): Promise<void> {
         beforeImages: before,
         afterImages: before,
         status: "skipped-no-hero",
-        reason: "AT hero URL not present in SB images[] — sync-airtable.ts has not landed it yet",
+        reason: "canonical Drive Hero-derived pdp-white URL not present in SB images[] — upload/wire the Drive Hero-* source first",
       });
       continue;
     }

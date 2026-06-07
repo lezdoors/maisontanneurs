@@ -4,9 +4,14 @@ _Generated: 2026-05-25 16:57 by `scripts/build-images-manifest.py`_
 
 Single source of truth for **every Maison Tanneurs product image**: what's in Supabase Storage, what's on Drive, what's wired to `products.images[]` on the live site, and what state each SKU is in.
 
-> 2026-05-28 update: this manifest is historical unless regenerated. For the
-> current launch audit, use `docs/PRODUCT-MEDIA-AUDIT-2026-05-28.md`,
-> `docs/ROCCO-PRODUCT-MEDIA-HANDOFF-2026-05-28.md`, and the live audit scripts.
+> 2026-06-07 update: this manifest is historical unless regenerated. The live
+> product-media operating contract is in Obsidian `00-Hermes/Maison Tanneurs Product Media Contract.md`.
+> Current hard invariant: Drive `Hero-*` -> Supabase Storage
+> `products/drop-02/{slug}-pdp-white.webp` -> Airtable `Images` first line ->
+> Supabase `products.images[0]` -> storefront/PDP/feed first image. Use
+> `pnpm audit:hero`, `NEXT_PUBLIC_SUPABASE_URL=https://xbtabpurfavngwmwtawc.supabase.co pnpm audit:catalogue`,
+> `pnpm tsx scripts/storage-align.ts --dry-run`, and
+> `pnpm tsx scripts/sync-airtable.ts --all --dry-run` for current truth.
 
 **Stop hunting.** When you need to add, replace, or audit a product photo, start here.
 

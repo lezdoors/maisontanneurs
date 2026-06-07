@@ -1,15 +1,10 @@
 // Single source of truth for SKUs we want hidden from BOTH the build-time
 // catalogue audit and the runtime storefront queries.
 //
-// Why this exists: rows demoted to status='draft' in Postgres are not always
-// reflected in PostgREST's snapshot via the us-west-1 shared pooler (observed
-// 2026-05-24). The audit's REST client and the storefront's REST client both
-// see the stale `available` snapshot, so the storefront keeps surfacing
-// products that have non-canonical heroes (supplier raws, -pdp-hero naming).
-//
-// Importing this list in both `scripts/audit-catalogue.ts` and the storefront
-// loaders gives belt-and-suspenders: drafts hide the row when PostgREST is
-// fresh, this list hides the row when PostgREST is stale.
+// Why this exists: it is the repo-side mirror of Supabase launch gating.
+// Hidden rows should also be status='reserved' and featured=false in Supabase,
+// but importing this list in both audits and storefront loaders gives a
+// belt-and-suspenders guard if a stale DB snapshot or sync drift appears.
 //
 // Remove a slug the moment its DB row has a canonical -scale.webp /
 // -pdp-white.webp hero AND a clean build confirms the audit re-evaluates it.
@@ -43,8 +38,8 @@ export const HIDDEN_SKUS: ReadonlySet<string> = new Set([
   // hero is mapped in lib/product-image-presentation.ts.
   "medina-rucksack-flap-chocolate",
 
-  // Supabase-only rows currently marked featured but missing required scale
-  // lifestyle shots. Hide from storefront/feed until approved galleries exist.
+  // Supabase-only rows missing required approved launch galleries/identity
+  // confirmation. Keep reserved + hidden until approved galleries exist.
   "medina-cargo-rucksack-cognac",
   "medina-crossbody-clasp-teal",
   "medina-market-tote-cognac",

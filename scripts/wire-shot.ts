@@ -6,10 +6,10 @@
 //        --kind <scale|pdp-white|archive>
 //
 // What it does (idempotent):
-//   1. Uploads <file> to Supabase Storage under products/drop-01/<slug>-<kind>.webp
+//   1. Uploads <file> to Supabase Storage under products/drop-02/<slug>-<kind>.webp
 //      (or -archive-N.webp where N is the next free index for that slug).
-//   2. Updates products.images[] respecting hero ordering — scale at [0],
-//      pdp-white at [1] (or [0] if no scale yet), archives at [2+].
+//   2. Updates products.images[] respecting the locked hero rule:
+//      pdp-white/Drive Hero-derived image at [0], scale at [1], archives after.
 //   3. If wiring a scale shot for a slug in AWAITING_SCALE_SHOTS, prints
 //      a reminder to remove the slug from scripts/audit-catalogue.ts.
 //   4. Re-runs `pnpm audit:catalogue` and exits non-zero if audit fails.
@@ -65,7 +65,7 @@ function parseArgs(): { slug: string; file: string; kind: Kind } {
 type AnySupabase = ReturnType<typeof createClient<any, any, any>>;
 
 async function nextArchiveIndex(supabase: AnySupabase, slug: string): Promise<number> {
-  const { data, error } = await supabase.storage.from(BUCKET).list("drop-01", {
+  const { data, error } = await supabase.storage.from(BUCKET).list("drop-02", {
     limit: 1000,
     search: `${slug}-archive-`,
   });
@@ -103,7 +103,7 @@ async function main() {
   } else {
     storageName = `${slug}-${kind}.webp`;
   }
-  const storagePath = `drop-01/${storageName}`;
+  const storagePath = `drop-02/${storageName}`;
   const publicUrl = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET}/${storagePath}`;
 
   const bytes = await readFile(file);
@@ -131,12 +131,17 @@ async function main() {
 
   let next: string[];
   if (kind === "scale") {
-    next = [publicUrl, ...without.filter((u) => !u.endsWith(`-scale.webp`))];
+    const withoutScale = without.filter((u) => !u.endsWith(`-scale.webp`));
+    const heroIndex = withoutScale.findIndex((u) => u.endsWith(`-pdp-white.webp`));
+    next = heroIndex >= 0
+      ? [withoutScale[heroIndex], publicUrl, ...withoutScale.filter((_, i) => i !== heroIndex)]
+      : [publicUrl, ...withoutScale];
   } else if (kind === "pdp-white") {
-    const hasScale = without.some((u) => u.endsWith(`-scale.webp`));
-    next = hasScale
-      ? [without[0], publicUrl, ...without.slice(1).filter((u) => !u.endsWith(`-pdp-white.webp`))]
-      : [publicUrl, ...without.filter((u) => !u.endsWith(`-pdp-white.webp`))];
+    const withoutHero = without.filter((u) => !u.endsWith(`-pdp-white.webp`));
+    const scaleIndex = withoutHero.findIndex((u) => u.endsWith(`-scale.webp`));
+    next = scaleIndex >= 0
+      ? [publicUrl, withoutHero[scaleIndex], ...withoutHero.filter((_, i) => i !== scaleIndex)]
+      : [publicUrl, ...withoutHero];
   } else {
     next = [...without, publicUrl];
   }
