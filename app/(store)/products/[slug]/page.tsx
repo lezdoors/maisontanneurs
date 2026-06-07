@@ -14,6 +14,7 @@ import {
   orderProductGalleryImages,
   selectProductHeroImage,
 } from "@/lib/product-image-presentation";
+import { SITE_URL, absoluteUrl, jsonLdScript } from "@/lib/site";
 
 async function getProduct(slug: string): Promise<Product | null> {
   if (HIDDEN_SKUS.has(slug)) return null;
@@ -142,13 +143,13 @@ export default async function ProductPage({
     name: product.title,
     description:
       product.description || `${product.title}. Handcrafted in Marrakech.`,
-    image: galleryImages.slice(0, 5),
+    image: galleryImages.slice(0, 5).map((image) => absoluteUrl(image)),
     sku: product.slug,
     brand: { "@type": "Brand", name: "Maison Tanneurs" },
     category: product.category,
     offers: {
       "@type": "Offer",
-      url: `https://www.maisontanneurs.com/products/${product.slug}`,
+      url: `${SITE_URL}/products/${product.slug}`,
       priceCurrency: "USD",
       price: (product.price / 100).toFixed(2),
       availability:
@@ -167,7 +168,7 @@ export default async function ProductPage({
         id={`product-ld-${product.slug}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productLd).replace(/</g, "\\u003c"),
+          __html: jsonLdScript(productLd),
         }}
       />
       {/* Product layout: gallery + details */}

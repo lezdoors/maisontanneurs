@@ -11,6 +11,12 @@ export const metadata: Metadata = {
     "A small leather house working out of a Marrakech atelier. Full-grain leather, hand-stitched, solid brass hardware. Free worldwide shipping via DHL Express.",
   alternates: {
     canonical: "/about",
+    languages: {
+      en: "/about",
+      fr: "/fr/about",
+      ar: "/ar/about",
+      "x-default": "/about",
+    },
   },
 };
 

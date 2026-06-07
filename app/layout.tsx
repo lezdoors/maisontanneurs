@@ -18,6 +18,7 @@ import GA4 from "@/components/store/GA4";
 import { getRequestCurrency, getRequestDir, getRequestLocale } from "@/lib/i18n-server";
 import { getRates } from "@/lib/fx";
 import { CurrencyProvider } from "@/components/store/CurrencyProvider";
+import { BRAND_DESCRIPTION, SITE_URL, absoluteUrl, jsonLdScript } from "@/lib/site";
 
 // === Type system — Ryan-selected 2026-05-31 ===
 // 5 serifs (Parisian editorial headlines) + 2 sans (clean micro-text/buttons).
@@ -107,7 +108,7 @@ export const metadata: Metadata = {
   description:
     "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes. Free worldwide shipping via DHL Express, with most orders arriving in 5 to 10 business days.",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.maisontanneurs.com",
+    SITE_URL,
   ),
   openGraph: {
     type: "website",
@@ -155,6 +156,49 @@ export default async function RootLayout({
   const dir = await getRequestDir();
   const currency = await getRequestCurrency();
   const rates = await getRates();
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        name: "Maison Tanneurs",
+        url: SITE_URL,
+        logo: absoluteUrl("/brand/logos/mt-arched-badge.png"),
+        image: absoluteUrl("/brand/editorial/cinematic-bag-still.webp"),
+        description: BRAND_DESCRIPTION,
+        email: "hello@maisontanneurs.com",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Marrakech",
+          addressCountry: "MA",
+        },
+        areaServed: "Worldwide",
+        foundingLocation: {
+          "@type": "Place",
+          name: "Marrakech, Morocco",
+        },
+        makesOffer: [
+          "Hand-stitched full-grain leather bags",
+          "Small-batch Marrakech atelier editions",
+          "Free worldwide DHL Express shipping",
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        name: "Maison Tanneurs",
+        url: SITE_URL,
+        publisher: { "@id": `${SITE_URL}/#organization` },
+        inLanguage: ["en", "fr", "ar"],
+        potentialAction: {
+          "@type": "SearchAction",
+          target: `${SITE_URL}/search?q={search_term_string}`,
+          "query-input": "required name=search_term_string",
+        },
+      },
+    ],
+  };
   return (
     <html
       lang={locale}
@@ -172,6 +216,11 @@ export default async function RootLayout({
       ].join(" ")}
     >
       <body>
+        <script
+          id="maison-tanneurs-structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(structuredData) }}
+        />
         {/* Tracking now gated behind cookie consent — Clarity + Meta Pixel only
             fire after the user accepts in CookieBanner. Replaces the previous
             unconditional Clarity script. */}

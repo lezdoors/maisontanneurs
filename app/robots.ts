@@ -1,11 +1,31 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL as SITE } from "@/lib/site";
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.maisontanneurs.com";
+const DISALLOW = ["/_admin", "/api/", "/checkout"];
+const AI_CRAWLERS = [
+  "Googlebot",
+  "GoogleOther",
+  "GPTBot",
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "ClaudeBot",
+  "anthropic-ai",
+  "PerplexityBot",
+  "CCBot",
+  "Applebot",
+  "Applebot-Extended",
+  "FacebookBot",
+];
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/", disallow: ["/_admin", "/api/", "/checkout"] },
+      { userAgent: "*", allow: "/", disallow: DISALLOW },
+      ...AI_CRAWLERS.map((userAgent) => ({
+        userAgent,
+        allow: "/",
+        disallow: DISALLOW,
+      })),
     ],
     sitemap: `${SITE}/sitemap.xml`,
   };

@@ -10,6 +10,7 @@ import CategoryFilter from "@/components/store/CategoryFilter";
 import { getRequestLocale } from "@/lib/i18n-server";
 import { t } from "@/lib/i18n";
 import { productListImage } from "@/lib/landing-product-curation";
+import { SITE_URL, absoluteUrl, jsonLdScript } from "@/lib/site";
 
 // Normalize a URL category param into the stored DB category form. Handles:
 // - Decoded spaces (?category=Wall%20Plates → "Wall Plates")
@@ -33,6 +34,12 @@ export const metadata: Metadata = {
     "Hand-stitched leather goods sourced direct from a Marrakech atelier. Free worldwide shipping via DHL Express, with most orders arriving in 5 to 10 business days.",
   alternates: {
     canonical: "/products",
+    languages: {
+      en: "/products",
+      fr: "/fr/products",
+      ar: "/ar/products",
+      "x-default": "/products",
+    },
   },
   openGraph: {
     title: "Maison Tanneurs Collection",
@@ -146,9 +153,48 @@ export default async function ProductsPage({
     typeof params.category === "string" ? params.category : undefined;
   const q = typeof params.q === "string" ? params.q : undefined;
   const products = await getProducts(category, q);
+  const collectionLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${SITE_URL}/products#collection`,
+    name: "Maison Tanneurs Collection",
+    url: `${SITE_URL}/products`,
+    description:
+      "Small-batch hand-stitched full-grain leather bags made in a Marrakech atelier and shipped worldwide by DHL Express.",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    mainEntity: {
+      "@type": "ItemList",
+      name: "Maison Tanneurs leather goods",
+      numberOfItems: products.length,
+      itemListElement: products.map((product, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `${SITE_URL}/products/${product.slug}`,
+        item: {
+          "@type": "Product",
+          name: product.title,
+          url: `${SITE_URL}/products/${product.slug}`,
+          image: absoluteUrl(productListImage(product) || "/products/product-04.png"),
+          sku: product.slug,
+          brand: { "@type": "Brand", name: "Maison Tanneurs" },
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "USD",
+            price: (product.price / 100).toFixed(2),
+            availability: "https://schema.org/InStock",
+          },
+        },
+      })),
+    },
+  };
 
   return (
     <main>
+      <script
+        id="collection-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(collectionLd) }}
+      />
       {/* Collection Header */}
       <section className="pt-[clamp(96px,11vw,136px)] px-[clamp(20px,4vw,72px)] pb-0">
         <div className="grid grid-cols-1 gap-8 border-b border-[color:var(--color-rule)] pb-8 lg:grid-cols-[1.4fr_0.8fr_0.55fr] lg:items-end lg:gap-14">

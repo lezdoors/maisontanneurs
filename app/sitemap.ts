@@ -3,7 +3,7 @@ import { createServerSupabase } from "@/lib/supabase/server";
 import { HIDDEN_SKUS, HIDDEN_SKUS_ARRAY } from "@/lib/hidden-skus";
 import { LOCALES, withLocale } from "@/lib/i18n";
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://www.maisontanneurs.com";
+import { SITE_URL as SITE } from "@/lib/site";
 
 function localizedUrl(path: string, locale: (typeof LOCALES)[number]) {
   return `${SITE}${withLocale(path, locale)}`;

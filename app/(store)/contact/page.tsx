@@ -7,6 +7,12 @@ export const metadata: Metadata = {
     "Write to the Maison Tanneurs atelier. We answer within one working day.",
   alternates: {
     canonical: "/contact",
+    languages: {
+      en: "/contact",
+      fr: "/fr/contact",
+      ar: "/ar/contact",
+      "x-default": "/contact",
+    },
   },
 };
 
