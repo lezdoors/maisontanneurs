@@ -780,6 +780,41 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   clip-path: none;
 }
 
+/* Sliding underline for primary nav. The pseudo-element draws a 1px rule
+   under the link; on hover (and when active) it scales from 0 to full
+   width with origin on the left, producing the left-to-right slide.
+   Color is driven by --mt-nav-underline so the rule adapts to hero-overlay
+   (white) vs solid-bg (ink) without re-specifying per state. */
+.mt-nav-link {
+  position: relative;
+}
+
+.mt-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: var(--mt-nav-underline, rgba(15, 15, 15, 0.85));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.mt-nav-link:hover::after,
+.mt-nav-link:focus-visible::after,
+.mt-nav-link[data-active="true"]::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mt-nav-link::after {
+    transition: none;
+  }
+}
+
 /* Maison Tanneurs luxury commerce pass — scoped so checkout/admin keep their
    existing behavior while storefront pages get a sharper editorial register. */
 .mt-luxury-button {
