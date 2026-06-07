@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCart } from "@/components/store/CartProvider";
 import { useLocalizedHref, useT } from "@/lib/i18n-client";
 import { useCurrency } from "@/components/store/CurrencyProvider";
+import { NAV_PENDING_EVENT } from "@/components/store/NavTransitionIndicator";
 
 export default function CartDrawer() {
   const { items, isOpen, closeCart, removeItem, updateQuantity } = useCart();
@@ -12,11 +13,21 @@ export default function CartDrawer() {
   const t = useT();
   const href = useLocalizedHref();
   const router = useRouter();
+  const pathname = usePathname();
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handleCheckout = () => {
     closeCart();
-    router.push(href("/checkout/pay"));
+    const target = href("/checkout/pay");
+    // Programmatic nav doesn't trigger our click-capture; arm the loader
+    // explicitly so slow checkout transitions still show pending feedback.
+    // Guard against the self-navigation case (cart opened while already on
+    // /checkout/pay) — router.push would be a no-op and the overlay would
+    // never clear since navKey wouldn't change.
+    if (pathname !== target) {
+      window.dispatchEvent(new Event(NAV_PENDING_EVENT));
+    }
+    router.push(target);
   };
 
   return (

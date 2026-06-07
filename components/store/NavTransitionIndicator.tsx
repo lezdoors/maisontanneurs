@@ -1,7 +1,7 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useRef, useState } from "react";
 
 /**
  * Maison Tanneurs navigation transition indicator.
@@ -10,17 +10,29 @@ import { useEffect, useRef, useState } from "react";
  * load. Only appears when an in-app navigation takes longer than
  * SHOW_AFTER_MS, at which point it fades in a centered wordmark + a thin
  * left-to-right animated rule (the Létrange-style sleek loading rule),
- * then fades out as soon as the destination route mounts.
+ * then fades out as soon as the destination route commits.
  *
- * Implementation:
- *  - Catches anchor clicks at the document level. Same-origin internal
- *    navigations start a pending timer.
- *  - usePathname() updates when the new route commits → pending cleared.
- *  - prefers-reduced-motion → instant opacity, no rule animation.
+ * Triggers:
+ *  - Captured anchor clicks for same-origin internal nav (the common case).
+ *  - A window 'mt-nav-pending' CustomEvent so programmatic transitions
+ *    (cart drawer's router.push to /checkout/pay, search submit, filter
+ *    changes) can also arm the loader.
+ *
+ * Clear:
+ *  - Watches both pathname AND searchParams so query-only transitions
+ *    (e.g. /products?from=insider from /products) also clear the pending
+ *    state — without this the overlay would stick on query-only nav.
+ *
+ * Reduced motion: no rule animation, just static opacity transition.
+ *
+ * useSearchParams() requires a Suspense boundary in static rendering, so
+ * the inner component is wrapped below.
  */
 const SHOW_AFTER_MS = 280;
 const FADE_MS = 320;
 const RULE_DURATION_MS = 1400;
+
+export const NAV_PENDING_EVENT = "mt-nav-pending";
 
 type Phase = "idle" | "armed" | "visible" | "fading";
 
@@ -70,8 +82,12 @@ function isInternalNavigation(target: HTMLAnchorElement, event: MouseEvent): boo
   return true;
 }
 
-export default function NavTransitionIndicator() {
+function NavTransitionIndicatorInner() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  // Combined nav key so query-only transitions also trigger the clear effect.
+  const navKey = `${pathname}?${searchParams.toString()}`;
+
   const [phase, setPhase] = useState<Phase>("idle");
   const [reduceMotion, setReduceMotion] = useState(false);
   const armedTimerRef = useRef<number | null>(null);
@@ -88,8 +104,20 @@ export default function NavTransitionIndicator() {
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
+  // Shared arm routine for both click-capture and the imperative window event.
+  const arm = (): void => {
+    if (armedTimerRef.current) window.clearTimeout(armedTimerRef.current);
+    if (fadeTimerRef.current) window.clearTimeout(fadeTimerRef.current);
+    setPhase("armed");
+    armedTimerRef.current = window.setTimeout(() => {
+      ruleResetRef.current += 1;
+      setPhase("visible");
+    }, SHOW_AFTER_MS);
+  };
+
   // Capture-phase listener so we see the click before Next.js client-side
-  // routing takes over.
+  // routing takes over. Programmatic router.push() does NOT fire this — for
+  // those, callers dispatch the NAV_PENDING_EVENT window event below.
   useEffect(() => {
     if (typeof document === "undefined") return;
     const handler = (event: MouseEvent) => {
@@ -97,26 +125,24 @@ export default function NavTransitionIndicator() {
       if (!anchor) return;
       if (event.defaultPrevented) return;
       if (!isInternalNavigation(anchor, event)) return;
-
-      // Arm the indicator. Only flips to visible if the timer fires before
-      // pathname changes — i.e. the new route hasn't committed in time.
-      if (armedTimerRef.current) window.clearTimeout(armedTimerRef.current);
-      if (fadeTimerRef.current) window.clearTimeout(fadeTimerRef.current);
-      setPhase("armed");
-      armedTimerRef.current = window.setTimeout(() => {
-        ruleResetRef.current += 1;
-        setPhase("visible");
-      }, SHOW_AFTER_MS);
+      arm();
     };
+    const onArmEvent = () => arm();
     document.addEventListener("click", handler, true);
+    window.addEventListener(NAV_PENDING_EVENT, onArmEvent);
     return () => {
       document.removeEventListener("click", handler, true);
+      window.removeEventListener(NAV_PENDING_EVENT, onArmEvent);
       if (armedTimerRef.current) window.clearTimeout(armedTimerRef.current);
       if (fadeTimerRef.current) window.clearTimeout(fadeTimerRef.current);
     };
+    // arm is stable per-render but we don't need to re-attach.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // When the pathname changes, the destination has committed — clear.
+  // When pathname OR searchParams change, the destination has committed —
+  // clear. The combined key catches query-only nav (e.g. /products?from=insider
+  // clicked from /products) that pathname alone would miss.
   useEffect(() => {
     if (armedTimerRef.current) {
       window.clearTimeout(armedTimerRef.current);
@@ -130,9 +156,9 @@ export default function NavTransitionIndicator() {
       setPhase("fading");
       fadeTimerRef.current = window.setTimeout(() => setPhase("idle"), FADE_MS);
     }
-    // intentionally only respond to pathname here.
+    // intentionally only respond to nav key here.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+  }, [navKey]);
 
   if (phase !== "visible" && phase !== "fading") return null;
 
@@ -204,5 +230,18 @@ export default function NavTransitionIndicator() {
         }
       `}</style>
     </div>
+  );
+}
+
+/**
+ * Default export wraps the indicator in a Suspense boundary because
+ * useSearchParams() requires one in static rendering. The boundary fallback
+ * is null — there is nothing to show while the searchParams resolve.
+ */
+export default function NavTransitionIndicator() {
+  return (
+    <Suspense fallback={null}>
+      <NavTransitionIndicatorInner />
+    </Suspense>
   );
 }
