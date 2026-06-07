@@ -1,13 +1,15 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { useInView } from "framer-motion";
 
 type Cell = {
+  kind?: "image" | "video";
   src: string;
   alt: string;
   ratio: string;
+  poster?: string;
 };
 
 const COLUMNS: Cell[][] = [
@@ -23,8 +25,10 @@ const COLUMNS: Cell[][] = [
       ratio: "9 / 16",
     },
     {
-      src: "/atelier/lifestyle-forest-kilim.webp",
-      alt: "Model walking through Moroccan pine forest carrying a kilim-trim leather satchel",
+      kind: "video",
+      src: "/brand/atelier/atelier-hands-at-work.mp4",
+      poster: "/brand/atelier/atelier-hands-at-work-poster.jpg",
+      alt: "Artisan hand-stitching cognac leather with a brass awl and waxed thread, atelier bench",
       ratio: "16 / 9",
     },
   ],
@@ -52,13 +56,17 @@ const COLUMNS: Cell[][] = [
   ],
   [
     {
-      src: "/atelier/atelier-berber-dunes.webp",
-      alt: "Berber figure in indigo robes seated on Saharan dunes at sunset",
-      ratio: "1 / 1",
+      kind: "video",
+      src: "/brand/atelier/atelier-medina-handover.mp4",
+      poster: "/brand/atelier/atelier-medina-handover-poster.jpg",
+      alt: "Two artisans packing a cognac travel bag together in a Marrakech medina interior",
+      ratio: "9 / 16",
     },
     {
-      src: "/atelier/lifestyle-cream-sofa.webp",
-      alt: "Model reclining on a cream sofa beside a cognac saddle satchel in warm afternoon light",
+      kind: "video",
+      src: "/brand/atelier/atelier-bag-terrace.mp4",
+      poster: "/brand/atelier/atelier-bag-terrace-poster.jpg",
+      alt: "Hand placing a cognac leather bag on a sunlit terrace with brass weighing scales beside it",
       ratio: "16 / 9",
     },
     {
@@ -72,6 +80,7 @@ const COLUMNS: Cell[][] = [
 export default function AtelierGallery() {
   return (
     <section
+      id="atelier-gallery"
       aria-label="Atelier"
       className="w-full bg-[var(--color-bg)] text-[var(--color-ink)] border-t border-[#e5e5e5]"
     >
@@ -112,7 +121,19 @@ export default function AtelierGallery() {
 
 function Frame({ cell }: { cell: Cell }) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const inView = useInView(ref, { once: true, margin: "-10% 0px -10% 0px" });
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const inView = useInView(ref, { margin: "-10% 0px -10% 0px" });
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (inView && !mq.matches) {
+      v.play().catch(() => undefined);
+    } else {
+      v.pause();
+    }
+  }, [inView]);
 
   return (
     <div
@@ -120,14 +141,30 @@ function Frame({ cell }: { cell: Cell }) {
       className="relative w-full overflow-hidden bg-[var(--color-bg-alt)]"
       style={{ aspectRatio: cell.ratio }}
     >
-      <Image
-        src={cell.src}
-        alt={cell.alt}
-        fill
-        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-        className="object-cover transition-opacity duration-[900ms] ease-out"
-        style={{ opacity: inView ? 1 : 0 }}
-      />
+      {cell.kind === "video" ? (
+        <video
+          ref={videoRef}
+          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-out"
+          style={{ opacity: inView ? 1 : 0 }}
+          poster={cell.poster}
+          preload="metadata"
+          muted
+          loop
+          playsInline
+          aria-label={cell.alt}
+        >
+          <source src={cell.src} type="video/mp4" />
+        </video>
+      ) : (
+        <Image
+          src={cell.src}
+          alt={cell.alt}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover transition-opacity duration-[900ms] ease-out"
+          style={{ opacity: inView ? 1 : 0 }}
+        />
+      )}
     </div>
   );
 }

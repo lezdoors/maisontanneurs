@@ -102,10 +102,10 @@ export const metadata: Metadata = {
       "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes. Free worldwide shipping via DHL Express, with most orders arriving in 5 to 10 business days.",
     images: [
       {
-        url: "/hero/hero-leather-campaign.webp",
+        url: "/brand/editorial/cinematic-bag-still.webp",
         width: 2400,
         height: 1350,
-        alt: "Maison Tanneurs — cognac leather duffle in a Marrakech atelier",
+        alt: "Maison Tanneurs — cognac leather bag in cinematic evening light",
       },
     ],
   },
@@ -114,7 +114,7 @@ export const metadata: Metadata = {
     title: "Maison Tanneurs",
     description:
       "Hand-stitched leather goods, sourced direct from a Marrakech atelier. Full-grain leather, editorial silhouettes. Free worldwide shipping via DHL Express, with most orders arriving in 5 to 10 business days.",
-    images: ["/hero/hero-leather-campaign.webp"],
+    images: ["/brand/editorial/cinematic-bag-still.webp"],
   },
   alternates: {
     canonical: "/",

@@ -733,7 +733,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .mt-product-frame {
   position: relative;
   overflow: hidden;
-  background: #f8f8f6;
+  background: #ffffff;
   border: 0;
   width: 100%;
   contain: layout paint;
@@ -744,7 +744,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 .mt-product-frame--hero {
-  background: #f8f8f6;
+  background: #ffffff;
 }
 
 .mt-ratio-square,

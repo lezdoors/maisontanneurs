@@ -117,9 +117,9 @@ export default function InTheirHands() {
         </div>
 
         {/* VIDEO — right 6 cols, portrait container */}
-        <div className="md:col-span-6 bg-[#0f0f0f] flex items-center justify-center p-6 md:p-10">
+        <div className="md:col-span-6 flex items-center justify-center p-6 md:p-10">
           <div
-            className="relative w-full max-w-[420px] mx-auto overflow-hidden border border-white/15"
+            className="relative w-full max-w-[420px] mx-auto overflow-hidden border border-[#e5e5e5]"
             style={{ aspectRatio: "9 / 16" }}
           >
             <video

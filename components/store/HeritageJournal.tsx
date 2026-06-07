@@ -5,17 +5,20 @@ const STORIES = [
   {
     kicker: "Travel",
     title: "The object should hold shape before it goes anywhere.",
-    image: "/brand/editorial/open-bag-passport.webp",
+    image: "/brand/editorial/world-rooftop-table.webp",
+    alt: "Sunset rooftop in Marrakech with brass tea service and a leather travel bag, Koutoubia minaret in the distance",
   },
   {
     kicker: "Bench",
     title: "A hand check tells more than a slogan.",
-    image: "/brand/editorial/workbench-bag-gloves.webp",
+    image: "/brand/editorial/proof-artisan-cutting-arches.webp",
+    alt: "Artisan cutting cognac leather at a Marrakech atelier table beneath arched windows",
   },
   {
     kicker: "Edition",
     title: "Small runs make the catalogue easier to trust.",
-    image: "/brand/editorial/atelier-lineup.webp",
+    image: "/brand/editorial/edition-bag-lineup-tags.webp",
+    alt: "Four cognac leather bags lined up with tags on a wooden trestle bench against a warm plaster wall",
   },
 ];
 
@@ -60,7 +63,7 @@ export default function HeritageJournal() {
                 <div className="relative overflow-hidden bg-[var(--color-paper-alt)]" style={{ aspectRatio: "4 / 5" }}>
                   <Image
                     src={story.image}
-                    alt=""
+                    alt={story.alt}
                     fill
                     sizes="(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 100vw"
                     priority
