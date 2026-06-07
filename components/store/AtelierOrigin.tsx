@@ -21,7 +21,7 @@ export default function AtelierOrigin() {
       className="w-full bg-[var(--color-paper)] text-[var(--color-ink)]"
     >
       <div className="grid min-h-[92svh] grid-cols-1 lg:grid-cols-12">
-        <div className="relative min-h-[52svh] overflow-hidden lg:col-span-7 lg:min-h-[92svh]">
+        <div className="relative min-h-[44svh] overflow-hidden lg:col-span-5 lg:min-h-[92svh]">
           <Image
             src={ATELIER_IMAGE}
             alt="Pencil sketch of a structured Maison Tanneurs satchel handbag with buckled front straps"
@@ -48,7 +48,7 @@ export default function AtelierOrigin() {
           </div>
         </div>
 
-        <div className="flex flex-col justify-between px-6 py-12 sm:px-10 lg:col-span-5 lg:px-12 lg:py-16">
+        <div className="flex flex-col justify-between px-6 py-12 sm:px-10 lg:col-span-7 lg:px-16 lg:py-16">
           <div>
             <p className="tech-label text-[var(--color-bronze)]">
               Product Proof · Before the Road

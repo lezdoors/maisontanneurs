@@ -2,7 +2,7 @@ import { CartProvider } from "@/components/store/CartProvider";
 import Navbar from "@/components/store/Navbar";
 import CartDrawer from "@/components/store/CartDrawer";
 import Footer from "@/components/store/Footer";
-import LoadingScreen from "@/components/store/LoadingScreen";
+import NavTransitionIndicator from "@/components/store/NavTransitionIndicator";
 
 export default function StoreLayout({
   children,
@@ -11,7 +11,7 @@ export default function StoreLayout({
 }) {
   return (
     <CartProvider>
-      <LoadingScreen />
+      <NavTransitionIndicator />
       <Navbar />
       <CartDrawer />
       {children}
