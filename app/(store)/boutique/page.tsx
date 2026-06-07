@@ -35,10 +35,10 @@ export default function BoutiquePage() {
             <p className="mt-3 text-[var(--color-ink-soft)]">
               Write to{" "}
               <a
-                href="mailto:atelier@maisontanneurs.com"
+                href="mailto:hello@maisontanneurs.com"
                 className="underline underline-offset-4"
               >
-                atelier@maisontanneurs.com
+                hello@maisontanneurs.com
               </a>{" "}
               with the dates you have in mind. We confirm within one working
               day and send the address with the confirmation.

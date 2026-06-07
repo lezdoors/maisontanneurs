@@ -107,10 +107,10 @@ export default function InTheirHands() {
             but we host a small number of trade and press visits each season.
             Write to{" "}
             <a
-              href="mailto:atelier@maisontanneurs.com"
+              href="mailto:hello@maisontanneurs.com"
               className="underline underline-offset-4"
             >
-              atelier@maisontanneurs.com
+              hello@maisontanneurs.com
             </a>
             .
           </p>

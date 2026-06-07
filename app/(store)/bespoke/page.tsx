@@ -31,10 +31,10 @@ export default function BespokePage() {
               We are taking commissions by introduction at the moment. Write
               to{" "}
               <a
-                href="mailto:bespoke@maisontanneurs.com"
+                href="mailto:hello@maisontanneurs.com"
                 className="underline underline-offset-4"
               >
-                bespoke@maisontanneurs.com
+                hello@maisontanneurs.com
               </a>{" "}
               with the silhouette, the leather direction, and what the object
               is for. We reply within one working day.
