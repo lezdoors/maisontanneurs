@@ -181,26 +181,24 @@ export default function Navbar() {
             className="flex flex-col items-center text-center select-none"
           >
             <span
-              className="leading-none whitespace-nowrap"
-              style={{
-                fontFamily: "var(--font-wordmark)",
-                // Bodoni Moda SC is a small-caps face; clamp starts smaller
-                // and uses tighter letter-spacing at sub-400px so "BAG 0"
-                // stays comfortably inside the viewport on iPhone SE.
-                fontSize: scrolled ? "clamp(15px, 2vw, 26px)" : "clamp(18px, 2.7vw, 34px)",
-                letterSpacing: "clamp(0.10em, 0.18vw, 0.16em)",
-                fontWeight: 400,
-                transition: "font-size 500ms cubic-bezier(0.4,0,0.2,1)",
-              }}
+              className={`mt-brand-wordmark ${navInk} ${
+                scrolled ? "mt-brand-wordmark--compact" : ""
+              }`}
+              aria-hidden="true"
             >
-              MAISON&nbsp;&nbsp;TANNEURS
+              Maison
+              <span className="mt-brand-wordmark__gap" aria-hidden="true">
+                &nbsp;
+              </span>
+              Tanneurs
             </span>
+            <span className="sr-only">Maison Tanneurs</span>
             <span
               className={`tech-meta mt-1 ${navMuted}`}
               style={{
-                fontSize: scrolled ? "8.5px" : "9.5px",
-                letterSpacing: "0.32em",
-                transition: "font-size 500ms cubic-bezier(0.4,0,0.2,1)",
+                fontSize: scrolled ? "8px" : "9px",
+                letterSpacing: scrolled ? "0.26em" : "0.3em",
+                transition: "font-size 500ms cubic-bezier(0.4,0,0.2,1), letter-spacing 500ms cubic-bezier(0.4,0,0.2,1)",
               }}
             >
               {t("nav.subtitle")}
@@ -298,16 +296,14 @@ export default function Navbar() {
             style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
           >
             <div className="flex items-center justify-between px-6 py-5 border-b border-[#e5e5e5]">
-              <span
-                style={{
-                  fontFamily: "var(--font-wordmark)",
-                  fontSize: "16px",
-                  letterSpacing: "0.16em",
-                  fontWeight: 400,
-                }}
-              >
-                MAISON&nbsp;&nbsp;TANNEURS
+              <span className="mt-brand-wordmark mt-brand-wordmark--drawer text-[#0f0f0f]" aria-hidden="true">
+                Maison
+                <span className="mt-brand-wordmark__gap" aria-hidden="true">
+                  &nbsp;
+                </span>
+                Tanneurs
               </span>
+              <span className="sr-only">Maison Tanneurs</span>
               <button
                 onClick={() => setDrawer(false)}
                 aria-label={t("nav.closeMenu")}

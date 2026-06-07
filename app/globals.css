@@ -137,6 +137,55 @@
 }
 
 /* ============================================================
+   BRAND WORDMARK — Bodoni accent only, not body/UI typography
+   ============================================================ */
+
+.mt-brand-wordmark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-family: var(--font-wordmark);
+  font-weight: 300;
+  font-size: clamp(20px, 2.25vw, 30px);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: clamp(0.2em, 0.8vw, 0.34em);
+  transition:
+    color 300ms ease,
+    font-size 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    letter-spacing 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mt-brand-wordmark--compact {
+  font-size: clamp(17px, 1.85vw, 25px);
+  letter-spacing: clamp(0.18em, 0.6vw, 0.3em);
+}
+
+.mt-brand-wordmark--drawer {
+  font-size: 16px;
+  letter-spacing: 0.18em;
+}
+
+.mt-brand-wordmark__gap {
+  display: inline-block;
+  width: 1.15ch;
+  flex: 0 0 auto;
+}
+
+@media (min-width: 640px) {
+  .mt-brand-wordmark__gap {
+    width: 1.25ch;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mt-brand-wordmark__gap {
+    width: 1.35ch;
+  }
+}
+
+/* ============================================================
    BASE — paper-white default
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; }
