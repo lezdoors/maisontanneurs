@@ -30,10 +30,10 @@ export default function TradePage() {
             <p className="mt-3 text-[var(--color-ink-soft)]">
               Write to{" "}
               <a
-                href="mailto:trade@maisontanneurs.com"
+                href="mailto:hello@maisontanneurs.com"
                 className="underline underline-offset-4"
               >
-                trade@maisontanneurs.com
+                hello@maisontanneurs.com
               </a>{" "}
               with the name of your house, your region, your annual volume,
               and a line about what you carry. We reply within one working

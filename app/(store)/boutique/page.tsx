@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import EditorialSlideshow from "@/components/store/EditorialSlideshow";
 
 export const metadata: Metadata = {
   title: "Boutique — visit the atelier",
@@ -12,8 +13,12 @@ export const metadata: Metadata = {
 
 export default function BoutiquePage() {
   return (
-    <main>
-      <article className="max-w-[680px] mx-auto px-6 pt-[180px] pb-[120px]">
+    <main className="bg-[var(--color-paper)]">
+      <div className="pt-[clamp(140px,16vh,200px)]">
+        <EditorialSlideshow />
+      </div>
+
+      <article className="max-w-[680px] mx-auto px-6 pt-[clamp(72px,10vw,128px)] pb-[120px]">
         <span className="eyebrow">Boutique · Atelier</span>
         <h1>Marrakech, by appointment.</h1>
         <p className="font-serif italic text-[var(--color-ink-soft)] text-[19px] md:text-[21px] leading-[1.5] mt-6 max-w-[46ch]">
@@ -30,10 +35,10 @@ export default function BoutiquePage() {
             <p className="mt-3 text-[var(--color-ink-soft)]">
               Write to{" "}
               <a
-                href="mailto:atelier@maisontanneurs.com"
+                href="mailto:hello@maisontanneurs.com"
                 className="underline underline-offset-4"
               >
-                atelier@maisontanneurs.com
+                hello@maisontanneurs.com
               </a>{" "}
               with the dates you have in mind. We confirm within one working
               day and send the address with the confirmation.
