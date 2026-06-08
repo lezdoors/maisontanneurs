@@ -185,6 +185,23 @@
   }
 }
 
+@media (max-width: 767px) {
+  .mt-brand-wordmark {
+    font-size: clamp(18px, 5vw, 21px);
+    letter-spacing: clamp(0.16em, 1vw, 0.22em);
+    transition: color 300ms ease;
+  }
+
+  .mt-brand-wordmark--compact {
+    font-size: clamp(18px, 5vw, 21px);
+    letter-spacing: clamp(0.16em, 1vw, 0.22em);
+  }
+
+  .mt-brand-wordmark__gap {
+    width: 0.9ch;
+  }
+}
+
 /* ============================================================
    BASE — paper-white default
    ============================================================ */

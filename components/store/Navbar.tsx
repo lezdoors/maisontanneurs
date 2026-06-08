@@ -76,19 +76,39 @@ export default function Navbar() {
   }, [pathname]);
 
   useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 32 || window.location.hash.length > 0);
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const y = window.scrollY;
+      const hasHash = window.location.hash.length > 0;
+
+      // Hysteresis prevents the fixed mobile header from flickering between
+      // hero/non-hero states as the iOS/Telegram browser chrome expands and
+      // contracts around the first few pixels of scroll.
+      setScrolled((current) => {
+        if (hasHash) return true;
+        if (current) return y > 10;
+        return y > 48;
+      });
+    };
+    const requestUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    };
+
     update();
     const raf = window.requestAnimationFrame(update);
     const timer = window.setTimeout(update, 250);
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update, { passive: true });
-    window.addEventListener("hashchange", update);
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate, { passive: true });
+    window.addEventListener("hashchange", requestUpdate);
     return () => {
       window.cancelAnimationFrame(raf);
       window.clearTimeout(timer);
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-      window.removeEventListener("hashchange", update);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      window.removeEventListener("hashchange", requestUpdate);
     };
   }, []);
 
@@ -146,8 +166,8 @@ export default function Navbar() {
 
         {/* Row 2 — wordmark + utilities */}
         <div
-          className={`grid grid-cols-[1fr_auto_1fr] items-center px-5 md:px-6 transition-[padding,height] duration-500 ${
-            scrolled ? "py-2 md:py-3" : "py-4 md:py-6"
+          className={`grid grid-cols-[1fr_auto_1fr] items-center px-5 md:px-6 transition-[padding,height] duration-500 py-3 ${
+            scrolled ? "md:py-3" : "md:py-6"
           }`}
         >
           {/* Left: mobile hamburger only */}
@@ -221,7 +241,7 @@ export default function Navbar() {
               aria-label={t("nav.bag")}
               className="tech-label inline-flex items-center gap-2 hover:opacity-60"
             >
-              <span>{t("nav.bag")}</span>
+              <span className="hidden min-[390px]:inline">{t("nav.bag")}</span>
               <span
                 className={`inline-flex min-w-5 h-5 px-1.5 items-center justify-center rounded-full border text-[10px] leading-none transition-transform duration-200 ${
                   cartPulse ? "scale-110" : "scale-100"
