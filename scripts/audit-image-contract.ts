@@ -8,7 +8,6 @@
 // 1. DRIVE_HERO_BY_SLUG (lib/product-image-presentation.ts) — every value
 //    must be `/products/hero/{slug}.webp` AND the file must exist on disk
 //    AND every 4-corner sample of the file must be near-white.
-//    This is the Hero-* source of truth for product cards & PDP.
 //
 // 2. LIST_IMAGE_OVERRIDES (lib/landing-product-curation.ts) — every value
 //    must be `/products/landing/{slug}-landing.webp` AND the file must
@@ -21,23 +20,22 @@
 //    must be `/products/hover/{slug}.webp` AND exist AND be near-white.
 //
 // 3. No other module in lib/ may declare an `_OVERRIDES` map keyed by slug.
-//    If we ever need another override layer, add it here with a tight
-//    type and a file-existence check.
 //
 // 4. Background-quality rule: every file referenced by rules 1, 2, 2a must
-//    have 4 corner pixels (12px inset) each with all RGB channels >= 240.
+//    have 4 corner pixels (12px inset) each with all RGB channels >= 235.
 //    This is what would have caught the black-plate regression that shipped
 //    classic-cognac-satchel, cognac-brogue-backpack, and heritage-rucksack
-//    on pure black plates for 2 weeks. Implemented via a tiny Python+PIL
-//    helper at scripts/lib/check-bg-white.py to keep this audit zero-dep.
+//    on pure black plates for 2 weeks. Uses sharp (already in node_modules
+//    via Next 16) so the check runs in Vercel's build container without
+//    any extra system deps.
 //
 // Run: pnpm tsx scripts/audit-image-contract.ts
 // Exits non-zero on any contract violation so CI catches it.
 
 import { existsSync, readFileSync } from "node:fs";
-import { spawnSync } from "node:child_process";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import sharp from "sharp";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, "..");
@@ -70,47 +68,66 @@ function extractRecord(filePath: string, mapName: string): Record<string, string
   return out;
 }
 
-const BG_HELPER = join(REPO_ROOT, "scripts", "lib", "check-bg-white.py");
+const INSET = 12;
+const MIN_CHANNEL = 235; // tolerates WebP encoding artifacts on near-white plates
 
-function verifyBackgroundWhite(slug: string, webPath: string, onDisk: string) {
-  // Exit codes from the helper:
-  //   0 -> all 4 corners >= 240 RGB (pass)
-  //   1 -> at least one corner failed; details on stderr
-  //   2 -> Pillow missing or file unreadable
-  const result = spawnSync("python3", [BG_HELPER, onDisk], { encoding: "utf8" });
-  if (result.status === 0) return;
-  if (result.status === 2) {
+async function verifyBackgroundWhite(slug: string, webPath: string, onDisk: string) {
+  try {
+    const meta = await sharp(onDisk).metadata();
+    const w = meta.width ?? 0;
+    const h = meta.height ?? 0;
+    if (w <= INSET * 2 || h <= INSET * 2) {
+      violations.push({
+        rule: "hero-bg-not-white",
+        detail: slug + " -> " + webPath + " is too small to sample (" + w + "x" + h + ")",
+      });
+      return;
+    }
+
+    const corners: Array<[string, number, number]> = [
+      ["TL", INSET, INSET],
+      ["TR", w - INSET - 1, INSET],
+      ["BL", INSET, h - INSET - 1],
+      ["BR", w - INSET - 1, h - INSET - 1],
+    ];
+
+    const failures: string[] = [];
+    for (const [name, x, y] of corners) {
+      const { data } = await sharp(onDisk)
+        .extract({ left: x, top: y, width: 1, height: 1 })
+        .removeAlpha()
+        .raw()
+        .toBuffer({ resolveWithObject: true });
+      const r = data[0]!;
+      const g = data[1]!;
+      const b = data[2]!;
+      if (Math.min(r, g, b) < MIN_CHANNEL) {
+        failures.push(name + "=" + r + "," + g + "," + b);
+      }
+    }
+
+    if (failures.length > 0) {
+      violations.push({
+        rule: "hero-bg-not-white",
+        detail:
+          slug +
+          " -> " +
+          webPath +
+          " has a non-white background. Hero plates must be pure white (all 4 corners >= RGB " +
+          MIN_CHANNEL +
+          "). Offending corners: " +
+          failures.join("; "),
+      });
+    }
+  } catch (err) {
     violations.push({
-      rule: "bg-helper-unavailable",
-      detail:
-        slug +
-        " -> " +
-        webPath +
-        " could not run bg check (" +
-        (result.stderr || "").trim() +
-        "). Install Pillow: pip3 install --user Pillow",
+      rule: "bg-check-error",
+      detail: slug + " -> " + webPath + " could not be opened by sharp: " + String(err),
     });
-    return;
   }
-  // Status 1 — non-white corners detected. The helper streams each bad
-  // corner on stderr as `FAIL corner=TL rgb=R,G,B`.
-  const bad = (result.stderr || "")
-    .split("\n")
-    .map((l) => l.trim())
-    .filter((l) => l.startsWith("FAIL"))
-    .join("; ");
-  violations.push({
-    rule: "hero-bg-not-white",
-    detail:
-      slug +
-      " -> " +
-      webPath +
-      " has a non-white background. Hero plates must be pure white (all 4 corners >= RGB 240,240,240). Offending corners: " +
-      (bad || "(see helper stderr)"),
-  });
 }
 
-function verifyFile(rule: string, slug: string, webPath: string) {
+async function verifyFile(rule: string, slug: string, webPath: string) {
   if (!webPath.startsWith("/")) {
     violations.push({
       rule,
@@ -126,109 +143,112 @@ function verifyFile(rule: string, slug: string, webPath: string) {
     });
     return;
   }
-  // File exists — now verify the actual pixels.
-  verifyBackgroundWhite(slug, webPath, onDisk);
+  await verifyBackgroundWhite(slug, webPath, onDisk);
 }
 
-// Rule 1
-{
-  const map = extractRecord(
-    join(REPO_ROOT, "lib", "product-image-presentation.ts"),
-    "DRIVE_HERO_BY_SLUG",
-  );
-  for (const [slug, value] of Object.entries(map)) {
-    if (!value.startsWith("/products/hero/")) {
-      violations.push({
-        rule: "drive-hero-path-shape",
-        detail: "DRIVE_HERO_BY_SLUG[" + slug + "] = " + value + " (must start with /products/hero/)",
-      });
-      continue;
-    }
-    verifyFile("drive-hero-file-exists", slug, value);
-  }
-  console.log("  DRIVE_HERO_BY_SLUG: " + Object.keys(map).length + " entries audited");
-}
-
-// Rule 2a: HOVER_BY_SLUG must point at /products/hover/{slug}.webp
-{
-  const map = extractRecord(
-    join(REPO_ROOT, "lib", "product-image-presentation.ts"),
-    "HOVER_BY_SLUG",
-  );
-  for (const [slug, value] of Object.entries(map)) {
-    if (!value.startsWith("/products/hover/")) {
-      violations.push({
-        rule: "hover-path-shape",
-        detail: "HOVER_BY_SLUG[" + slug + "] = " + value + " (must start with /products/hover/)",
-      });
-      continue;
-    }
-    if (!value.endsWith(".webp")) {
-      violations.push({
-        rule: "hover-extension",
-        detail: "HOVER_BY_SLUG[" + slug + "] = " + value + " (must end with .webp)",
-      });
-      continue;
-    }
-    verifyFile("hover-file-exists", slug, value);
-  }
-  console.log("  HOVER_BY_SLUG: " + Object.keys(map).length + " entries audited");
-}
-
-// Rule 2
-{
-  const map = extractRecord(
-    join(REPO_ROOT, "lib", "landing-product-curation.ts"),
-    "LIST_IMAGE_OVERRIDES",
-  );
-  for (const [slug, value] of Object.entries(map)) {
-    if (!value.startsWith("/products/landing/")) {
-      violations.push({
-        rule: "landing-override-path-shape",
-        detail: "LIST_IMAGE_OVERRIDES[" + slug + "] = " + value + " (must start with /products/landing/)",
-      });
-      continue;
-    }
-    if (!value.endsWith(".webp")) {
-      violations.push({
-        rule: "landing-override-extension",
-        detail: "LIST_IMAGE_OVERRIDES[" + slug + "] = " + value + " (must end with .webp)",
-      });
-      continue;
-    }
-    verifyFile("landing-override-file-exists", slug, value);
-  }
-  console.log("  LIST_IMAGE_OVERRIDES: " + Object.keys(map).length + " entries audited");
-}
-
-// Rule 3
-{
-  const allowed = new Set(["DRIVE_HERO_BY_SLUG", "LIST_IMAGE_OVERRIDES", "HOVER_BY_SLUG"]);
-  const libFiles = ["product-image-presentation.ts", "landing-product-curation.ts", "products.ts"];
-  for (const fname of libFiles) {
-    const src = readFileSync(join(REPO_ROOT, "lib", fname), "utf8");
-    const declRe = /const\s+([A-Z][A-Z0-9_]*OVERRIDES?[A-Z0-9_]*)\s*[:=]/g;
-    let m;
-    while ((m = declRe.exec(src)) !== null) {
-      const name = m[1];
-      if (!allowed.has(name)) {
+async function main() {
+  // Rule 1
+  {
+    const map = extractRecord(
+      join(REPO_ROOT, "lib", "product-image-presentation.ts"),
+      "DRIVE_HERO_BY_SLUG",
+    );
+    for (const [slug, value] of Object.entries(map)) {
+      if (!value.startsWith("/products/hero/")) {
         violations.push({
-          rule: "unauthorized-override-map",
-          detail: "lib/" + fname + " declares " + name + "; only DRIVE_HERO_BY_SLUG and LIST_IMAGE_OVERRIDES are sanctioned image-override maps",
+          rule: "drive-hero-path-shape",
+          detail: "DRIVE_HERO_BY_SLUG[" + slug + "] = " + value + " (must start with /products/hero/)",
         });
+        continue;
+      }
+      await verifyFile("drive-hero-file-exists", slug, value);
+    }
+    console.log("  DRIVE_HERO_BY_SLUG: " + Object.keys(map).length + " entries audited");
+  }
+
+  // Rule 2a: HOVER_BY_SLUG must point at /products/hover/{slug}.webp
+  {
+    const map = extractRecord(
+      join(REPO_ROOT, "lib", "product-image-presentation.ts"),
+      "HOVER_BY_SLUG",
+    );
+    for (const [slug, value] of Object.entries(map)) {
+      if (!value.startsWith("/products/hover/")) {
+        violations.push({
+          rule: "hover-path-shape",
+          detail: "HOVER_BY_SLUG[" + slug + "] = " + value + " (must start with /products/hover/)",
+        });
+        continue;
+      }
+      if (!value.endsWith(".webp")) {
+        violations.push({
+          rule: "hover-extension",
+          detail: "HOVER_BY_SLUG[" + slug + "] = " + value + " (must end with .webp)",
+        });
+        continue;
+      }
+      await verifyFile("hover-file-exists", slug, value);
+    }
+    console.log("  HOVER_BY_SLUG: " + Object.keys(map).length + " entries audited");
+  }
+
+  // Rule 2
+  {
+    const map = extractRecord(
+      join(REPO_ROOT, "lib", "landing-product-curation.ts"),
+      "LIST_IMAGE_OVERRIDES",
+    );
+    for (const [slug, value] of Object.entries(map)) {
+      if (!value.startsWith("/products/landing/")) {
+        violations.push({
+          rule: "landing-override-path-shape",
+          detail: "LIST_IMAGE_OVERRIDES[" + slug + "] = " + value + " (must start with /products/landing/)",
+        });
+        continue;
+      }
+      if (!value.endsWith(".webp")) {
+        violations.push({
+          rule: "landing-override-extension",
+          detail: "LIST_IMAGE_OVERRIDES[" + slug + "] = " + value + " (must end with .webp)",
+        });
+        continue;
+      }
+      await verifyFile("landing-override-file-exists", slug, value);
+    }
+    console.log("  LIST_IMAGE_OVERRIDES: " + Object.keys(map).length + " entries audited");
+  }
+
+  // Rule 3
+  {
+    const allowed = new Set(["DRIVE_HERO_BY_SLUG", "LIST_IMAGE_OVERRIDES", "HOVER_BY_SLUG"]);
+    const libFiles = ["product-image-presentation.ts", "landing-product-curation.ts", "products.ts"];
+    for (const fname of libFiles) {
+      const src = readFileSync(join(REPO_ROOT, "lib", fname), "utf8");
+      const declRe = /const\s+([A-Z][A-Z0-9_]*OVERRIDES?[A-Z0-9_]*)\s*[:=]/g;
+      let m;
+      while ((m = declRe.exec(src)) !== null) {
+        const name = m[1];
+        if (!allowed.has(name)) {
+          violations.push({
+            rule: "unauthorized-override-map",
+            detail: "lib/" + fname + " declares " + name + "; only DRIVE_HERO_BY_SLUG and LIST_IMAGE_OVERRIDES are sanctioned image-override maps",
+          });
+        }
       }
     }
   }
+
+  if (violations.length === 0) {
+    console.log("\n  PASS - image override contract is intact.");
+    process.exit(0);
+  } else {
+    console.error("\n  FAIL - " + violations.length + " contract violation(s):");
+    for (const v of violations) {
+      console.error("    [" + v.rule + "] " + v.detail);
+    }
+    console.error("\n  Fix the violations or update the contract in scripts/audit-image-contract.ts.");
+    process.exit(1);
+  }
 }
 
-if (violations.length === 0) {
-  console.log("\n  PASS - image override contract is intact.");
-  process.exit(0);
-} else {
-  console.error("\n  FAIL - " + violations.length + " contract violation(s):");
-  for (const v of violations) {
-    console.error("    [" + v.rule + "] " + v.detail);
-  }
-  console.error("\n  Fix the violations or update the contract in scripts/audit-image-contract.ts.");
-  process.exit(1);
-}
+main();
