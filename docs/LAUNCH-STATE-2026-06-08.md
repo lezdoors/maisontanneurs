@@ -59,9 +59,15 @@ Confirmed by Ryan 2026-06-08:
 - Real end-to-end test purchase — Revolut → webhook → Supabase orders →
   Resend confirmation → GA4 purchase + Meta Pixel Purchase + CAPI all
   observed firing.
-- Email forwarding migration — `haddaoui.ops@gmail.com` is dead;
-  `naoufal.h@gmail.com` is the active agent inbox; MochaHost forwarding,
-  Resend account, Meta BM contact fields all repointed.
+- Email model — settled and verified clean in repo:
+  - **Website / customer-facing**: `@maisontanneurs.com` domain inboxes
+    only (`hello@`, `orders@`, `wholesale@`, `newsletter@`, `repair@`,
+    `admin@`). Zero personal Gmail addresses appear anywhere in
+    `app/`, `components/`, `lib/`, or `public/`.
+  - **Internal operator inbox** (MochaHost forwarding sink):
+    `haddaoui.ops@outlook.com`. NOT shown on site.
+  - **Personal**: `naoufal.h@gmail.com` and `ryanaoufal@gmail.com` are
+    NEVER referenced on the website or in any MochaHost forwarding rule.
 - Meta BM — domain verification present, payment method live.
 - Search Console — verified via DNS TXT.
 - Mobile + Lighthouse pass — done on PDP, `/checkout/pay`, `/products`.
