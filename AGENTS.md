@@ -4,6 +4,58 @@
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 <!-- END:nextjs-agent-rules -->
 
+# Workflow Discipline (apply BEFORE any asset/folder work)
+
+This rule applies to every agent and every machine in the fleet (Turbo, Rocco,
+Fury). It exists because we kept rebuilding `find`/`ls`/Python orientation
+pipelines from scratch every time we hit a messy asset folder, and that ad-hoc
+discovery is what shipped the wrong-product / wrong-background images.
+
+The sequence — non-negotiable on asset/folder work:
+
+1. **`/graphify <path>`** — first move. Builds a knowledge graph of the folder
+   in one pass. Surfaces naming patterns, SKU prefixes, file format mix,
+   variants vs canonicals. Use this before you grep, before you write a
+   Python loop, before you assume folder structure. If `graphify-out/` already
+   exists in CWD, `/graphify query "<question>"` reuses the cache.
+2. **Contact sheet** — for any image batch (one frame per file laid out so
+   the eye can compare). Don't decide which file is canonical from filenames
+   alone.
+3. **Inspect pixels** — sample corners + center; check alpha channels;
+   verify the bag matches the slug visually.
+4. **Map** — `source file → visual product → canonical slug → role/surface
+   → notes`. Required for non-trivial batches.
+5. **Edit surgically** — smallest safe change; preserve originals; never
+   destructive-move source.
+6. **Verify** — local audit (`pnpm audit:image-contract` for image work),
+   typecheck, browser-check after deploy.
+7. **Handoff** — concise note of what was inspected, changed, verified,
+   blocked. So the next agent on the next machine doesn't rediscover state.
+
+## Graphify install (run once per machine)
+
+```bash
+# Clone the canonical repo + install CLI via pipx
+git clone https://github.com/safishamsi/graphify.git ~/graphify
+brew install pipx 2>/dev/null
+pipx install ~/graphify          # local path — avoids the PyPI typosquat flag
+pipx ensurepath                  # adds ~/.local/bin to PATH
+
+# Register the slash command in Claude Code
+~/.local/bin/graphify install    # writes ~/.claude/skills/graphify/SKILL.md
+                                 #   + ~/.claude/CLAUDE.md trigger
+```
+
+Verify with `which graphify` → `~/.local/bin/graphify`, and `/graphify --help`
+in Claude Code.
+
+## When NOT to run /graphify
+
+- Single-line CSS/copy tweaks, typo fixes.
+- Familiar repo work where the structure is already in head/memory.
+- Image generation (use Higgsfield), background removal (use rembg/remove.bg),
+  PDF/article writing (Graphify reads & maps, doesn't author).
+
 # Maison Tanneurs Operating Rules
 
 This repo is Maison Tanneurs. Keep the work scoped to Maison Tanneurs unless the user explicitly redirects.
