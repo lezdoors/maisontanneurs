@@ -1,80 +1,89 @@
-"use client";
+import InteractiveBentoGallery from "@/components/ui/interactive-bento-gallery";
 
-import { useEffect, useRef } from "react";
-import Image from "next/image";
-import { useInView } from "framer-motion";
-
-type Cell = {
-  kind?: "image" | "video";
-  src: string;
-  alt: string;
-  ratio: string;
-  poster?: string;
-};
-
-const COLUMNS: Cell[][] = [
-  [
-    {
-      src: "/atelier/atelier-wide-light-beams.webp",
-      alt: "Marrakech atelier — light shafts through arched windows, two artisans at work",
-      ratio: "21 / 9",
-    },
-    {
-      src: "/atelier/atelier-hides-stack.webp",
-      alt: "Stacked full-grain hides in cognac and caramel tones, artisans at work behind",
-      ratio: "9 / 16",
-    },
-    {
-      kind: "video",
-      src: "/brand/atelier/atelier-hands-at-work.mp4",
-      poster: "/brand/atelier/atelier-hands-at-work-poster.jpg",
-      alt: "Artisan hand-stitching cognac leather with a brass awl and waxed thread, atelier bench",
-      ratio: "16 / 9",
-    },
-  ],
-  [
-    {
-      src: "/atelier/atelier-cognac-plinth.webp",
-      alt: "Cognac leather satchel on travertine plinth inside a Marrakech stone-arched room",
-      ratio: "21 / 9",
-    },
-    {
-      src: "/atelier/atelier-awl-hand-macro.webp",
-      alt: "Close-up of an artisan's weathered hand piercing leather with a brass awl",
-      ratio: "9 / 16",
-    },
-    {
-      src: "/atelier/atelier-zellige-cutting.webp",
-      alt: "Leather pattern pieces laid across a long wooden table in a zellige-tiled atelier",
-      ratio: "16 / 9",
-    },
-    {
-      src: "/atelier/lifestyle-tennis-court.webp",
-      alt: "Model seated on rattan deck chair on a red clay tennis court at golden hour with kilim-trim backpack",
-      ratio: "3 / 2",
-    },
-  ],
-  [
-    {
-      kind: "video",
-      src: "/brand/atelier/atelier-medina-handover.mp4",
-      poster: "/brand/atelier/atelier-medina-handover-poster.jpg",
-      alt: "Two artisans packing a cognac travel bag together in a Marrakech medina interior",
-      ratio: "9 / 16",
-    },
-    {
-      kind: "video",
-      src: "/brand/atelier/atelier-bag-terrace.mp4",
-      poster: "/brand/atelier/atelier-bag-terrace-poster.jpg",
-      alt: "Hand placing a cognac leather bag on a sunlit terrace with brass weighing scales beside it",
-      ratio: "16 / 9",
-    },
-    {
-      src: "/atelier/lifestyle-olive-courtyard.webp",
-      alt: "Model walking through an olive-tree courtyard in white linen carrying a tan shoulder bag",
-      ratio: "16 / 9",
-    },
-  ],
+// Mix of the new atelier stills (public/atelier/new-batch/*) and the existing
+// atelier videos already in public/videos/. Includes the raw "In Their Hands"
+// clip that plays elsewhere on the page.
+const mediaItems = [
+  {
+    id: 1,
+    type: "image",
+    title: "The Cognac Tote",
+    desc: "Full-grain cognac, carried in a white look.",
+    url: "/atelier/new-batch/mt-atelier-cognac-tote-white-look-portrait.webp",
+    span: "row-span-5 sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-6",
+  },
+  {
+    id: 2,
+    type: "video",
+    title: "Colonnade Walk",
+    desc: "Through the arches, object in hand.",
+    url: "/videos/maison-film-colonnade-walk.mp4",
+    span: "row-span-4 sm:col-span-2 sm:row-span-3 md:col-span-2 md:row-span-3",
+  },
+  {
+    id: 3,
+    type: "image",
+    title: "Arched Door",
+    desc: "A robed figure at a carved Marrakech doorway.",
+    url: "/atelier/new-batch/mt-atelier-arched-door-robed-figure-portrait.webp",
+    span: "row-span-4 sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-3",
+  },
+  {
+    id: 4,
+    type: "video",
+    title: "In Their Hands",
+    desc: "Eleven seconds, unscripted, at the bench.",
+    url: "/videos/atelier-in-their-hands.mp4",
+    span: "row-span-5 sm:col-span-1 sm:row-span-4 md:col-span-1 md:row-span-5",
+  },
+  {
+    id: 5,
+    type: "image",
+    title: "Kilim Duffle",
+    desc: "Leather-framed kilim against a red door.",
+    url: "/atelier/new-batch/mt-atelier-kilim-duffle-red-door-landscape.webp",
+    span: "row-span-3 sm:col-span-2 sm:row-span-2 md:col-span-2 md:row-span-3",
+  },
+  {
+    id: 6,
+    type: "image",
+    title: "Red Wall",
+    desc: "Tailored cream, a mini bag, a wall of ochre.",
+    url: "/atelier/new-batch/mt-atelier-red-wall-model-mini-bag-portrait.webp",
+    span: "row-span-4 sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-5",
+  },
+  {
+    id: 7,
+    type: "video",
+    title: "The White Suit",
+    desc: "Object and tailoring, one frame.",
+    url: "/videos/hero-model-white-suit-bag.mp4",
+    span: "row-span-4 sm:col-span-2 sm:row-span-3 md:col-span-2 md:row-span-3",
+  },
+  {
+    id: 8,
+    type: "image",
+    title: "Cloaked Artisan",
+    desc: "At the bench, hooded against the light.",
+    url: "/atelier/new-batch/mt-atelier-cloaked-artisan-bench-landscape.webp",
+    span: "row-span-3 sm:col-span-1 sm:row-span-2 md:col-span-2 md:row-span-3",
+  },
+  {
+    id: 9,
+    type: "image",
+    title: "Red Desert",
+    desc: "A horseman, smoke, the far south.",
+    url: "/atelier/new-batch/mt-atelier-red-desert-horseman-smoke-portrait.webp",
+    span: "row-span-4 sm:col-span-1 sm:row-span-3 md:col-span-1 md:row-span-4",
+  },
+  {
+    id: 10,
+    type: "video",
+    title: "Atelier Loop",
+    desc: "The workshop, on a quiet loop.",
+    url: "/videos/atelier-loop.mp4",
+    span: "row-span-3 sm:col-span-1 sm:row-span-2 md:col-span-1 md:row-span-3",
+  },
 ];
 
 export default function AtelierGallery() {
@@ -90,10 +99,7 @@ export default function AtelierGallery() {
             <span className="tech-label opacity-60">§05.5</span>
             <h2
               className="leading-none font-medium"
-              style={{
-                fontSize: "clamp(28px, 3.6vw, 36px)",
-                letterSpacing: "-0.03em",
-              }}
+              style={{ fontSize: "clamp(28px, 3.6vw, 36px)", letterSpacing: "-0.03em" }}
             >
               Atelier
             </h2>
@@ -104,67 +110,11 @@ export default function AtelierGallery() {
         </div>
       </div>
 
-      <div className="px-6 md:px-10 py-[clamp(56px,8vw,112px)]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 max-w-[1400px] mx-auto">
-          {COLUMNS.map((col, ci) => (
-            <div key={ci} className="grid gap-5 md:gap-6 content-start">
-              {col.map((cell) => (
-                <Frame key={cell.src} cell={cell} />
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
+      <InteractiveBentoGallery
+        title="Inside the Atelier"
+        description="Drag to rearrange · tap any frame to expand."
+        mediaItems={mediaItems}
+      />
     </section>
-  );
-}
-
-function Frame({ cell }: { cell: Cell }) {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const inView = useInView(ref, { margin: "-10% 0px -10% 0px" });
-
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (inView && !mq.matches) {
-      v.play().catch(() => undefined);
-    } else {
-      v.pause();
-    }
-  }, [inView]);
-
-  return (
-    <div
-      ref={ref}
-      className="relative w-full overflow-hidden bg-[var(--color-bg-alt)]"
-      style={{ aspectRatio: cell.ratio }}
-    >
-      {cell.kind === "video" ? (
-        <video
-          ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-out"
-          style={{ opacity: inView ? 1 : 0 }}
-          poster={cell.poster}
-          preload="metadata"
-          muted
-          loop
-          playsInline
-          aria-label={cell.alt}
-        >
-          <source src={cell.src} type="video/mp4" />
-        </video>
-      ) : (
-        <Image
-          src={cell.src}
-          alt={cell.alt}
-          fill
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition-opacity duration-[900ms] ease-out"
-          style={{ opacity: inView ? 1 : 0 }}
-        />
-      )}
-    </div>
   );
 }

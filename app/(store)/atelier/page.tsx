@@ -3,7 +3,6 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import ArtisanDossier from "@/components/store/ArtisanDossier";
 import AtelierGallery from "@/components/store/AtelierGallery";
-import AtelierHero from "@/components/store/AtelierHero";
 import InTheirHands from "@/components/store/InTheirHands";
 
 export const metadata: Metadata = {
@@ -24,9 +23,7 @@ export const metadata: Metadata = {
 export default function AtelierPage() {
   return (
     <main>
-      <AtelierHero />
-
-      {/* §01.5 — In Their Hands (documentary video) */}
+      {/* §01.5 — In Their Hands (documentary video) — opens the atelier story */}
       <InTheirHands />
 
       {/* Story */}
