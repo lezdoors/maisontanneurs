@@ -6,9 +6,12 @@
 // as new and re-optimize from origin.
 //
 // Bump CACHE_BUSTER_VERSION any time we recrop / reprocess product image files.
-// (Last bump: 2026-06-05 — local Drive hero edge cleanup.)
+// (Last bump: 2026-06-08 — 6 hero files re-pulled from Rocco clean source to
+// kill black/gray-plate variants on classic-cognac-satchel, cognac-brogue-
+// backpack, explorer-rolltop-cognac, heritage-rucksack, marrakech-tote-cognac,
+// vintage-buckle-backpack.)
 
-const CACHE_BUSTER_VERSION = "2026-06-05-drive-hero-edge-cleanup-r1";
+const CACHE_BUSTER_VERSION = "2026-06-08-hero-white-plate-r1";
 
 const SUPABASE_HOST = "xbtabpurfavngwmwtawc.supabase.co";
 
