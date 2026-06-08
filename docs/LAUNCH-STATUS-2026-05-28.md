@@ -1,5 +1,11 @@
 # Maison Tanneurs Launch Status — 2026-05-28
 
+> **SUPERSEDED 2026-06-08** — see `docs/LAUNCH-STATE-2026-06-08.md` for current
+> verified launch state. References to `/about` are stale (route renamed to
+> `/atelier`); Switzer font note is stale (wordmark uses Bodoni Moda SC);
+> tracking, Revolut LIVE keys, Meta domain verification, and the real E2E
+> purchase are confirmed completed.
+
 ## Current Deployment
 
 - Production domain: `https://maisontanneurs.com`

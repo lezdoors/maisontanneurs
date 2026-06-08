@@ -1,5 +1,11 @@
 # Maison Tanneurs Launch Checklist — 2026-05-28
 
+> **SUPERSEDED 2026-06-08** — see `docs/LAUNCH-STATE-2026-06-08.md`. The
+> verdict is now READY for soft, paid Meta, and feed/marketplace. References
+> to `/about` are stale (renamed to `/atelier`). The "thin galleries"
+> non-blockers listed below were either filled or are out-of-scope for
+> launch.
+
 Current production:
 
 - Domain: `https://maisontanneurs.com`

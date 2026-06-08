@@ -1,5 +1,9 @@
 # Maison Tanneurs — Launch Readiness
 
+> **SUPERSEDED 2026-06-08** — see `docs/LAUNCH-STATE-2026-06-08.md`. The
+> 24/24 READY verdict still holds; the per-SKU warnings (no Approved
+> Lifestyle / Meta variant) are non-gating per Ryan and not blocking launch.
+
 Generated: 2026-06-01T06:58:09.300Z
 
 ## Summary — 24 / 24 SKUs ready
