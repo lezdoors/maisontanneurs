@@ -147,7 +147,7 @@
   white-space: nowrap;
   font-family: var(--font-wordmark);
   font-weight: 300;
-  font-size: clamp(20px, 2.25vw, 30px);
+  font-size: clamp(24px, 2.65vw, 38px);
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: clamp(0.2em, 0.8vw, 0.34em);
@@ -158,7 +158,7 @@
 }
 
 .mt-brand-wordmark--compact {
-  font-size: clamp(17px, 1.85vw, 25px);
+  font-size: clamp(20px, 2.05vw, 30px);
   letter-spacing: clamp(0.18em, 0.6vw, 0.3em);
 }
 
@@ -940,18 +940,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   opacity: 0.64;
 }
 
+/* Catalogue cards must read as a single white plate, not a polaroid frame
+   around a smaller white image. The previous cream gradient + hairline
+   border created the "square within a square" look Ryan has been flagging
+   for 2 weeks (2026-06-08). The card now sits on pure white that matches
+   the hero image bg, so the image padding becomes invisible white-on-white
+   and there is only one square. */
 .mt-product-frame--catalogue {
-  background:
-    linear-gradient(180deg, rgba(255,255,255,1), rgba(248,247,243,0.98));
+  background: #ffffff;
 }
 
 .mt-product-frame--catalogue::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 1px solid rgba(31, 29, 27, 0.08);
-  pointer-events: none;
-  z-index: 2;
+  content: none;
 }
 
 .mt-filter-scroll {
