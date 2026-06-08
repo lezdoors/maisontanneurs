@@ -15,14 +15,21 @@ const LANDING_PRESENTATION_HOLD = new Set([
   "expedition-rolltop-cognac",
 ]);
 
-const LIST_IMAGE_OVERRIDES: Record<string, string> = {
+// LIST_IMAGE_OVERRIDES is for landing-page presentation ONLY — the few SKUs
+// that get a different shot on the homepage than in the catalogue grid.
+// NEVER use this to work around a wrong Hero source. The Hero-* file in
+// Drive is the source of truth for product imagery; if a product looks
+// wrong, fix Supabase/Storage, not this map.
+//
+// Type is constrained to `/products/landing/...` so TypeScript refuses any
+// attempt to slip a Supabase URL fragment or non-landing path into the map.
+const LIST_IMAGE_OVERRIDES: Record<string, `/products/landing/${string}.webp`> = {
   "atlas-weekender-cognac": "/products/landing/atlas-weekender-cognac-landing.webp",
   "oasis-weekender-oxblood": "/products/landing/oasis-weekender-oxblood-landing.webp",
   "medina-saddlebag-tooled-cognac": "/products/landing/medina-saddlebag-tooled-cognac-landing.webp",
   "expedition-rolltop-noir": "/products/landing/expedition-rolltop-noir-landing.webp",
   "atlas-kilim-duffle": "/products/landing/atlas-kilim-duffle-landing.webp",
   "marrakech-tote-cognac": "/products/landing/marrakech-tote-cognac-landing.webp",
-  "expedition-rolltop-cognac": "expedition-rolltop-cognac-pdp-05.webp",
 };
 
 export function isLandingPresentationHold(slug: string): boolean {
@@ -50,10 +57,7 @@ export function selectObjectOfEdition(products: Product[]): Product | null {
 }
 
 export function productListImage(product: Product): string | undefined {
-  const overrideName = LIST_IMAGE_OVERRIDES[product.slug];
-  if (overrideName) {
-    if (overrideName.startsWith("/")) return overrideName;
-    return product.images?.find((image) => image.includes(overrideName)) ?? selectProductHeroImage(product);
-  }
+  const override = LIST_IMAGE_OVERRIDES[product.slug];
+  if (override) return override;
   return selectProductHeroImage(product);
 }
