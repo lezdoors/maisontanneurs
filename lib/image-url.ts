@@ -11,7 +11,7 @@
 // backpack, explorer-rolltop-cognac, heritage-rucksack, marrakech-tote-cognac,
 // vintage-buckle-backpack.)
 
-const CACHE_BUSTER_VERSION = "2026-06-08-hero-white-plate-r1";
+const CACHE_BUSTER_VERSION = "2026-06-08-drive-hero-resync-r2";
 
 const SUPABASE_HOST = "xbtabpurfavngwmwtawc.supabase.co";
 
