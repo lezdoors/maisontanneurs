@@ -44,7 +44,7 @@ export default function BrandStoryEditorial() {
             for people who want the maker&apos;s mark on the bag they carry.
           </p>
           <div className="mt-10">
-            <Link href="/about" className="ed-cta-outline">
+            <Link href="/atelier" className="ed-cta-outline">
               Read the story
             </Link>
           </div>

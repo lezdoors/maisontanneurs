@@ -30,7 +30,7 @@ Maison Tanneurs designs restrained leather silhouettes and works with master art
 
 - Homepage: ${SITE_URL}/
 - Collection: ${SITE_URL}/products
-- About the atelier: ${SITE_URL}/about
+- About the atelier: ${SITE_URL}/atelier
 - Contact: ${SITE_URL}/contact
 - Shipping: ${SITE_URL}/legal/shipping
 - Returns: ${SITE_URL}/legal/returns

@@ -26,8 +26,8 @@ const COLUMNS: ColumnDef[] = [
   {
     titleKey: "footer.atelier",
     links: [
-      { labelKey: "footer.story", href: "/about" },
-      { labelKey: "footer.production", href: "/about" },
+      { labelKey: "footer.story", href: "/atelier" },
+      { labelKey: "footer.production", href: "/atelier" },
       { labelKey: "footer.materialsCare", href: "/legal/care" },
     ],
   },

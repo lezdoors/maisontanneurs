@@ -88,7 +88,7 @@ export default function AtelierLoop() {
             stored.
           </p>
           <Link
-            href="/about"
+            href="/atelier"
             className="inline-flex items-center rounded-full mt-7"
             style={{
               background: "transparent",

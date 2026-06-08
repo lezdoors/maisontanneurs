@@ -54,7 +54,7 @@ Maison Tanneurs makes hand-stitched leather bags in Marrakech, Morocco. Each pie
 
 - Homepage: ${SITE_URL}/
 - Collection: ${SITE_URL}/products
-- About: ${SITE_URL}/about
+- About: ${SITE_URL}/atelier
 - Contact: ${SITE_URL}/contact
 - Shipping: ${SITE_URL}/legal/shipping
 - Returns: ${SITE_URL}/legal/returns

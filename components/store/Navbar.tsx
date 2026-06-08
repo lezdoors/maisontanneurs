@@ -11,7 +11,7 @@ import { useLocale, useLocalizedHref, useSwitchLocaleHref, useT } from "@/lib/i1
 // Collection (commerce) → Savoir-faire (story) → Boutique (visit) → Bespoke (custom) → Trade (B2B) → Contact (always last).
 const NAV_ITEMS = [
   { labelKey: "nav.collection", href: "/products" },
-  { labelKey: "nav.savoirFaire", href: "/about#atelier" },
+  { labelKey: "nav.savoirFaire", href: "/atelier#atelier" },
   { labelKey: "nav.boutique", href: "/boutique" },
   { labelKey: "nav.bespoke", href: "/bespoke" },
   { labelKey: "nav.trade", href: "/trade" },

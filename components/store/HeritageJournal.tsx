@@ -89,7 +89,7 @@ export default function HeritageJournal() {
 
         <div className="mt-14 text-center">
           <Link
-            href="/about"
+            href="/atelier"
             className="inline-flex border-b border-[var(--color-ink)] pb-2 text-[11px] uppercase tracking-[0.22em] transition-opacity hover:opacity-60"
             style={{ fontFamily: "var(--font-sans)" }}
           >

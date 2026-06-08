@@ -175,7 +175,7 @@ export default function Hero() {
               <Link href={href("/products")} className="mt-luxury-button mt-luxury-button--light">
                 {t("hero.primary")}
               </Link>
-              <Link href={href("/about")} className="mt-luxury-link text-white/82">
+              <Link href={href("/atelier")} className="mt-luxury-link text-white/82">
                 {t("hero.secondary")}
               </Link>
             </div>

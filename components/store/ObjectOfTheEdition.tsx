@@ -166,7 +166,7 @@ export default async function ObjectOfTheEdition() {
               See the piece →
             </Link>
             <Link
-              href="/about"
+              href="/atelier"
               className="inline-flex items-center gap-3 transition-opacity hover:opacity-60"
               style={{
                 color: "var(--color-ink)",

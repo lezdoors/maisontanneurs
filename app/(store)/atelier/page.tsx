@@ -3,71 +3,28 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import ArtisanDossier from "@/components/store/ArtisanDossier";
 import AtelierGallery from "@/components/store/AtelierGallery";
+import AtelierHero from "@/components/store/AtelierHero";
 import InTheirHands from "@/components/store/InTheirHands";
 
 export const metadata: Metadata = {
-  title: "About Maison Tanneurs",
+  title: "Atelier — Maison Tanneurs",
   description:
     "A small leather house working out of a Marrakech atelier. Full-grain leather, hand-stitched, solid brass hardware. Free worldwide shipping via DHL Express.",
   alternates: {
-    canonical: "/about",
+    canonical: "/atelier",
     languages: {
-      en: "/about",
-      fr: "/fr/about",
-      ar: "/ar/about",
-      "x-default": "/about",
+      en: "/atelier",
+      fr: "/fr/atelier",
+      ar: "/ar/atelier",
+      "x-default": "/atelier",
     },
   },
 };
 
-export default function AboutPage() {
+export default function AtelierPage() {
   return (
     <main>
-      {/* Hero */}
-      <section className="relative h-[70vh] w-full overflow-hidden bg-[#0e0d0c]">
-        <Image
-          src="/hero/hero-atelier.webp"
-          alt="Maison Tanneurs atelier — bags hanging from wooden beams in golden light"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(8,7,6,0.4) 0%, rgba(8,7,6,0.15) 40%, rgba(8,7,6,0.75) 100%)",
-          }}
-        />
-        <div className="absolute bottom-12 left-6 md:left-10 right-6">
-          <div className="max-w-[1200px] mx-auto">
-            <div
-              className="mb-4 uppercase"
-              style={{
-                fontSize: "11px",
-                letterSpacing: "0.32em",
-                color: "rgba(245,244,241,0.82)",
-              }}
-            >
-              About · Maison Tanneurs
-            </div>
-            <h1
-              className="text-[color:var(--color-cream)]"
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "clamp(40px, 6vw, 96px)",
-                letterSpacing: "-0.02em",
-                fontWeight: 800,
-                lineHeight: 1.05,
-                textShadow: "0 0 6px rgba(0,0,0,0.7)",
-              }}
-            >
-              Hand-stitched in Marrakech.
-            </h1>
-          </div>
-        </div>
-      </section>
+      <AtelierHero />
 
       {/* §01.5 — In Their Hands (documentary video) */}
       <InTheirHands />
