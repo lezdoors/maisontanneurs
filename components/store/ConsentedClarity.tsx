@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-const PROJECT_ID = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || "wrj9fbl8n9";
+const PROJECT_ID = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID || "x3h4exn8b5";
 
 function injectClarity(id: string) {
   if (typeof window === "undefined") return;
