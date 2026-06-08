@@ -5,7 +5,11 @@ import { Product } from "@/lib/supabase/types";
 import { STATIC_PRODUCTS } from "@/lib/products";
 import { HIDDEN_SKUS, HIDDEN_SKUS_ARRAY } from "@/lib/hidden-skus";
 import { getServerPriceFormatter } from "@/lib/price-server";
-import { orderProductImages } from "@/lib/product-image-presentation";
+import {
+  orderProductImages,
+  selectProductHeroImage,
+  selectProductHoverImage,
+} from "@/lib/product-image-presentation";
 
 async function getFeatured(): Promise<Product[]> {
   try {
@@ -57,10 +61,9 @@ export default async function ProductSpotlight() {
 
         <div className="rb-scroll-x grid grid-flow-col auto-cols-[88vw] sm:auto-cols-[48vw] md:auto-cols-[32%] lg:auto-cols-[calc((100%-2rem)/3)] overflow-x-auto gap-4 snap-x snap-mandatory pb-2">
           {featured.map((p) => {
-            const ordered = orderProductImages(p.images);
-            const primary = ordered[0] || "/products/product-04.png";
-            const secondary = ordered[1] || primary;
-            const angles = ordered.length;
+            const primary = selectProductHeroImage(p) || "/products/product-04.png";
+            const hover = selectProductHoverImage(p);
+            const angles = orderProductImages(p.images).length;
             return (
               <Link
                 key={p.id}
@@ -73,16 +76,22 @@ export default async function ProductSpotlight() {
                     alt={p.title}
                     fill
                     sizes="(max-width:768px) 88vw, 500px"
-                    className="object-cover transition-opacity duration-500 ease-out group-hover:opacity-0"
+                    className={
+                      hover
+                        ? "object-cover transition-opacity duration-500 ease-out group-hover:opacity-0"
+                        : "object-cover"
+                    }
                   />
-                  <Image
-                    src={secondary}
-                    alt=""
-                    aria-hidden
-                    fill
-                    sizes="(max-width:768px) 88vw, 500px"
-                    className="object-cover opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
-                  />
+                  {hover && (
+                    <Image
+                      src={hover}
+                      alt=""
+                      aria-hidden
+                      fill
+                      sizes="(max-width:768px) 88vw, 500px"
+                      className="object-cover opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100"
+                    />
+                  )}
                 </div>
 
                 <div className="bg-[var(--rb-card-bg)] px-5 md:px-6 pt-1 pb-5 md:pb-6">

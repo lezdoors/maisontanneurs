@@ -1,5 +1,20 @@
 import type { Product } from "@/lib/supabase/types";
 
+// Curated alternate-angle picks for product card hover swap. Each entry is a
+// deliberate choice (not images[1] roulette) — pick the angle that best sells
+// the silhouette from a complementary view to the Hero. If a slug isn't in
+// this map, the hover swap doesn't fire — better to show no swap than a
+// random supplier shot.
+//
+// File contract: `/products/hover/{slug}.webp` (enforced by
+// scripts/audit-image-contract.ts and the template-literal type below).
+const HOVER_BY_SLUG: Record<string, `/products/hover/${string}.webp`> = {
+  // Populate with curated picks when files land in public/products/hover/.
+  // Until then, ProductSpotlight (or any future hover-swap surface) will not
+  // fade to a random alternate — selectProductHoverImage() returns undefined
+  // and the consuming component is expected to skip the swap.
+};
+
 const DRIVE_HERO_BY_SLUG: Record<string, string> = {
   "atlas-briefcase-vintage": "/products/hero/atlas-briefcase-vintage.webp",
   "atlas-field-briefcase": "/products/hero/atlas-field-briefcase.webp",
@@ -70,6 +85,13 @@ export function selectDriveHeroImage(product: Product): string | undefined {
 
 export function selectProductHeroImage(product: Product): string | undefined {
   return selectDriveHeroImage(product) ?? orderProductImages(product.images)[0];
+}
+
+// Returns the curated hover swap image for this product, or undefined if no
+// pick has been made. Consumers MUST treat undefined as "do not swap" — never
+// fall back to images[1] or a random pick.
+export function selectProductHoverImage(product: Product): string | undefined {
+  return HOVER_BY_SLUG[product.slug];
 }
 
 export function orderProductGalleryImages(product: Product): string[] {

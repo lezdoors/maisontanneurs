@@ -91,6 +91,32 @@ function verifyFile(rule: string, slug: string, webPath: string) {
   console.log("  DRIVE_HERO_BY_SLUG: " + Object.keys(map).length + " entries audited");
 }
 
+// Rule 2a: HOVER_BY_SLUG must point at /products/hover/{slug}.webp
+{
+  const map = extractRecord(
+    join(REPO_ROOT, "lib", "product-image-presentation.ts"),
+    "HOVER_BY_SLUG",
+  );
+  for (const [slug, value] of Object.entries(map)) {
+    if (!value.startsWith("/products/hover/")) {
+      violations.push({
+        rule: "hover-path-shape",
+        detail: "HOVER_BY_SLUG[" + slug + "] = " + value + " (must start with /products/hover/)",
+      });
+      continue;
+    }
+    if (!value.endsWith(".webp")) {
+      violations.push({
+        rule: "hover-extension",
+        detail: "HOVER_BY_SLUG[" + slug + "] = " + value + " (must end with .webp)",
+      });
+      continue;
+    }
+    verifyFile("hover-file-exists", slug, value);
+  }
+  console.log("  HOVER_BY_SLUG: " + Object.keys(map).length + " entries audited");
+}
+
 // Rule 2
 {
   const map = extractRecord(
@@ -119,7 +145,7 @@ function verifyFile(rule: string, slug: string, webPath: string) {
 
 // Rule 3
 {
-  const allowed = new Set(["DRIVE_HERO_BY_SLUG", "LIST_IMAGE_OVERRIDES"]);
+  const allowed = new Set(["DRIVE_HERO_BY_SLUG", "LIST_IMAGE_OVERRIDES", "HOVER_BY_SLUG"]);
   const libFiles = ["product-image-presentation.ts", "landing-product-curation.ts", "products.ts"];
   for (const fname of libFiles) {
     const src = readFileSync(join(REPO_ROOT, "lib", fname), "utf8");
