@@ -6,12 +6,10 @@
 // as new and re-optimize from origin.
 //
 // Bump CACHE_BUSTER_VERSION any time we recrop / reprocess product image files.
-// (Last bump: 2026-06-08 — 6 hero files re-pulled from Rocco clean source to
-// kill black/gray-plate variants on classic-cognac-satchel, cognac-brogue-
-// backpack, explorer-rolltop-cognac, heritage-rucksack, marrakech-tote-cognac,
-// vintage-buckle-backpack.)
+// (Last bump: 2026-06-09 — explorer-rolltop-cognac + vintage-buckle-backpack
+// normalized from 1600x2000 to the 2400x2400 white-plate grid spec.)
 
-const CACHE_BUSTER_VERSION = "2026-06-08-drive-hero-resync-r5";
+const CACHE_BUSTER_VERSION = "2026-06-09-plate-normalize-r6";
 
 const SUPABASE_HOST = "xbtabpurfavngwmwtawc.supabase.co";
 
