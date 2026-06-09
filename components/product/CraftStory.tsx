@@ -2,15 +2,10 @@ import type { Craftsman } from "@/lib/supabase/types";
 
 interface CraftStoryProps {
   craftsman?: Craftsman | null;
-  materials: string[];
 }
 
-export default function CraftStory({ craftsman, materials }: CraftStoryProps) {
-  const artisanName = craftsman?.name || "Master Artisans of Marrakech";
-  const materialsText =
-    materials.length > 0
-      ? materials.join(", ")
-      : "traditional materials";
+export default function CraftStory({ craftsman }: CraftStoryProps) {
+  const benchName = craftsman?.name || "Built at one bench in Marrakech.";
 
   return (
     <section className="border-t border-stone">
@@ -20,22 +15,21 @@ export default function CraftStory({ craftsman, materials }: CraftStoryProps) {
           <div>
             <span className="eye block mb-6">The Craft</span>
             <h2 className="disp text-[clamp(32px,4vw,56px)] max-w-[18ch]">
-              {artisanName}
+              {benchName}
             </h2>
           </div>
 
           {/* Right */}
           <div className="flex flex-col gap-6 lg:pt-12">
             <p className="body-copy max-w-[52ch]">
-              Every piece in our collection is the product of generations of
-              accumulated knowledge, passed from master to apprentice in the
-              workshops of Marrakech. Working with {materialsText}, our artisans
-              cut, skive, saddle-stitch, edge-burnish, line, and fit each object
-              by hand before final inspection.
+              Each bag is cut, skived, saddle-stitched, edge-burnished, lined,
+              and fitted by the same pair of hands, start to finish. The saddle
+              stitch is sewn with two needles and locked at every pass; if one
+              thread wears through, the seam holds.
             </p>
             <p className="body-copy max-w-[52ch]">
-              The result is a bag that holds its structure, softens with use,
-              and develops a patina specific to the person carrying it.
+              It leaves the bench structured, softens with use, and takes on a
+              patina specific to the person carrying it.
             </p>
 
             {craftsman?.bio && (

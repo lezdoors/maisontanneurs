@@ -181,10 +181,7 @@ export default async function ProductPage({
       </div>
 
       {/* Craft story */}
-      <CraftStory
-        craftsman={product.craftsmen}
-        materials={product.materials}
-      />
+      <CraftStory craftsman={product.craftsmen} />
 
       {/* Related products */}
       {related.length > 0 && (
