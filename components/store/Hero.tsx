@@ -34,19 +34,19 @@ const SLIDES: Slide[] = [
     mobileObjectPos: "74% 42%",
   },
   {
-    kind: "video",
-    src: "/videos/mt-hero-medina.mp4",
-    poster: "/videos/mt-hero-medina-poster.jpg",
-    alt: "Traveler in white linen walking the dunes with a cognac bag at golden hour",
-    durationMs: 8000,
-    objectPos: "50% 40%",
+    kind: "image",
+    src: "/brand/hero/home-hero-3-woman-arches.webp",
+    alt: "Cognac duffle on a stone plinth, figure in white crossing an arched Marrakech hall",
+    durationMs: 7000,
+    objectPos: "50% 58%",
+    mobileObjectPos: "32% 58%",
   },
   {
     kind: "image",
-    src: "/brand/hero/mt-hero-berber.webp",
-    alt: "Berber traveler in indigo on the dune crest, cognac briefcase at sundown",
+    src: "/brand/hero/mt-hero-koutchi-carriage.webp",
+    alt: "Grained leather handbag with brass buckles on the green leather seat of a vintage carriage",
     durationMs: 7000,
-    objectPos: "50% 50%",
+    objectPos: "50% 55%",
   },
 ];
 
