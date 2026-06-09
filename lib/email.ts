@@ -18,7 +18,7 @@ function getResend(): Resend {
 
 const FROM_EMAIL = "Maison Tanneurs <orders@maisontanneurs.com>";
 const REPLY_TO = "hello@maisontanneurs.com";
-const ADMIN_EMAIL = "haddaoui.ops@outlook.com";
+const ADMIN_EMAIL = "admin@maisontanneurs.com";
 
 interface OrderEmailData {
   to: string;

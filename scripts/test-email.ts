@@ -1,5 +1,5 @@
 // One-shot test that fires a real Resend send through the production config.
-// Verifies: RESEND_API_KEY env is set, FROM domain is verified, message reaches haddaoui.ops@outlook.com.
+// Verifies: RESEND_API_KEY env is set, FROM domain is verified, message reaches the MochaHost admin inbox.
 // Run: pnpm tsx scripts/test-email.ts
 
 import { Resend } from "resend";
@@ -18,17 +18,17 @@ const resend = new Resend(key);
 async function main() {
   const { data, error } = await resend.emails.send({
     from: "Maison Tanneurs <orders@maisontanneurs.com>",
-    to: "haddaoui.ops@outlook.com",
+    to: "admin@maisontanneurs.com",
     subject: "Resend sanity test — production config live",
     html: `
       <div style="font-family:Georgia,serif;padding:24px;max-width:560px;color:#1f1b16;">
         <h2 style="font-weight:normal;">Resend setup complete</h2>
-        <p>If you're reading this in <code>haddaoui.ops@outlook.com</code>, the production email pipeline is verified:</p>
+        <p>If you're reading this through <code>admin@maisontanneurs.com</code>, the production email pipeline is verified:</p>
         <ul style="line-height:1.8;">
           <li>Domain <code>maisontanneurs.com</code> verified on Resend (DKIM + SPF)</li>
           <li>FROM <code>orders@maisontanneurs.com</code> resolving</li>
           <li>API key <code>RESEND_API_KEY</code> active</li>
-          <li>Inbound to <code>haddaoui.ops@outlook.com</code> reaching your read inbox</li>
+          <li>Inbound to the MochaHost admin inbox and its forwarding sink works</li>
         </ul>
         <p style="font-size:11px;color:#7a6f5c;margin-top:24px;">Fired from <code>scripts/test-email.ts</code> · ${new Date().toISOString()}</p>
       </div>

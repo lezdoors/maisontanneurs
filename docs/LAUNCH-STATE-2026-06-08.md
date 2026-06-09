@@ -64,10 +64,12 @@ Confirmed by Ryan 2026-06-08:
     only (`hello@`, `orders@`, `wholesale@`, `newsletter@`, `repair@`,
     `admin@`). Zero personal Gmail addresses appear anywhere in
     `app/`, `components/`, `lib/`, or `public/`.
-  - **Internal operator inbox** (MochaHost forwarding sink):
-    `haddaoui.ops@outlook.com`. NOT shown on site.
+  - **Agent / analytics access**: `haddaoui.ops@gmail.com` is restored and
+    intended for Amghar/other agents to access analytics and ops tools. Do
+    not use Mouha to log into it; Mouha triggered the prior Google security
+    flag.
   - **Personal**: `naoufal.h@gmail.com` and `ryanaoufal@gmail.com` are
-    NEVER referenced on the website or in any MochaHost forwarding rule.
+    NEVER referenced on the website.
 - Meta BM — domain verification present, payment method live.
 - Search Console — verified via DNS TXT.
 - Mobile + Lighthouse pass — done on PDP, `/checkout/pay`, `/products`.

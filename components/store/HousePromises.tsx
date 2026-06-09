@@ -15,7 +15,7 @@ const PROMISES: Promise[] = [
   {
     code: "P.02",
     k: "Returns",
-    v: "14 Days · Unworn",
+    v: "30 Days · Unworn",
     note: "Free return label within EU + UK. International return at carrier rate.",
   },
   {
