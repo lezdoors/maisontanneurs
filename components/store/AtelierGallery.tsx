@@ -144,8 +144,7 @@ function Frame({ cell }: { cell: Cell }) {
       {cell.kind === "video" ? (
         <video
           ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-out"
-          style={{ opacity: inView ? 1 : 0 }}
+          className="absolute inset-0 h-full w-full object-cover"
           poster={cell.poster}
           preload="metadata"
           muted
@@ -161,8 +160,7 @@ function Frame({ cell }: { cell: Cell }) {
           alt={cell.alt}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition-opacity duration-[900ms] ease-out"
-          style={{ opacity: inView ? 1 : 0 }}
+          className="object-cover"
         />
       )}
     </div>
