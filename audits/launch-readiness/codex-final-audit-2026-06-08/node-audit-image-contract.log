@@ -1,0 +1,7 @@
+(node:32006) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  DRIVE_HERO_BY_SLUG: 23 entries audited
+  HOVER_BY_SLUG: 0 entries audited
+  LIST_IMAGE_OVERRIDES: 6 entries audited
+
+  PASS - image override contract is intact.

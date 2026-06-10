@@ -73,7 +73,9 @@ async function getSourceFiles(slug: string, source: string): Promise<string[]> {
 
   const files = (await readdir(source))
     .filter((file) => /\.(png|jpe?g|webp)$/i.test(file))
-    .filter((file) => !/screenshot|supplier|ouss?am|raw/i.test(file))
+    // \braw\b / delimited "raw" only — a bare /raw/ used to reject legitimate
+    // slugs like medina-rucksack-drawstring.
+    .filter((file) => !/screenshot|supplier|ouss?am|\braw\b|[-_.]raw[-_.]/i.test(file))
     .sort((a, b) => sourcePriority(slug, a) - sourcePriority(slug, b) || a.localeCompare(b));
 
   if (files.length === 0) {

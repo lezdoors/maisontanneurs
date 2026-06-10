@@ -10,8 +10,9 @@
 //
 // What it checks per SKU:
 //   1. images[] not empty
-//   2. Position-0 image is a `-scale.webp` / `/scale/` or `-pdp-white.webp`
-//      / `/pdp-white/` URL (canonical hero rule)
+//   2. Position-0 image is the Drive `Hero-*` derived `-pdp-white.webp`
+//      / `/pdp-white/` URL. Scale, macro, lifestyle, numbered PDP variants,
+//      generated shots, or old supplier-derived URLs are not allowed first.
 //   3. No banned source prefixes in any image URL
 //   4. All image URLs return HTTP 200
 //   5. Featured products have at least one `-scale.webp` image
@@ -219,16 +220,12 @@ async function audit(): Promise<void> {
       issues.push({ sev: "fail", rule: "images-empty", detail: "no images" });
     } else {
       const hero = imgs[0];
-      const heroOk =
-        /\/scale\//.test(hero) ||
-        /-scale\.webp$/.test(hero) ||
-        /\/pdp-white\//.test(hero) ||
-        /-pdp-white\.webp$/.test(hero);
+      const heroOk = /\/pdp-white\//.test(hero) || /-pdp-white\.webp$/.test(hero);
       if (!heroOk) {
         issues.push({
           sev: "fail",
           rule: "hero-not-canonical",
-          detail: `position 0 = ${hero.split("/").pop()} (must end -scale.webp or -pdp-white.webp)`,
+          detail: `position 0 = ${hero.split("/").pop()} (must be the Drive Hero-derived -pdp-white.webp, never scale/macro/lifestyle/generated)`,
         });
       }
 

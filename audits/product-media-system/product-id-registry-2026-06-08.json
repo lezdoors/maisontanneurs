@@ -1,0 +1,303 @@
+[
+  {
+    "product_id": "MT-MS-001",
+    "original_name": "atlas-briefcase-vintage",
+    "new_name": "MT-MS-001__atlas-briefcase-vintage",
+    "category": "Messenger",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-WD-001",
+    "original_name": "atlas-escape-duffle",
+    "new_name": "MT-WD-001__atlas-escape-duffle",
+    "category": "Weekender",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-MS-002",
+    "original_name": "atlas-field-briefcase",
+    "new_name": "MT-MS-002__atlas-field-briefcase",
+    "category": "Messenger",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-001",
+    "original_name": "atlas-kilim-backpack",
+    "new_name": "MT-BP-001__atlas-kilim-backpack",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-WD-002",
+    "original_name": "atlas-kilim-duffle",
+    "new_name": "MT-WD-002__atlas-kilim-duffle",
+    "category": "Weekender",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-002",
+    "original_name": "atlas-kilim-rucksack",
+    "new_name": "MT-BP-002__atlas-kilim-rucksack",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-MS-003",
+    "original_name": "atlas-messenger-laptop",
+    "new_name": "MT-MS-003__atlas-messenger-laptop",
+    "category": "Messenger",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-MS-004",
+    "original_name": "atlas-messenger-laptop-strap",
+    "new_name": "MT-MS-004__atlas-messenger-laptop-strap",
+    "category": "Messenger",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-WD-003",
+    "original_name": "atlas-weekender-cognac",
+    "new_name": "MT-WD-003__atlas-weekender-cognac",
+    "category": "Weekender",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-CB-001",
+    "original_name": "classic-cognac-satchel",
+    "new_name": "MT-CB-001__classic-cognac-satchel",
+    "category": "Crossbody",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-003",
+    "original_name": "cognac-brogue-backpack",
+    "new_name": "MT-BP-003__cognac-brogue-backpack",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-004",
+    "original_name": "expedition-rolltop-cognac",
+    "new_name": "MT-BP-004__expedition-rolltop-cognac",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-005",
+    "original_name": "expedition-rolltop-noir",
+    "new_name": "MT-BP-005__expedition-rolltop-noir",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-006",
+    "original_name": "explorer-rolltop-cognac",
+    "new_name": "MT-BP-006__explorer-rolltop-cognac",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-007",
+    "original_name": "explorer-rolltop-noir",
+    "new_name": "MT-BP-007__explorer-rolltop-noir",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-008",
+    "original_name": "heritage-rucksack",
+    "new_name": "MT-BP-008__heritage-rucksack",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-WD-004",
+    "original_name": "kilim-travel-bag-moutarde",
+    "new_name": "MT-WD-004__kilim-travel-bag-moutarde",
+    "category": "Weekender",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-009",
+    "original_name": "le-caravanier-chocolate",
+    "new_name": "MT-BP-009__le-caravanier-chocolate",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-010",
+    "original_name": "le-caravanier-light",
+    "new_name": "MT-BP-010__le-caravanier-light",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-011",
+    "original_name": "le-nomade",
+    "new_name": "MT-BP-011__le-nomade",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-TT-001",
+    "original_name": "marrakech-tote-cognac",
+    "new_name": "MT-TT-001__marrakech-tote-cognac",
+    "category": "Tote",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-012",
+    "original_name": "medina-cargo-rucksack-cognac",
+    "new_name": "MT-BP-012__medina-cargo-rucksack-cognac",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-013",
+    "original_name": "medina-cargo-rucksack-moutarde",
+    "new_name": "MT-BP-013__medina-cargo-rucksack-moutarde",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-CB-002",
+    "original_name": "medina-courtyard-crossbody",
+    "new_name": "MT-CB-002__medina-courtyard-crossbody",
+    "category": "Crossbody",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-CB-003",
+    "original_name": "medina-crossbody-clasp-teal",
+    "new_name": "MT-CB-003__medina-crossbody-clasp-teal",
+    "category": "Crossbody",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-CB-004",
+    "original_name": "medina-crossbody-cognac",
+    "new_name": "MT-CB-004__medina-crossbody-cognac",
+    "category": "Crossbody",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-CB-005",
+    "original_name": "medina-crossbody-envelope",
+    "new_name": "MT-CB-005__medina-crossbody-envelope",
+    "category": "Crossbody",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-CB-006",
+    "original_name": "medina-crossbody-tooled-dark-brown",
+    "new_name": "MT-CB-006__medina-crossbody-tooled-dark-brown",
+    "category": "Crossbody",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-CB-007",
+    "original_name": "medina-crossbody-tooled-walnut",
+    "new_name": "MT-CB-007__medina-crossbody-tooled-walnut",
+    "category": "Crossbody",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-WD-005",
+    "original_name": "medina-duffle",
+    "new_name": "MT-WD-005__medina-duffle",
+    "category": "Weekender",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-TT-002",
+    "original_name": "medina-market-tote-cognac",
+    "new_name": "MT-TT-002__medina-market-tote-cognac",
+    "category": "Tote",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-014",
+    "original_name": "medina-rucksack-drawstring",
+    "new_name": "MT-BP-014__medina-rucksack-drawstring",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-015",
+    "original_name": "medina-rucksack-drawstring-chocolate",
+    "new_name": "MT-BP-015__medina-rucksack-drawstring-chocolate",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-016",
+    "original_name": "medina-rucksack-drawstring-light-brown",
+    "new_name": "MT-BP-016__medina-rucksack-drawstring-light-brown",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-CB-008",
+    "original_name": "medina-saddlebag-tooled-cognac",
+    "new_name": "MT-CB-008__medina-saddlebag-tooled-cognac",
+    "category": "Crossbody",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-CB-009",
+    "original_name": "medina-soft-crossbody-walnut",
+    "new_name": "MT-CB-009__medina-soft-crossbody-walnut",
+    "category": "Crossbody",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-TT-003",
+    "original_name": "medina-zigzag-tote-chocolate",
+    "new_name": "MT-TT-003__medina-zigzag-tote-chocolate",
+    "category": "Tote",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-CB-010",
+    "original_name": "medina-zip-sling-cognac",
+    "new_name": "MT-CB-010__medina-zip-sling-cognac",
+    "category": "Crossbody",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-WD-006",
+    "original_name": "oasis-weekender-oxblood",
+    "new_name": "MT-WD-006__oasis-weekender-oxblood",
+    "category": "Weekender",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-017",
+    "original_name": "vintage-buckle-backpack",
+    "new_name": "MT-BP-017__vintage-buckle-backpack",
+    "category": "Backpack",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-CB-011",
+    "original_name": "vintage-satchel-light-brown",
+    "new_name": "MT-CB-011__vintage-satchel-light-brown",
+    "category": "Crossbody",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-CB-012",
+    "original_name": "vintage-satchel-moutarde",
+    "new_name": "MT-CB-012__vintage-satchel-moutarde",
+    "category": "Crossbody",
+    "status": "renamed"
+  },
+  {
+    "product_id": "MT-BP-019",
+    "original_name": "woven-leather-backpack",
+    "new_name": "MT-BP-019__woven-leather-backpack",
+    "category": "Backpack",
+    "status": "renamed"
+  }
+]

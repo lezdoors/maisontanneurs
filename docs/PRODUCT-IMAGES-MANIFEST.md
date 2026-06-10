@@ -2,8 +2,13 @@
 
 _Generated: 2026-05-25 16:57 by `scripts/build-images-manifest.py`_
 
-Single source of truth for **every Maison Tanneurs product image**: what's in Supabase Storage, what's on Drive, what's wired to `products.images[]` on the live site, and what state each SKU is in.
+Historical manifest for Maison Tanneurs product images: what was in Supabase Storage, Drive, and `products.images[]` when this file was generated. It is no longer the source of truth; the active contract is `docs/PRODUCT-IMAGE-SOURCE-OF-TRUTH.md`.
 
+> 2026-06-09 hard stop: this manifest is historical unless regenerated. The
+> repo-local active contract is `docs/PRODUCT-IMAGE-SOURCE-OF-TRUTH.md`.
+> Older rows below that say `scale` can be first are obsolete and must not be
+> followed.
+>
 > 2026-06-07 update: this manifest is historical unless regenerated. The live
 > product-media operating contract is in Obsidian `00-Hermes/Maison Tanneurs Product Media Contract.md`.
 > Current hard invariant: Drive `Hero-*` -> Supabase Storage
@@ -36,7 +41,7 @@ Single source of truth for **every Maison Tanneurs product image**: what's in Su
 | Suffix | Meaning | Used as |
 |---|---|---|
 | `<slug>-pdp-white.webp` | Seamless studio cyclorama, hero | `images[0]` ideal |
-| `<slug>-scale.webp` | Lifestyle / in-context hero | `images[0]` or `[1]` |
+| `<slug>-scale.webp` | Lifestyle / in-context support | gallery/support only; never `images[0]` |
 | `<slug>-pdp-04.webp` | HF Shots set, shot-04 = canonical front 3/4 | gallery |
 | `<slug>-pdp-01..09.webp` | HF Shots gallery angles | gallery 2+ |
 | `<slug>-scale-01..09.webp` | HF Shots lifestyle gallery | gallery 2+ |
@@ -46,8 +51,10 @@ Single source of truth for **every Maison Tanneurs product image**: what's in Su
 | `<slug>-pdp-hero.webp` | Legacy naming — **BANNED** by audit | replace with `pdp-white` |
 | `<slug>-scale-hero.webp` | Legacy naming — **BANNED** by audit | replace with `scale` |
 
-Hero priority order applied by the manifest builder:
-1. `pdp-white` 2. `pdp-hero` 3. `scale-hero` 4. `scale` 5. `hero` 6. `pdp-04` 7. `scale-04` 8. `pdp-01` 9. `scale-01` 10. `macro-04` (last resort) 11. `macro-01` 12. `archive-1`
+Hero priority order now enforced:
+1. Drive `Hero-*` encoded as `{slug}-pdp-white.webp`. Stop there.
+
+Do not promote `pdp-hero`, `scale-hero`, `scale`, `pdp-04`, `scale-04`, numbered PDP/lifestyle shots, macros, or archives ahead of the Drive Hero-derived `pdp-white` file. If `pdp-white` is missing or not traceable to Drive `Hero-*`, mark the SKU blocked/ambiguous instead of selecting a fallback hero.
 
 ---
 

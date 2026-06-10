@@ -1,0 +1,11 @@
+(node:32005) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[TypeError: fetch failed] {
+  [cause]: Error: getaddrinfo ENOTFOUND maisontanneurs.com
+      at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:121:26) {
+    errno: -3008,
+    code: 'ENOTFOUND',
+    syscall: 'getaddrinfo',
+    hostname: 'maisontanneurs.com'
+  }
+}

@@ -1,0 +1,561 @@
+{
+  "generatedAt": "2026-06-07T14:49:22.737Z",
+  "summary": {
+    "total": 35,
+    "pass": 20,
+    "warn": 15,
+    "fail": 0
+  },
+  "rows": [
+    {
+      "slug": "atlas-briefcase-vintage",
+      "title": "Atlas Briefcase · Vintage",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "atlas-briefcase-vintage",
+      "heroFiles": [
+        "Hero-atlas-briefcase-vintage.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-briefcase-vintage-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-briefcase-vintage-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-briefcase-vintage-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "atlas-field-briefcase",
+      "title": "Atlas Field Briefcase",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "atlas-field-briefcase",
+      "heroFiles": [
+        "Hero-atlas-field-briefcase-pdp-04.webp"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-field-briefcase-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-field-briefcase-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-field-briefcase-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "atlas-kilim-duffle",
+      "title": "Atlas Kilim Duffle",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "",
+      "heroFiles": [],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-white.webp",
+      "verdict": "WARN",
+      "notes": [
+        "no matching Drive Hero-* source found"
+      ]
+    },
+    {
+      "slug": "atlas-kilim-rucksack",
+      "title": "Atlas Kilim Rucksack",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "atlas-kilim-rucksack",
+      "heroFiles": [
+        "Hero- atlas-kilim-rucksack-pdp.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-rucksack-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-rucksack-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-rucksack-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "atlas-messenger-laptop",
+      "title": "Atlas Messenger · Laptop",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "atlas-messenger-laptop",
+      "heroFiles": [
+        "Hero-Atlas Messenger · Laptop.png",
+        "Hero-atlas-messenger-laptop.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-pdp-white.webp",
+      "verdict": "WARN",
+      "notes": [
+        "multiple Hero-* files: Hero-Atlas Messenger · Laptop.png; Hero-atlas-messenger-laptop.png"
+      ]
+    },
+    {
+      "slug": "atlas-weekender-cognac",
+      "title": "Atlas Weekender · Cognac",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "atlas-weekender-cognac",
+      "heroFiles": [
+        "Hero- atlas-weekender-cognac.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-weekender-cognac-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-weekender-cognac-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-weekender-cognac-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "black-stitched-backpack",
+      "title": "Black Stitched Backpack",
+      "status": "reserved",
+      "featured": "false",
+      "driveFolder": "",
+      "heroFiles": [],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/black-stitched-backpack-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/black-stitched-backpack-pdp-white.webp",
+      "airtableFirst": "",
+      "verdict": "WARN",
+      "notes": [
+        "no matching Drive Hero-* source found",
+        "no Airtable Products record found"
+      ]
+    },
+    {
+      "slug": "classic-cognac-satchel",
+      "title": "Classic Cognac Satchel",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "classic-cognac-satchel",
+      "heroFiles": [
+        "Hero-classic-cognac-satchel-00.png",
+        "Hero-classic-cognac-satchel-01 copy.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/classic-cognac-satchel-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/classic-cognac-satchel-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/classic-cognac-satchel-pdp-white.webp",
+      "verdict": "WARN",
+      "notes": [
+        "multiple Hero-* files: Hero-classic-cognac-satchel-00.png; Hero-classic-cognac-satchel-01 copy.png"
+      ]
+    },
+    {
+      "slug": "cognac-brogue-backpack",
+      "title": "Cognac Brogue Backpack",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "cognac-brogue-backpack",
+      "heroFiles": [
+        "Hero-cognac-brogue-backpack-pdp-06 copy.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/cognac-brogue-backpack-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/cognac-brogue-backpack-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/cognac-brogue-backpack-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "expedition-rolltop-cognac",
+      "title": "Expedition Rolltop · Cognac",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "expedition-rolltop-cognac",
+      "heroFiles": [
+        "Hero- expedition-rolltop-cognac.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-cognac-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-cognac-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-cognac-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "expedition-rolltop-noir",
+      "title": "Expedition Rolltop · Noir",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "expedition-rolltop-noir",
+      "heroFiles": [
+        "Hero-expedition-rolltop-noir.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "explorer-rolltop-cognac",
+      "title": "Explorer Rolltop · Cognac",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "explorer-rolltop-cognac",
+      "heroFiles": [
+        "Hero-1-explorer-rolltop-cognac-scale-hd.png",
+        "Hero-explorer-rolltop-cognac-hd.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/explorer-rolltop-cognac-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/explorer-rolltop-cognac-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/explorer-rolltop-cognac-pdp-white.webp",
+      "verdict": "WARN",
+      "notes": [
+        "multiple Hero-* files: Hero-1-explorer-rolltop-cognac-scale-hd.png; Hero-explorer-rolltop-cognac-hd.png"
+      ]
+    },
+    {
+      "slug": "explorer-rolltop-noir",
+      "title": "Explorer Rolltop · Noir",
+      "status": "reserved",
+      "featured": "false",
+      "driveFolder": "",
+      "heroFiles": [],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/explorer-rolltop-noir-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/explorer-rolltop-noir-macro-04.webp",
+      "airtableFirst": "",
+      "verdict": "WARN",
+      "notes": [
+        "no matching Drive Hero-* source found",
+        "no Airtable Products record found"
+      ]
+    },
+    {
+      "slug": "heritage-rucksack",
+      "title": "Heritage Rucksack",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "heritage-rucksack",
+      "heroFiles": [
+        "Hero-heritage-rucksack hero.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/heritage-rucksack-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/heritage-rucksack-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/heritage-rucksack-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "marrakech-tote-bordeaux",
+      "title": "Marrakech Tote · Bordeaux",
+      "status": "reserved",
+      "featured": "false",
+      "driveFolder": "",
+      "heroFiles": [],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/marrakech-tote-bordeaux-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/marrakech-tote-bordeaux-pdp-white.webp",
+      "airtableFirst": "",
+      "verdict": "WARN",
+      "notes": [
+        "no matching Drive Hero-* source found",
+        "no Airtable Products record found"
+      ]
+    },
+    {
+      "slug": "marrakech-tote-cognac",
+      "title": "Marrakech Tote · Cognac",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "marrakech-tote-cognac",
+      "heroFiles": [
+        "Hero- 01- marrakech-tote-cognac.png",
+        "Hero- marrakech-tote-cognac-pdp.png",
+        "Hero-marrakech-tote-cognac -1.png",
+        "Hero-marrakech-tote-cognac.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/marrakech-tote-cognac-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/marrakech-tote-cognac-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/marrakech-tote-cognac-pdp-white.webp",
+      "verdict": "WARN",
+      "notes": [
+        "multiple Hero-* files: Hero- 01- marrakech-tote-cognac.png; Hero- marrakech-tote-cognac-pdp.png; Hero-marrakech-tote-cognac -1.png; Hero-marrakech-tote-cognac.png"
+      ]
+    },
+    {
+      "slug": "marrakech-tote-noir",
+      "title": "Marrakech Tote · Noir",
+      "status": "reserved",
+      "featured": "false",
+      "driveFolder": "",
+      "heroFiles": [],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/marrakech-tote-noir-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/marrakech-tote-noir-pdp-white.webp",
+      "airtableFirst": "",
+      "verdict": "WARN",
+      "notes": [
+        "no matching Drive Hero-* source found",
+        "no Airtable Products record found"
+      ]
+    },
+    {
+      "slug": "medina-cargo-rucksack-cognac",
+      "title": "Medina Cargo Rucksack · Cognac",
+      "status": "reserved",
+      "featured": "false",
+      "driveFolder": "medina-cargo-rucksack-cognac",
+      "heroFiles": [
+        "Hero-medina-cargo-rucksack-cognac.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "medina-crossbody-clasp-teal",
+      "title": "Medina Crossbody · Clasp Teal",
+      "status": "reserved",
+      "featured": "false",
+      "driveFolder": "medina-crossbody-clasp-teal",
+      "heroFiles": [
+        "Hero-medina-crossbody-clasp-teal.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "medina-crossbody-cognac",
+      "title": "Medina Crossbody · Cognac",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "medina-crossbody-cognac",
+      "heroFiles": [
+        "Hero-medina-crossbody-cognac-pdp-white.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-cognac-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-cognac-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-cognac-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "medina-crossbody-envelope",
+      "title": "Medina Envelope Crossbody",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "medina-crossbody-envelope",
+      "heroFiles": [
+        "Hero-medina-crossbody-envelope -1.png",
+        "Hero-medina-crossbody-envelope.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-envelope-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-envelope-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-envelope-pdp-white.webp",
+      "verdict": "WARN",
+      "notes": [
+        "multiple Hero-* files: Hero-medina-crossbody-envelope -1.png; Hero-medina-crossbody-envelope.png"
+      ]
+    },
+    {
+      "slug": "medina-crossbody-tassel",
+      "title": "Medina Crossbody · Tassel",
+      "status": "reserved",
+      "featured": "false",
+      "driveFolder": "",
+      "heroFiles": [],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-tassel-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-tassel-pdp-white.webp",
+      "airtableFirst": "",
+      "verdict": "WARN",
+      "notes": [
+        "no matching Drive Hero-* source found",
+        "no Airtable Products record found"
+      ]
+    },
+    {
+      "slug": "medina-crossbody-tooled-walnut",
+      "title": "Medina Crossbody · Tooled Walnut",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "",
+      "heroFiles": [],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-tooled-walnut-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-tooled-walnut-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-tooled-walnut-pdp-white.webp",
+      "verdict": "WARN",
+      "notes": [
+        "no matching Drive Hero-* source found"
+      ]
+    },
+    {
+      "slug": "medina-duffle",
+      "title": "Medina Duffle",
+      "status": "reserved",
+      "featured": "false",
+      "driveFolder": "medina-duffle",
+      "heroFiles": [
+        "Hero-medina-duffle-macro.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "medina-market-tote-cognac",
+      "title": "Medina Market Tote · Cognac",
+      "status": "reserved",
+      "featured": "false",
+      "driveFolder": "medina-market-tote-cognac",
+      "heroFiles": [
+        "Hero-medina-market-tote-cognac.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "medina-rucksack-drawstring",
+      "title": "Medina Drawstring Rucksack",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "medina-rucksack-drawstring",
+      "heroFiles": [
+        "Hero- medina-rucksack-drawstring.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "medina-rucksack-flap-chocolate",
+      "title": "Medina Rucksack · Flap Chocolate",
+      "status": "reserved",
+      "featured": "false",
+      "driveFolder": "",
+      "heroFiles": [],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-white.webp",
+      "verdict": "WARN",
+      "notes": [
+        "no matching Drive Hero-* source found"
+      ]
+    },
+    {
+      "slug": "medina-saddlebag-tooled-cognac",
+      "title": "Medina Saddlebag · Tooled Cognac",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "medina-saddlebag-tooled-cognac",
+      "heroFiles": [
+        "Hero-medina-saddlebag-tooled-cognac.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-saddlebag-tooled-cognac-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-saddlebag-tooled-cognac-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-saddlebag-tooled-cognac-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "medina-zigzag-tote-chocolate",
+      "title": "Medina Zigzag Tote · Chocolate",
+      "status": "reserved",
+      "featured": "false",
+      "driveFolder": "medina-zigzag-tote-chocolate",
+      "heroFiles": [
+        "Hero-medina-zigzag-tote-chocolate.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "oasis-weekender-oxblood",
+      "title": "Oasis Weekender · Oxblood",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "oasis-weekender-oxblood",
+      "heroFiles": [
+        "Hero- Oasis Weekender · Oxblood.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/oasis-weekender-oxblood-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/oasis-weekender-oxblood-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/oasis-weekender-oxblood-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "rolltop-daypack",
+      "title": "Roll-Top Daypack",
+      "status": "reserved",
+      "featured": "false",
+      "driveFolder": "",
+      "heroFiles": [],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/rolltop-daypack-pdp-white.webp",
+      "supabaseFirst": "",
+      "airtableFirst": "",
+      "verdict": "WARN",
+      "notes": [
+        "no matching Drive Hero-* source found",
+        "Supabase images array is empty",
+        "no Airtable Products record found"
+      ]
+    },
+    {
+      "slug": "test-e2e",
+      "title": "Test — E2E Checkout",
+      "status": "reserved",
+      "featured": "false",
+      "driveFolder": "",
+      "heroFiles": [],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/test-e2e-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/heritage-rucksack-01-v2.webp",
+      "airtableFirst": "",
+      "verdict": "WARN",
+      "notes": [
+        "no matching Drive Hero-* source found",
+        "no Airtable Products record found"
+      ]
+    },
+    {
+      "slug": "vintage-buckle-backpack",
+      "title": "Vintage Buckle Backpack",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "vintage-buckle-backpack",
+      "heroFiles": [
+        "Hero-vintage-buckle-backpack.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-buckle-backpack-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-buckle-backpack-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-buckle-backpack-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "vintage-satchel-light-brown",
+      "title": "Vintage Satchel · Light Brown",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "vintage-satchel-light-brown",
+      "heroFiles": [
+        "Hero- vintage-satchel-light-brown.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-satchel-light-brown-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-satchel-light-brown-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-satchel-light-brown-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    },
+    {
+      "slug": "woven-leather-backpack",
+      "title": "Woven Leather Backpack",
+      "status": "available",
+      "featured": "true",
+      "driveFolder": "woven-leather-backpack",
+      "heroFiles": [
+        "Hero- woven-leather-backpack-pdp.png"
+      ],
+      "expectedFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/woven-leather-backpack-pdp-white.webp",
+      "supabaseFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/woven-leather-backpack-pdp-white.webp",
+      "airtableFirst": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/woven-leather-backpack-pdp-white.webp",
+      "verdict": "PASS",
+      "notes": []
+    }
+  ]
+}
