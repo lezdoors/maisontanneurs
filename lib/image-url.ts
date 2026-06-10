@@ -6,10 +6,10 @@
 // as new and re-optimize from origin.
 //
 // Bump CACHE_BUSTER_VERSION any time we recrop / reprocess product image files.
-// (Last bump: 2026-06-09 — explorer-rolltop-cognac + vintage-buckle-backpack
-// normalized from 1600x2000 to the 2400x2400 white-plate grid spec.)
+// (Last bump: 2026-06-09 — HF black edge lines cropped off 120 storage objects
+// via scripts/crop-black-bars.py; Drive sources trimmed in the same pass.)
 
-const CACHE_BUSTER_VERSION = "2026-06-09-plate-normalize-r6";
+const CACHE_BUSTER_VERSION = "2026-06-09-edge-trim-r7";
 
 const SUPABASE_HOST = "xbtabpurfavngwmwtawc.supabase.co";
 
