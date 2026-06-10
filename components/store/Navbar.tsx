@@ -214,7 +214,7 @@ export default function Navbar() {
             </span>
             <span className="sr-only">Maison Tanneurs</span>
             <span
-              className={`tech-meta mt-1 ${navMuted}`}
+              className={`tech-meta mt-1 hidden md:block ${navMuted}`}
               style={{
                 fontSize: scrolled ? "8px" : "9px",
                 letterSpacing: scrolled ? "0.26em" : "0.3em",

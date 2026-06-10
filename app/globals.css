@@ -194,14 +194,14 @@
 
 @media (max-width: 767px) {
   .mt-brand-wordmark {
-    font-size: clamp(18px, 5vw, 21px);
-    letter-spacing: clamp(0.16em, 1vw, 0.22em);
+    font-size: clamp(13px, 3.6vw, 15px);
+    letter-spacing: clamp(0.2em, 1vw, 0.26em);
     transition: color 300ms ease;
   }
 
   .mt-brand-wordmark--compact {
-    font-size: clamp(18px, 5vw, 21px);
-    letter-spacing: clamp(0.16em, 1vw, 0.22em);
+    font-size: clamp(13px, 3.6vw, 15px);
+    letter-spacing: clamp(0.2em, 1vw, 0.26em);
   }
 
   .mt-brand-wordmark__gap {
