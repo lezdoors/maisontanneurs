@@ -76,14 +76,14 @@ export const STATIC_PRODUCTS: Product[] = [
     "price": 44500,
     "images": [
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-white.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-02.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-03.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-04.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-05.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-06.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-07.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-08.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-09.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-01.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-02.webp"
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-09.webp"
     ],
     "category": "Duffle",
     "status": "available",
@@ -319,14 +319,14 @@ export const STATIC_PRODUCTS: Product[] = [
     "price": 29500,
     "images": [
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-white.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-02.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-03.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-04.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-05.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-06.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-07.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-08.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-01.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-02.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-03.webp"
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-09.webp"
     ],
     "category": "Rolltop",
     "status": "available",

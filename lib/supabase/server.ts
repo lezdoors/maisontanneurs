@@ -1,4 +1,5 @@
 import { createServerClient } from "@supabase/ssr";
+import { createClient } from "@supabase/supabase-js";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 
@@ -11,7 +12,18 @@ export async function createServerSupabase(): Promise<SupabaseClient | null> {
     return null;
   }
 
-  const cookieStore = await cookies();
+  let cookieStore: Awaited<ReturnType<typeof cookies>>;
+  try {
+    cookieStore = await cookies();
+  } catch {
+    // No request scope (static prerender / generateStaticParams). Without this
+    // branch the thrown cookies() error gets swallowed by callers' try/catch
+    // and every prerendered page silently bakes in the STATIC_PRODUCTS
+    // fallback instead of live Supabase data.
+    return createClient(url, key, {
+      auth: { persistSession: false, autoRefreshToken: false },
+    });
+  }
   return createServerClient(url, key, {
     cookies: {
       getAll() {

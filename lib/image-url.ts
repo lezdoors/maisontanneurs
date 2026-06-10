@@ -9,13 +9,18 @@
 // (Last bump: 2026-06-09 — HF black edge lines cropped off 120 storage objects
 // via scripts/crop-black-bars.py; Drive sources trimmed in the same pass.)
 
-const CACHE_BUSTER_VERSION = "2026-06-09-white-plate-r11";
+const CACHE_BUSTER_VERSION = "2026-06-09-white-plate-r12";
 
 const SUPABASE_HOST = "xbtabpurfavngwmwtawc.supabase.co";
 
 export function bust(url: string | null | undefined): string {
   if (!url) return "";
-  if (!url.includes(SUPABASE_HOST) && !url.startsWith("/products/hero/")) return url;
+  if (
+    !url.includes(SUPABASE_HOST) &&
+    !url.startsWith("/products/hero/") &&
+    !url.startsWith("/products/landing/")
+  )
+    return url;
   const sep = url.includes("?") ? "&" : "?";
   return `${url}${sep}v=${CACHE_BUSTER_VERSION}`;
 }
