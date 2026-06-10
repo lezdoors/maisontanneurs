@@ -9,7 +9,7 @@ import ProductCard from "@/components/store/ProductCard";
 import CategoryFilter from "@/components/store/CategoryFilter";
 import { getRequestLocale } from "@/lib/i18n-server";
 import { t } from "@/lib/i18n";
-import { productListImage } from "@/lib/landing-product-curation";
+import { productHoverImage, productListImage } from "@/lib/landing-product-curation";
 import { SITE_URL, absoluteUrl, jsonLdScript } from "@/lib/site";
 
 // Normalize a URL category param into the stored DB category form. Handles:
@@ -246,6 +246,7 @@ export default async function ProductsPage({
                 title={product.title}
                 price={product.price}
                 image={productListImage(product) || "/products/product-04.png"}
+                hoverImage={productHoverImage(product)}
                 slug={product.slug}
                 category={product.category}
                 badge={product.featured ? "One of a Kind" : undefined}

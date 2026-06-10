@@ -14,6 +14,7 @@ import {
   orderProductGalleryImages,
   selectProductHeroImage,
 } from "@/lib/product-image-presentation";
+import { productHoverImage } from "@/lib/landing-product-curation";
 import { SITE_URL, absoluteUrl, jsonLdScript } from "@/lib/site";
 
 async function getProduct(slug: string): Promise<Product | null> {
@@ -199,6 +200,7 @@ export default async function ProductPage({
                 title={p.title}
                 price={p.price}
                 image={selectProductHeroImage(p) || "/products/product-04.png"}
+                hoverImage={productHoverImage(p)}
                 slug={p.slug}
                 category={p.category}
               />

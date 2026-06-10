@@ -11,6 +11,7 @@ interface ProductCardProps {
   title: string;
   price: number;
   image: string;
+  hoverImage?: string;
   slug: string;
   category?: string;
   origin?: string;
@@ -65,6 +66,7 @@ export default function ProductCard({
   title,
   price,
   image,
+  hoverImage,
   slug,
   eager = false,
 }: ProductCardProps) {
@@ -87,6 +89,17 @@ export default function ProductCard({
           loading={eager ? undefined : "lazy"}
           className={productImageClass(image)}
         />
+        {hoverImage && hoverImage !== image && (
+          <Image
+            src={bust(hoverImage)}
+            alt=""
+            aria-hidden
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            loading="lazy"
+            className={`${productImageClass(hoverImage)} opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100`}
+          />
+        )}
       </div>
 
       <div className="px-0 pt-5" style={{ background: "var(--color-paper)" }}>
@@ -114,15 +127,20 @@ export default function ProductCard({
           {title}
         </h3>
 
-        <div
-          className="mt-4 flex items-center justify-between border-t border-[var(--color-rule-soft)] pt-3 text-[10.5px] tracking-[0.16em] uppercase"
-          style={{
-            fontFamily: "var(--font-mono)",
-            color: "var(--color-ink)",
-          }}
-        >
-          <span>{format(price)}</span>
-          <span className="text-[var(--color-ink-muted)] transition-colors group-hover:text-[var(--color-ink)]">
+        <div className="mt-4 flex items-baseline justify-between border-t border-[var(--color-rule-soft)] pt-3">
+          <span
+            className="text-[15px] italic"
+            style={{
+              fontFamily: "var(--font-display)",
+              color: "var(--color-ink)",
+            }}
+          >
+            {format(price)}
+          </span>
+          <span
+            className="text-[10.5px] tracking-[0.16em] uppercase text-[var(--color-ink-muted)] transition-colors group-hover:text-[var(--color-ink)]"
+            style={{ fontFamily: "var(--font-mono)" }}
+          >
             Inspect
           </span>
         </div>

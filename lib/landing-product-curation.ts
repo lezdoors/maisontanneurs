@@ -61,3 +61,10 @@ export function productListImage(product: Product): string | undefined {
   if (override) return override;
   return selectProductHeroImage(product);
 }
+
+// Card-hover secondary angle. Only numbered -pdp-NN gallery shots qualify:
+// they are white-studio product angles, whereas -scale lifestyle objects sit
+// on gray/in-context plates and would flash a gray square on the white card.
+export function productHoverImage(product: Product): string | undefined {
+  return product.images?.find((url) => /-pdp-\d{2}\.webp$/.test(url));
+}
