@@ -141,6 +141,13 @@ export default function Navbar() {
         }`}
         style={{ ["--mt-nav-underline" as string]: underlineColor }}
       >
+        {/* Scrim keeps white nav ink legible over bright hero slides */}
+        {onHero && (
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[170%] bg-gradient-to-b from-black/60 via-black/30 to-transparent"
+          />
+        )}
         {/* Row 1 — thin announcement strip with language switcher */}
         <div
           className={`hidden md:flex h-7 items-center justify-between px-6 border-b ${navRule} ${navMuted}`}
@@ -213,16 +220,6 @@ export default function Navbar() {
               Tanneurs
             </span>
             <span className="sr-only">Maison Tanneurs</span>
-            <span
-              className={`tech-meta mt-1 hidden md:block ${navMuted}`}
-              style={{
-                fontSize: scrolled ? "8px" : "9px",
-                letterSpacing: scrolled ? "0.26em" : "0.3em",
-                transition: "font-size 500ms cubic-bezier(0.4,0,0.2,1), letter-spacing 500ms cubic-bezier(0.4,0,0.2,1)",
-              }}
-            >
-              {t("nav.subtitle")}
-            </span>
           </Link>
 
           {/* Right: utilities */}
