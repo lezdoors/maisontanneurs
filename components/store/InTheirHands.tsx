@@ -62,7 +62,7 @@ export default function InTheirHands() {
             </h2>
           </div>
           <span className="tech-meta opacity-70 hidden md:inline">
-            PLATE 03 — UNCUT FOOTAGE · 11 SECONDS
+            PLATE 03 — THE FINAL PASS · 6 SECONDS
           </span>
         </div>
       </div>
@@ -70,33 +70,33 @@ export default function InTheirHands() {
       <div className="grid grid-cols-1 md:grid-cols-12">
         {/* TEXT — left 6 cols */}
         <div className="md:col-span-6 px-6 py-12 md:py-20 md:border-r border-[#e5e5e5]">
-          <span className="tech-label opacity-60">Documentary Record</span>
+          <span className="tech-label opacity-60">The Finishing Bench</span>
           <h3
             className="display-xxl mt-6"
             style={{ fontSize: "clamp(40px, 5vw, 84px)" }}
           >
-            No models.
+            Tagged.
             <br />
-            No b-roll<span className="opacity-40">.</span>
+            Knotted<span className="opacity-40">.</span>
             <br />
-            <span className="opacity-50">The bench.</span>
+            <span className="opacity-50">Dispatched.</span>
           </h3>
           <p
             className="mt-8 leading-relaxed text-[#0f0f0f]/75"
             style={{ fontSize: "15px", letterSpacing: "-0.01em", maxWidth: "50ch" }}
           >
-            Eleven seconds, unscripted, filmed on a phone in the same Medina
-            workshop that cuts and stitches every object we sell. The artisans
-            on this clip are the artisans who hand-finish your bag. There is no
-            second team, no production house, no contract factory waiting in
-            the back.
+            The last thing to happen to every bag is a knot. The artisan who
+            closed the final stitch ties the edition tag — a kraft card, a
+            length of waxed twine, a number in ink — before the piece leaves
+            the bench. No second team, no production house, no contract
+            factory waiting in the back.
           </p>
 
           <ul className="mt-10 divide-y divide-[#e5e5e5] border-y border-[#e5e5e5]">
-            <Row k="Filmed" v="Marrakech Medina · atelier record" />
-            <Row k="Format" v="Phone · 9:16 · 60fps · No Audio" />
-            <Row k="Subjects" v="3 of our 7 artisans" />
-            <Row k="Edits" v="None" />
+            <Row k="Stage" v="Final inspection · tagging" />
+            <Row k="Place" v="Marrakech Medina · the bench" />
+            <Row k="Twine" v="Waxed linen · the stitching spool" />
+            <Row k="Then" v="DHL Express · worldwide" />
           </ul>
 
           <p
@@ -133,16 +133,13 @@ export default function InTheirHands() {
               <source src={VIDEO_MP4} type="video/mp4" />
             </video>
             <span className="absolute left-3 top-3 tech-meta text-white/80">
-              ● REC · LOOP
-            </span>
-            <span className="absolute right-3 top-3 tech-meta text-white/80">
-              9:16 · 60FPS
+              THE FINAL PASS
             </span>
             <span className="absolute left-3 bottom-3 tech-meta text-white/80">
               MEDINA · ATELIER
             </span>
             <span className="absolute right-3 bottom-3 tech-meta text-white/80">
-              00:11
+              00:06
             </span>
           </div>
         </div>
