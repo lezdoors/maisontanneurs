@@ -93,6 +93,9 @@ function destinationName(slug: string, index: number): string {
 async function encodeToWebp(input: string, output: string) {
   await sharp(input)
     .rotate()
+    // Alpha cutouts must bake to white: Meta catalog + other feed consumers
+    // flatten transparency to black when converting to JPEG.
+    .flatten({ background: { r: 255, g: 255, b: 255 } })
     .resize({
       width: 2400,
       height: 2400,

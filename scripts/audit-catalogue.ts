@@ -82,6 +82,10 @@ const AWAITING_SCALE_SHOTS = new Set<string>([
   "atlas-briefcase-vintage",
   "medina-crossbody-cognac",
   "vintage-satchel-light-brown",
+  // Added 2026-06-09 — gallery rewired to Drive-only set per
+  // docs/PRODUCT-IMAGE-SOURCE-OF-TRUTH.md; old -scale.webp was not
+  // Drive-traceable and was dropped from images[].
+  "atlas-messenger-laptop",
   // Added 2026-05-26 — Drop 02 canonical still-image sets. Keep as warn until
   // dedicated lifestyle scale shots are generated.
   "saharienne-saddle-cognac",
