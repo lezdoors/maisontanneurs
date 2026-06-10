@@ -9,7 +9,7 @@
 // (Last bump: 2026-06-09 — HF black edge lines cropped off 120 storage objects
 // via scripts/crop-black-bars.py; Drive sources trimmed in the same pass.)
 
-const CACHE_BUSTER_VERSION = "2026-06-09-white-plate-r9";
+const CACHE_BUSTER_VERSION = "2026-06-09-white-plate-r10";
 
 const SUPABASE_HOST = "xbtabpurfavngwmwtawc.supabase.co";
 
