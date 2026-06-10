@@ -12,69 +12,83 @@ type Cell = {
   poster?: string;
 };
 
-const COLUMNS: Cell[][] = [
-  [
-    {
+type Chapter = {
+  number: string;
+  title: string;
+  lead: Cell;
+  support: [Cell, Cell];
+};
+
+const CHAPTERS: Chapter[] = [
+  {
+    number: "01",
+    title: "The Hides",
+    lead: {
       src: "/atelier/atelier-wide-light-beams.webp",
       alt: "Marrakech atelier — light shafts through arched windows, two artisans at work",
       ratio: "21 / 9",
     },
-    {
-      src: "/atelier/atelier-hides-stack.webp",
-      alt: "Stacked full-grain hides in cognac and caramel tones, artisans at work behind",
-      ratio: "9 / 16",
-    },
-    {
+    support: [
+      {
+        src: "/atelier/atelier-hides-stack.webp",
+        alt: "Stacked full-grain hides in cognac and caramel tones, artisans at work behind",
+        ratio: "4 / 5",
+      },
+      {
+        src: "/atelier/atelier-zellige-cutting.webp",
+        alt: "Leather pattern pieces laid across a long wooden table in a zellige-tiled atelier",
+        ratio: "4 / 5",
+      },
+    ],
+  },
+  {
+    number: "02",
+    title: "The Bench",
+    lead: {
       kind: "video",
       src: "/brand/atelier/atelier-hands-at-work.mp4",
       poster: "/brand/atelier/atelier-hands-at-work-poster.jpg",
       alt: "Artisan hand-stitching cognac leather with a brass awl and waxed thread, atelier bench",
-      ratio: "16 / 9",
-    },
-  ],
-  [
-    {
-      src: "/atelier/atelier-cognac-plinth.webp",
-      alt: "Cognac leather satchel on travertine plinth inside a Marrakech stone-arched room",
       ratio: "21 / 9",
     },
-    {
-      src: "/atelier/atelier-awl-hand-macro.webp",
-      alt: "Close-up of an artisan's weathered hand piercing leather with a brass awl",
-      ratio: "9 / 16",
-    },
-    {
-      src: "/atelier/atelier-zellige-cutting.webp",
-      alt: "Leather pattern pieces laid across a long wooden table in a zellige-tiled atelier",
-      ratio: "16 / 9",
-    },
-    {
-      src: "/atelier/lifestyle-tennis-court.webp",
-      alt: "Model seated on rattan deck chair on a red clay tennis court at golden hour with kilim-trim backpack",
-      ratio: "3 / 2",
-    },
-  ],
-  [
-    {
-      kind: "video",
-      src: "/brand/atelier/atelier-medina-handover.mp4",
-      poster: "/brand/atelier/atelier-medina-handover-poster.jpg",
-      alt: "Two artisans packing a cognac travel bag together in a Marrakech medina interior",
-      ratio: "9 / 16",
-    },
-    {
+    support: [
+      {
+        src: "/atelier/atelier-awl-hand-macro.webp",
+        alt: "Close-up of an artisan's weathered hand piercing leather with a brass awl",
+        ratio: "4 / 5",
+      },
+      {
+        kind: "video",
+        src: "/brand/atelier/atelier-medina-handover.mp4",
+        poster: "/brand/atelier/atelier-medina-handover-poster.jpg",
+        alt: "Two artisans packing a cognac travel bag together in a Marrakech medina interior",
+        ratio: "4 / 5",
+      },
+    ],
+  },
+  {
+    number: "03",
+    title: "The Road",
+    lead: {
       kind: "video",
       src: "/brand/atelier/atelier-bag-terrace.mp4",
       poster: "/brand/atelier/atelier-bag-terrace-poster.jpg",
       alt: "Hand placing a cognac leather bag on a sunlit terrace with brass weighing scales beside it",
-      ratio: "16 / 9",
+      ratio: "21 / 9",
     },
-    {
-      src: "/atelier/lifestyle-olive-courtyard.webp",
-      alt: "Model walking through an olive-tree courtyard in white linen carrying a tan shoulder bag",
-      ratio: "16 / 9",
-    },
-  ],
+    support: [
+      {
+        src: "/atelier/lifestyle-tennis-court.webp",
+        alt: "Model seated on rattan deck chair on a red clay tennis court at golden hour with kilim-trim backpack",
+        ratio: "4 / 5",
+      },
+      {
+        src: "/atelier/lifestyle-olive-courtyard.webp",
+        alt: "Model walking through an olive-tree courtyard in white linen carrying a tan shoulder bag",
+        ratio: "4 / 5",
+      },
+    ],
+  },
 ];
 
 export default function AtelierGallery() {
@@ -105,12 +119,27 @@ export default function AtelierGallery() {
       </div>
 
       <div className="px-6 md:px-10 py-[clamp(56px,8vw,112px)]">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 max-w-[1400px] mx-auto">
-          {COLUMNS.map((col, ci) => (
-            <div key={ci} className="grid gap-5 md:gap-6 content-start">
-              {col.map((cell) => (
-                <Frame key={cell.src} cell={cell} />
-              ))}
+        <div className="max-w-[1400px] mx-auto flex flex-col gap-[clamp(64px,9vw,128px)]">
+          {CHAPTERS.map((chapter) => (
+            <div key={chapter.number} className="flex flex-col gap-5 md:gap-6">
+              <div className="flex items-baseline gap-5">
+                <span className="tech-label opacity-60">{chapter.number}</span>
+                <h3
+                  className="leading-none font-medium"
+                  style={{
+                    fontSize: "clamp(22px, 2.4vw, 28px)",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {chapter.title}
+                </h3>
+              </div>
+              <Frame cell={chapter.lead} />
+              <div className="grid grid-cols-2 gap-5 md:gap-6">
+                {chapter.support.map((cell) => (
+                  <Frame key={cell.src} cell={cell} />
+                ))}
+              </div>
             </div>
           ))}
         </div>
@@ -144,8 +173,7 @@ function Frame({ cell }: { cell: Cell }) {
       {cell.kind === "video" ? (
         <video
           ref={videoRef}
-          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-out"
-          style={{ opacity: inView ? 1 : 0 }}
+          className="absolute inset-0 h-full w-full object-cover"
           poster={cell.poster}
           preload="metadata"
           muted
@@ -160,9 +188,12 @@ function Frame({ cell }: { cell: Cell }) {
           src={cell.src}
           alt={cell.alt}
           fill
-          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition-opacity duration-[900ms] ease-out"
-          style={{ opacity: inView ? 1 : 0 }}
+          sizes={
+            cell.ratio === "21 / 9"
+              ? "(min-width: 1480px) 1400px, 100vw"
+              : "(min-width: 1480px) 690px, 50vw"
+          }
+          className="object-cover"
         />
       )}
     </div>

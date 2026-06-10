@@ -12,7 +12,16 @@ const ROUTES = [
   { name: "collection", path: "/products" },
   { name: "pdp-backpack", path: "/products/cognac-brogue-backpack" },
   { name: "pdp-briefcase", path: "/products/atlas-field-briefcase" },
-  { name: "about", path: "/about" },
+  { name: "pdp-noir", path: "/products/expedition-rolltop-noir" },
+  { name: "pdp-tote", path: "/products/marrakech-tote-cognac" },
+  { name: "atelier", path: "/atelier" },
+  { name: "boutique", path: "/boutique" },
+  { name: "bespoke", path: "/bespoke" },
+  { name: "trade", path: "/trade" },
+  { name: "contact", path: "/contact" },
+  { name: "checkout", path: "/checkout/pay" },
+  { name: "legal-shipping", path: "/legal/shipping" },
+  { name: "legal-privacy", path: "/legal/privacy" },
 ];
 
 const VIEWPORTS = [

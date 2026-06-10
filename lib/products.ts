@@ -76,14 +76,14 @@ export const STATIC_PRODUCTS: Product[] = [
     "price": 44500,
     "images": [
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-white.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-02.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-03.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-04.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-05.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-06.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-07.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-08.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-09.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-01.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-02.webp"
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-kilim-duffle-pdp-09.webp"
     ],
     "category": "Duffle",
     "status": "available",
@@ -148,14 +148,14 @@ export const STATIC_PRODUCTS: Product[] = [
     "price": 32500,
     "images": [
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-pdp-white.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-scale.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-pdp-02.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-pdp-03.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-pdp-04.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-pdp-05.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-pdp-06.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-pdp-07.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-pdp-08.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-pdp-01.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-pdp-02.webp"
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/atlas-messenger-laptop-pdp-09.webp",
     ],
     "category": "Messenger",
     "status": "available",
@@ -224,7 +224,7 @@ export const STATIC_PRODUCTS: Product[] = [
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/classic-cognac-satchel-pdp-06.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/classic-cognac-satchel-pdp-07.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/classic-cognac-satchel-pdp-08.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/classic-cognac-satchel-pdp-09.webp"
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/classic-cognac-satchel-pdp-09.webp",
     ],
     "category": "Satchel",
     "status": "available",
@@ -258,7 +258,7 @@ export const STATIC_PRODUCTS: Product[] = [
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/cognac-brogue-backpack-pdp-06.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/cognac-brogue-backpack-pdp-07.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/cognac-brogue-backpack-pdp-08.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/cognac-brogue-backpack-pdp-09.webp"
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/cognac-brogue-backpack-pdp-09.webp",
     ],
     "category": "Backpack",
     "status": "available",
@@ -319,14 +319,14 @@ export const STATIC_PRODUCTS: Product[] = [
     "price": 29500,
     "images": [
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-white.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-02.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-03.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-04.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-05.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-06.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-07.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-08.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-01.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-02.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-03.webp"
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/expedition-rolltop-noir-pdp-09.webp"
     ],
     "category": "Rolltop",
     "status": "available",
@@ -582,14 +582,14 @@ export const STATIC_PRODUCTS: Product[] = [
     "price": 25500,
     "images": [
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-pdp-white.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-scale.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-pdp-02.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-pdp-03.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-pdp-04.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-pdp-05.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-pdp-06.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-pdp-07.webp",
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-pdp-08.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-pdp-09.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-pdp-01.webp"
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-drawstring-pdp-09.webp"
     ],
     "category": "Backpack",
     "status": "available",
@@ -754,7 +754,14 @@ export const STATIC_PRODUCTS: Product[] = [
     "price": 21500,
     "images": [
       "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-satchel-light-brown-pdp-white.webp",
-      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-satchel-light-brown-scale.webp"
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-satchel-light-brown-pdp-02.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-satchel-light-brown-pdp-03.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-satchel-light-brown-pdp-04.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-satchel-light-brown-pdp-05.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-satchel-light-brown-pdp-06.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-satchel-light-brown-pdp-07.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-satchel-light-brown-pdp-08.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/vintage-satchel-light-brown-pdp-09.webp"
     ],
     "category": "Satchel",
     "status": "available",

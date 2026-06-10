@@ -1,0 +1,1230 @@
+[
+  {
+    "action": "rename-folder",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-duffle",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-zip-sling-cognac"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-zip-sling-cognac",
+    "src": "Hero-medina-duffle.png",
+    "dst": "Hero-medina-zip-sling-cognac.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-zip-sling-cognac",
+    "src": "medina-duffle-pdp-01.png",
+    "dst": "medina-zip-sling-cognac-pdp-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-zip-sling-cognac",
+    "src": "medina-duffle-pdp-02.png",
+    "dst": "medina-zip-sling-cognac-pdp-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-zip-sling-cognac",
+    "src": "medina-duffle-pdp-03.png",
+    "dst": "medina-zip-sling-cognac-pdp-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-zip-sling-cognac",
+    "src": "medina-duffle-pdp-04.png",
+    "dst": "medina-zip-sling-cognac-pdp-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-zip-sling-cognac",
+    "src": "medina-duffle-pdp-05.png",
+    "dst": "medina-zip-sling-cognac-pdp-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-zip-sling-cognac",
+    "src": "medina-duffle-pdp-06.png",
+    "dst": "medina-zip-sling-cognac-pdp-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-zip-sling-cognac",
+    "src": "medina-duffle-pdp-07.png",
+    "dst": "medina-zip-sling-cognac-pdp-07.png"
+  },
+  {
+    "action": "rename-folder",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-duffle-scale",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-duffle"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-duffle",
+    "src": "Hero-medina-duffle-scale.png",
+    "dst": "Hero-medina-duffle.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-duffle",
+    "src": "medina-duffle-scale-pdp-01.png",
+    "dst": "medina-duffle-scale-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-duffle",
+    "src": "medina-duffle-scale-pdp-02.png",
+    "dst": "medina-duffle-scale-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-duffle",
+    "src": "medina-duffle-scale-pdp-03.png",
+    "dst": "medina-duffle-scale-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-duffle",
+    "src": "medina-duffle-scale-pdp-04.png",
+    "dst": "medina-duffle-scale-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-duffle",
+    "src": "medina-duffle-scale-pdp-05.png",
+    "dst": "medina-duffle-scale-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-duffle",
+    "src": "medina-duffle-scale-pdp-06.png",
+    "dst": "medina-duffle-scale-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-duffle",
+    "src": "medina-duffle-scale-pdp-07.png",
+    "dst": "medina-duffle-scale-07.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-duffle",
+    "src": "medina-duffle-scale-pdp-08.png",
+    "dst": "medina-duffle-scale-08.png"
+  },
+  {
+    "action": "rename-folder",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-duffle-alt",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-soft-crossbody-walnut"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-soft-crossbody-walnut",
+    "src": "Hero-medina-duffle-alt-02.png",
+    "dst": "Hero-medina-soft-crossbody-walnut.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-soft-crossbody-walnut",
+    "src": "Hero-medina-duffle-alt.png",
+    "dst": "medina-soft-crossbody-walnut-pdp-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-soft-crossbody-walnut",
+    "src": "medina-duffle-alt-pdp-01.png",
+    "dst": "medina-soft-crossbody-walnut-pdp-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-soft-crossbody-walnut",
+    "src": "medina-duffle-alt-pdp-02.png",
+    "dst": "medina-soft-crossbody-walnut-pdp-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-soft-crossbody-walnut",
+    "src": "medina-duffle-alt-pdp-03.png",
+    "dst": "medina-soft-crossbody-walnut-pdp-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-soft-crossbody-walnut",
+    "src": "medina-duffle-alt-pdp-04.png",
+    "dst": "medina-soft-crossbody-walnut-pdp-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-soft-crossbody-walnut",
+    "src": "medina-duffle-alt-pdp-05.png",
+    "dst": "medina-soft-crossbody-walnut-pdp-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-soft-crossbody-walnut",
+    "src": "medina-duffle-alt-pdp-06.png",
+    "dst": "medina-soft-crossbody-walnut-pdp-07.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-soft-crossbody-walnut",
+    "src": "medina-duffle-alt-pdp-07.png",
+    "dst": "medina-soft-crossbody-walnut-pdp-08.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-soft-crossbody-walnut",
+    "src": "medina-duffle-alt-pdp-08.png",
+    "dst": "medina-soft-crossbody-walnut-pdp-09.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-soft-crossbody-walnut",
+    "src": "medina-duffle-alt-pdp-09.png",
+    "dst": "medina-soft-crossbody-walnut-pdp-10.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-soft-crossbody-walnut",
+    "src": "medina-duffle-alt-pdp-10.png",
+    "dst": "medina-soft-crossbody-walnut-pdp-11.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-soft-crossbody-walnut",
+    "src": "medina-duffle-alt-pdp-11.png",
+    "dst": "medina-soft-crossbody-walnut-pdp-12.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-light-pdp/Hero-vintage-buckle-backpack-light-pdp-02.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack/vintage-buckle-backpack-pdp-08.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-light-pdp/Hero-vintage-buckle-backpack-light-pdp.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack/vintage-buckle-backpack-pdp-09.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-light-pdp/vintage-buckle-backpack-light-pdp-pdp-01.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack/vintage-buckle-backpack-pdp-10.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-light-pdp/vintage-buckle-backpack-light-pdp-pdp-02.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack/vintage-buckle-backpack-pdp-11.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-light-pdp/vintage-buckle-backpack-light-pdp-pdp-03.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack/vintage-buckle-backpack-pdp-12.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-light-pdp/vintage-buckle-backpack-light-pdp-pdp-04.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack/vintage-buckle-backpack-pdp-13.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-light-pdp/vintage-buckle-backpack-light-pdp-pdp-05.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack/vintage-buckle-backpack-pdp-14.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-light-pdp/vintage-buckle-backpack-light-pdp-pdp-06.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack/vintage-buckle-backpack-pdp-15.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-light-pdp/vintage-buckle-backpack-light-pdp-pdp-07.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack/vintage-buckle-backpack-pdp-16.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-light-pdp/vintage-buckle-backpack-light-pdp-pdp-08.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack/vintage-buckle-backpack-pdp-17.png"
+  },
+  {
+    "action": "archive-folder",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-light-pdp",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/_merged/vintage-buckle-backpack-light-pdp"
+  },
+  {
+    "action": "rename-folder",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-scale",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-chocolate"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-chocolate",
+    "src": "Hero-vintage-buckle-backpack-scale.png",
+    "dst": "Hero-vintage-buckle-backpack-chocolate.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-chocolate",
+    "src": "vintage-buckle-backpack-scale-pdp-01.png",
+    "dst": "vintage-buckle-backpack-chocolate-scale-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-chocolate",
+    "src": "vintage-buckle-backpack-scale-pdp-02.png",
+    "dst": "vintage-buckle-backpack-chocolate-scale-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-chocolate",
+    "src": "vintage-buckle-backpack-scale-pdp-03.png",
+    "dst": "vintage-buckle-backpack-chocolate-scale-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-chocolate",
+    "src": "vintage-buckle-backpack-scale-pdp-04.png",
+    "dst": "vintage-buckle-backpack-chocolate-scale-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-chocolate",
+    "src": "vintage-buckle-backpack-scale-pdp-05.png",
+    "dst": "vintage-buckle-backpack-chocolate-scale-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-chocolate",
+    "src": "vintage-buckle-backpack-scale-pdp-06.png",
+    "dst": "vintage-buckle-backpack-chocolate-scale-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-chocolate",
+    "src": "vintage-buckle-backpack-scale-pdp-07.png",
+    "dst": "vintage-buckle-backpack-chocolate-scale-07.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-chocolate",
+    "src": "vintage-buckle-backpack-scale-pdp-08.png",
+    "dst": "vintage-buckle-backpack-chocolate-scale-08.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/vintage-buckle-backpack-chocolate",
+    "src": "vintage-buckle-backpack-scale-pdp-09.png",
+    "dst": "vintage-buckle-backpack-chocolate-scale-09.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope-alt/Hero-medina-crossbody-envelope-alt.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope/medina-crossbody-envelope-pdp-08.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope-alt/medina-crossbody-envelope-alt-pdp-01.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope/medina-crossbody-envelope-pdp-09.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope-alt/medina-crossbody-envelope-alt-pdp-02.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope/medina-crossbody-envelope-pdp-10.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope-alt/medina-crossbody-envelope-alt-pdp-03.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope/medina-crossbody-envelope-pdp-11.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope-alt/medina-crossbody-envelope-alt-pdp-04.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope/medina-crossbody-envelope-pdp-12.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope-alt/medina-crossbody-envelope-alt-pdp-05.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope/medina-crossbody-envelope-pdp-13.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope-alt/medina-crossbody-envelope-alt-pdp-06.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope/medina-crossbody-envelope-pdp-14.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope-alt/medina-crossbody-envelope-alt-pdp-07.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope/medina-crossbody-envelope-pdp-15.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope-alt/medina-crossbody-envelope-alt-pdp-08.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope/medina-crossbody-envelope-pdp-16.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope-alt/medina-crossbody-envelope-alt-pdp-09.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope/medina-crossbody-envelope-pdp-17.png"
+  },
+  {
+    "action": "archive-folder",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope-alt",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/_merged/medina-crossbody-envelope-alt"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "Hero-medina-crossbody-envelope-02.png",
+    "dst": "medina-crossbody-envelope-pdp-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-01.png",
+    "dst": "medina-crossbody-envelope-pdp-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-02.png",
+    "dst": "medina-crossbody-envelope-pdp-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-03.png",
+    "dst": "medina-crossbody-envelope-pdp-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-04.png",
+    "dst": "medina-crossbody-envelope-pdp-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-05.png",
+    "dst": "medina-crossbody-envelope-pdp-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-06.png",
+    "dst": "medina-crossbody-envelope-pdp-07.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-07.png",
+    "dst": "medina-crossbody-envelope-pdp-08.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-08.png",
+    "dst": "medina-crossbody-envelope-pdp-09.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-09.png",
+    "dst": "medina-crossbody-envelope-pdp-10.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-10.png",
+    "dst": "medina-crossbody-envelope-pdp-11.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-11.png",
+    "dst": "medina-crossbody-envelope-pdp-12.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-12.png",
+    "dst": "medina-crossbody-envelope-pdp-13.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-13.png",
+    "dst": "medina-crossbody-envelope-pdp-14.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-14.png",
+    "dst": "medina-crossbody-envelope-pdp-15.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-15.png",
+    "dst": "medina-crossbody-envelope-pdp-16.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-16.png",
+    "dst": "medina-crossbody-envelope-pdp-17.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-envelope",
+    "src": "medina-crossbody-envelope-pdp-17.png",
+    "dst": "medina-crossbody-envelope-pdp-18.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle-alt/Hero-atlas-kilim-duffle-alt.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle/atlas-kilim-duffle-pdp-09.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle-alt/atlas-kilim-duffle-alt-pdp-01.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle/atlas-kilim-duffle-pdp-10.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle-alt/atlas-kilim-duffle-alt-pdp-02.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle/atlas-kilim-duffle-pdp-11.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle-alt/atlas-kilim-duffle-alt-pdp-03.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle/atlas-kilim-duffle-pdp-12.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle-alt/atlas-kilim-duffle-alt-pdp-04.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle/atlas-kilim-duffle-pdp-13.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle-alt/atlas-kilim-duffle-alt-pdp-05.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle/atlas-kilim-duffle-pdp-14.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle-alt/atlas-kilim-duffle-alt-pdp-06.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle/atlas-kilim-duffle-pdp-15.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle-alt/atlas-kilim-duffle-alt-pdp-07.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle/atlas-kilim-duffle-pdp-16.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle-alt/atlas-kilim-duffle-alt-pdp-08.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle/atlas-kilim-duffle-pdp-17.png"
+  },
+  {
+    "action": "archive-folder",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-duffle-alt",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/_merged/atlas-kilim-duffle-alt"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac-scale/Hero-explorer-rolltop-cognac-scale.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac/explorer-rolltop-cognac-scale-01.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac-scale/explorer-rolltop-cognac-scale-pdp-01.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac/explorer-rolltop-cognac-scale-02.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac-scale/explorer-rolltop-cognac-scale-pdp-02.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac/explorer-rolltop-cognac-scale-03.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac-scale/explorer-rolltop-cognac-scale-pdp-03.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac/explorer-rolltop-cognac-scale-04.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac-scale/explorer-rolltop-cognac-scale-pdp-04.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac/explorer-rolltop-cognac-scale-05.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac-scale/explorer-rolltop-cognac-scale-pdp-05.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac/explorer-rolltop-cognac-scale-06.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac-scale/explorer-rolltop-cognac-scale-pdp-06.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac/explorer-rolltop-cognac-scale-07.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac-scale/explorer-rolltop-cognac-scale-pdp-07.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac/explorer-rolltop-cognac-scale-08.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac-scale/explorer-rolltop-cognac-scale-pdp-08.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac/explorer-rolltop-cognac-scale-09.png"
+  },
+  {
+    "action": "archive-folder",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac-scale",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/_merged/explorer-rolltop-cognac-scale"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "Hero-explorer-rolltop-cognac-02.png",
+    "dst": "explorer-rolltop-cognac-pdp-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "Hero-explorer-rolltop-cognac-03.png",
+    "dst": "explorer-rolltop-cognac-pdp-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-01.png",
+    "dst": "explorer-rolltop-cognac-pdp-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-02.png",
+    "dst": "explorer-rolltop-cognac-pdp-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-03.png",
+    "dst": "explorer-rolltop-cognac-pdp-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-04.png",
+    "dst": "explorer-rolltop-cognac-pdp-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-05.png",
+    "dst": "explorer-rolltop-cognac-pdp-07.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-06.png",
+    "dst": "explorer-rolltop-cognac-pdp-08.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-07.png",
+    "dst": "explorer-rolltop-cognac-pdp-09.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-08.png",
+    "dst": "explorer-rolltop-cognac-pdp-10.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-09.png",
+    "dst": "explorer-rolltop-cognac-pdp-11.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-10.png",
+    "dst": "explorer-rolltop-cognac-pdp-12.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-11.png",
+    "dst": "explorer-rolltop-cognac-pdp-13.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-12.png",
+    "dst": "explorer-rolltop-cognac-pdp-14.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-13.png",
+    "dst": "explorer-rolltop-cognac-pdp-15.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-14.png",
+    "dst": "explorer-rolltop-cognac-pdp-16.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-15.png",
+    "dst": "explorer-rolltop-cognac-pdp-17.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-16.png",
+    "dst": "explorer-rolltop-cognac-pdp-18.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-17.png",
+    "dst": "explorer-rolltop-cognac-pdp-19.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/explorer-rolltop-cognac",
+    "src": "explorer-rolltop-cognac-pdp-18.png",
+    "dst": "explorer-rolltop-cognac-pdp-20.png"
+  },
+  {
+    "action": "rename-folder",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-walnut-macro",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut",
+    "src": "Hero-medina-crossbody-walnut-macro.png",
+    "dst": "Hero-medina-crossbody-tooled-walnut.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut",
+    "src": "medina-crossbody-walnut-macro-pdp-01.png",
+    "dst": "medina-crossbody-tooled-walnut-macro-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut",
+    "src": "medina-crossbody-walnut-macro-pdp-02.png",
+    "dst": "medina-crossbody-tooled-walnut-macro-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut",
+    "src": "medina-crossbody-walnut-macro-pdp-03.png",
+    "dst": "medina-crossbody-tooled-walnut-macro-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut",
+    "src": "medina-crossbody-walnut-macro-pdp-04.png",
+    "dst": "medina-crossbody-tooled-walnut-macro-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut",
+    "src": "medina-crossbody-walnut-macro-pdp-05.png",
+    "dst": "medina-crossbody-tooled-walnut-macro-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut",
+    "src": "medina-crossbody-walnut-macro-pdp-06.png",
+    "dst": "medina-crossbody-tooled-walnut-macro-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut",
+    "src": "medina-crossbody-walnut-macro-pdp-07.png",
+    "dst": "medina-crossbody-tooled-walnut-macro-07.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut",
+    "src": "medina-crossbody-walnut-macro-pdp-08.png",
+    "dst": "medina-crossbody-tooled-walnut-macro-08.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut",
+    "src": "medina-crossbody-walnut-macro-pdp-09.png",
+    "dst": "medina-crossbody-tooled-walnut-macro-09.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut",
+    "src": "medina-crossbody-walnut-macro-pdp-10.png",
+    "dst": "medina-crossbody-tooled-walnut-macro-10.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut-macro/Hero-medina-crossbody-tooled-walnut-macro-02.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-dark-brown/medina-crossbody-tooled-dark-brown-macro-01.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut-macro/Hero-medina-crossbody-tooled-walnut-macro-03.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-dark-brown/medina-crossbody-tooled-dark-brown-macro-02.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut-macro/Hero-medina-crossbody-tooled-walnut-macro-04.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-dark-brown/medina-crossbody-tooled-dark-brown-macro-03.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut-macro/Hero-medina-crossbody-tooled-walnut-macro-05.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-dark-brown/medina-crossbody-tooled-dark-brown-macro-04.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut-macro/Hero-medina-crossbody-tooled-walnut-macro-06.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-dark-brown/medina-crossbody-tooled-dark-brown-macro-05.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut-macro/Hero-medina-crossbody-tooled-walnut-macro-07.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-dark-brown/medina-crossbody-tooled-dark-brown-macro-06.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut-macro/Hero-medina-crossbody-tooled-walnut-macro-08.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-dark-brown/medina-crossbody-tooled-dark-brown-macro-07.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut-macro/Hero-medina-crossbody-tooled-walnut-macro-09.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-dark-brown/medina-crossbody-tooled-dark-brown-macro-08.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut-macro/Hero-medina-crossbody-tooled-walnut-macro.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-dark-brown/medina-crossbody-tooled-dark-brown-macro-09.png"
+  },
+  {
+    "action": "archive-folder",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-crossbody-tooled-walnut-macro",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/_merged/medina-crossbody-tooled-walnut-macro"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-rucksack-alt/Hero-atlas-kilim-rucksack-alt-02.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-backpack/atlas-kilim-backpack-pdp-10.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-rucksack-alt/Hero-atlas-kilim-rucksack-alt-03.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-backpack/atlas-kilim-backpack-pdp-11.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-rucksack-alt/Hero-atlas-kilim-rucksack-alt.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-backpack/atlas-kilim-backpack-pdp-12.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-rucksack-alt/atlas-kilim-rucksack-alt-pdp-01.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-backpack/atlas-kilim-backpack-pdp-13.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-rucksack-alt/atlas-kilim-rucksack-alt-pdp-02.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-backpack/atlas-kilim-backpack-pdp-14.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-rucksack-alt/atlas-kilim-rucksack-alt-pdp-03.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-backpack/atlas-kilim-backpack-pdp-15.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-rucksack-alt/atlas-kilim-rucksack-alt-pdp-04.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-backpack/atlas-kilim-backpack-pdp-16.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-rucksack-alt/atlas-kilim-rucksack-alt-pdp-05.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-backpack/atlas-kilim-backpack-pdp-17.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-rucksack-alt/atlas-kilim-rucksack-alt-pdp-06.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-backpack/atlas-kilim-backpack-pdp-18.png"
+  },
+  {
+    "action": "copy-alias-image",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-rucksack-alt/atlas-kilim-rucksack-alt-pdp-07.png",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-backpack/atlas-kilim-backpack-pdp-19.png"
+  },
+  {
+    "action": "archive-folder",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-kilim-rucksack-alt",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/_merged/atlas-kilim-rucksack-alt"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-messenger-laptop",
+    "src": "Hero-atlas-messenger-laptop-02.png",
+    "dst": "atlas-messenger-laptop-pdp-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-messenger-laptop",
+    "src": "atlas-messenger-laptop-pdp-01.png",
+    "dst": "atlas-messenger-laptop-pdp-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-messenger-laptop",
+    "src": "atlas-messenger-laptop-pdp-02.png",
+    "dst": "atlas-messenger-laptop-pdp-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-messenger-laptop",
+    "src": "atlas-messenger-laptop-pdp-03.png",
+    "dst": "atlas-messenger-laptop-pdp-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-messenger-laptop",
+    "src": "atlas-messenger-laptop-pdp-04.png",
+    "dst": "atlas-messenger-laptop-pdp-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-messenger-laptop",
+    "src": "atlas-messenger-laptop-pdp-05.png",
+    "dst": "atlas-messenger-laptop-pdp-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-messenger-laptop",
+    "src": "atlas-messenger-laptop-pdp-06.png",
+    "dst": "atlas-messenger-laptop-pdp-07.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-messenger-laptop",
+    "src": "atlas-messenger-laptop-pdp-07.png",
+    "dst": "atlas-messenger-laptop-pdp-08.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/atlas-messenger-laptop",
+    "src": "atlas-messenger-laptop-pdp-08.png",
+    "dst": "atlas-messenger-laptop-pdp-09.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/classic-cognac-satchel",
+    "src": "Hero-classic-cognac-satchel-02-hd.png",
+    "dst": "classic-cognac-satchel-pdp-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/classic-cognac-satchel",
+    "src": "Hero-classic-cognac-satchel-02.png",
+    "dst": "classic-cognac-satchel-pdp-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/classic-cognac-satchel",
+    "src": "Hero-classic-cognac-satchel-HD.png",
+    "dst": "classic-cognac-satchel-pdp-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/classic-cognac-satchel",
+    "src": "classic-cognac-satchel-pdp-03-hd.png",
+    "dst": "classic-cognac-satchel-pdp-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/classic-cognac-satchel",
+    "src": "classic-cognac-satchel-pdp-04-hd.png",
+    "dst": "classic-cognac-satchel-pdp-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/classic-cognac-satchel",
+    "src": "classic-cognac-satchel-pdp-05-hd.png",
+    "dst": "classic-cognac-satchel-pdp-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/classic-cognac-satchel",
+    "src": "classic-cognac-satchel-pdp-07-hd.png",
+    "dst": "classic-cognac-satchel-pdp-07.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/cognac-brogue-backpack",
+    "src": "Hero-cognac-brogue-backpack-hd.png",
+    "dst": "cognac-brogue-backpack-pdp-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/cognac-brogue-backpack",
+    "src": "cognac-brogue-backpack-pdp-01-hd.png",
+    "dst": "cognac-brogue-backpack-pdp-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/cognac-brogue-backpack",
+    "src": "cognac-brogue-backpack-pdp-02-hd.png",
+    "dst": "cognac-brogue-backpack-pdp-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/cognac-brogue-backpack",
+    "src": "cognac-brogue-backpack-pdp-03-hd.png",
+    "dst": "cognac-brogue-backpack-pdp-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/cognac-brogue-backpack",
+    "src": "cognac-brogue-backpack-pdp-04-hd.png",
+    "dst": "cognac-brogue-backpack-pdp-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/cognac-brogue-backpack",
+    "src": "cognac-brogue-backpack-pdp-05-hd.png",
+    "dst": "cognac-brogue-backpack-pdp-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/cognac-brogue-backpack",
+    "src": "cognac-brogue-backpack-pdp-07-hd.png",
+    "dst": "cognac-brogue-backpack-pdp-07.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/cognac-brogue-backpack",
+    "src": "cognac-brogue-backpack-pdp-09-hd.png",
+    "dst": "cognac-brogue-backpack-pdp-08.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/le-nomade",
+    "src": "Hero-le-nomade-02.png",
+    "dst": "le-nomade-pdp-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/le-nomade",
+    "src": "le-nomade-pdp-01.png",
+    "dst": "le-nomade-pdp-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/le-nomade",
+    "src": "le-nomade-pdp-02.png",
+    "dst": "le-nomade-pdp-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/le-nomade",
+    "src": "le-nomade-pdp-03.png",
+    "dst": "le-nomade-pdp-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/le-nomade",
+    "src": "le-nomade-pdp-04.png",
+    "dst": "le-nomade-pdp-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/le-nomade",
+    "src": "le-nomade-pdp-05.png",
+    "dst": "le-nomade-pdp-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/le-nomade",
+    "src": "le-nomade-pdp-06.png",
+    "dst": "le-nomade-pdp-07.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/le-nomade",
+    "src": "le-nomade-pdp-07.png",
+    "dst": "le-nomade-pdp-08.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/marrakech-tote-cognac",
+    "src": "Hero-marrakech-tote-cognac-02.png",
+    "dst": "marrakech-tote-cognac-pdp-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/marrakech-tote-cognac",
+    "src": "Hero-marrakech-tote-cognac-03.png",
+    "dst": "marrakech-tote-cognac-pdp-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/marrakech-tote-cognac",
+    "src": "Hero-marrakech-tote-cognac-04.png",
+    "dst": "marrakech-tote-cognac-pdp-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/marrakech-tote-cognac",
+    "src": "marrakech-tote-cognac-pdp-01.png",
+    "dst": "marrakech-tote-cognac-pdp-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/marrakech-tote-cognac",
+    "src": "marrakech-tote-cognac-pdp-02.png",
+    "dst": "marrakech-tote-cognac-pdp-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/marrakech-tote-cognac",
+    "src": "marrakech-tote-cognac-pdp-03.png",
+    "dst": "marrakech-tote-cognac-pdp-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/marrakech-tote-cognac",
+    "src": "marrakech-tote-cognac-pdp-04.png",
+    "dst": "marrakech-tote-cognac-pdp-07.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/marrakech-tote-cognac",
+    "src": "marrakech-tote-cognac-pdp-05.png",
+    "dst": "marrakech-tote-cognac-pdp-08.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/marrakech-tote-cognac",
+    "src": "marrakech-tote-cognac-pdp-06.png",
+    "dst": "marrakech-tote-cognac-pdp-09.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/marrakech-tote-cognac",
+    "src": "marrakech-tote-cognac-pdp-07.png",
+    "dst": "marrakech-tote-cognac-pdp-10.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/marrakech-tote-cognac",
+    "src": "marrakech-tote-cognac-pdp-08.png",
+    "dst": "marrakech-tote-cognac-pdp-11.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/marrakech-tote-cognac",
+    "src": "marrakech-tote-cognac-pdp-09.png",
+    "dst": "marrakech-tote-cognac-pdp-12.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/marrakech-tote-cognac",
+    "src": "marrakech-tote-cognac-pdp-10.png",
+    "dst": "marrakech-tote-cognac-pdp-13.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-cargo-rucksack-moutarde",
+    "src": "Hero-medina-cargo-rucksack-moutarde-02.png",
+    "dst": "medina-cargo-rucksack-moutarde-pdp-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-cargo-rucksack-moutarde",
+    "src": "medina-cargo-rucksack-moutarde-pdp-01.png",
+    "dst": "medina-cargo-rucksack-moutarde-pdp-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-cargo-rucksack-moutarde",
+    "src": "medina-cargo-rucksack-moutarde-pdp-02.png",
+    "dst": "medina-cargo-rucksack-moutarde-pdp-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-cargo-rucksack-moutarde",
+    "src": "medina-cargo-rucksack-moutarde-pdp-03.png",
+    "dst": "medina-cargo-rucksack-moutarde-pdp-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-cargo-rucksack-moutarde",
+    "src": "medina-cargo-rucksack-moutarde-pdp-04.png",
+    "dst": "medina-cargo-rucksack-moutarde-pdp-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-cargo-rucksack-moutarde",
+    "src": "medina-cargo-rucksack-moutarde-pdp-05.png",
+    "dst": "medina-cargo-rucksack-moutarde-pdp-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-cargo-rucksack-moutarde",
+    "src": "medina-cargo-rucksack-moutarde-pdp-06.png",
+    "dst": "medina-cargo-rucksack-moutarde-pdp-07.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-cargo-rucksack-moutarde",
+    "src": "medina-cargo-rucksack-moutarde-pdp-07.png",
+    "dst": "medina-cargo-rucksack-moutarde-pdp-08.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-cargo-rucksack-moutarde",
+    "src": "medina-cargo-rucksack-moutarde-pdp-08.png",
+    "dst": "medina-cargo-rucksack-moutarde-pdp-09.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-cargo-rucksack-moutarde",
+    "src": "medina-cargo-rucksack-moutarde-pdp-09.png",
+    "dst": "medina-cargo-rucksack-moutarde-pdp-10.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-cargo-rucksack-moutarde",
+    "src": "medina-cargo-rucksack-moutarde-pdp-10.png",
+    "dst": "medina-cargo-rucksack-moutarde-pdp-11.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-cargo-rucksack-moutarde",
+    "src": "medina-cargo-rucksack-moutarde-pdp-11.png",
+    "dst": "medina-cargo-rucksack-moutarde-pdp-12.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-cargo-rucksack-moutarde",
+    "src": "medina-cargo-rucksack-moutarde-pdp-12.png",
+    "dst": "medina-cargo-rucksack-moutarde-pdp-13.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-cargo-rucksack-moutarde",
+    "src": "medina-cargo-rucksack-moutarde-pdp-13.png",
+    "dst": "medina-cargo-rucksack-moutarde-pdp-14.png"
+  }
+]

@@ -1,0 +1,327 @@
+[
+  {
+    "id": "rec18TlEZkSdgMuP5",
+    "fields": {
+      "Site Status": "Hidden",
+      "Lifestyle Image Present (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Hero Image Present (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Product Family": "Duffle",
+      "Name Uniqueness (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Image Status": "Approved",
+      "Product ID": "MT-BAG-017",
+      "Status": "reserved",
+      "Slug": "medina-duffle",
+      "Product Copy": [
+        "recmtU2SLOy2RX5Vn"
+      ],
+      "Content Queue": [
+        "recjlHQ3MYCQd2Dz8"
+      ],
+      "Notes": "Travel weekender in burnished cognac leather. Brass middle strap buckle, dual rolled handles, removable saddle shoulder strap. A weekend bag the next generation inherits.",
+      "Hero Asset Status": "Needs review",
+      "Available Quantity": 18,
+      "Price Cents": 36500,
+      "Variants / SKUs": [
+        "recMdf2EZdn2J96r2"
+      ],
+      "Launch Priority": "P0",
+      "Product Audit": [
+        "recohocpwT5v93Z2t"
+      ],
+      "Copy Status": "Approved",
+      "Dimensions Text": "50cm × 28cm × 26cm · weekender",
+      "Price": 365,
+      "Materials Text": "Full-grain Moroccan leather\nSolid brass zipper and hardware\nDual rolled leather handles\nHand-finished in Marrakech",
+      "Website URL": "https://maisontanneurs.com/products/medina-duffle",
+      "Product Number": 17,
+      "Images": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-white.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-scale.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-04.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-05.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-06.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-07.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-08.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-01.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-02.webp",
+      "Product Assets": [
+        "rec9EP9z9TtdLMuK4",
+        "recxJKihTxkioNdXy",
+        "recyIJXJi0muXOydM"
+      ],
+      "Category": "Duffle",
+      "Product Name": "Medina Duffle"
+    }
+  },
+  {
+    "id": "recqkdXEeZa0mISWH",
+    "fields": {
+      "Site Status": "Published",
+      "Lifestyle Image Present (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Hero Image Present (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Product Family": "Backpack",
+      "Name Uniqueness (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Image Status": "Approved",
+      "Product ID": "MT-BAG-019",
+      "Status": "Active",
+      "Featured": true,
+      "Slug": "medina-rucksack-flap-chocolate",
+      "Launch Ready": true,
+      "Product Copy": [
+        "recQZSUkTiqXDSycx"
+      ],
+      "Content Queue": [
+        "reczoipii9t3h2cQJ"
+      ],
+      "Notes": "Chocolate full-grain leather drawstring rucksack with overflap and two front buckled pockets. Brass tri-glides, hand-burnished edges. The everyday quietly-luxurious carry.",
+      "Hero Asset Status": "Needs review",
+      "Available Quantity": 18,
+      "Price Cents": 28500,
+      "Variants / SKUs": [
+        "rec0nryLgzX9zZ61e"
+      ],
+      "Launch Priority": "P1",
+      "Product Audit": [
+        "recyjse9fpzVSPbkk",
+        "recar1oe8Pn8EtePZ"
+      ],
+      "Copy Status": "Approved",
+      "Dimensions Text": "42cm × 30cm × 16cm · drawstring rucksack",
+      "Price": 285,
+      "Materials Text": "Full-grain Moroccan leather\nSolid brass hardware\nHand-finished in Marrakech",
+      "Website URL": "https://maisontanneurs.com/products/medina-rucksack-flap-chocolate",
+      "Product Number": 19,
+      "Images": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-white.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-04.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-05.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-06.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-07.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-08.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-01.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-02.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-03.webp",
+      "Product Assets": [
+        "recqKcSm36JcFyytn",
+        "recbdaRj8ouyhu6xr",
+        "recpkOH9NSKyPcneY"
+      ],
+      "Category": "Backpack",
+      "Product Name": "Medina Rucksack · Flap Chocolate"
+    }
+  },
+  {
+    "id": "rec5hlAr7aUosICES",
+    "fields": {
+      "Site Status": "Published",
+      "Lifestyle Image Present (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Hero Image Present (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Product Family": "Backpack",
+      "Name Uniqueness (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Image Status": "Approved",
+      "Product ID": "MT-BAG-025",
+      "Status": "available",
+      "Slug": "medina-cargo-rucksack-cognac",
+      "Launch Ready": true,
+      "Notes": "Cargo-pocket rucksack in deep cognac mahogany. Classic flap closure with brass buckles, drawstring under-flap, two front buckled cargo pockets, side gussets. Full-grain bovine, saddle-stitched, edge-burnished. Hand-cut in Marrakech.",
+      "Hero Asset Status": "Approved",
+      "Available Quantity": 1,
+      "Price Cents": 32500,
+      "Launch Priority": "P1",
+      "Copy Status": "Approved",
+      "Dimensions Text": "W 32 cm / H 44 cm / D 18 cm",
+      "Price": 325,
+      "Materials Text": "Full-grain bovine leather\nSolid brass hardware",
+      "Website URL": "https://maisontanneurs.com/products/medina-cargo-rucksack-cognac",
+      "Product Number": 25,
+      "Images": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-white.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-02.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-03.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-04.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-05.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-06.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-07.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-08.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-09.webp",
+      "Product Assets": [
+        "recteMF6zfOsNypWe",
+        "recmJHL7hp8VzZiLT",
+        "recLfbTikGQtT6MvB",
+        "recCFfcWbveOZs5w4",
+        "recGvwTEMoOuihosY",
+        "rec0zHl8o5hlMTSTa",
+        "recgYuxe7fqDiEks5",
+        "rechAOzlUou7R8XBi",
+        "recMF0j8bLjQWANX3"
+      ],
+      "Category": "Backpack",
+      "Product Name": "Medina Cargo Rucksack · Cognac"
+    }
+  },
+  {
+    "id": "recFyLzynnUgkLawN",
+    "fields": {
+      "Site Status": "Published",
+      "Lifestyle Image Present (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Hero Image Present (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Product Family": "Crossbody",
+      "Name Uniqueness (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Image Status": "Approved",
+      "Product ID": "MT-BAG-026",
+      "Status": "available",
+      "Slug": "medina-crossbody-clasp-teal",
+      "Launch Ready": true,
+      "Notes": "Compact crossbody in petrol teal full-grain leather. Brass turn-clasp closure, saddle-stitched, edge-burnished. Hand-cut in Marrakech.",
+      "Hero Asset Status": "Approved",
+      "Available Quantity": 1,
+      "Price Cents": 22500,
+      "Launch Priority": "P1",
+      "Copy Status": "Approved",
+      "Dimensions Text": "W 22 cm / H 15 cm / D 7 cm",
+      "Price": 225,
+      "Materials Text": "Full-grain bovine leather\nSolid brass clasp",
+      "Website URL": "https://maisontanneurs.com/products/medina-crossbody-clasp-teal",
+      "Product Number": 26,
+      "Images": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-white.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-02.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-03.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-04.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-05.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-06.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-07.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-08.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-09.webp",
+      "Product Assets": [
+        "recgHgUzkCmFzBJku",
+        "recWFh1u2qaQpYnzw",
+        "rec0xAQ0hv5CJ8oXU",
+        "receBWq8XdeJBZ4dS",
+        "recs3vrspV2a9gsJB",
+        "rec4O53eiSMv1g0KS",
+        "recUNVPHDsFAJ9ple",
+        "recEZ0nMYeNY6VolD",
+        "recNdqL8Qh9dkmapP"
+      ],
+      "Category": "Crossbody",
+      "Product Name": "Medina Crossbody · Clasp Teal"
+    }
+  },
+  {
+    "id": "recjGdO7Tf98hyN8v",
+    "fields": {
+      "Site Status": "Published",
+      "Lifestyle Image Present (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Hero Image Present (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Product Family": "Tote",
+      "Name Uniqueness (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Image Status": "Approved",
+      "Product ID": "MT-BAG-027",
+      "Status": "available",
+      "Slug": "medina-market-tote-cognac",
+      "Launch Ready": true,
+      "Notes": "Soft market tote in deep cognac. Twin handles, single vertical centre seam, unlined interior — built to slouch and soften with use.",
+      "Hero Asset Status": "Approved",
+      "Available Quantity": 1,
+      "Price Cents": 29500,
+      "Launch Priority": "P1",
+      "Copy Status": "Approved",
+      "Dimensions Text": "W 42 cm / H 36 cm / D 14 cm",
+      "Price": 295,
+      "Materials Text": "Full-grain bovine leather",
+      "Website URL": "https://maisontanneurs.com/products/medina-market-tote-cognac",
+      "Product Number": 27,
+      "Images": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-white.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-02.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-03.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-04.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-05.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-06.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-07.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-08.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-09.webp",
+      "Product Assets": [
+        "rectHtpZ6AVn2cX4D",
+        "recuVXGlzS1k2yF0A",
+        "recqzzUTApR7UaTBn",
+        "recNu6bxAVNu1uzwZ",
+        "recpinHhEKPvNuFIa",
+        "recZH4TdEjo6znAH0",
+        "reco1H7MaFnQ1EgLi",
+        "recr4Xb45JQ49joeb",
+        "rec8hDGGljM81OlwL"
+      ],
+      "Category": "Tote",
+      "Product Name": "Medina Market Tote · Cognac"
+    }
+  },
+  {
+    "id": "recK57SFEGvEOxs0m",
+    "fields": {
+      "Site Status": "Published",
+      "Lifestyle Image Present (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Hero Image Present (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Product Family": "Tote",
+      "Name Uniqueness (AI)": {
+        "state": "empty",
+        "value": null,
+        "isStale": true
+      },
+      "Image Status": "Approved",
+      "Product ID": "MT-BAG-028",
+      "Status": "available",
+      "Slug": "medina-zigzag-tote-chocolate",
+      "Launch Ready": true,
+      "Notes": "Structured tote in chocolate oxblood leather with hand-laced zigzag side panels. Twin top handles, structured base. The lacing is hand-pulled, never machine.",
+      "Hero Asset Status": "Approved",
+      "Available Quantity": 1,
+      "Price Cents": 34500,
+      "Launch Priority": "P1",
+      "Copy Status": "Approved",
+      "Dimensions Text": "W 42 cm / H 38 cm / D 15 cm",
+      "Price": 345,
+      "Materials Text": "Full-grain bovine leather\nWaxed linen lacing",
+      "Website URL": "https://maisontanneurs.com/products/medina-zigzag-tote-chocolate",
+      "Product Number": 28,
+      "Images": "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-white.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-02.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-03.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-04.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-05.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-06.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-07.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-08.webp\nhttps://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-09.webp",
+      "Product Assets": [
+        "recD49vQL2Qy2v0Dn",
+        "recyaY6sPuPl4LCE0",
+        "reciVfxbqLtgvJRjE",
+        "recjkdCH1V5eduSKm",
+        "recud6Gqa7lLzyEg5",
+        "recTUPCNAhjs5bO13",
+        "recGXcCIUMQSOuXiO",
+        "reckKhnzg4QdqHjpV",
+        "recEdDQTdad1tZQWS"
+      ],
+      "Category": "Tote",
+      "Product Name": "Medina Zigzag Tote · Chocolate"
+    }
+  }
+]

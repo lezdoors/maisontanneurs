@@ -72,7 +72,16 @@ Meta launch asset folder:
 
 `/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/Maison-Tanneurs-Meta`
 
-Use the approved `Hero-*` file inside each product's `usable product pics` folder when product imagery is needed, unless a current audit or user instruction says otherwise.
+HARD PRODUCT IMAGE SOURCE RULE:
+
+- Full durable contract: `docs/PRODUCT-IMAGE-SOURCE-OF-TRUTH.md`.
+- For any commerce/product surface, the ONLY allowed source of real product photography is:
+  `/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics`
+- Product cards, PDP heroes, PDP galleries, marketplace feeds, launch catalogues, and product ads must trace back to a file inside the matching product folder there.
+- The approved `Hero-*` file inside each product folder is mandatory primary media. It must remain first everywhere: Supabase `products.images[0]`, Airtable `Products.Images[0]`, storefront product cards, PDP first image, feeds, and marketplace main image.
+- Do not choose a `scale`, `macro`, `pdp-04`, generated lifestyle shot, old Supabase object, Downloads file, prototype/public asset, supplier screenshot, Higgsfield scratch output, `_merged` file, or any non-Drive image ahead of `Hero-*`.
+- Supabase Storage is a derived delivery/cache layer only. If Supabase conflicts with Drive `Hero-*`, fix Supabase to match Drive; do not treat the existing Supabase image as source of truth.
+- If no matching Drive folder or `Hero-*` exists, report the SKU as blocked/ambiguous instead of filling the gap from old assets.
 
 Media decision rule: never choose, rename, reorder, publish, or reject an image/video without inspecting the actual pixels/frames first. If you cannot view the asset, say that directly and stop before making visual claims. Use contact sheets for image batches and video frame sheets / direct video analysis for videos.
 
@@ -82,14 +91,14 @@ Treat folders named `dont use`, old Downloads mirrors, supplier-style images, an
 
 For any task involving products, images, folders, product videos, ad creatives, or generated media:
 
-1. Start from the canonical asset folder above, not Downloads mirrors or cross-brand folders.
+1. Start from `usable product pics` above for product commerce images, not the broader Drive folder, Downloads mirrors, public assets, Supabase URLs, generated batches, or cross-brand folders.
 2. Build an inventory before changing anything: product folder, candidate `Hero-*`, gallery images, video files, dimensions/duration when relevant, and suspected destination surface.
 3. Inspect visually before deciding. For image batches, create a contact sheet or open representative files. For videos, extract/inspect key frames or run video analysis before judging quality or placement.
 4. Group by visible product identity: silhouette, material, construction, colorway, hardware, and textile/kilim panels. Filenames are only hints.
 5. Keep one canonical product folder per sellable product. Same product angles stay together; true separately sellable colorways get separate slugs.
 6. Preserve originals. Copy/rename into clean working folders; do not destructively move or delete source assets.
 7. Maintain a mapping table for non-trivial batches: `source file -> visual product -> canonical slug -> role/surface -> decision/notes`.
-8. `Hero-*` is mandatory primary media. It stays first for homepage/product cards/PDP unless Ryan explicitly overrides it.
+8. `Hero-*` is mandatory primary media. It stays first for homepage product modules, product cards, PDP, feeds, Airtable, and Supabase. A non-Hero first image is a bug, not a design option.
 9. Videos must be assigned to a real surface and purpose: hero, PDP support, atelier proof, Meta ad, or reference-only. Do not dump generic AI clips into production.
 10. Before claiming readiness, verify both asset state and rendered state: Drive/source folder, Supabase/catalogue row when relevant, repo wiring, and browser/live page.
 
@@ -102,6 +111,10 @@ Maison Tanneurs media vocabulary:
 Agent handoff rule: if the task is not completed in one pass, leave a concise handoff in the repo or audit folder with what was inspected, what was changed, what was verified, and what remains blocked. Do not make the next agent rediscover visual/product state from scratch.
 
 For launch readiness, verify the actual source of truth before making readiness claims: rendered storefront, Supabase/catalog state when relevant, Meta/account-side state when relevant, and live asset folders. Passing one gate does not clear the others.
+
+# Vercel Cost / Production Deploy Rule
+
+Vercel build minutes are expensive. Do not deploy to production, push to `main`, merge a PR that triggers production, or run `vercel deploy --prod` unless Ryan explicitly approves that specific production deploy. Default to preview branches/deployments for UI experiments and QA. Batch micro-fixes into one reviewed deploy instead of shipping every small hero/image/CSS/audit-script change separately. Keep alternate UI repos/projects preview-only unless Ryan says they should be production. Local verification and preview URLs are preferred until the final release window.
 
 Do not run broad searches from `/Users/ryanz`. For repo code use `/Users/ryanz/kechken`; for assets use the canonical Maison Tanneurs Drive folder.
 

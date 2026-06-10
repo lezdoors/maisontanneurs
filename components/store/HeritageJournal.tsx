@@ -5,20 +5,20 @@ const STORIES = [
   {
     kicker: "Travel",
     title: "The object should hold shape before it goes anywhere.",
-    image: "/brand/editorial/world-rooftop-table.webp",
-    alt: "Sunset rooftop in Marrakech with brass tea service and a leather travel bag, Koutoubia minaret in the distance",
+    image: "/brand/editorial/journal-shape-solo-bag.webp",
+    alt: "Structured cognac leather backpack standing upright in warm Marrakech light before travel",
   },
   {
     kicker: "Bench",
     title: "A hand check tells more than a slogan.",
-    image: "/brand/editorial/proof-artisan-cutting-arches.webp",
-    alt: "Artisan cutting cognac leather at a Marrakech atelier table beneath arched windows",
+    image: "/brand/editorial/journal-hand-clasp-check.webp",
+    alt: "Close hand check of a brass clasp on cognac leather before the bag leaves the bench",
   },
   {
     kicker: "Edition",
     title: "Small runs make the catalogue easier to trust.",
-    image: "/brand/editorial/edition-bag-lineup-tags.webp",
-    alt: "Four cognac leather bags lined up with tags on a wooden trestle bench against a warm plaster wall",
+    image: "/brand/editorial/journal-small-run-lineup.webp",
+    alt: "A small run of cognac leather bags lined up on an atelier bench for final review",
   },
 ];
 

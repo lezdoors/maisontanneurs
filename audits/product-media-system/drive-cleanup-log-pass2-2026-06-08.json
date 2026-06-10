@@ -1,0 +1,198 @@
+[
+  {
+    "action": "archive-reference-folder",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/Bags Screen shots",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/_reference/Bags Screen shots"
+  },
+  {
+    "action": "rename-folder",
+    "src": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-scale",
+    "dst": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-light-brown",
+    "src": "Hero-medina-rucksack-drawstring-light-brown-02.png",
+    "dst": "medina-rucksack-drawstring-light-brown-pdp-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-light-brown",
+    "src": "Hero-medina-rucksack-drawstring-light-brown-03.png",
+    "dst": "medina-rucksack-drawstring-light-brown-pdp-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-light-brown",
+    "src": "Hero-medina-rucksack-drawstring-light-brown-04.png",
+    "dst": "medina-rucksack-drawstring-light-brown-pdp-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-light-brown",
+    "src": "medina-rucksack-drawstring-light-brown-pdp-01.png",
+    "dst": "medina-rucksack-drawstring-light-brown-pdp-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-light-brown",
+    "src": "medina-rucksack-drawstring-light-brown-pdp-02.png",
+    "dst": "medina-rucksack-drawstring-light-brown-pdp-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-light-brown",
+    "src": "medina-rucksack-drawstring-light-brown-pdp-03.png",
+    "dst": "medina-rucksack-drawstring-light-brown-pdp-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-light-brown",
+    "src": "medina-rucksack-drawstring-light-brown-pdp-04.png",
+    "dst": "medina-rucksack-drawstring-light-brown-pdp-07.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-light-brown",
+    "src": "medina-rucksack-drawstring-light-brown-pdp-05.png",
+    "dst": "medina-rucksack-drawstring-light-brown-pdp-08.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-light-brown",
+    "src": "medina-rucksack-drawstring-light-brown-pdp-06.png",
+    "dst": "medina-rucksack-drawstring-light-brown-pdp-09.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-light-brown",
+    "src": "medina-rucksack-drawstring-light-brown-pdp-07.png",
+    "dst": "medina-rucksack-drawstring-light-brown-pdp-10.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-light-brown",
+    "src": "medina-rucksack-drawstring-light-brown-pdp-08.png",
+    "dst": "medina-rucksack-drawstring-light-brown-pdp-11.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-light-brown",
+    "src": "medina-rucksack-drawstring-light-brown-pdp-09.jpg",
+    "dst": "medina-rucksack-drawstring-light-brown-pdp-12.jpg"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "Hero-medina-rucksack-drawstring-scale.png",
+    "dst": "Hero-medina-rucksack-drawstring-chocolate.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-01.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-01.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-02.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-02.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-03.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-03.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-04.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-04.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-05.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-05.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-06.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-06.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-07.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-07.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-08.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-08.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-09.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-09.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-10.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-10.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-11.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-11.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-12.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-12.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-13.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-13.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-14.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-14.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-15.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-15.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-16.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-16.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-17.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-17.png"
+  },
+  {
+    "action": "rename-file",
+    "folder": "/Users/ryanz/Library/CloudStorage/GoogleDrive-ryanaoufal@gmail.com/My Drive/Maison Tanneurs/usable product pics/medina-rucksack-drawstring-chocolate",
+    "src": "medina-rucksack-drawstring-scale-pdp-18.png",
+    "dst": "medina-rucksack-drawstring-chocolate-scale-18.png"
+  }
+]

@@ -1,5 +1,13 @@
 # Missing assets — Maison Tanneurs
 
+> **2026-06-09 hard stop:** this file is historical only. Do not follow any
+> older instruction below that suggests generating product shots, using
+> supplier references, saving products to Downloads, putting `scale` first, or
+> treating existing Supabase images as source of truth. The active product
+> image contract is `docs/PRODUCT-IMAGE-SOURCE-OF-TRUTH.md`: use only Google
+> Drive `Maison Tanneurs/usable product pics`, and keep each SKU's `Hero-*`
+> first as `{slug}-pdp-white.webp` in Supabase/Airtable/storefront/feeds.
+>
 > **2026-05-28 launch note:** this file is historical and not the active
 > Maison Tanneurs product-media source of truth. Use
 > `docs/HF-9SHOT-REQUESTS-2026-05-28.md`,

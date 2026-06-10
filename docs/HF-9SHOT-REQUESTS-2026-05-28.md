@@ -1,5 +1,12 @@
 # Maison Tanneurs HF 9-Shot Requests — 2026-05-28
 
+> 2026-06-09 hard stop: this is an old fallback brief, not a current build rule.
+> Do not generate or wire product commerce images from this file unless Ryan
+> explicitly reopens a specific SKU. Current product commerce imagery must come
+> only from Drive `Maison Tanneurs/usable product pics`; each product's `Hero-*`
+> stays first as `{slug}-pdp-white.webp`. See
+> `docs/PRODUCT-IMAGE-SOURCE-OF-TRUTH.md`.
+
 Purpose: fallback brief for Ryan/Rocco only if visual audit proves the exact
 product set is not already in Higgsfield or Google Drive. Do not treat this file
 as an automatic generation list.

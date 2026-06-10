@@ -1,0 +1,194 @@
+[
+  {
+    "slug": "black-stitched-backpack",
+    "title": "Black Stitched Backpack",
+    "status": "reserved",
+    "featured": false,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/black-stitched-backpack-pdp-white.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/black-stitched-backpack-archive-1.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/black-stitched-backpack-archive-2.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/black-stitched-backpack-archive-3.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/black-stitched-backpack-archive-4.webp"
+    ],
+    "available_quantity": 20,
+    "updated_at": "2026-05-29T04:31:11.362825+00:00"
+  },
+  {
+    "slug": "explorer-rolltop-noir",
+    "title": "Explorer Rolltop · Noir",
+    "status": "available",
+    "featured": true,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/explorer-rolltop-noir-macro-04.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/explorer-rolltop-noir-macro-05.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/explorer-rolltop-noir-macro-06.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/explorer-rolltop-noir-macro-07.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/explorer-rolltop-noir-macro-08.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/explorer-rolltop-noir-macro-09.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/explorer-rolltop-noir-macro-01.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/explorer-rolltop-noir-macro-02.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/explorer-rolltop-noir-macro-03.webp"
+    ],
+    "available_quantity": 16,
+    "updated_at": "2026-05-28T18:40:59.47498+00:00"
+  },
+  {
+    "slug": "marrakech-tote-bordeaux",
+    "title": "Marrakech Tote · Bordeaux",
+    "status": "available",
+    "featured": false,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/marrakech-tote-bordeaux-pdp-white.webp"
+    ],
+    "available_quantity": 18,
+    "updated_at": "2026-06-03T15:16:36.379+00:00"
+  },
+  {
+    "slug": "marrakech-tote-noir",
+    "title": "Marrakech Tote · Noir",
+    "status": "available",
+    "featured": false,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/marrakech-tote-noir-pdp-white.webp"
+    ],
+    "available_quantity": 18,
+    "updated_at": "2026-06-03T15:16:37.41+00:00"
+  },
+  {
+    "slug": "medina-cargo-rucksack-cognac",
+    "title": "Medina Cargo Rucksack · Cognac",
+    "status": "available",
+    "featured": true,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-white.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-02.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-03.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-04.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-05.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-06.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-07.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-08.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-cargo-rucksack-cognac-pdp-09.webp"
+    ],
+    "available_quantity": 1,
+    "updated_at": "2026-06-02T12:45:04.208+00:00"
+  },
+  {
+    "slug": "medina-crossbody-clasp-teal",
+    "title": "Medina Crossbody · Clasp Teal",
+    "status": "available",
+    "featured": true,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-white.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-02.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-03.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-04.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-05.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-06.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-07.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-08.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-clasp-teal-pdp-09.webp"
+    ],
+    "available_quantity": 1,
+    "updated_at": "2026-06-02T12:45:04.271+00:00"
+  },
+  {
+    "slug": "medina-crossbody-tassel",
+    "title": "Medina Crossbody · Tassel",
+    "status": "available",
+    "featured": false,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-crossbody-tassel-pdp-white.webp"
+    ],
+    "available_quantity": 22,
+    "updated_at": "2026-06-03T15:16:38.195+00:00"
+  },
+  {
+    "slug": "medina-duffle",
+    "title": "Medina Duffle",
+    "status": "reserved",
+    "featured": false,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-white.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-scale.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-04.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-05.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-06.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-07.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-08.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-01.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-duffle-pdp-02.webp"
+    ],
+    "available_quantity": 18,
+    "updated_at": "2026-05-29T03:43:09.468141+00:00"
+  },
+  {
+    "slug": "medina-market-tote-cognac",
+    "title": "Medina Market Tote · Cognac",
+    "status": "available",
+    "featured": true,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-white.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-02.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-03.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-04.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-05.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-06.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-07.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-08.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-market-tote-cognac-pdp-09.webp"
+    ],
+    "available_quantity": 1,
+    "updated_at": "2026-06-02T12:45:04.456+00:00"
+  },
+  {
+    "slug": "medina-rucksack-flap-chocolate",
+    "title": "Medina Rucksack · Flap Chocolate",
+    "status": "available",
+    "featured": true,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-white.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-04.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-05.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-06.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-07.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-08.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-01.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-02.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-rucksack-flap-chocolate-pdp-03.webp"
+    ],
+    "available_quantity": 18,
+    "updated_at": "2026-06-01T06:43:47.103+00:00"
+  },
+  {
+    "slug": "medina-zigzag-tote-chocolate",
+    "title": "Medina Zigzag Tote · Chocolate",
+    "status": "available",
+    "featured": true,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-white.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-02.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-03.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-04.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-05.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-06.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-07.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-08.webp",
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-02/medina-zigzag-tote-chocolate-pdp-09.webp"
+    ],
+    "available_quantity": 1,
+    "updated_at": "2026-06-02T12:45:04.599+00:00"
+  },
+  {
+    "slug": "test-e2e",
+    "title": "Test — E2E Checkout",
+    "status": "available",
+    "featured": false,
+    "images": [
+      "https://xbtabpurfavngwmwtawc.supabase.co/storage/v1/object/public/products/drop-01/heritage-rucksack-01-v2.webp"
+    ],
+    "available_quantity": 100,
+    "updated_at": "2026-05-21T19:38:07.132667+00:00"
+  }
+]

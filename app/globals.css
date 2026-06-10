@@ -126,7 +126,14 @@
   --font-display: var(--font-instrument), "Times New Roman", serif;
   --font-sans:    var(--font-inter), "Helvetica Neue", Arial, sans-serif;
   --font-serif:   var(--font-display);
-  --font-mono:    "SF Mono", ui-monospace, "Menlo", "Consolas", monospace;
+  /* Engraved label register (2026-06-09): every micro-label, kicker, price
+     row, button caption, and filter chip rides this token (inline var() AND
+     the Tailwind `font-mono` utility). Pointing it at Bodoni Moda SC extends
+     the wordmark's engraved didone voice to the whole labeling system —
+     the optical-size axis keeps 9–11px caps sturdy. Revert to the mono stack
+     below to restore the technical spec-sheet register. */
+  --font-mono:    var(--font-bodoni-sc), "Bodoni 72", "Didot", "Times New Roman", serif;
+  --font-mono-technical: "SF Mono", ui-monospace, "Menlo", "Consolas", monospace;
   /* Brand wordmark — restrained Bodoni Moda SC display only, used on the
      centered Navbar wordmark and the navigation transition indicator.
      Editorial body headings keep --font-display (Instrument Serif). */

@@ -1,0 +1,36 @@
+
+$ pnpm -s exec tsc --noEmit
+(node:32063) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Already up to date
+Done in 169ms using pnpm v11.0.9
+
+$ pnpm -s build
+Already up to date
+Done in 158ms using pnpm v11.0.9
+node:net:1986
+      const error = new UVExceptionWithHostPort(rval, 'listen', address, port);
+                    ^
+
+Error: listen EPERM: operation not permitted /var/folders/58/50q7q6153cz7jnstq5s7_2jw0000gn/T/tsx-501/32145.pipe
+    at Server.setupListenHandle [as _listen2] (node:net:1986:21)
+    at listenInCluster (node:net:2065:12)
+    at Server.listen (node:net:2187:5)
+    at file:///Users/ryanz/kechken/node_modules/.pnpm/tsx@4.21.0/node_modules/tsx/dist/cli.mjs:53:31537
+    at new Promise (<anonymous>)
+    at createIpcServer (file:///Users/ryanz/kechken/node_modules/.pnpm/tsx@4.21.0/node_modules/tsx/dist/cli.mjs:53:31515)
+    at async file:///Users/ryanz/kechken/node_modules/.pnpm/tsx@4.21.0/node_modules/tsx/dist/cli.mjs:55:459 {
+  code: 'EPERM',
+  errno: -1,
+  syscall: 'listen',
+  address: '/var/folders/58/50q7q6153cz7jnstq5s7_2jw0000gn/T/tsx-501/32145.pipe',
+  port: -1
+}
+
+Node.js v26.0.0
+
+Launch gate verification failed
+Error: pnpm -s build exited with 1
+    at ChildProcess.<anonymous> (/Users/ryanz/kechken/scripts/verify-launch-gate.ts:27:14)
+    at ChildProcess.emit (node:events:509:20)
+    at ChildProcess._handle.onexit (node:internal/child_process:294:12)
