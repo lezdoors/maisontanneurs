@@ -87,7 +87,7 @@ export default function BatchGuarantee() {
             <Row k="Re-Line" v="Included" dark />
           </ul>
           <a
-            href="mailto:repair@maisontanneurs.com?subject=Repair%20Request"
+            href="mailto:hello@maisontanneurs.com?subject=Repair%20Request"
             className="mt-10 inline-flex h-12 items-center border border-white/40 px-7 text-white hover:opacity-70 transition-opacity"
             style={{
               fontSize: "12px",

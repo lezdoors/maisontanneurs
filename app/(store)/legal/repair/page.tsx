@@ -48,7 +48,7 @@ export default function RepairPage() {
       <ol style={{ paddingLeft: "20px", marginBottom: "20px" }}>
         <li style={{ marginBottom: "8px" }}>
           Email{" "}
-          <Link href="mailto:repair@maisontanneurs.com">repair@maisontanneurs.com</Link>{" "}
+          <Link href="mailto:hello@maisontanneurs.com?subject=Repair%20Request">hello@maisontanneurs.com</Link>{" "}
           with photographs of the bag and a brief description of the repair.
         </li>
         <li style={{ marginBottom: "8px" }}>
@@ -89,7 +89,7 @@ export default function RepairPage() {
       <h2>Questions</h2>
       <p>
         Write to{" "}
-        <Link href="mailto:repair@maisontanneurs.com">repair@maisontanneurs.com</Link>.
+        <Link href="mailto:hello@maisontanneurs.com?subject=Repair%20Request">hello@maisontanneurs.com</Link>.
         We answer within one working day.
       </p>
     </article>

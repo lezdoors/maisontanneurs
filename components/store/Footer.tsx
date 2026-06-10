@@ -47,8 +47,8 @@ const COLUMNS: ColumnDef[] = [
     links: [
       { labelKey: "footer.instagram", href: "https://instagram.com/maisontanneurs" },
       { labelKey: "footer.atelierList", href: "mailto:hello@maisontanneurs.com?subject=Atelier%20List" },
-      { labelKey: "footer.trade", href: "mailto:hello@maisontanneurs.com?subject=Trade" },
-      { labelKey: "footer.repair", href: "mailto:repair@maisontanneurs.com?subject=Repair%20Request" },
+      { labelKey: "footer.trade", href: "mailto:wholesale@maisontanneurs.com?subject=Trade" },
+      { labelKey: "footer.repair", href: "mailto:hello@maisontanneurs.com?subject=Repair%20Request" },
     ],
   },
 ];
