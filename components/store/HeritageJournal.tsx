@@ -5,8 +5,8 @@ const STORIES = [
   {
     kicker: "Travel",
     title: "The object should hold shape before it goes anywhere.",
-    image: "/brand/editorial/journal-shape-solo-bag.webp",
-    alt: "Structured cognac leather backpack standing upright in warm Marrakech light before travel",
+    image: "/brand/editorial/journal-travel-koutchi-carriage.webp",
+    alt: "Cognac leather duffle holding its shape on the green seat of an antique Moroccan koutchi carriage",
   },
   {
     kicker: "Bench",
@@ -17,8 +17,8 @@ const STORIES = [
   {
     kicker: "Edition",
     title: "Small runs make the catalogue easier to trust.",
-    image: "/brand/editorial/journal-small-run-lineup.webp",
-    alt: "A small run of cognac leather bags lined up on an atelier bench for final review",
+    image: "/brand/editorial/journal-edition-plinth-duffle.webp",
+    alt: "Single cognac leather duffle presented on a stone plinth under warm raking light",
   },
 ];
 
