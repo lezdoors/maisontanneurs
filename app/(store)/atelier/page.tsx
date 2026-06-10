@@ -128,6 +128,17 @@ export default function AtelierPage() {
           >
             Shop the Collection
           </Link>
+          <p className="mt-8 text-[14px] text-[var(--color-mineral)]">
+            For a single commissioned piece, see{" "}
+            <Link href="/bespoke" className="underline underline-offset-4">
+              Bespoke
+            </Link>
+            . To stock the house, see{" "}
+            <Link href="/trade" className="underline underline-offset-4">
+              Trade
+            </Link>
+            .
+          </p>
         </div>
       </section>
     </main>

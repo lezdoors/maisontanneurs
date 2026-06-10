@@ -74,6 +74,8 @@ function normalize(value: string): string {
     .replace(/\.[^.]+$/, "")
     .replace(/^hero[-_\s]*/i, "")
     .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^mt-[a-z]{2}-\d{3}-+/, "")
+    .replace(/-hd$/, "")
     .replace(/^-|-$/g, "");
 }
 

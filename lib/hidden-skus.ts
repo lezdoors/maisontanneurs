@@ -20,35 +20,15 @@ export const HIDDEN_SKUS: ReadonlySet<string> = new Set([
   // (scripts/build-images-manifest.py), then remove the slug from this set.
   // See docs/PRODUCT-IMAGES-MANIFEST.md for canonical inventory.
 
-  // Still hidden because Storage has no canonical hero (pdp-white / scale).
-  "marrakech-tote-bordeaux",
-  "marrakech-tote-noir",
-  "medina-crossbody-tassel",
-
   // Duplicate/scope suppression: the patterned leather + textile duffle belongs
   // to the Kilim family, so keep this duplicate commercial SKU off launch.
   "medina-duffle",
 
-  // Duplicate/scope suppression: Expedition Rolltop Noir is the only black bag
-  // in the launch set. Keep this older black backpack SKU off the storefront.
-  "black-stitched-backpack",
-
-  // No exact matching folder/hero in Drive source of truth as of 2026-06-05.
-  // Keep hidden until the product identity is verified and a Drive-derived
-  // hero is mapped in lib/product-image-presentation.ts.
-  "medina-rucksack-flap-chocolate",
-
   // Supabase-only rows missing required approved launch galleries/identity
   // confirmation. Keep reserved + hidden until approved galleries exist.
   "medina-cargo-rucksack-cognac",
-  "medina-crossbody-clasp-teal",
   "medina-market-tote-cognac",
   "medina-zigzag-tote-chocolate",
-
-  // Duplicate/scope suppression (Ryan ruling 2026-06-09): same physical bag as
-  // expedition-rolltop-noir. Its 2026-06-09 photo set was adopted as the
-  // expedition-rolltop-noir gallery; keep this duplicate SKU permanently hidden.
-  "explorer-rolltop-noir",
 ]);
 
 export const HIDDEN_SKUS_ARRAY: readonly string[] = Array.from(HIDDEN_SKUS);

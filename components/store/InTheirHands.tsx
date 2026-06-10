@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 const VIDEO_MP4 = "/videos/atelier-in-their-hands.mp4";
@@ -104,7 +105,11 @@ export default function InTheirHands() {
             style={{ fontSize: "13px", letterSpacing: "-0.01em", maxWidth: "50ch" }}
           >
             Want to visit? The atelier is closed to the public most of the year,
-            but we host a small number of trade and press visits each season.
+            but we host a small number of{" "}
+            <Link href="/trade" className="underline underline-offset-4">
+              trade
+            </Link>{" "}
+            and press visits each season.
             Write to{" "}
             <a
               href="mailto:hello@maisontanneurs.com"

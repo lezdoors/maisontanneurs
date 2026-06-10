@@ -28,6 +28,8 @@ const COLUMNS: ColumnDef[] = [
     links: [
       { labelKey: "footer.story", href: "/atelier" },
       { labelKey: "footer.production", href: "/atelier" },
+      { labelKey: "footer.bespoke", href: "/bespoke" },
+      { labelKey: "footer.visit", href: "/boutique" },
       { labelKey: "footer.materialsCare", href: "/legal/care" },
     ],
   },
@@ -47,7 +49,7 @@ const COLUMNS: ColumnDef[] = [
     links: [
       { labelKey: "footer.instagram", href: "https://instagram.com/maisontanneurs" },
       { labelKey: "footer.atelierList", href: "mailto:hello@maisontanneurs.com?subject=Atelier%20List" },
-      { labelKey: "footer.trade", href: "mailto:wholesale@maisontanneurs.com?subject=Trade" },
+      { labelKey: "footer.trade", href: "/trade" },
       { labelKey: "footer.repair", href: "mailto:hello@maisontanneurs.com?subject=Repair%20Request" },
     ],
   },

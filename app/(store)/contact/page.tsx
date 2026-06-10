@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -65,6 +66,21 @@ export default function ContactPage() {
             </p>
           </div>
         </div>
+
+        <figure className="mt-14">
+          <div className="relative aspect-[3/2] overflow-hidden bg-[var(--color-plate)]">
+            <Image
+              src="/brand/editorial/boutique-wide.webp"
+              alt="The Maison Tanneurs atelier room in Marrakech — a cognac leather tote on a stone plinth, doors open onto a riad courtyard with an olive tree and zellige fountain"
+              fill
+              className="object-cover"
+              sizes="(min-width: 768px) 680px, 100vw"
+            />
+          </div>
+          <figcaption className="tech-meta text-[var(--color-mineral)] mt-4">
+            The atelier, Marrakech — visits by appointment.
+          </figcaption>
+        </figure>
 
         <div className="mt-16 pt-10 border-t border-[var(--color-rule)] flex flex-col gap-3">
           <div className="ed-eyebrow text-[var(--color-mineral)] mb-2">

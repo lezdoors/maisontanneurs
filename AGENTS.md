@@ -87,6 +87,14 @@ Media decision rule: never choose, rename, reorder, publish, or reject an image/
 
 Treat folders named `dont use`, old Downloads mirrors, supplier-style images, and cross-brand assets as suspect. Do not use them for storefront, PDP, catalog, or ad launch work without explicit confirmation.
 
+PRODUCT NAMING CONTRACT (2026-06-10, root-cause fix for the early rename mess):
+
+- One physical product = one slug = one Drive folder `MT-XX-NNN__<slug>` (allowlist exception: `vintage-buckle-backpack-chocolate`).
+- `-pdp` / `-scale` / `-macro` / `-hd` filename suffixes are FILE ROLES, never product identities. Never create a slug, Airtable record, or Supabase row from a role-suffixed filename.
+- Product identity is decided from pixels (contact sheet / `/graphify`), never from filenames.
+- Supabase is derived: rows exist only via Airtable → `scripts/sync-airtable.ts`. A Supabase-only row is a bug. Never seed or edit Supabase product rows directly.
+- Full contract: Obsidian `00-Hermes/Maison Tanneurs Product Media Contract.md`.
+
 # Product / Image / Video Organization System
 
 For any task involving products, images, folders, product videos, ad creatives, or generated media:

@@ -1,5 +1,8 @@
 import type { Product } from "@/lib/supabase/types";
-import { selectProductHeroImage } from "@/lib/product-image-presentation";
+import {
+  selectProductHeroImage,
+  selectProductHoverImage,
+} from "@/lib/product-image-presentation";
 
 const LANDING_FEATURED_ORDER = [
   "atlas-weekender-cognac",
@@ -62,9 +65,9 @@ export function productListImage(product: Product): string | undefined {
   return selectProductHeroImage(product);
 }
 
-// Card-hover secondary angle. Only numbered -pdp-NN gallery shots qualify:
-// they are white-studio product angles, whereas -scale lifestyle objects sit
-// on gray/in-context plates and would flash a gray square on the white card.
+// Card-hover secondary angle. Only explicitly curated Drive-derived hover
+// picks qualify. If no pick has been made, do not swap; never fall back to
+// product.images[1] or any arbitrary Supabase gallery object.
 export function productHoverImage(product: Product): string | undefined {
-  return product.images?.find((url) => /-pdp-\d{2}\.webp$/.test(url));
+  return selectProductHoverImage(product);
 }

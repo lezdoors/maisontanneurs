@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/boutique",
   },
+  openGraph: {
+    images: ["/brand/editorial/boutique-wide.webp"],
+  },
 };
 
 export default function BoutiquePage() {
@@ -52,6 +55,10 @@ export default function BoutiquePage() {
               would like to stock Maison Tanneurs, see{" "}
               <Link href="/trade" className="underline underline-offset-4">
                 Trade
+              </Link>
+              . For a single commissioned piece, see{" "}
+              <Link href="/bespoke" className="underline underline-offset-4">
+                Bespoke
               </Link>
               .
             </p>

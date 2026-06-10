@@ -10,6 +10,8 @@ Use only this folder for real product commerce photography:
 
 Every sellable product must map to one product folder inside that directory.
 
+Ryan confirmed the duplicate-bag / same-bag-under-different-name cleanup has happened in this folder. Current cleaned product folders may use product-ID prefixes such as `MT-MS-002__atlas-field-briefcase`, and cleaned/upscaled hero files may use `-HD` suffixes such as `Hero-atlas-field-briefcase-HD.png`. Treat those as canonical when they live inside `usable product pics`; do not fall back to old duplicate aliases or pre-cleanup folders.
+
 ## Hero-first contract
 
 Inside each product folder, the approved `Hero-*` file is the mandatory primary product image.
