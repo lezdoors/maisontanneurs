@@ -45,9 +45,9 @@ export const HIDDEN_SKUS: ReadonlySet<string> = new Set([
   "medina-market-tote-cognac",
   "medina-zigzag-tote-chocolate",
 
-  // Group B — only macro shots in Storage, no canonical hero. Macros are
-  // gallery-only per Turbo's convention; audit rejects them as images[0].
-  // Stay hidden until a pdp-white or scale shot lands.
+  // Duplicate/scope suppression (Ryan ruling 2026-06-09): same physical bag as
+  // expedition-rolltop-noir. Its 2026-06-09 photo set was adopted as the
+  // expedition-rolltop-noir gallery; keep this duplicate SKU permanently hidden.
   "explorer-rolltop-noir",
 ]);
 
