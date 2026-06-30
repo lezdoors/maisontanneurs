@@ -101,13 +101,21 @@ export async function sendOrderToCrm(order: OpsOrder): Promise<void> {
   );
 }
 
-// Post a new-order notification to a Slack incoming webhook.
+// Post a new-order notification to a Slack incoming webhook. Honors the
+// existing prod var name (SLACK_ORDERS_WEBHOOK_URL) first, then a generic
+// fallback, so this is drop-in against the configured mt-lestanneurs env.
 export async function notifySlackNewOrder(order: OpsOrder): Promise<void> {
-  const url = process.env.SLACK_WEBHOOK_URL;
+  const url =
+    process.env.SLACK_ORDERS_WEBHOOK_URL || process.env.SLACK_WEBHOOK_URL;
   if (!url) {
-    console.warn("[ops-notify] SLACK_WEBHOOK_URL unset — skipping Slack notify");
+    console.warn(
+      "[ops-notify] SLACK_ORDERS_WEBHOOK_URL/SLACK_WEBHOOK_URL unset — skipping Slack notify",
+    );
     return;
   }
+  const mention = process.env.SLACK_FULFILMENT_MENTION
+    ? `${process.env.SLACK_FULFILMENT_MENTION} `
+    : "";
   const lines = order.items
     .map((i) => `• ${i.quantity}× ${i.title}`)
     .join("\n");
@@ -115,7 +123,7 @@ export async function notifySlackNewOrder(order: OpsOrder): Promise<void> {
   const dest = [ship.city, ship.state, ship.country].filter(Boolean).join(", ");
   const total = money(order.total, order.currency);
   await postJson(url, {
-    text: `New order ${order.orderNumber} — ${total} — ${order.customerName}`,
+    text: `${mention}New order ${order.orderNumber} — ${total} — ${order.customerName}`,
     blocks: [
       {
         type: "header",
