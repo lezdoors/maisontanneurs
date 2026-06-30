@@ -11,6 +11,7 @@ import {
   sendAdminNotification,
 } from "@/lib/checkout/email";
 import { sendPurchaseToCAPI } from "@/lib/checkout/meta-capi";
+import { sendOrderToCrm, notifySlackNewOrder } from "@/lib/checkout/ops-notify";
 import {
   abandonedCheckoutPatchForOrderResult,
   nextInventoryState,
@@ -371,6 +372,29 @@ export async function confirmAndPersistOrder(
     });
   } catch (capiErr) {
     console.error("Failed to send CAPI Purchase event:", capiErr);
+  }
+
+  // Ops fan-out — forward to Akal CRM (crm.akalds.com) + Slack. First-
+  // persistence only (we are past the `won` guard), best-effort, never blocks.
+  const opsOrder = {
+    orderNumber,
+    intentId,
+    customerName,
+    customerEmail,
+    items,
+    total,
+    currency,
+    shippingAddress,
+  };
+  try {
+    await sendOrderToCrm(opsOrder);
+  } catch (crmErr) {
+    console.error("Failed to forward order to CRM:", crmErr);
+  }
+  try {
+    await notifySlackNewOrder(opsOrder);
+  } catch (slackErr) {
+    console.error("Failed to post Slack order notification:", slackErr);
   }
 
   return result;

@@ -48,6 +48,9 @@ const nextConfig: NextConfig = {
         pathname: "/placeholders/**",
       },
       {
+        pathname: "/lookbook/**",
+      },
+      {
         pathname: "/products/hero/**",
       },
       {

@@ -2,73 +2,30 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { loadStripe } from "@stripe/stripe-js";
+import {
+  Elements,
+  PaymentElement,
+  AddressElement,
+  LinkAuthenticationElement,
+  useStripe,
+  useElements,
+} from "@stripe/react-stripe-js";
 import { useCart } from "@/components/store/CartProvider";
 import { useCurrency } from "@/components/store/CurrencyProvider";
 import { trackGA4Event } from "@/components/store/GA4";
 import { trackPixelEvent } from "@/components/store/MetaPixel";
 import OrderSummary from "./OrderSummary";
 
+// Stripe Elements — the entire payment surface renders on maisontanneurs.com
+// inside our editorial chrome. The server creates a PaymentIntent
+// (/api/checkout/session → { clientSecret, orderId }); <PaymentElement> binds
+// to that client secret; confirmPayment redirects to /checkout/success?
+// payment_intent=pi_... where confirmAndPersistOrder records the paid order.
+const PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+const stripePromise = PUBLISHABLE_KEY ? loadStripe(PUBLISHABLE_KEY) : null;
+
 type Status = "loading" | "ready" | "empty" | "error" | "missing-key";
-type RevolutMode = "prod" | "sandbox";
-
-// Revolut Pay JS widget — loaded once per page lifecycle from the merchant
-// CDN. The global `RevolutCheckout` factory is exposed on window.
-const REVOLUT_EMBED_SRC = "https://merchant.revolut.com/embed.js";
-
-declare global {
-  interface Window {
-    RevolutCheckout?: (
-      token: string,
-      mode?: "prod" | "sandbox" | { mode: "prod" | "sandbox"; publicToken?: string },
-    ) => Promise<RevolutCheckoutInstance>;
-  }
-}
-
-interface RevolutCheckoutInstance {
-  payWithPopup: (options: PayWithPopupOptions) => void;
-  destroy?: () => void;
-}
-
-interface PayWithPopupOptions {
-  name?: string;
-  email?: string;
-  phone?: string;
-  savePaymentMethodFor?: "merchant" | "customer";
-  shippingAddress?: {
-    streetLine1?: string;
-    streetLine2?: string;
-    region?: string;
-    city?: string;
-    countryCode?: string;
-    postcode?: string;
-  };
-  onSuccess: () => void;
-  onError: (error: { message?: string; code?: string }) => void;
-  onCancel?: () => void;
-}
-
-function loadRevolutEmbed(): Promise<void> {
-  if (typeof window === "undefined") return Promise.reject(new Error("server"));
-  if (window.RevolutCheckout) return Promise.resolve();
-  const existing = document.querySelector(
-    `script[src="${REVOLUT_EMBED_SRC}"]`,
-  );
-  if (existing) {
-    return new Promise((resolve, reject) => {
-      existing.addEventListener("load", () => resolve());
-      existing.addEventListener("error", () => reject(new Error("embed load failed")));
-    });
-  }
-  return new Promise((resolve, reject) => {
-    const s = document.createElement("script");
-    s.src = REVOLUT_EMBED_SRC;
-    s.async = true;
-    s.onload = () => resolve();
-    s.onerror = () => reject(new Error("embed load failed"));
-    document.head.appendChild(s);
-  });
-}
 
 function getCookieValue(name: string): string | undefined {
   if (typeof document === "undefined") return undefined;
@@ -98,20 +55,11 @@ function getMetaTrackingParams() {
 export default function CheckoutShell() {
   const { items, subtotal } = useCart();
   const { currency, convert } = useCurrency();
-  const router = useRouter();
   const [status, setStatus] = useState<Status>("loading");
-  const [token, setToken] = useState<string | null>(null);
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [orderId, setOrderId] = useState<string | null>(null);
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const initiatedCheckoutOrderRef = useRef<string | null>(null);
-  const addPaymentInfoOrderRef = useRef<string | null>(null);
 
-  const publicKey = process.env.NEXT_PUBLIC_REVOLUT_PUBLIC_KEY;
-  const revolutMode: RevolutMode =
-    process.env.NEXT_PUBLIC_REVOLUT_MODE === "sandbox" ? "sandbox" : "prod";
   const trackingItems = useMemo(
     () =>
       items.map((item) => ({
@@ -137,24 +85,27 @@ export default function CheckoutShell() {
       queueMicrotask(() => setStatus("empty"));
       return;
     }
-    if (!publicKey) {
+    if (!stripePromise) {
       queueMicrotask(() => setStatus("missing-key"));
       return;
     }
 
     let cancelled = false;
+    setStatus("loading");
     (async () => {
       try {
-        await loadRevolutEmbed();
         const res = await fetch("/api/checkout/session", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ items, tracking: getMetaTrackingParams() }),
         });
-        if (!res.ok) throw new Error("Failed to create checkout order");
-        const data = (await res.json()) as { token: string; orderId: string };
+        if (!res.ok) throw new Error("Failed to create payment intent");
+        const data = (await res.json()) as {
+          clientSecret: string;
+          orderId: string;
+        };
         if (cancelled) return;
-        setToken(data.token);
+        setClientSecret(data.clientSecret);
         setOrderId(data.orderId);
         setStatus("ready");
       } catch {
@@ -165,23 +116,18 @@ export default function CheckoutShell() {
     return () => {
       cancelled = true;
     };
-    // Re-create order when the cart line-changes; quantity-only edits are
-    // also reflected because subtotal changes.
+    // Re-create the intent when the cart total changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items.length === 0, publicKey, subtotal]);
+  }, [items.length === 0, subtotal]);
 
+  // begin_checkout / InitiateCheckout — once per created intent.
   useEffect(() => {
     if (status !== "ready" || !orderId || initiatedCheckoutOrderRef.current === orderId) {
       return;
     }
-
     initiatedCheckoutOrderRef.current = orderId;
     const value = convert(subtotal) / 100;
-    trackGA4Event("begin_checkout", {
-      currency,
-      value,
-      items: trackingItems,
-    });
+    trackGA4Event("begin_checkout", { currency, value, items: trackingItems });
     trackPixelEvent("InitiateCheckout", {
       value,
       currency,
@@ -191,55 +137,6 @@ export default function CheckoutShell() {
       num_items: items.reduce((sum, item) => sum + item.quantity, 0),
     });
   }, [convert, currency, items, orderId, pixelContents, status, subtotal, trackingItems]);
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!token || !orderId || !window.RevolutCheckout) return;
-    setSubmitting(true);
-    setErrorMessage(null);
-    try {
-      if (addPaymentInfoOrderRef.current !== orderId) {
-        addPaymentInfoOrderRef.current = orderId;
-        const value = convert(subtotal) / 100;
-        trackGA4Event("add_payment_info", {
-          currency,
-          value,
-          payment_type: "Revolut",
-          items: trackingItems,
-        });
-        trackPixelEvent("AddPaymentInfo", {
-          value,
-          currency,
-          content_ids: items.map((item) => item.slug),
-          content_type: "product",
-          contents: pixelContents,
-          num_items: items.reduce((sum, item) => sum + item.quantity, 0),
-        });
-      }
-
-      const RC = await window.RevolutCheckout(token, revolutMode);
-      RC.payWithPopup({
-        email,
-        name,
-        onSuccess: () => {
-          router.push(`/checkout/success?revolut_order_id=${orderId}`);
-        },
-        onError: (err) => {
-          setErrorMessage(
-            err.message || "Payment did not complete. Please try again.",
-          );
-          setSubmitting(false);
-        },
-        onCancel: () => {
-          setSubmitting(false);
-        },
-      });
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Unknown error";
-      setErrorMessage(message);
-      setSubmitting(false);
-    }
-  }
 
   if (status === "empty") {
     return (
@@ -281,11 +178,7 @@ export default function CheckoutShell() {
           </a>
           {" "}to place your order directly.
         </p>
-        <Link
-          href="/products"
-          className="rb-cta-outline"
-          style={{ fontSize: 12, fontWeight: 500, letterSpacing: "0.18em", padding: "16px 28px" }}
-        >
+        <Link href="/products" className="rb-cta-outline" style={{ fontSize: 12, fontWeight: 500, letterSpacing: "0.18em", padding: "16px 28px" }}>
           Back to Catalogue
         </Link>
       </div>
@@ -301,20 +194,12 @@ export default function CheckoutShell() {
         </h1>
         <p className="font-serif italic text-graphite text-[16px] leading-relaxed mb-10">
           Please refresh the page, or email{" "}
-          <a
-            href="mailto:hello@maisontanneurs.com"
-            className="underline underline-offset-4"
-            style={{ color: "var(--color-ink)" }}
-          >
+          <a href="mailto:hello@maisontanneurs.com" className="underline underline-offset-4" style={{ color: "var(--color-ink)" }}>
             hello@maisontanneurs.com
           </a>
           {" "}if the problem persists.
         </p>
-        <Link
-          href="/products"
-          className="rb-cta-outline"
-          style={{ fontSize: 12, fontWeight: 500, letterSpacing: "0.18em", padding: "16px 28px" }}
-        >
+        <Link href="/products" className="rb-cta-outline" style={{ fontSize: 12, fontWeight: 500, letterSpacing: "0.18em", padding: "16px 28px" }}>
           Back to Catalogue
         </Link>
       </div>
@@ -324,92 +209,172 @@ export default function CheckoutShell() {
   return (
     <div className="grid lg:grid-cols-[1fr_460px] gap-10 lg:gap-16">
       <div>
-        <form onSubmit={handleSubmit} className="space-y-10">
-          {/* Contact */}
-          <section>
-            <h2 className="eye mb-5">Contact</h2>
-            <label
-              htmlFor="email"
-              className="text-[11px] font-sans tracking-[0.18em] uppercase text-mineral block mb-2"
-            >
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              required
-              autoComplete="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
-              className="w-full border border-stone/40 focus:border-ink focus:outline-none transition-colors px-4 py-3.5 text-[15px] font-sans bg-white"
-              style={{ borderRadius: 0 }}
+        {clientSecret && stripePromise ? (
+          <Elements
+            stripe={stripePromise}
+            options={{
+              clientSecret,
+              appearance: {
+                theme: "stripe",
+                variables: {
+                  colorPrimary: "#1C1A17",
+                  colorText: "#1C1A17",
+                  colorBackground: "#ffffff",
+                  borderRadius: "0px",
+                  fontFamily: "Inter, system-ui, sans-serif",
+                  spacingUnit: "4px",
+                },
+              },
+            }}
+          >
+            <PaymentForm
+              subtotal={subtotal}
+              currency={currency}
+              convert={convert}
+              trackingItems={trackingItems}
+              pixelContents={pixelContents}
+              items={items}
+              orderId={orderId}
             />
-            <label
-              htmlFor="name"
-              className="text-[11px] font-sans tracking-[0.18em] uppercase text-mineral block mb-2 mt-6"
-            >
-              Full Name
-            </label>
-            <input
-              id="name"
-              type="text"
-              required
-              autoComplete="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your full name"
-              className="w-full border border-stone/40 focus:border-ink focus:outline-none transition-colors px-4 py-3.5 text-[15px] font-sans bg-white"
-              style={{ borderRadius: 0 }}
-            />
-          </section>
-
-          {/* Payment */}
-          <section>
-            <h2 className="eye mb-5">Payment</h2>
-            <p className="text-[13px] font-sans text-graphite leading-relaxed">
-              Card, Apple Pay, Google Pay, and Revolut Pay are all supported.
-              Press <em>Pay</em> to open the secure Revolut payment window.
-            </p>
-          </section>
-
-          {errorMessage && (
-            <p
-              className="font-serif italic text-[14px] leading-relaxed"
-              style={{ color: "#9B2C2C" }}
-            >
-              {errorMessage}
-            </p>
-          )}
-
-          <div className="pt-2">
-            <button
-              type="submit"
-              disabled={status !== "ready" || submitting || items.length === 0}
-              className="rb-cta w-full"
-              style={{
-                fontSize: 13,
-                fontWeight: 600,
-                letterSpacing: "0.18em",
-                padding: "20px 28px",
-                opacity: submitting ? 0.65 : 1,
-                cursor: submitting ? "wait" : "pointer",
-              }}
-            >
-              {submitting
-                ? "Processing…"
-                : `Pay ${new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(subtotal / 100)}`}
-            </button>
-            <p className="text-[11px] font-sans font-light text-mineral leading-relaxed text-center mt-5">
-              Encrypted by Revolut Acquiring. Card details never touch our servers.
+          </Elements>
+        ) : (
+          <div className="py-16 text-center">
+            <p className="font-serif italic text-graphite text-[15px]">
+              Preparing secure checkout…
             </p>
           </div>
-        </form>
+        )}
       </div>
 
       <div className="lg:sticky lg:top-28 lg:self-start">
         <OrderSummary />
       </div>
     </div>
+  );
+}
+
+type PaymentFormProps = {
+  subtotal: number;
+  currency: string;
+  convert: (cents: number) => number;
+  trackingItems: Array<{ item_id?: string; item_name: string; price: number; quantity: number }>;
+  pixelContents: Array<{ id?: string; quantity: number; item_price: number }>;
+  items: Array<{ slug: string; quantity: number }>;
+  orderId: string | null;
+};
+
+function PaymentForm({
+  subtotal,
+  currency,
+  convert,
+  trackingItems,
+  pixelContents,
+  items,
+  orderId,
+}: PaymentFormProps) {
+  const stripe = useStripe();
+  const elements = useElements();
+  const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const addPaymentInfoOrderRef = useRef<string | null>(null);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!stripe || !elements) return;
+    setSubmitting(true);
+    setErrorMessage(null);
+
+    if (orderId && addPaymentInfoOrderRef.current !== orderId) {
+      addPaymentInfoOrderRef.current = orderId;
+      const value = convert(subtotal) / 100;
+      trackGA4Event("add_payment_info", {
+        currency,
+        value,
+        payment_type: "Stripe",
+        items: trackingItems,
+      });
+      trackPixelEvent("AddPaymentInfo", {
+        value,
+        currency,
+        content_ids: items.map((item) => item.slug),
+        content_type: "product",
+        contents: pixelContents,
+        num_items: items.reduce((sum, item) => sum + item.quantity, 0),
+      });
+    }
+
+    const { error } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: `${window.location.origin}/checkout/success`,
+        payment_method_data: email
+          ? { billing_details: { email } }
+          : undefined,
+      },
+    });
+
+    // If we reach here, confirmation failed (success path redirects away).
+    if (error) {
+      setErrorMessage(
+        error.message || "Payment did not complete. Please try again.",
+      );
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-10">
+      <section>
+        <h2 className="eye mb-5">Contact</h2>
+        <LinkAuthenticationElement
+          onChange={(ev) => setEmail(ev.value.email)}
+        />
+      </section>
+
+      <section>
+        <h2 className="eye mb-5">Shipping</h2>
+        <AddressElement
+          options={{ mode: "shipping", fields: { phone: "auto" } }}
+        />
+      </section>
+
+      <section>
+        <h2 className="eye mb-5">Payment</h2>
+        <PaymentElement options={{ layout: "tabs" }} />
+      </section>
+
+      {errorMessage && (
+        <p className="font-serif italic text-[14px] leading-relaxed" style={{ color: "#9B2C2C" }}>
+          {errorMessage}
+        </p>
+      )}
+
+      <div className="pt-2">
+        <button
+          type="submit"
+          disabled={!stripe || submitting}
+          className="rb-cta w-full"
+          style={{
+            fontSize: 13,
+            fontWeight: 600,
+            letterSpacing: "0.18em",
+            padding: "20px 28px",
+            opacity: submitting ? 0.65 : 1,
+            cursor: submitting ? "wait" : "pointer",
+          }}
+        >
+          {submitting
+            ? "Processing…"
+            : `Pay ${new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: currency || "USD",
+              }).format(convert(subtotal) / 100)}`}
+        </button>
+        <p className="text-[11px] font-sans font-light text-mineral leading-relaxed text-center mt-5">
+          Encrypted by Stripe. Card details never touch our servers.
+        </p>
+      </div>
+    </form>
   );
 }
