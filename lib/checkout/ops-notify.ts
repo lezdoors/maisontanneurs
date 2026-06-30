@@ -101,18 +101,11 @@ export async function sendOrderToCrm(order: OpsOrder): Promise<void> {
   );
 }
 
-// Post a new-order notification to a Slack incoming webhook. Honors the
-// existing prod var name (SLACK_ORDERS_WEBHOOK_URL) first, then a generic
-// fallback, so this is drop-in against the configured mt-lestanneurs env.
+// Post a new-order notification to Slack. Supports BOTH transports:
+//   - SLACK_BOT_TOKEN (xoxb-…) → chat.postMessage to SLACK_ORDERS_CHANNEL
+//   - SLACK_ORDERS_WEBHOOK_URL / SLACK_WEBHOOK_URL → incoming webhook
+// Bot token is preferred (matches the MT Slack app token Ryan provided).
 export async function notifySlackNewOrder(order: OpsOrder): Promise<void> {
-  const url =
-    process.env.SLACK_ORDERS_WEBHOOK_URL || process.env.SLACK_WEBHOOK_URL;
-  if (!url) {
-    console.warn(
-      "[ops-notify] SLACK_ORDERS_WEBHOOK_URL/SLACK_WEBHOOK_URL unset — skipping Slack notify",
-    );
-    return;
-  }
   const mention = process.env.SLACK_FULFILMENT_MENTION
     ? `${process.env.SLACK_FULFILMENT_MENTION} `
     : "";
@@ -122,32 +115,58 @@ export async function notifySlackNewOrder(order: OpsOrder): Promise<void> {
   const ship = order.shippingAddress;
   const dest = [ship.city, ship.state, ship.country].filter(Boolean).join(", ");
   const total = money(order.total, order.currency);
-  await postJson(url, {
-    text: `${mention}New order ${order.orderNumber} — ${total} — ${order.customerName}`,
-    blocks: [
-      {
-        type: "header",
-        text: { type: "plain_text", text: `New order — ${total}`, emoji: true },
-      },
-      {
-        type: "section",
-        fields: [
-          { type: "mrkdwn", text: `*Order:*\n${order.orderNumber}` },
-          { type: "mrkdwn", text: `*Customer:*\n${order.customerName}` },
-          { type: "mrkdwn", text: `*Email:*\n${order.customerEmail}` },
-          { type: "mrkdwn", text: `*Ship to:*\n${dest || "—"}` },
-        ],
-      },
-      { type: "section", text: { type: "mrkdwn", text: `*Items:*\n${lines}` } },
-      {
-        type: "context",
-        elements: [
-          {
-            type: "mrkdwn",
-            text: `maisontanneurs.com · ${order.intentId}`,
-          },
-        ],
-      },
-    ],
-  });
+  const blocks = [
+    {
+      type: "header",
+      text: { type: "plain_text", text: `New order — ${total}`, emoji: true },
+    },
+    {
+      type: "section",
+      fields: [
+        { type: "mrkdwn", text: `*Order:*\n${order.orderNumber}` },
+        { type: "mrkdwn", text: `*Customer:*\n${order.customerName}` },
+        { type: "mrkdwn", text: `*Email:*\n${order.customerEmail}` },
+        { type: "mrkdwn", text: `*Ship to:*\n${dest || "—"}` },
+      ],
+    },
+    { type: "section", text: { type: "mrkdwn", text: `*Items:*\n${lines}` } },
+    {
+      type: "context",
+      elements: [
+        { type: "mrkdwn", text: `maisontanneurs.com · ${order.intentId}` },
+      ],
+    },
+  ];
+  const text = `${mention}New order ${order.orderNumber} — ${total} — ${order.customerName}`;
+
+  const botToken = process.env.SLACK_BOT_TOKEN;
+  if (botToken) {
+    const channel = process.env.SLACK_ORDERS_CHANNEL || "#mt-orders";
+    const controller = new AbortController();
+    const t = setTimeout(() => controller.abort(), TIMEOUT_MS);
+    try {
+      const res = await fetch("https://slack.com/api/chat.postMessage", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json; charset=utf-8",
+          authorization: `Bearer ${botToken}`,
+        },
+        body: JSON.stringify({ channel, text, blocks }),
+        signal: controller.signal,
+      });
+      const data = (await res.json()) as { ok?: boolean; error?: string };
+      if (!data.ok) throw new Error(`slack chat.postMessage: ${data.error}`);
+    } finally {
+      clearTimeout(t);
+    }
+    return;
+  }
+
+  const url =
+    process.env.SLACK_ORDERS_WEBHOOK_URL || process.env.SLACK_WEBHOOK_URL;
+  if (!url) {
+    console.warn("[ops-notify] no Slack bot token or webhook — skipping Slack");
+    return;
+  }
+  await postJson(url, { text, blocks });
 }
