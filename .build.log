@@ -65,9 +65,9 @@ Exit 0 — warnings only, deploy allowed.
 - Environments: .env.local
 
   Creating an optimized production build ...
-✓ Compiled successfully in 2.2s
+✓ Compiled successfully in 2.5s
   Running TypeScript ...
-  Finished TypeScript in 2.5s ...
+  Finished TypeScript in 2.4s ...
   Collecting page data using 9 workers ...
 ⚠ Using edge runtime on a page currently disables static generation for that page
   Generating static pages using 9 workers (0/50) ...
@@ -108,11 +108,10 @@ Supabase not configured - using static product data
 Supabase not configured - using static product data
 Supabase not configured - using static product data
 Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
   Generating static pages using 9 workers (24/50) 
-Supabase not configured - using static product data
-Supabase not configured - using static product data
-Supabase not configured - using static product data
-Supabase not configured - using static product data
   Generating static pages using 9 workers (37/50) 
 Supabase not configured - using static product data
 Supabase not configured - using static product data
@@ -143,7 +142,8 @@ Supabase not configured - using static product data
 Supabase not configured - using static product data
 Supabase not configured - using static product data
 Supabase not configured - using static product data
-✓ Generating static pages using 9 workers (50/50) in 128ms
+Supabase not configured - using static product data
+✓ Generating static pages using 9 workers (50/50) in 127ms
   Finalizing page optimization ...
 
 Route (app)                       Revalidate  Expire

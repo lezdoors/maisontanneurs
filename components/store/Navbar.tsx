@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useCart } from "@/components/store/CartProvider";
 import { LOCALES, LOCALE_LABELS } from "@/lib/i18n";
 import { useLocale, useLocalizedHref, useSwitchLocaleHref, useT } from "@/lib/i18n-client";
+import StitchLine from "@/components/brand/StitchLine";
 
 // Centered Létrange-pattern nav. Order is deliberate:
 // Collection (commerce) → Savoir-faire (story) → Boutique (visit) → Bespoke (custom) → Trade (B2B) → Contact (always last).
@@ -213,6 +214,14 @@ export default function Navbar() {
               Tanneurs
             </span>
             <span className="sr-only">Maison Tanneurs</span>
+            <StitchLine
+              animate
+              width={scrolled ? 96 : 132}
+              color="currentColor"
+              weight={1.1}
+              className={`mt-1 transition-opacity duration-300 ${navInk}`}
+              style={{ opacity: 0.7 }}
+            />
             <span
               className={`tech-meta mt-1 ${navMuted}`}
               style={{
