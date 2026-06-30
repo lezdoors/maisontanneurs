@@ -26,6 +26,15 @@ type Slide =
 
 const SLIDES: Slide[] = [
   {
+    kind: "video",
+    src: "/videos/hero-departure.mp4",
+    poster: "/videos/hero-departure-poster.webp",
+    alt: "Departure — a traveller with a cognac leather bag in a sunlit train carriage, Marrakech to the road",
+    durationMs: 8000,
+    objectPos: "50% 42%",
+    mobileObjectPos: "52% 46%",
+  },
+  {
     kind: "image",
     src: "/brand/hero/mt-hero-train.webp",
     alt: "Atop the Marrakech Express — model with cognac shoulder bag against the Atlas sky",
@@ -124,6 +133,7 @@ export default function Hero() {
               playsInline
               aria-label={slide.alt}
             >
+              <source src={slide.src.replace(/\.mp4$/, ".webm")} type="video/webm" />
               <source src={slide.src} type="video/mp4" />
             </video>
           );

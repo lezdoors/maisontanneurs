@@ -2,7 +2,7 @@
 > maison-tanneurs-store@0.1.0 prebuild /Users/lezdoors/mt-v3
 > tsx scripts/audit-catalogue.ts && tsx scripts/audit-image-contract.ts
 
-◇ injected env (2) from .env.local // tip: ⌁ auth for agents [www.vestauth.com]
+◇ injected env (2) from .env.local // tip: ⌘ custom filepath { path: '/custom/path/.env' }
 
 === Tanneurs catalogue audit ===
 Source: STATIC_PRODUCTS (lib/products.ts fallback — no Supabase env vars set)
@@ -65,9 +65,9 @@ Exit 0 — warnings only, deploy allowed.
 - Environments: .env.local
 
   Creating an optimized production build ...
-✓ Compiled successfully in 1869ms
+✓ Compiled successfully in 3.3s
   Running TypeScript ...
-  Finished TypeScript in 2.2s ...
+  Finished TypeScript in 2.3s ...
   Collecting page data using 9 workers ...
 ⚠ Using edge runtime on a page currently disables static generation for that page
   Generating static pages using 9 workers (0/50) ...
@@ -112,6 +112,9 @@ Supabase not configured - using static product data
 Supabase not configured - using static product data
 Supabase not configured - using static product data
   Generating static pages using 9 workers (24/50) 
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
   Generating static pages using 9 workers (37/50) 
 Supabase not configured - using static product data
 Supabase not configured - using static product data
@@ -140,10 +143,7 @@ Supabase not configured - using static product data
 Supabase not configured - using static product data
 Supabase not configured - using static product data
 Supabase not configured - using static product data
-Supabase not configured - using static product data
-Supabase not configured - using static product data
-Supabase not configured - using static product data
-✓ Generating static pages using 9 workers (50/50) in 128ms
+✓ Generating static pages using 9 workers (50/50) in 122ms
   Finalizing page optimization ...
 
 Route (app)                       Revalidate  Expire
