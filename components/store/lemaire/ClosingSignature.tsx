@@ -15,7 +15,7 @@ export default function ClosingSignature() {
       {/* Background still — bright atelier plinth, washed for legibility */}
       <Image
         src="/brand/hero/home-hero-bright-atelier-plinth.webp"
-        alt=""
+        alt="A Maison Tanneurs leather bag on a plinth in a bright atelier"
         fill
         sizes="100vw"
         className="object-cover"
