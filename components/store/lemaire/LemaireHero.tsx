@@ -38,9 +38,10 @@ export default function LemaireHero({
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(62%_52%_at_86%_88%,rgba(245,242,238,0.62),rgba(245,242,238,0)_72%)]"
       />
 
-      {/* Bottom-left quiet house line */}
+      {/* Bottom-left quiet house line — hidden on mobile so it never collides
+          with the commerce card on narrow screens */}
       <p
-        className="absolute bottom-[clamp(28px,5vw,56px)] left-[clamp(24px,6vw,96px)] text-[9px] tracking-[0.3em] font-sans uppercase text-[#F5EFE6]"
+        className="hidden sm:block absolute bottom-[clamp(28px,5vw,56px)] left-[clamp(24px,6vw,96px)] text-[9px] tracking-[0.3em] font-sans uppercase text-[#F5EFE6]"
         style={{ textShadow: "0 1px 12px rgba(0,0,0,0.45)" }}
       >
         Maison Tanneurs — Le Départ · Film N° I
