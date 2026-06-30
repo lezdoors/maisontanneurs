@@ -142,20 +142,29 @@ export default async function ArchitecturalGrid({
         </div>
       </div>
 
-      {/* LT2 .gallery — generous gaps, no cell borders */}
+      {/* Asymmetric archive — bare objects, staggered heights, deliberate voids */}
       <div
-        className="mx-auto max-w-[1500px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        className="mx-auto grid max-w-[1500px] grid-cols-12 items-start"
         style={{
+          columnGap: "clamp(20px,3vw,56px)",
           padding: isFeatured
-            ? "24px clamp(24px,8vw,80px) clamp(88px,12vw,150px)"
-            : "40px clamp(24px,8vw,80px) clamp(120px,16vw,200px)",
-          columnGap: "clamp(34px, 5vw, 76px)",
-          rowGap: "clamp(62px, 8vw, 104px)",
+            ? "16px clamp(24px,8vw,90px) clamp(96px,14vw,190px)"
+            : "40px clamp(24px,8vw,90px) clamp(120px,16vw,220px)",
         }}
       >
-        {products.map((p, i) => (
-          <FeaturedCell key={p.slug} product={p} index={i + 1} eager={i < 3} />
-        ))}
+        {products.map((p, i) => {
+          const span = ["lg:col-span-6", "lg:col-span-4", "lg:col-span-5", "lg:col-span-4"][i % 4];
+          const off = ["lg:mt-0", "lg:mt-48", "lg:mt-32", "lg:mt-24"][i % 4];
+          const ar = ["4 / 5", "3 / 4", "5 / 6", "4 / 5"][i % 4];
+          return (
+            <div
+              key={p.slug}
+              className={`col-span-12 mb-16 sm:col-span-6 lg:mb-0 ${span} ${off}`}
+            >
+              <FeaturedCell product={p} index={i + 1} eager={i < 2} ar={ar} />
+            </div>
+          );
+        })}
       </div>
 
       {/* Trailing CTA — quiet bottom rule + view-all link */}

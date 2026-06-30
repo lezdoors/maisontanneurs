@@ -15,6 +15,7 @@ import {
   productHoverLocal,
   productGalleryLocal,
 } from "@/lib/product-media";
+import StitchLine from "@/components/brand/StitchLine";
 import type { Product } from "@/lib/supabase/types";
 
 function colorFor(p: Product): string {
@@ -26,14 +27,22 @@ function colorFor(p: Product): string {
 
 // Homepage product cell — clean white commerce band, registry N° mark,
 // Cormorant title, price, and a hover swap to the second curated angle.
+function familyTag(slug: string): string {
+  const tokens = ["weekender", "duffle", "holdall", "tote", "satchel", "crossbody", "saddlebag", "backpack", "rucksack", "rolltop", "messenger", "briefcase", "sling"];
+  const hit = tokens.find((t) => slug.includes(t));
+  return (hit ?? "object").toUpperCase();
+}
+
 export default function FeaturedCell({
   product,
   index,
   eager = false,
+  ar = "4 / 5",
 }: {
   product: Product;
   index: number;
   eager?: boolean;
+  ar?: string;
 }) {
   const href = useLocalizedHref();
   const { format } = useCurrency();
@@ -54,18 +63,18 @@ export default function FeaturedCell({
       href={href(`/products/${product.slug}`)}
       className="group block cursor-pointer"
     >
-      {/* Product floats on the white commerce band — no plate, no box */}
-      <div className="relative aspect-[4/5]">
+      {/* Bare object — no plate, no box; floats on the canvas */}
+      <div className="relative w-full overflow-hidden" style={{ aspectRatio: ar }}>
         {hero ? (
           <>
             <Image
               src={bust(hero)}
               alt={product.title}
               fill
-              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              sizes="(min-width: 1024px) 42vw, (min-width: 640px) 50vw, 100vw"
               priority={eager}
               loading={eager ? undefined : "lazy"}
-              className={productImageClass(hero)}
+              className={`${productImageClass(hero)} transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]`}
             />
             {hover && (
               <Image
@@ -73,9 +82,9 @@ export default function FeaturedCell({
                 alt=""
                 aria-hidden
                 fill
-                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                sizes="(min-width: 1024px) 42vw, (min-width: 640px) 50vw, 100vw"
                 loading="lazy"
-                className={`${productImageClass(hover)} opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100`}
+                className={`${productImageClass(hover)} opacity-0 transition-opacity duration-700 ease-out group-hover:opacity-100`}
               />
             )}
           </>
@@ -87,42 +96,35 @@ export default function FeaturedCell({
             IMAGE PENDING
           </div>
         )}
-
-        {/* Registry edition mark */}
-        <span
-          className="absolute left-[22px] top-[20px] text-[9px] uppercase tracking-[0.25em]"
-          style={{ fontFamily: "var(--font-mono)", color: "var(--color-ink-muted)" }}
-        >
-          N° {String(index).padStart(2, "0")}
-        </span>
       </div>
 
-      {/* Placard metadata — left-flush under the object */}
-      <div className="mt-6 text-left">
+      {/* Gallery placard — left-flush, technical register */}
+      <div className="mt-7 max-w-[34ch] text-left">
+        <p
+          className="text-[9px] uppercase tracking-[0.32em] text-[var(--color-ink-muted)]"
+          style={{ fontFamily: "var(--font-mono)" }}
+        >
+          N° {String(index).padStart(2, "0")} <span className="px-1 opacity-40">//</span> {familyTag(product.slug)}
+        </p>
         <h3
-          className="text-[clamp(20px,1.9vw,25px)] leading-[1.05]"
-          style={{ fontFamily: "var(--font-display)", fontWeight: 400, color: "var(--color-ink)" }}
+          className="mt-3 text-[clamp(22px,2.1vw,30px)] leading-[1.02]"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 300, letterSpacing: "0.005em", color: "var(--color-ink)" }}
         >
           {product.title}
         </h3>
-        <p
-          className="mt-2 text-[12px] tracking-[0.02em]"
-          style={{ fontFamily: "var(--font-sans)", color: "var(--color-ink-soft)" }}
-        >
-          {color}
-        </p>
-        <div className="mt-4 flex items-baseline justify-between border-t border-[var(--color-rule-soft)] pt-3">
+        <StitchLine animate width={120} className="mt-4 -ml-[2px]" />
+        <div className="mt-3 flex items-baseline gap-5">
           <span
-            className="text-[15px] italic"
+            className="text-[14px] italic"
             style={{ fontFamily: "var(--font-display)", color: "var(--color-ink)" }}
           >
             {format(product.price)}
           </span>
           <span
-            className="text-[10px] uppercase tracking-[0.22em] text-[var(--color-ink-muted)] transition-colors group-hover:text-[var(--color-ink)]"
+            className="text-[10px] uppercase tracking-[0.26em] text-[var(--color-ink-muted)] transition-colors group-hover:text-[var(--color-ink)]"
             style={{ fontFamily: "var(--font-mono)" }}
           >
-            Inspect
+            {color} · Inspect
           </span>
         </div>
       </div>

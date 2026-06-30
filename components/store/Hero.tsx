@@ -27,12 +27,12 @@ type Slide =
 const SLIDES: Slide[] = [
   {
     kind: "video",
-    src: "/videos/hero-departure.mp4",
-    poster: "/videos/hero-departure-poster.webp",
-    alt: "Departure — a traveller with a cognac leather bag in a sunlit train carriage, Marrakech to the road",
+    src: "/videos/hero-monolith.mp4",
+    poster: "/videos/hero-monolith-poster.webp",
+    alt: "A traveller crossing a monolithic sunlit hall with a cognac leather bag — Marrakech to the road",
     durationMs: 8000,
-    objectPos: "50% 42%",
-    mobileObjectPos: "52% 46%",
+    objectPos: "50% 38%",
+    mobileObjectPos: "50% 44%",
   },
   {
     kind: "image",

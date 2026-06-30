@@ -2,71 +2,16 @@
 - Local:         http://localhost:3100
 - Network:       http://192.168.0.102:3100
 - Environments: .env.local
-✓ Ready in 222ms
+✓ Ready in 301ms
 
 Supabase not configured - using static product data
 Supabase not configured - using static product data
- GET / 200 in 448ms (next.js: 46ms, proxy.ts: 62ms, application-code: 340ms)
- POST /api/checkout/session 200 in 641ms (next.js: 264ms, application-code: 377ms)
+ GET / 200 in 465ms (next.js: 51ms, proxy.ts: 73ms, application-code: 342ms)
 Supabase not configured - using static product data
 Supabase not configured - using static product data
+ GET / 200 in 86ms (next.js: 3ms, proxy.ts: 3ms, application-code: 80ms)
 Supabase not configured - using static product data
 Supabase not configured - using static product data
-Supabase not configured - using static product data
-Supabase not configured - using static product data
- GET / 200 in 150ms (next.js: 42ms, proxy.ts: 16ms, application-code: 92ms)
- GET / 200 in 47ms (next.js: 1104µs, proxy.ts: 1619µs, application-code: 44ms)
- GET / 200 in 29ms (next.js: 3ms, proxy.ts: 1534µs, application-code: 24ms)
- POST /api/checkout/session 200 in 375ms (next.js: 30ms, application-code: 345ms)
- POST /api/checkout/session 200 in 277ms (next.js: 1038µs, application-code: 276ms)
- POST /api/checkout/session 200 in 243ms (next.js: 2ms, application-code: 240ms)
- POST /api/checkout/session 200 in 267ms (next.js: 3ms, application-code: 264ms)
-Supabase not configured - using static product data
-Supabase not configured - using static product data
- GET / 200 in 192ms (next.js: 5ms, proxy.ts: 3ms, application-code: 185ms)
-Supabase not configured - using static product data
-Supabase not configured - using static product data
- GET / 200 in 58ms (next.js: 1569µs, proxy.ts: 1480µs, application-code: 55ms)
-Supabase not configured - using static product data
-Supabase not configured - using static product data
- GET / 200 in 50ms (next.js: 916µs, proxy.ts: 1124µs, application-code: 47ms)
-Supabase not configured - using static product data
-Supabase not configured - using static product data
- GET / 200 in 98ms (next.js: 1496µs, proxy.ts: 2ms, application-code: 94ms)
-Supabase not configured - using static product data
-Supabase not configured - using static product data
- GET / 200 in 154ms (next.js: 3ms, proxy.ts: 4ms, application-code: 146ms)
-Supabase not configured - using static product data
-Supabase not configured - using static product data
- GET / 200 in 147ms (next.js: 6ms, proxy.ts: 6ms, application-code: 135ms)
-Supabase not configured - using static product data
-Supabase not configured - using static product data
- GET / 200 in 117ms (next.js: 2ms, proxy.ts: 3ms, application-code: 112ms)
-✓ Compiled in 37ms
-✓ Compiled in 104ms
-Supabase not configured - using static product data
-Supabase not configured - using static product data
-Supabase not configured - using static product data
-Supabase not configured - using static product data
- GET / 200 in 273ms (next.js: 80ms, proxy.ts: 35ms, application-code: 158ms)
- GET / 200 in 261ms (next.js: 1919µs, proxy.ts: 126ms, application-code: 133ms)
-Supabase not configured - using static product data
-Supabase not configured - using static product data
- GET / 200 in 248ms (next.js: 1925µs, proxy.ts: 2ms, application-code: 244ms)
-Supabase not configured - using static product data
-Supabase not configured - using static product data
- GET / 200 in 83ms (next.js: 5ms, proxy.ts: 7ms, application-code: 70ms)
-  Reload env: .env.local
-✓ Compiled in 0ms
-⚠ Fast Refresh had to perform a full reload when ./node_modules/.pnpm/next@16.2.4_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/client/image-component.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
-⚠ Fast Refresh had to perform a full reload when ./node_modules/.pnpm/next@16.2.4_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/client/image-component.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
-⚠ Fast Refresh had to perform a full reload when ./node_modules/.pnpm/next@16.2.4_@babel+core@7.29.0_react-dom@19.2.4_react@19.2.4__react@19.2.4/node_modules/next/dist/client/image-component.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
-[browser] Failed to fetch RSC payload for http://localhost:3100/. Falling back to browser navigation. TypeError: Load failed
-[browser] Failed to fetch RSC payload for http://localhost:3100/. Falling back to browser navigation. TypeError: Load failed
- GET / 200 in 945ms (next.js: 109ms, proxy.ts: 31ms, application-code: 806ms)
- GET / 200 in 652ms (next.js: 20ms, proxy.ts: 218ms, application-code: 414ms)
- GET / 200 in 868ms (next.js: 4ms, proxy.ts: 5ms, application-code: 859ms)
- GET / 200 in 867ms (next.js: 79ms, proxy.ts: 4ms, application-code: 784ms)
- GET / 200 in 997ms (next.js: 184ms, proxy.ts: 77ms, application-code: 736ms)
- GET /products/atlas-weekender-cognac 200 in 1362ms (next.js: 670ms, proxy.ts: 1682µs, generate-params: 291ms, application-code: 690ms)
+ GET / 200 in 175ms (next.js: 1825µs, proxy.ts: 3ms, application-code: 169ms)
+ GET /videos/hero-monolith-poster.webp 404 in 288ms (next.js: 254ms, application-code: 34ms)
 [?25h
