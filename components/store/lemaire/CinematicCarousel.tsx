@@ -45,7 +45,10 @@ export default function CinematicCarousel({ items }: { items: ProductVM[] }) {
             className="snap-center shrink-0 w-[86vw] sm:w-[62vw] lg:w-[46vw]"
           >
             <SaddleStitchReveal stitch={true}>
-              <div className="relative aspect-[4/5] w-full">
+              {/* Parchment bg so the white packshot blends here too (the
+                  scroller + reveal create a stacking context that otherwise
+                  leaves mix-blend with a white backdrop). */}
+              <div className="relative aspect-[4/5] w-full bg-[#F5F2EE]">
                 <Image
                   src={vm.image}
                   alt={vm.title}

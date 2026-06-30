@@ -32,10 +32,10 @@ export default function LemaireHero({
         aria-hidden="true"
       />
 
-      {/* Legibility wash — bottom-right only */}
+      {/* Legibility wash — soft radial glow at bottom-right, no hard edges */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-0 h-2/3 w-2/3 bg-gradient-to-tl from-[#F5F2EE]/85 via-[#F5F2EE]/25 to-transparent"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(62%_52%_at_86%_88%,rgba(245,242,238,0.62),rgba(245,242,238,0)_72%)]"
       />
 
       {/* Bottom-left quiet house line */}

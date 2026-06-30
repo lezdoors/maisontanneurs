@@ -46,7 +46,10 @@ export default function EditionGrid({ items }: { items: ProductVM[] }) {
             className={`group block ${SLOTS[i].placement}`}
           >
             <SaddleStitchReveal>
-              <div className={`relative w-full ${SLOTS[i].aspect}`}>
+              {/* Parchment bg so mix-blend-multiply always composites against
+                  the canvas (no white-box flash inside the reveal's stacking
+                  context). */}
+              <div className={`relative w-full ${SLOTS[i].aspect} bg-[#F5F2EE]`}>
                 <Image
                   src={vm.image}
                   alt={vm.title}
