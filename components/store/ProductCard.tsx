@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCurrency } from "@/components/store/CurrencyProvider";
 import { bust } from "@/lib/image-url";
 import { productImageClass } from "@/lib/product-image-presentation";
+import { productHeroLocal, productHoverLocal } from "@/lib/product-media";
 import { useLocalizedHref } from "@/lib/i18n-client";
 
 interface ProductCardProps {
@@ -73,31 +74,34 @@ export default function ProductCard({
   const href = useLocalizedHref();
   const { format } = useCurrency();
   const family = deriveFamily(slug);
+  // Canonical Drive media first; legacy props only as fallback.
+  const heroImg = productHeroLocal(slug) ?? image;
+  const hoverImg = productHoverLocal(slug) ?? hoverImage;
 
   return (
     <Link
       href={href(`/products/${slug}`)}
-      className="group block bg-[color:var(--color-paper)]"
+      className="group block bg-[var(--color-commerce)]"
     >
       <div className="mt-product-frame mt-product-frame--catalogue mt-ratio-portrait relative aspect-[4/5]">
         <Image
-          src={bust(image)}
+          src={bust(heroImg)}
           alt={title}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
           priority={eager}
           loading={eager ? undefined : "lazy"}
-          className={productImageClass(image)}
+          className={productImageClass(heroImg)}
         />
-        {hoverImage && hoverImage !== image && (
+        {hoverImg && hoverImg !== heroImg && (
           <Image
-            src={bust(hoverImage)}
+            src={bust(hoverImg)}
             alt=""
             aria-hidden
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
             loading="lazy"
-            className={`${productImageClass(hoverImage)} opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100`}
+            className={`${productImageClass(hoverImg)} opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100`}
           />
         )}
       </div>

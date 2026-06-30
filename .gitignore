@@ -54,3 +54,5 @@ audits/*.json
 
 # compiled bundle for Mouha cron (rebuild via pnpm exec tsc -p scripts/tsconfig.build.json)
 scripts/dist/
+
+.env.supabase.held

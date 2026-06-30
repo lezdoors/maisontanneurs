@@ -1,0 +1,43 @@
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +383
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+   ╭─────────────────────────────────────────╮
+   │                                         │
+   │   Update available! 10.30.3 → 11.9.0.   │
+   │   Changelog: https://pnpm.io/v/11.9.0   │
+   │    To update, run: pnpm add -g pnpm     │
+   │                                         │
+   ╰─────────────────────────────────────────╯
+
+Progress: resolved 383, reused 383, downloaded 0, added 382
+Progress: resolved 383, reused 383, downloaded 0, added 383, done
+
+dependencies:
++ @supabase/ssr 0.10.2
++ @supabase/supabase-js 2.104.0
++ bcryptjs 3.0.3
++ framer-motion 12.40.0
++ next 16.2.4
++ react 19.2.4
++ react-dom 19.2.4
++ resend 6.12.2
+
+devDependencies:
++ @tailwindcss/postcss 4.2.4
++ @types/bcryptjs 3.0.0
++ @types/node 20.19.39
++ @types/react 19.2.14
++ @types/react-dom 19.2.3
++ dotenv 17.4.2
++ eslint 9.39.4
++ eslint-config-next 16.2.4
++ playwright 1.60.0
++ sharp 0.34.5
++ tailwindcss 4.2.4
++ tsx 4.21.0
++ typescript 5.9.3
+
+Done in 1.9s using pnpm v10.30.3
+INSTALL_DONE rc=0

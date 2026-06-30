@@ -1,0 +1,189 @@
+
+> maison-tanneurs-store@0.1.0 prebuild /Users/lezdoors/mt-v3
+> tsx scripts/audit-catalogue.ts && tsx scripts/audit-image-contract.ts
+
+◇ injected env (2) from .env.local // tip: ⌁ auth for agents [www.vestauth.com]
+
+=== Tanneurs catalogue audit ===
+Source: STATIC_PRODUCTS (lib/products.ts fallback — no Supabase env vars set)
+Audited: 22 SKUs (2 drafts skipped)
+
+[cognac-brogue-backpack] Cognac Brogue Backpack
+  warn  featured-no-scale    grandfathered — lifestyle gen pending in HF pipeline
+
+[medina-rucksack-drawstring] Medina Drawstring Rucksack
+  warn  featured-no-scale    grandfathered — lifestyle gen pending in HF pipeline
+
+[woven-leather-backpack] Woven Leather Backpack
+  warn  featured-no-scale    grandfathered — lifestyle gen pending in HF pipeline
+
+[atlas-field-briefcase] Atlas Field Briefcase
+  warn  featured-no-scale    grandfathered — lifestyle gen pending in HF pipeline
+
+[medina-crossbody-envelope] Medina Envelope Crossbody
+  warn  featured-no-scale    grandfathered — lifestyle gen pending in HF pipeline
+
+[atlas-kilim-duffle] Atlas Kilim Duffle
+  warn  featured-no-scale    grandfathered — lifestyle gen pending in HF pipeline
+
+[atlas-messenger-laptop] Atlas Messenger · Laptop
+  warn  featured-no-scale    grandfathered — lifestyle gen pending in HF pipeline
+
+[expedition-rolltop-cognac] Expedition Rolltop · Cognac
+  warn  featured-no-scale    grandfathered — lifestyle gen pending in HF pipeline
+
+[expedition-rolltop-noir] Expedition Rolltop · Noir
+  warn  featured-no-scale    grandfathered — lifestyle gen pending in HF pipeline
+
+[medina-saddlebag-tooled-cognac] Medina Saddlebag · Tooled Cognac
+  warn  featured-no-scale    grandfathered — lifestyle gen pending in HF pipeline
+
+[classic-cognac-satchel] Classic Cognac Satchel
+  warn  featured-no-scale    grandfathered — lifestyle gen pending in HF pipeline
+
+[vintage-satchel-light-brown] Vintage Satchel · Light Brown
+  warn  featured-no-scale    grandfathered — lifestyle gen pending in HF pipeline
+
+[atlas-weekender-cognac] Atlas Weekender · Cognac
+  warn  featured-no-scale    grandfathered — lifestyle gen pending in HF pipeline
+
+[oasis-weekender-oxblood] Oasis Weekender · Oxblood
+  warn  featured-no-scale    grandfathered — lifestyle gen pending in HF pipeline
+
+Summary: 0 hard failures, 14 warnings, 14 SKUs with issues.
+Exit 0 — warnings only, deploy allowed.
+  DRIVE_HERO_BY_SLUG: 23 entries audited
+  HOVER_BY_SLUG: 0 entries audited
+  LIST_IMAGE_OVERRIDES: 6 entries audited
+
+  PASS - image override contract is intact.
+
+> maison-tanneurs-store@0.1.0 build /Users/lezdoors/mt-v3
+> next build --turbopack
+
+▲ Next.js 16.2.4 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1869ms
+  Running TypeScript ...
+  Finished TypeScript in 2.2s ...
+  Collecting page data using 9 workers ...
+⚠ Using edge runtime on a page currently disables static generation for that page
+  Generating static pages using 9 workers (0/50) ...
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+  Generating static pages using 9 workers (12/50) 
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+  Generating static pages using 9 workers (24/50) 
+  Generating static pages using 9 workers (37/50) 
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+Supabase not configured - using static product data
+✓ Generating static pages using 9 workers (50/50) in 128ms
+  Finalizing page optimization ...
+
+Route (app)                       Revalidate  Expire
+┌ ƒ /
+├ ƒ /_not-found
+├ ƒ /api/checkout/purchase-event
+├ ƒ /api/checkout/session
+├ ƒ /api/newsletter
+├ ƒ /api/webhooks/revolut
+├ ○ /apple-icon.png
+├ ƒ /atelier
+├ ƒ /bespoke
+├ ƒ /boutique
+├ ƒ /brand/wordmark
+├ ƒ /checkout/pay
+├ ƒ /checkout/success
+├ ƒ /collection
+├ ƒ /contact
+├ ƒ /feed/products.xml
+├ ○ /icon.png
+├ ƒ /legal/care
+├ ƒ /legal/faq
+├ ƒ /legal/privacy
+├ ƒ /legal/repair
+├ ƒ /legal/returns
+├ ƒ /legal/shipping
+├ ƒ /legal/terms
+├ ○ /llms-full.txt                        1d      1y
+├ ○ /llms.txt                             1d      1y
+├ ƒ /products
+├ ƒ /products/[slug]
+├ ○ /robots.txt
+├ ƒ /search
+├ ○ /sitemap.xml                          1d      1y
+└ ƒ /trade
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+BUILD_EXIT=0

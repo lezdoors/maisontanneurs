@@ -15,6 +15,7 @@ import {
   selectProductHeroImage,
 } from "@/lib/product-image-presentation";
 import { productHoverImage } from "@/lib/landing-product-curation";
+import { productGalleryLocal } from "@/lib/product-media";
 import { SITE_URL, absoluteUrl, jsonLdScript } from "@/lib/site";
 
 async function getProduct(slug: string): Promise<Product | null> {
@@ -136,7 +137,10 @@ export default async function ProductPage({
   if (!product) notFound();
 
   const related = await getRelatedProducts(product.category, product.slug);
-  const galleryImages = orderProductGalleryImages(product);
+  const localGallery = productGalleryLocal(product.slug);
+  const galleryImages = localGallery.length
+    ? localGallery
+    : orderProductGalleryImages(product);
 
   const productLd = {
     "@context": "https://schema.org",

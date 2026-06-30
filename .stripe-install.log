@@ -1,0 +1,14 @@
+Progress: resolved 0, reused 1, downloaded 0, added 0
+ WARN  deprecated @types/bcryptjs@3.0.0: This is a stub types definition. bcryptjs provides its own type definitions, so you do not need this installed.
+Packages: +3
++++
+Progress: resolved 484, reused 388, downloaded 3, added 2
+Progress: resolved 484, reused 388, downloaded 3, added 3, done
+
+dependencies:
++ @stripe/react-stripe-js 6.6.0
++ @stripe/stripe-js 9.8.0
++ stripe 22.3.0
+
+Done in 1.4s using pnpm v10.30.3
+DONE rc=0

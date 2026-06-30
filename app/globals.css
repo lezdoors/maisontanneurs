@@ -25,13 +25,14 @@
      Palette confirmed 2026-05-25 against eng.polene-paris.com.
      ============================================================ */
 
-  /* Core palette */
-  --color-white: #ffffff;          /* restore default white token so text-white/bg-white render under Tailwind 4 @theme */
-  --color-paper: #ffffff;          /* default page bg — Maison Tanneurs pure white */
-  --color-paper-alt: #ebe9e4;      /* alt section bg, warm stone */
-  --color-paper-soft: #e2dfd8;     /* subtle bands */
-  --color-plate: #f8f7f4;          /* product tile plate — quiet warm-white studio surface */
-  --color-near-black: #2c2a28;     /* warm charcoal — primary type (never pure black) */
+  /* Core palette — V3 Artisanal Registry: parchment editorial + WHITE commerce bands */
+  --color-white: #ffffff;          /* clean white — product/commerce surfaces (grid + PDP gallery) */
+  --color-paper: #f5f2ee;          /* default page bg — deep parchment editorial canvas */
+  --color-paper-alt: #ece8e1;      /* alt section bg, deeper parchment */
+  --color-paper-soft: #e4ded4;     /* subtle bands */
+  --color-plate: #ffffff;          /* product tile = clean white so white-bg Hero-* reads (no cream square) */
+  --color-commerce: #ffffff;       /* full-bleed white commerce band bg */
+  --color-near-black: #1c1a17;     /* V3 ink — soft charcoal/black */
   --color-warm-black: #1f1d1b;     /* warm dark for hero zones + footer */
   --color-warm-black-soft: #2c2a28;
   --color-ivory: #f7f6f2;          /* type on dark sections — paper-white echo */
@@ -39,6 +40,8 @@
 
   --color-cognac: #7a4a2b;
   --color-cognac-hi: #9a5a2b;
+  --color-majorelle: #002fa7;       /* V3 signature accent — Jardin Majorelle / Paris × Marrakech */
+  --color-sage: #2d5a27;            /* V3 secondary accent — muted emerald */
   --color-bronze: #8c7a5a;          /* eyebrow accent on light surfaces */
   --color-bronze-on-dark: #a8997e;  /* eyebrow on dark surfaces */
   --color-brass-gold: #b08a3e;
@@ -95,8 +98,8 @@
   --color-brass: var(--color-brass-gold);
   --color-brass-hi: var(--color-whiskey-brown);
   --color-terracotta: var(--color-cognac);
-  --color-mineral-blue: var(--color-cognac);
-  --color-mineral-green: var(--color-whiskey-brown);
+  --color-mineral-blue: var(--color-majorelle);
+  --color-mineral-green: var(--color-sage);
 
   /* Legacy card aliases */
   --rb-card-bg: var(--color-paper);
@@ -123,7 +126,7 @@
      Always available: var(--font-arabic) Noto Naskh Arabic (RTL).
      ==================================================== */
 
-  --font-display: var(--font-instrument), "Times New Roman", serif;
+  --font-display: var(--font-cormorant), "Cormorant Garamond", "Times New Roman", serif;
   --font-sans:    var(--font-inter), "Helvetica Neue", Arial, sans-serif;
   --font-serif:   var(--font-display);
   /* Engraved label register (2026-06-09): every micro-label, kicker, price
