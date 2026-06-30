@@ -74,14 +74,15 @@ export async function GET() {
 
     if (error) {
       // Don't 500 — fall through to STATIC_PRODUCTS so Meta ingest still has
-      // something valid to parse. Log the error in the XML as a comment.
+      // something valid to parse. renderFeed() already emits the <?xml?>
+      // declaration, so return it directly: prepending another declaration (or
+      // a comment before it) produces invalid XML that Meta/Google reject
+      // wholesale. Log the cause server-side instead of in the document.
+      console.error("[feed] supabase error, serving static feed:", error.message);
       const fallbackProducts = (STATIC_PRODUCTS as unknown as ProductRow[]).filter(
         (p) => p.status === "available" && !HIDDEN_SKUS.has(p.slug),
       );
-      const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<!-- supabase error: ${xmlEscape(error.message)} — falling back to static -->
-${renderFeed(fallbackProducts)}`;
-      return new NextResponse(xml, {
+      return new NextResponse(renderFeed(fallbackProducts), {
         status: 200,
         headers: { "Content-Type": "application/xml; charset=utf-8" },
       });

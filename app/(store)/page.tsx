@@ -19,6 +19,12 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#F5F2EE] text-[#1C1A17]">
+      {/* SEO/a11y page heading — the editorial sections use h2; the ad landing
+          page still needs a single h1. Visually hidden, screen-reader present. */}
+      <h1 className="sr-only">
+        Maison Tanneurs — hand-cut, saddle-stitched full-grain leather bags, made
+        in Marrakech
+      </h1>
       <LemaireHero signature={hero} />
       <EditionGrid items={grid} />
       <Lookbook />
