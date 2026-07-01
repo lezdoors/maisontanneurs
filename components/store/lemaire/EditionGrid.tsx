@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import SaddleStitchReveal from "@/components/store/lemaire/SaddleStitchReveal";
 import Price from "@/components/store/lemaire/Price";
 
 type ProductVM = {
@@ -11,79 +10,59 @@ type ProductVM = {
   material: string;
 };
 
-// Deliberately uneven slots: spans, column starts, aspect ratios, and top
-// offsets so no two neighbours share a baseline and centre columns are left
-// as intentional voids. On mobile everything is full width, no offsets.
-// `placement` lands on the link cell; `aspect` lands on the image box only,
-// so the index block below the image is never clipped.
-const SLOTS = [
-  { placement: "md:col-start-1 md:col-span-6", aspect: "aspect-[4/5]" },
-  { placement: "md:col-start-9 md:col-span-4 md:mt-[clamp(120px,18vw,260px)]", aspect: "aspect-[3/4]" },
-  { placement: "md:col-start-2 md:col-span-3 md:mt-[clamp(40px,6vw,120px)]", aspect: "aspect-[1/1]" },
-  { placement: "md:col-start-7 md:col-span-5 md:mt-[clamp(160px,20vw,300px)]", aspect: "aspect-[5/6]" },
-  { placement: "md:col-start-3 md:col-span-4 md:mt-[clamp(60px,8vw,150px)]", aspect: "aspect-[4/5]" },
-];
-
 export default function EditionGrid({ items }: { items: ProductVM[] }) {
-  const cells = items.slice(0, SLOTS.length);
+  const cells = items.slice(0, 6);
 
   return (
-    <section className="w-full py-[clamp(100px,14vw,180px)] px-[clamp(24px,6vw,96px)]">
-      <div className="max-w-[14ch]">
+    <section className="w-full py-[clamp(72px,10vw,130px)] px-[clamp(24px,6vw,80px)] bg-white">
+      <div className="max-w-[46ch] mx-auto text-center">
         <p className="text-[9px] tracking-[0.3em] font-sans uppercase text-stone-400">
           Volume I — The Edition
         </p>
-        <h2 className="mt-6 font-display font-light text-[clamp(40px,6vw,92px)] leading-[0.95] tracking-[-0.02em] text-[#1C1A17]">
+        <h2 className="font-display font-light text-[clamp(34px,4.5vw,60px)] leading-[1.05] tracking-[-0.01em] text-[#1C1A17] mt-4">
           Objects, kept few.
         </h2>
+        <p className="text-[13px] font-sans text-stone-500 mt-4 max-w-[52ch] mx-auto">
+          Hand-cut and saddle-stitched in Marrakech. Kept few, made to last.
+        </p>
       </div>
 
-      <div className="mt-[clamp(72px,14vw,180px)] grid-cols-1 space-y-[clamp(64px,12vw,120px)] md:grid md:grid-cols-12 md:gap-x-[clamp(24px,4vw,64px)] md:space-y-0 md:items-start">
+      <div className="mt-[clamp(48px,7vw,88px)] grid grid-cols-2 gap-x-[clamp(16px,3vw,40px)] gap-y-[clamp(40px,6vw,72px)] md:grid-cols-3">
         {cells.map((vm, i) => (
           <Link
             key={vm.slug}
             href={`/products/${vm.slug}`}
-            className={`group block ${SLOTS[i].placement}`}
+            className="group block"
           >
-            <SaddleStitchReveal>
-              {/* Parchment bg so mix-blend-multiply always composites against
-                  the canvas (no white-box flash inside the reveal's stacking
-                  context). */}
-              <div
-                className={`relative w-full ${SLOTS[i].aspect} bg-[#F5F2EE] overflow-hidden`}
-              >
-                <Image
-                  src={vm.image}
-                  alt={vm.title}
-                  fill
-                  sizes="(min-width:768px) 40vw, 100vw"
-                  className="mix-blend-multiply object-contain transition-transform duration-[900ms] ease-[cubic-bezier(0.25,1,0.5,1)] will-change-transform group-hover:scale-[1.035]"
-                />
-              </div>
-            </SaddleStitchReveal>
+            <div className="relative w-full aspect-[4/5] bg-[#FAFAF9] overflow-hidden">
+              <Image
+                src={vm.image}
+                alt={vm.title}
+                fill
+                sizes="(min-width:768px) 30vw, 50vw"
+                className="object-contain p-[8%] transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-[1.04]"
+              />
+            </div>
 
-            <div className="mt-5">
+            <div className="mt-4 text-left">
               <p className="text-[9px] tracking-[0.3em] font-sans uppercase text-stone-400">
                 N° 0{i + 1}
               </p>
               <p className="text-sm font-display font-light text-[#1C1A17] mt-1">
                 {vm.title}
               </p>
-              <p className="text-[11px] font-sans tracking-wide text-stone-500 max-w-xs mt-2 leading-relaxed">
-                {vm.material} · <Price cents={vm.priceCents} />
+              <p className="text-[11px] font-sans tracking-wide text-stone-500 mt-1">
+                {vm.material}
               </p>
-              {/* caption reveal — fades + rises on card hover */}
-              <span
-                className="mt-3 inline-flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase font-sans text-[#1C1A17] opacity-0 translate-y-2 transition-[opacity,transform] duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:opacity-100 group-hover:translate-y-0"
-              >
-                Inspect <span aria-hidden="true">→</span>
-              </span>
+              <p className="text-[11px] font-sans tracking-wide text-stone-500 mt-1">
+                <Price cents={vm.priceCents} />
+              </p>
             </div>
           </Link>
         ))}
       </div>
 
-      <div className="mt-[clamp(100px,16vw,220px)]">
+      <div className="text-center mt-[clamp(56px,8vw,96px)]">
         <Link
           href="/products"
           className="text-[10px] tracking-[0.25em] uppercase font-sans text-[#1C1A17] border-b border-[#1C1A17] pb-1 inline-block"

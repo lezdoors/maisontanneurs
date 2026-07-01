@@ -48,7 +48,7 @@ export default function CinematicCarousel({ items }: { items: ProductVM[] }) {
               {/* Parchment bg so the white packshot blends here too (the
                   scroller + reveal create a stacking context that otherwise
                   leaves mix-blend with a white backdrop). */}
-              <div className="relative aspect-[4/5] w-full bg-[#F5F2EE] overflow-hidden">
+              <div className="relative aspect-[4/5] w-full bg-white overflow-hidden">
                 <Image
                   src={vm.image}
                   alt={vm.title}

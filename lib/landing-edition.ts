@@ -17,16 +17,17 @@ export type ProductVM = {
 const HERO_SLUG = "atlas-weekender-cognac";
 const GRID_SLUGS = [
   "oasis-weekender-oxblood",
-  "medina-saddlebag-tooled-cognac",
+  "atlas-briefcase-vintage",
   "expedition-rolltop-noir",
   "atlas-kilim-duffle",
   "marrakech-tote-cognac",
+  "medina-crossbody-tooled-walnut",
 ];
 const CAROUSEL_SLUGS = [
   "classic-cognac-satchel",
   "heritage-rucksack",
-  "medina-crossbody-tooled-walnut",
   "woven-leather-backpack",
+  "cognac-brogue-backpack",
 ];
 
 function staticFallback(): Product[] {

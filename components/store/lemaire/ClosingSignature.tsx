@@ -11,7 +11,7 @@ type ProductVM = {
 
 export default function ClosingSignature() {
   return (
-    <section className="relative w-full min-h-[clamp(72svh,84vh,92vh)] overflow-hidden flex items-center justify-center bg-[#F5F2EE]">
+    <section className="relative w-full min-h-[clamp(72svh,84vh,92vh)] overflow-hidden flex items-center justify-center bg-white">
       {/* Background still — bright atelier plinth, washed for legibility */}
       <Image
         src="/brand/hero/home-hero-bright-atelier-plinth.webp"
@@ -21,7 +21,7 @@ export default function ClosingSignature() {
         className="object-cover"
         priority={false}
       />
-      <div className="absolute inset-0 bg-[#F5F2EE]/35" aria-hidden="true" />
+      <div className="absolute inset-0 bg-white/35" aria-hidden="true" />
 
       {/* Centered wordmark + entry */}
       <div className="relative z-10 text-center px-[clamp(24px,6vw,96px)]">
