@@ -49,13 +49,15 @@ export default function EditionGrid({ items }: { items: ProductVM[] }) {
               {/* Parchment bg so mix-blend-multiply always composites against
                   the canvas (no white-box flash inside the reveal's stacking
                   context). */}
-              <div className={`relative w-full ${SLOTS[i].aspect} bg-[#F5F2EE]`}>
+              <div
+                className={`relative w-full ${SLOTS[i].aspect} bg-[#F5F2EE] overflow-hidden`}
+              >
                 <Image
                   src={vm.image}
                   alt={vm.title}
                   fill
                   sizes="(min-width:768px) 40vw, 100vw"
-                  className="mix-blend-multiply object-contain transition-opacity duration-500 group-hover:opacity-80"
+                  className="mix-blend-multiply object-contain transition-transform duration-[900ms] ease-[cubic-bezier(0.25,1,0.5,1)] will-change-transform group-hover:scale-[1.035]"
                 />
               </div>
             </SaddleStitchReveal>
@@ -70,6 +72,12 @@ export default function EditionGrid({ items }: { items: ProductVM[] }) {
               <p className="text-[11px] font-sans tracking-wide text-stone-500 max-w-xs mt-2 leading-relaxed">
                 {vm.material} · <Price cents={vm.priceCents} />
               </p>
+              {/* caption reveal — fades + rises on card hover */}
+              <span
+                className="mt-3 inline-flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase font-sans text-[#1C1A17] opacity-0 translate-y-2 transition-[opacity,transform] duration-[700ms] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:opacity-100 group-hover:translate-y-0"
+              >
+                Inspect <span aria-hidden="true">→</span>
+              </span>
             </div>
           </Link>
         ))}

@@ -19,11 +19,20 @@ export default function LemaireHero({
 }) {
   return (
     <section className="relative min-h-[100svh] w-full overflow-hidden bg-[#1C1A17]">
+      {/* Hero-load physics — image settles, text rises. Respects reduced motion. */}
+      <style>{`
+        @keyframes mtHeroImg { from { transform: scale(1.07); opacity: 0.45; } to { transform: scale(1); opacity: 1; } }
+        @keyframes mtHeroUp { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
+        @media (prefers-reduced-motion: reduce) {
+          .mt-hero-img, .mt-hero-up { animation: none !important; opacity: 1 !important; transform: none !important; }
+        }
+      `}</style>
       {/* Full-bleed atelier film */}
       <video
-        className="absolute inset-0 h-full w-full object-cover"
-        src="/film/maison-reel-v3.mp4"
-        poster="/film/maison-reel-v3-poster.jpg"
+        className="mt-hero-img absolute inset-0 h-full w-full object-cover"
+        style={{ animation: "mtHeroImg 1.5s cubic-bezier(0.25,1,0.5,1) both" }}
+        src="/film/hero-departure.mp4"
+        poster="/film/hero-departure-poster.jpg"
         autoPlay
         muted
         loop
@@ -41,15 +50,21 @@ export default function LemaireHero({
       {/* Bottom-left quiet house line — hidden on mobile so it never collides
           with the commerce card on narrow screens */}
       <p
-        className="hidden sm:block absolute bottom-[clamp(28px,5vw,56px)] left-[clamp(24px,6vw,96px)] text-[9px] tracking-[0.3em] font-sans uppercase text-[#F5EFE6]"
-        style={{ textShadow: "0 1px 12px rgba(0,0,0,0.45)" }}
+        className="mt-hero-up hidden sm:block absolute bottom-[clamp(28px,5vw,56px)] left-[clamp(24px,6vw,96px)] text-[9px] tracking-[0.3em] font-sans uppercase text-[#F5EFE6]"
+        style={{
+          textShadow: "0 1px 12px rgba(0,0,0,0.45)",
+          animation: "mtHeroUp 1s cubic-bezier(0.25,1,0.5,1) 0.35s both",
+        }}
       >
         Maison Tanneurs — Le Départ · Film N° I
       </p>
 
       {/* Bottom-right floating commerce card */}
       {signature && (
-        <div className="absolute bottom-[clamp(28px,5vw,64px)] right-[clamp(24px,6vw,96px)] max-w-[260px] text-left">
+        <div
+          className="mt-hero-up absolute bottom-[clamp(28px,5vw,64px)] right-[clamp(24px,6vw,96px)] max-w-[260px] text-left"
+          style={{ animation: "mtHeroUp 1s cubic-bezier(0.25,1,0.5,1) 0.5s both" }}
+        >
           <div className="mb-4 h-px w-10 bg-[#1C1A17]/20" />
           <p className="text-[9px] tracking-[0.3em] font-sans uppercase text-[#1C1A17]/70">
             N° 01 — Signature

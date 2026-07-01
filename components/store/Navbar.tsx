@@ -135,10 +135,10 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 z-50 w-full border-b transition-colors duration-500 ${
+        className={`fixed top-0 z-50 w-full border-b transition-[background-color,color,border-color,box-shadow] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${
           onHero
-            ? "bg-transparent text-white border-white/15"
-            : "bg-white/95 text-[#0f0f0f] border-[#e5e5e5] backdrop-blur"
+            ? "bg-transparent text-white border-white/15 shadow-none"
+            : "bg-[#F5F2EE]/95 text-[#0f0f0f] border-[#1c1a17]/12 backdrop-blur shadow-[0_30px_60px_-15px_rgba(28,26,23,0.07)]"
         }`}
         style={{ ["--mt-nav-underline" as string]: underlineColor }}
       >

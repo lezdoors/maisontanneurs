@@ -47,14 +47,14 @@ export default function MaterialDivider() {
 
   return (
     <section
-      aria-label="La Matière — full-grain leather"
+      aria-label="La Fabrication — made by one pair of hands"
       className="relative left-1/2 right-1/2 -mx-[50vw] w-screen min-h-[clamp(48svh,58vh,68svh)] overflow-hidden bg-[#1C1A17]"
     >
       <video
         ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
-        src="/film/heritage-grain.mp4"
-        poster="/film/heritage-grain-poster.jpg"
+        src="/film/making-process.mp4"
+        poster="/film/making-process-poster.jpg"
         autoPlay
         muted
         loop
@@ -66,7 +66,7 @@ export default function MaterialDivider() {
       <div className="absolute bottom-[clamp(28px,5vw,56px)] left-[clamp(24px,6vw,96px)] z-10">
         <div className="mb-3 h-px w-10 bg-[#F5EFE6]/30" />
         <p className="text-[9px] font-sans uppercase tracking-[0.3em] text-[rgba(245,239,230,0.8)]">
-          La Matière — full-grain, nothing else.
+          La Fabrication — one bench, one pair of hands.
         </p>
       </div>
     </section>

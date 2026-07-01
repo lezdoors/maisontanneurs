@@ -55,8 +55,8 @@ export default function CraftCinema() {
       <video
         ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
-        src="/film/heritage-stitch.mp4"
-        poster="/film/heritage-stitch-poster.jpg"
+        src="/film/craft-hands.mp4"
+        poster="/film/craft-hands-poster.jpg"
         autoPlay
         muted
         loop

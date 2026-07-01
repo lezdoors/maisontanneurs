@@ -42,19 +42,19 @@ export default function CinematicCarousel({ items }: { items: ProductVM[] }) {
         {items.map((vm, i) => (
           <article
             key={vm.slug}
-            className="snap-center shrink-0 w-[86vw] sm:w-[62vw] lg:w-[46vw]"
+            className="group snap-center shrink-0 w-[86vw] sm:w-[62vw] lg:w-[46vw]"
           >
             <SaddleStitchReveal stitch={true}>
               {/* Parchment bg so the white packshot blends here too (the
                   scroller + reveal create a stacking context that otherwise
                   leaves mix-blend with a white backdrop). */}
-              <div className="relative aspect-[4/5] w-full bg-[#F5F2EE]">
+              <div className="relative aspect-[4/5] w-full bg-[#F5F2EE] overflow-hidden">
                 <Image
                   src={vm.image}
                   alt={vm.title}
                   fill
                   sizes="(min-width:1024px) 46vw, (min-width:640px) 62vw, 86vw"
-                  className="mix-blend-multiply object-contain"
+                  className="mix-blend-multiply object-contain transition-transform duration-[900ms] ease-[cubic-bezier(0.25,1,0.5,1)] will-change-transform group-hover:scale-[1.035]"
                 />
               </div>
             </SaddleStitchReveal>
