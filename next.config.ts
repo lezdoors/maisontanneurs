@@ -13,6 +13,8 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // galerie/la-projection branch only: preview root shows the séance
+      { source: "/", destination: "/projection", permanent: false },
       { source: "/shipping", destination: "/legal/shipping", permanent: true },
       { source: "/returns", destination: "/legal/returns", permanent: true },
       { source: "/care", destination: "/legal/care", permanent: true },
