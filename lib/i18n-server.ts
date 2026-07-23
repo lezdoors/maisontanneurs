@@ -1,5 +1,5 @@
 import { headers } from "next/headers";
-import { DEFAULT_LOCALE, dirForLocale, isLocale, type Locale } from "@/lib/i18n";
+import { DEFAULT_LOCALE, dirForLocale, isLocale, type Locale } from "@/lib/i18n-shared";
 import {
   DEFAULT_CURRENCY,
   isCurrency,

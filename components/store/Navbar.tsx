@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCart } from "@/components/store/CartProvider";
-import { LOCALES, LOCALE_LABELS } from "@/lib/i18n";
+import { LOCALES, LOCALE_LABELS } from "@/lib/i18n-shared";
 import { useLocale, useLocalizedHref, useSwitchLocaleHref, useT } from "@/lib/i18n-client";
 
 // Centered Létrange-pattern nav. Order is deliberate:
@@ -18,7 +18,7 @@ const NAV_ITEMS = [
   { labelKey: "nav.contact", href: "/contact" },
 ];
 
-function isItemActive(itemHref: string, pathname: string, locale: string): boolean {
+function isItemActive(itemHref: string, pathname: string): boolean {
   // Strip locale prefix from pathname for comparison
   const stripped = pathname.replace(new RegExp(`^/(${LOCALES.join("|")})(?=/|$)`), "") || "/";
   const base = itemHref.split("#")[0]!;
@@ -39,6 +39,7 @@ export default function Navbar() {
   const [drawer, setDrawer] = useState(false);
   const [cartPulse, setCartPulse] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const cartCount = items.reduce((s, i) => s + i.quantity, 0);
   const prevCartCountRef = useRef(cartCount);
   const isHome = pathname === "/" || LOCALES.some((l) => pathname === `/${l}`);
@@ -81,12 +82,18 @@ export default function Navbar() {
       ticking = false;
       const y = window.scrollY;
       const hasHash = window.location.hash.length > 0;
+      const darkHero = document.querySelector<HTMLElement>("[data-nav-theme='dark']");
+      const headerBottom = headerRef.current?.getBoundingClientRect().bottom ?? 96;
+      const insideDarkHero = Boolean(
+        darkHero && darkHero.getBoundingClientRect().bottom > headerBottom,
+      );
 
       // Hysteresis prevents the fixed mobile header from flickering between
       // hero/non-hero states as the iOS/Telegram browser chrome expands and
       // contracts around the first few pixels of scroll.
       setScrolled((current) => {
         if (hasHash) return true;
+        if (insideDarkHero) return false;
         if (current) return y > 10;
         return y > 48;
       });
@@ -134,6 +141,7 @@ export default function Navbar() {
   return (
     <>
       <header
+        ref={headerRef}
         className={`fixed top-0 z-50 w-full border-b transition-colors duration-500 ${
           onHero
             ? "bg-transparent text-white border-white/15"
@@ -259,7 +267,7 @@ export default function Navbar() {
         >
           <ul className="flex items-center gap-[clamp(28px,3.6vw,56px)]">
             {NAV_ITEMS.map((item) => {
-              const active = isItemActive(item.href, pathname, locale);
+              const active = isItemActive(item.href, pathname);
               return (
                 <li key={item.labelKey} className="relative">
                   <Link

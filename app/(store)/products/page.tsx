@@ -8,7 +8,7 @@ import { normalizeProductFamilies } from "@/lib/product-taxonomy";
 import ProductCard from "@/components/store/ProductCard";
 import CategoryFilter from "@/components/store/CategoryFilter";
 import { getRequestLocale } from "@/lib/i18n-server";
-import { t } from "@/lib/i18n";
+import { t } from "@/lib/i18n-shared";
 import { productHoverImage, productListImage } from "@/lib/landing-product-curation";
 import { SITE_URL, absoluteUrl, jsonLdScript } from "@/lib/site";
 

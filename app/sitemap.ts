@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { createServerSupabase } from "@/lib/supabase/server";
 import { HIDDEN_SKUS, HIDDEN_SKUS_ARRAY } from "@/lib/hidden-skus";
-import { LOCALES, withLocale } from "@/lib/i18n";
+import { LOCALES, withLocale } from "@/lib/i18n-shared";
 
 import { SITE_URL as SITE } from "@/lib/site";
 

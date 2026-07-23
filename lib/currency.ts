@@ -8,7 +8,7 @@
 // 2026-05-21 in lib/revolut.ts) so the same selection drives both display
 // and charge.
 
-import type { Locale } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n-shared";
 
 export const SUPPORTED_CURRENCIES = ["USD", "EUR", "GBP"] as const;
 export type Currency = (typeof SUPPORTED_CURRENCIES)[number];

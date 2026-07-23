@@ -46,9 +46,9 @@ const CHAPTERS: Chapter[] = [
     title: "The Bench",
     lead: {
       kind: "video",
-      src: "/brand/atelier/atelier-hands-at-work.mp4",
-      poster: "/brand/atelier/atelier-hands-at-work-poster.jpg",
-      alt: "Artisan hand-stitching cognac leather with a brass awl and waxed thread, atelier bench",
+      src: "/brand/atelier/atelier-the-making.mp4",
+      poster: "/brand/atelier/atelier-the-making-poster.jpg",
+      alt: "Artisan seated at the atelier bench working a cognac hide in raking window light",
       ratio: "21 / 9",
     },
     support: [

@@ -34,10 +34,10 @@ export default function AtelierOrigin() {
           </div>
           <div className="absolute bottom-6 left-6 hidden border border-[var(--color-ink)]/15 bg-white px-4 py-3 md:block">
             <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--color-ink-muted)]">
-              Field proof
+              The bag
             </p>
             <p className="mt-1 font-display text-[18px] leading-none text-[var(--color-ink)]">
-              Red wall, Marrakech
+              Medina Crossbody
             </p>
           </div>
         </div>

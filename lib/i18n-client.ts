@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
-import { localeFromPathname, switchLocaleHref, t, withLocale, type Locale } from "@/lib/i18n";
+import { localeFromPathname, switchLocaleHref, t, withLocale, type Locale } from "@/lib/i18n-shared";
 
 export function useLocale(): Locale {
   return localeFromPathname(usePathname());
